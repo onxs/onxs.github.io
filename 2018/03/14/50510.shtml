@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/03/14/50510.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/03/14/50510.shtml","path":"2018/03/14/50510.shtml","title":"代码生成 Tools"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>代码生成 Tools | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%85%A5%E5%8F%A3%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">生成入口方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">生成方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Entity%E6%A8%A1%E6%9D%BF"><span class="nav-number">3.</span> <span class="nav-text">Entity 模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dao%E6%A8%A1%E6%9D%BF"><span class="nav-number">4.</span> <span class="nav-text">Dao 模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DaoImpl%E6%A8%A1%E6%9D%BF"><span class="nav-number">5.</span> <span class="nav-text">DaoImpl 模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manager%E6%A8%A1%E6%9D%BF"><span class="nav-number">6.</span> <span class="nav-text">Manager 模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ManagerImpl%E6%A8%A1%E6%9D%BF"><span class="nav-number">7.</span> <span class="nav-text">ManagerImpl 模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Action%E6%A8%A1%E6%9D%BF"><span class="nav-number">8.</span> <span class="nav-text">Action 模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%A2%9E%E5%8A%A0%E6%A8%A1%E6%9D%BF"><span class="nav-number">9.</span> <span class="nav-text">页面增加模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E4%BF%AE%E6%94%B9%E6%A8%A1%E6%9D%BF"><span class="nav-number">10.</span> <span class="nav-text">页面修改模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%88%97%E8%A1%A8%E6%A8%A1%E6%9D%BF"><span class="nav-number">11.</span> <span class="nav-text">页面列表模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">12.</span> <span class="nav-text">使用</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2018/03/10/38066.shtml" rel="bookmark">
+        <time class="popular-posts-time">2018-03-10</time>
+        <br>
+      库内新增对象的流程及其他技巧
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2017/12/06/63673.shtml" rel="bookmark">
+        <time class="popular-posts-time">2017-12-06</time>
+        <br>
+      CMS 源码解读
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2018/02/27/48599.shtml" rel="bookmark">
+        <time class="popular-posts-time">2018-02-27</time>
+        <br>
+      cms 开发资料
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2017/09/04/25712.shtml" rel="bookmark">
+        <time class="popular-posts-time">2017-09-04</time>
+        <br>
+      JEECMS 自定义标签
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/03/14/50510.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="代码生成 Tools | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          代码生成 Tools<a href="https://github.com/onxs/blog/tree/dev/source/_posts/cms/POST003.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-14 16:44:36" itemprop="dateCreated datePublished" datetime="2018-03-14T16:44:36+08:00">2018-03-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CMS/" itemprop="url" rel="index"><span itemprop="name">CMS</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="代码生成 Tools" href="/2018/03/14/50510.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::908ab87e28c552c0662db2b6937c16df" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://s2.loli.net/2023/04/15/aFR4ISOrw9T2fsx.jpg"></p>
+<p>技术点：采用 SpringMVC3+Spring3+Hibernate3+Freemarker 主流技术架构</p>
+<span id="more"></span>
+<h3 id="生成入口方法"><a href="#生成入口方法" class="headerlink" title="生成入口方法"></a>生成入口方法</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>cms<span class="token punctuation">.</span>template</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CmsModuleGenerator</span> <span class="token punctuation">{</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">String</span> packName <span class="token operator">=</span> <span class="token string">"com.jeecms.cms.template"</span><span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">String</span> fileName <span class="token operator">=</span> <span class="token string">"jeecms.properties"</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">new</span> <span class="token class-name">ModuleGenerator</span><span class="token punctuation">(</span>packName<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">generate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="生成方法"><a href="#生成方法" class="headerlink" title="生成方法"></a>生成方法</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>cms<span class="token punctuation">.</span>template</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">File</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileInputStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileNotFoundException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Set</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">FileUtils</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Logger</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">LoggerFactory</span></span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 模块生成器
+ * 
+ * &lt;p&gt;
+ * 用于生成JEE模块。
+ * &lt;p&gt;
+ * 包括JAVA类：action,dao,dao.impl,manager,manager.impl；
+ * 配置文件：action配置,spring配置；ftl页面：list.html,add.html,edit.html。
+ * 数据验证文件：Act-Com_save
+ * -validation.xml,Act-Com_edit-validation.xml,Act-Com_update-validation.xml
+ * &lt;p&gt;
+ * 可设置的参数有：模块实体类名、java类包地址、配置文件地址、ftl页面地址。
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ModuleGenerator</span> <span class="token punctuation">{</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Logger</span> log <span class="token operator">=</span> <span class="token class-name">LoggerFactory</span>
+			<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token class-name">ModuleGenerator</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">SPT</span> <span class="token operator">=</span> <span class="token class-name">File</span><span class="token punctuation">.</span>separator<span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">ENCODING</span> <span class="token operator">=</span> <span class="token string">"UTF-8"</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">Properties</span> prop <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">private</span> <span class="token class-name">String</span> packName<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> fileName<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> daoImplFile<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> daoFile<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> managerFile<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> managerImplFile<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> actionFile<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> pageListFile<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> pageEditFile<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> pageAddFile<span class="token punctuation">;</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">File</span> daoImplTpl<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> daoTpl<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> managerTpl<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> managerImplTpl<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> actionTpl<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> pageListTpl<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> pageEditTpl<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">File</span> pageAddTpl<span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> <span class="token class-name">ModuleGenerator</span><span class="token punctuation">(</span><span class="token class-name">String</span> packName<span class="token punctuation">,</span> <span class="token class-name">String</span> fileName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>packName <span class="token operator">=</span> packName<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>fileName <span class="token operator">=</span> fileName<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">loadProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+			log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"packName="</span> <span class="token operator">+</span> packName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"fileName="</span> <span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token class-name">FileInputStream</span> fileInput <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token function">getFilePath</span><span class="token punctuation">(</span>
+					packName<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			prop<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>fileInput<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token class-name">String</span> entityUp <span class="token operator">=</span> prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"Entity"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"entityUp:"</span> <span class="token operator">+</span> entityUp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>entityUp <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> entityUp<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				log<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"Entity not specified, exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token class-name">String</span> entityLow <span class="token operator">=</span> entityUp<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+					<span class="token operator">+</span> entityUp<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"entityLow:"</span> <span class="token operator">+</span> entityLow<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			prop<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"entity"</span><span class="token punctuation">,</span> entityLow<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>log<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token class-name">Set</span> ps <span class="token operator">=</span> prop<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Object</span> o <span class="token operator">:</span> ps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span>o <span class="token operator">+</span> <span class="token string">"="</span> <span class="token operator">+</span> prop<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">FileNotFoundException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">prepareFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">String</span> daoImplFilePath <span class="token operator">=</span> <span class="token function">getFilePath</span><span class="token punctuation">(</span>prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"dao_impl_p"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+				prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"Entity"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"DaoImpl.java"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		daoImplFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>daoImplFilePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"daoImplFile:"</span> <span class="token operator">+</span> daoImplFile<span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token class-name">String</span> daoFilePath <span class="token operator">=</span> <span class="token function">getFilePath</span><span class="token punctuation">(</span>prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"dao_p"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> prop
+				<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"Entity"</span><span class="token punctuation">)</span>
+				<span class="token operator">+</span> <span class="token string">"Dao.java"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		daoFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>daoFilePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"daoFile:"</span> <span class="token operator">+</span> daoFile<span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token class-name">String</span> managerFilePath <span class="token operator">=</span> <span class="token function">getFilePath</span><span class="token punctuation">(</span>prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"manager_p"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+				prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"Entity"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"Mng.java"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		managerFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>managerFilePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"managerFile:"</span> <span class="token operator">+</span> managerFile<span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token class-name">String</span> managerImplFilePath <span class="token operator">=</span> <span class="token function">getFilePath</span><span class="token punctuation">(</span>prop
+				<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"manager_impl_p"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"Entity"</span><span class="token punctuation">)</span>
+				<span class="token operator">+</span> <span class="token string">"MngImpl.java"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		managerImplFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>managerImplFilePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"managerImplFile:"</span> <span class="token operator">+</span> managerImplFile<span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">String</span> actionFilePath <span class="token operator">=</span> <span class="token function">getFilePath</span><span class="token punctuation">(</span>prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"action_p"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> prop
+				<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"Entity"</span><span class="token punctuation">)</span>
+				<span class="token operator">+</span> <span class="token string">"Act.java"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		actionFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>actionFilePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"actionFile:"</span> <span class="token operator">+</span> actionFile<span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token class-name">String</span> pagePath <span class="token operator">=</span> <span class="token string">"WebContent/WEB-INF/"</span>
+				<span class="token operator">+</span> prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"config_sys"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"/"</span>
+				<span class="token operator">+</span> prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"config_entity"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"/"</span><span class="token punctuation">;</span>
+		pageListFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>pagePath <span class="token operator">+</span> <span class="token string">"list.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"pageListFile:"</span> <span class="token operator">+</span> pageListFile<span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		pageEditFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>pagePath <span class="token operator">+</span> <span class="token string">"edit.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"pageEditFile:"</span> <span class="token operator">+</span> pageEditFile<span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		pageAddFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>pagePath <span class="token operator">+</span> <span class="token string">"add.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"pageAddFile:"</span> <span class="token operator">+</span> pageAddFile<span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">prepareTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">String</span> tplPack <span class="token operator">=</span> prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"template_dir"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"tplPack:"</span> <span class="token operator">+</span> tplPack<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		daoImplTpl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token function">getFilePath</span><span class="token punctuation">(</span>tplPack<span class="token punctuation">,</span> <span class="token string">"dao_impl.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		daoTpl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token function">getFilePath</span><span class="token punctuation">(</span>tplPack<span class="token punctuation">,</span> <span class="token string">"dao.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		managerImplTpl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token function">getFilePath</span><span class="token punctuation">(</span>tplPack<span class="token punctuation">,</span> <span class="token string">"manager_impl.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		managerTpl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token function">getFilePath</span><span class="token punctuation">(</span>tplPack<span class="token punctuation">,</span> <span class="token string">"manager.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		actionTpl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token function">getFilePath</span><span class="token punctuation">(</span>tplPack<span class="token punctuation">,</span> <span class="token string">"action.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		pageListTpl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token function">getFilePath</span><span class="token punctuation">(</span>tplPack<span class="token punctuation">,</span> <span class="token string">"page_list.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		pageAddTpl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token function">getFilePath</span><span class="token punctuation">(</span>tplPack<span class="token punctuation">,</span> <span class="token string">"page_add.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		pageEditTpl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token function">getFilePath</span><span class="token punctuation">(</span>tplPack<span class="token punctuation">,</span> <span class="token string">"page_edit.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">stringToFile</span><span class="token punctuation">(</span><span class="token class-name">File</span> file<span class="token punctuation">,</span> <span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+		<span class="token class-name">FileUtils</span><span class="token punctuation">.</span><span class="token function">writeStringToFile</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token constant">ENCODING</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"true"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"is_dao"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">stringToFile</span><span class="token punctuation">(</span>daoImplFile<span class="token punctuation">,</span> <span class="token function">readTpl</span><span class="token punctuation">(</span>daoImplTpl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">stringToFile</span><span class="token punctuation">(</span>daoFile<span class="token punctuation">,</span> <span class="token function">readTpl</span><span class="token punctuation">(</span>daoTpl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"true"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"is_manager"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">stringToFile</span><span class="token punctuation">(</span>managerImplFile<span class="token punctuation">,</span> <span class="token function">readTpl</span><span class="token punctuation">(</span>managerImplTpl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">stringToFile</span><span class="token punctuation">(</span>managerFile<span class="token punctuation">,</span> <span class="token function">readTpl</span><span class="token punctuation">(</span>managerTpl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"true"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"is_action"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">stringToFile</span><span class="token punctuation">(</span>actionFile<span class="token punctuation">,</span> <span class="token function">readTpl</span><span class="token punctuation">(</span>actionTpl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"true"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"is_page"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token function">stringToFile</span><span class="token punctuation">(</span>pageListFile<span class="token punctuation">,</span> <span class="token function">readTpl</span><span class="token punctuation">(</span>pageListTpl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">stringToFile</span><span class="token punctuation">(</span>pageAddFile<span class="token punctuation">,</span> <span class="token function">readTpl</span><span class="token punctuation">(</span>pageAddTpl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">stringToFile</span><span class="token punctuation">(</span>pageEditFile<span class="token punctuation">,</span> <span class="token function">readTpl</span><span class="token punctuation">(</span>pageEditTpl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			log<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"write file faild! "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">readTpl</span><span class="token punctuation">(</span><span class="token class-name">File</span> tpl<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">String</span> content <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+			content <span class="token operator">=</span> <span class="token class-name">FileUtils</span><span class="token punctuation">.</span><span class="token function">readFileToString</span><span class="token punctuation">(</span>tpl<span class="token punctuation">,</span> <span class="token constant">ENCODING</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> ps <span class="token operator">=</span> prop<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Object</span> o <span class="token operator">:</span> ps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token class-name">String</span> key <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> o<span class="token punctuation">;</span>
+				<span class="token class-name">String</span> value <span class="token operator">=</span> prop<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				content <span class="token operator">=</span> content<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"\\#\\{"</span> <span class="token operator">+</span> key <span class="token operator">+</span> <span class="token string">"\\}"</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			log<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"read file faild. "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> content<span class="token punctuation">;</span>
+
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">getFilePath</span><span class="token punctuation">(</span><span class="token class-name">String</span> packageName<span class="token punctuation">,</span> <span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"replace:"</span> <span class="token operator">+</span> packageName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">String</span> path <span class="token operator">=</span> packageName<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"\\."</span><span class="token punctuation">,</span> <span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"after relpace:"</span> <span class="token operator">+</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token string">"src/"</span> <span class="token operator">+</span> path <span class="token operator">+</span> <span class="token string">"/"</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">generate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">loadProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">prepareFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">prepareTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">String</span> packName <span class="token operator">=</span> <span class="token string">"com.jeecms.common.developer.template"</span><span class="token punctuation">;</span>
+		<span class="token class-name">String</span> fileName <span class="token operator">=</span> <span class="token string">"template.properties"</span><span class="token punctuation">;</span>
+		<span class="token keyword">new</span> <span class="token class-name">ModuleGenerator</span><span class="token punctuation">(</span>packName<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">generate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Entity模板"><a href="#Entity模板" class="headerlink" title="Entity模板"></a>Entity 模板</h3><pre><code>使用hibernateMapping插件生成
+</code></pre>
+<h3 id="Dao模板"><a href="#Dao模板" class="headerlink" title="Dao模板"></a>Dao 模板</h3><p>​    dao.txt</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> #<span class="token punctuation">{</span>dao_p<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>hibernate4<span class="token punctuation">.</span></span><span class="token class-name">Updater</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>page<span class="token punctuation">.</span></span><span class="token class-name">Pagination</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> #<span class="token punctuation">{</span>entity_p<span class="token punctuation">}</span><span class="token punctuation">.</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">interface</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Dao</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">Pagination</span> <span class="token function">getPage</span><span class="token punctuation">(</span><span class="token keyword">int</span> pageNo<span class="token punctuation">,</span> <span class="token keyword">int</span> pageSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">save</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">updateByUpdater</span><span class="token punctuation">(</span><span class="token class-name">Updater</span><span class="token operator">&lt;</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token operator">&gt;</span> updater<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">deleteById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="DaoImpl模板"><a href="#DaoImpl模板" class="headerlink" title="DaoImpl模板"></a>DaoImpl 模板</h3><p>​    dao_impl.txt</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> #<span class="token punctuation">{</span>dao_impl_p<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>hibernate<span class="token punctuation">.</span></span><span class="token class-name">Criteria</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Repository</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>hibernate4<span class="token punctuation">.</span></span><span class="token class-name">HibernateBaseDao</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>page<span class="token punctuation">.</span></span><span class="token class-name">Pagination</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> #<span class="token punctuation">{</span>dao_p<span class="token punctuation">}</span><span class="token punctuation">.</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Dao</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> #<span class="token punctuation">{</span>entity_p<span class="token punctuation">}</span><span class="token punctuation">.</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">DaoImpl</span> <span class="token keyword">extends</span> <span class="token class-name">HibernateBaseDao</span><span class="token operator">&lt;</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token operator">&gt;</span> <span class="token keyword">implements</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Dao</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">Pagination</span> <span class="token function">getPage</span><span class="token punctuation">(</span><span class="token keyword">int</span> pageNo<span class="token punctuation">,</span> <span class="token keyword">int</span> pageSize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Criteria</span> crit <span class="token operator">=</span> <span class="token function">createCriteria</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">Pagination</span> page <span class="token operator">=</span> <span class="token function">findByCriteria</span><span class="token punctuation">(</span>crit<span class="token punctuation">,</span> pageNo<span class="token punctuation">,</span> pageSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> page<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> entity <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> entity<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">save</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">deleteById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> entity <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>entity <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> entity<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">protected</span> <span class="token class-name">Class</span><span class="token operator">&lt;</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token operator">&gt;</span> <span class="token function">getEntityClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Manager模板"><a href="#Manager模板" class="headerlink" title="Manager模板"></a>Manager 模板</h3><p>​    manager.txt</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> #<span class="token punctuation">{</span>manager_p<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>page<span class="token punctuation">.</span></span><span class="token class-name">Pagination</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> #<span class="token punctuation">{</span>entity_p<span class="token punctuation">}</span><span class="token punctuation">.</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">interface</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Mng</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">Pagination</span> <span class="token function">getPage</span><span class="token punctuation">(</span><span class="token keyword">int</span> pageNo<span class="token punctuation">,</span> <span class="token keyword">int</span> pageSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">save</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">update</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">deleteById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">deleteByIds</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ids<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="ManagerImpl模板"><a href="#ManagerImpl模板" class="headerlink" title="ManagerImpl模板"></a>ManagerImpl 模板</h3><p>​    manager_impl.txt</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> #<span class="token punctuation">{</span>manager_impl_p<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Service</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>transaction<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Transactional</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>hibernate4<span class="token punctuation">.</span></span><span class="token class-name">Updater</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>page<span class="token punctuation">.</span></span><span class="token class-name">Pagination</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> #<span class="token punctuation">{</span>dao_p<span class="token punctuation">}</span><span class="token punctuation">.</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Dao</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> #<span class="token punctuation">{</span>entity_p<span class="token punctuation">}</span><span class="token punctuation">.</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> #<span class="token punctuation">{</span>manager_p<span class="token punctuation">}</span><span class="token punctuation">.</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Mng</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@Transactional</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">MngImpl</span> <span class="token keyword">implements</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Mng</span> <span class="token punctuation">{</span>
+	<span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>readOnly <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+	<span class="token keyword">public</span> <span class="token class-name">Pagination</span> <span class="token function">getPage</span><span class="token punctuation">(</span><span class="token keyword">int</span> pageNo<span class="token punctuation">,</span> <span class="token keyword">int</span> pageSize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Pagination</span> page <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">getPage</span><span class="token punctuation">(</span>pageNo<span class="token punctuation">,</span> pageSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> page<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>readOnly <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> entity <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> entity<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">save</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		dao<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">update</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Updater</span><span class="token operator">&lt;</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token operator">&gt;</span> updater <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Updater</span><span class="token operator">&lt;</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		bean <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">updateByUpdater</span><span class="token punctuation">(</span>updater<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> <span class="token function">deleteById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">deleteById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	
+	<span class="token keyword">public</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">deleteByIds</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token punctuation">]</span> beans <span class="token operator">=</span> <span class="token keyword">new</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">[</span>ids<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>len <span class="token operator">=</span> ids<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			beans<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deleteById</span><span class="token punctuation">(</span>ids<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> beans<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Dao</span> dao<span class="token punctuation">;</span>
+
+	<span class="token annotation punctuation">@Autowired</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setDao</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Dao</span> dao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>dao <span class="token operator">=</span> dao<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Action模板"><a href="#Action模板" class="headerlink" title="Action模板"></a>Action 模板</h3><p>​    action.txt</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> #<span class="token punctuation">{</span>action_p<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token import static"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>page<span class="token punctuation">.</span></span><span class="token class-name">SimplePage</span><span class="token punctuation">.</span><span class="token static">cpn</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletRequest</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>shiro<span class="token punctuation">.</span>authz<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RequiresPermissions</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Logger</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">LoggerFactory</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Controller</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>ui<span class="token punctuation">.</span></span><span class="token class-name">ModelMap</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RequestMapping</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> #<span class="token punctuation">{</span>entity_p<span class="token punctuation">}</span><span class="token punctuation">.</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>core<span class="token punctuation">.</span>entity<span class="token punctuation">.</span></span><span class="token class-name">CmsSite</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> #<span class="token punctuation">{</span>manager_p<span class="token punctuation">}</span><span class="token punctuation">.</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Mng</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>core<span class="token punctuation">.</span>web<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">CmsUtils</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>core<span class="token punctuation">.</span>web<span class="token punctuation">.</span></span><span class="token class-name">WebErrors</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>page<span class="token punctuation">.</span></span><span class="token class-name">Pagination</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>jeecms<span class="token punctuation">.</span>common<span class="token punctuation">.</span>web<span class="token punctuation">.</span></span><span class="token class-name">CookieUtils</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Controller</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Act</span> <span class="token punctuation">{</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Logger</span> log <span class="token operator">=</span> <span class="token class-name">LoggerFactory</span><span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Act</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token annotation punctuation">@RequiresPermissions</span><span class="token punctuation">(</span><span class="token string">"#{config_entity}:v_list"</span><span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/#{config_entity}/v_list.do"</span><span class="token punctuation">)</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> pageNo<span class="token punctuation">,</span> <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">ModelMap</span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Pagination</span> pagination <span class="token operator">=</span> manager<span class="token punctuation">.</span><span class="token function">getPage</span><span class="token punctuation">(</span><span class="token function">cpn</span><span class="token punctuation">(</span>pageNo<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">CookieUtils</span>
+				<span class="token punctuation">.</span><span class="token function">getPageSize</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"pagination"</span><span class="token punctuation">,</span>pagination<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"pageNo"</span><span class="token punctuation">,</span>pagination<span class="token punctuation">.</span><span class="token function">getPageNo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token string">"#{config_entity}/list"</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@RequiresPermissions</span><span class="token punctuation">(</span><span class="token string">"#{config_entity}:v_add"</span><span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/#{config_entity}/v_add.do"</span><span class="token punctuation">)</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">ModelMap</span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token string">"#{config_entity}/add"</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@RequiresPermissions</span><span class="token punctuation">(</span><span class="token string">"#{config_entity}:v_edit"</span><span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/#{config_entity}/v_edit.do"</span><span class="token punctuation">)</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">edit</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">,</span> <span class="token class-name">Integer</span> pageNo<span class="token punctuation">,</span> <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">ModelMap</span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">WebErrors</span> errors <span class="token operator">=</span> <span class="token function">validateEdit</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">showErrorPage</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"#{entity}"</span><span class="token punctuation">,</span> manager<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"pageNo"</span><span class="token punctuation">,</span>pageNo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token string">"#{config_entity}/edit"</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@RequiresPermissions</span><span class="token punctuation">(</span><span class="token string">"#{config_entity}:o_save"</span><span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/#{config_entity}/o_save.do"</span><span class="token punctuation">)</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">save</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean<span class="token punctuation">,</span> <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">ModelMap</span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">WebErrors</span> errors <span class="token operator">=</span> <span class="token function">validateSave</span><span class="token punctuation">(</span>bean<span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">showErrorPage</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		bean <span class="token operator">=</span> manager<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"save #{Entity} id={}"</span><span class="token punctuation">,</span> bean<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token string">"redirect:v_list.do"</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@RequiresPermissions</span><span class="token punctuation">(</span><span class="token string">"#{config_entity}:o_update"</span><span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/#{config_entity}/o_update.do"</span><span class="token punctuation">)</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">update</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean<span class="token punctuation">,</span> <span class="token class-name">Integer</span> pageNo<span class="token punctuation">,</span> <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span>
+			<span class="token class-name">ModelMap</span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">WebErrors</span> errors <span class="token operator">=</span> <span class="token function">validateUpdate</span><span class="token punctuation">(</span>bean<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">showErrorPage</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		bean <span class="token operator">=</span> manager<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"update #{Entity} id={}."</span><span class="token punctuation">,</span> bean<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token function">list</span><span class="token punctuation">(</span>pageNo<span class="token punctuation">,</span> request<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@RequiresPermissions</span><span class="token punctuation">(</span><span class="token string">"#{config_entity}:o_delete"</span><span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/#{config_entity}/o_delete.do"</span><span class="token punctuation">)</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ids<span class="token punctuation">,</span> <span class="token class-name">Integer</span> pageNo<span class="token punctuation">,</span> <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span>
+			<span class="token class-name">ModelMap</span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">WebErrors</span> errors <span class="token operator">=</span> <span class="token function">validateDelete</span><span class="token punctuation">(</span>ids<span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">showErrorPage</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token punctuation">]</span> beans <span class="token operator">=</span> manager<span class="token punctuation">.</span><span class="token function">deleteByIds</span><span class="token punctuation">(</span>ids<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean <span class="token operator">:</span> beans<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"delete #{Entity} id={}"</span><span class="token punctuation">,</span> bean<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> <span class="token function">list</span><span class="token punctuation">(</span>pageNo<span class="token punctuation">,</span> request<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">WebErrors</span> <span class="token function">validateSave</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> bean<span class="token punctuation">,</span> <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">WebErrors</span> errors <span class="token operator">=</span> <span class="token class-name">WebErrors</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">CmsSite</span> site <span class="token operator">=</span> <span class="token class-name">CmsUtils</span><span class="token punctuation">.</span><span class="token function">getSite</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		bean<span class="token punctuation">.</span><span class="token function">setSite</span><span class="token punctuation">(</span>site<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> errors<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	
+	<span class="token keyword">private</span> <span class="token class-name">WebErrors</span> <span class="token function">validateEdit</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">,</span> <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">WebErrors</span> errors <span class="token operator">=</span> <span class="token class-name">WebErrors</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">CmsSite</span> site <span class="token operator">=</span> <span class="token class-name">CmsUtils</span><span class="token punctuation">.</span><span class="token function">getSite</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">vldExist</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> site<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> errors<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> errors<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> errors<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">WebErrors</span> <span class="token function">validateUpdate</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">,</span> <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">WebErrors</span> errors <span class="token operator">=</span> <span class="token class-name">WebErrors</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">CmsSite</span> site <span class="token operator">=</span> <span class="token class-name">CmsUtils</span><span class="token punctuation">.</span><span class="token function">getSite</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">vldExist</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> site<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> errors<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> errors<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> errors<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token class-name">WebErrors</span> <span class="token function">validateDelete</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ids<span class="token punctuation">,</span> <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">WebErrors</span> errors <span class="token operator">=</span> <span class="token class-name">WebErrors</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">CmsSite</span> site <span class="token operator">=</span> <span class="token class-name">CmsUtils</span><span class="token punctuation">.</span><span class="token function">getSite</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">ifEmpty</span><span class="token punctuation">(</span>ids<span class="token punctuation">,</span> <span class="token string">"ids"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> errors<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span> id <span class="token operator">:</span> ids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token function">vldExist</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> site<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> errors<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> errors<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">vldExist</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> id<span class="token punctuation">,</span> <span class="token class-name">Integer</span> siteId<span class="token punctuation">,</span> <span class="token class-name">WebErrors</span> errors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">ifNull</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span> entity <span class="token operator">=</span> manager<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">ifNotExist</span><span class="token punctuation">(</span>entity<span class="token punctuation">,</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>entity<span class="token punctuation">.</span><span class="token function">getSite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>siteId<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			errors<span class="token punctuation">.</span><span class="token function">notInSite</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	
+	<span class="token annotation punctuation">@Autowired</span>
+	<span class="token keyword">private</span> #<span class="token punctuation">{</span><span class="token class-name">Entity</span><span class="token punctuation">}</span><span class="token class-name">Mng</span> manager<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="页面增加模板"><a href="#页面增加模板" class="headerlink" title="页面增加模板"></a>页面增加模板</h3><p>​    page_add.txt</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span> <span class="token name">PUBLIC</span> <span class="token string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span class="token string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/1999/xhtml<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Content-Type<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/html; charset=UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+&lt;#include "/#{config_sys}/head.html"/&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#jvForm"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box-positon<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rpos<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"global.position"</span><span class="token punctuation">/&gt;</span></span>: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"#{entity}.function"</span><span class="token punctuation">/&gt;</span></span> - <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"global.add"</span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ropt<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>return-button<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;@s.m <span class="token punctuation">"</span></span><span class="token attr-name">global.backToList"</span><span class="token punctuation">/&gt;</span></span>" onclick="this.form.action='v_list.do';"/&gt;
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clear<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>body-box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.form</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jvForm<span class="token punctuation">"</span></span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>o_save.do<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.text</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#{entity}.name<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>required<span class="token punctuation">"</span></span> <span class="token attr-name">maxlength</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.submit</span> <span class="token attr-name">code</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>global.submit<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span> <span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.reset</span> <span class="token attr-name">code</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>global.reset<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>@p.td</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>@p.form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="页面修改模板"><a href="#页面修改模板" class="headerlink" title="页面修改模板"></a>页面修改模板</h3><p>​    page_edit.txt</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span> <span class="token name">PUBLIC</span> <span class="token string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span class="token string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/1999/xhtml<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Content-Type<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/html; charset=UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+&lt;#include "/#{config_sys}/head.html"/&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#jvForm"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box-positon<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rpos<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"global.position"</span><span class="token punctuation">/&gt;</span></span>:  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"#{entity}.function"</span><span class="token punctuation">/&gt;</span></span> - <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"global.edit"</span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ropt<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>return-button<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;@s.m <span class="token punctuation">"</span></span><span class="token attr-name">global.backToList"</span><span class="token punctuation">/&gt;</span></span>" onclick="this.form.action='v_list.do';"/&gt;
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clear<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>body-box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.form</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jvForm<span class="token punctuation">"</span></span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>o_update.do<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.text</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#{entity}.name<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>#{entity}.name</span> <span class="token attr-name">required</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>required<span class="token punctuation">"</span></span> <span class="token attr-name">maxlength</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.hidden</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>#{entity}.id/</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.submit</span> <span class="token attr-name">code</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>global.submit<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span> <span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.reset</span> <span class="token attr-name">code</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>global.reset<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>@p.td</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>@p.form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="页面列表模板"><a href="#页面列表模板" class="headerlink" title="页面列表模板"></a>页面列表模板</h3><p>​    page_list.txt</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span> <span class="token name">PUBLIC</span> <span class="token string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span class="token string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/1999/xhtml<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Content-Type<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/html; charset=UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+&lt;#include "/#{config_sys}/head.html"/&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">function</span> <span class="token function">getTableForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'tableForm'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">optDelete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span>Pn<span class="token punctuation">.</span><span class="token function">checkedCount</span><span class="token punctuation">(</span><span class="token string">'ids'</span><span class="token punctuation">)</span><span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		$<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"&lt;@s.m 'global.prompt'/&gt;"</span><span class="token punctuation">,</span><span class="token string">"&lt;@s.m 'error.checkRecord'/&gt;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	$<span class="token punctuation">.</span><span class="token function">confirm</span><span class="token punctuation">(</span>doDelete<span class="token punctuation">,</span><span class="token string">"&lt;@s.m 'global.confirm'/&gt;"</span><span class="token punctuation">,</span><span class="token string">"&lt;@s.m 'global.confirm.delete'/&gt;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">doDelete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">var</span> f <span class="token operator">=</span> <span class="token function">getTableForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	f<span class="token punctuation">.</span>action<span class="token operator">=</span><span class="token string">"o_delete.do"</span><span class="token punctuation">;</span>
+	f<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box-positon<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rpos<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"global.position"</span><span class="token punctuation">/&gt;</span></span>: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"#{entity}.function"</span><span class="token punctuation">/&gt;</span></span> - <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"global.list"</span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ropt<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>add<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;@s.m <span class="token punctuation">"</span></span><span class="token attr-name">global.add"</span><span class="token punctuation">/&gt;</span></span>" onclick="this.form.action='v_add.do';"/&gt;
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clear<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>body-box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tableForm<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hidden<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pageNo<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${pageNo!}<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.table</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>pagination;#{entity},i,has_next</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#rt</span><span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.column</span> <span class="token attr-name">title="&lt;input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>checkbox<span class="token punctuation">'</span></span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span><span class="token value javascript language-javascript">Pn<span class="token punctuation">.</span><span class="token function">checkbox</span><span class="token punctuation">(</span>\"ids\"<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>checked<span class="token punctuation">)</span></span><span class="token punctuation">'</span></span></span><span class="token punctuation">/&gt;</span></span>" width="20"&gt;
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>checkbox<span class="token punctuation">'</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>ids<span class="token punctuation">'</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>${#{entity}.id}<span class="token punctuation">'</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#t</span><span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>@p.column</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#t</span><span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.column</span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ID<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>${#{entity}.id}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>@p.column</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#t</span><span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.column</span> <span class="token attr-name">code</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#{entity}.name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>${#{entity}.name}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>@p.column</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#t</span><span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@p.column</span> <span class="token attr-name">code</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>global.operate<span class="token punctuation">"</span></span> <span class="token attr-name">align</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>v_edit.do?id=${#{entity}.id}&amp;pageNo=${pageNo!}<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pn-opt<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"global.edit"</span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> | <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#rt</span><span class="token punctuation">/&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>o_delete.do?ids=${#{entity}.id}&amp;pageNo=${pageNo!}<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>$<span class="token punctuation">.</span><span class="token function">confirmToUrl</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>href<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span><span class="token punctuation">}</span></span><span class="token punctuation">"</span></span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pn-opt<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>@s.m</span> <span class="token attr-name">"global.delete"</span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#t</span><span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>@p.column</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#t</span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>@p.table</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>del-button<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;@s.m <span class="token punctuation">"</span></span><span class="token attr-name">global.delete"</span><span class="token punctuation">/&gt;</span></span>" onclick="optDelete();"/&gt;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+&lt;#include "/common/alert_message.html"/&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><code>com.jeecms.cms.template.CmsModuleGenerator.java</code> 打开后 <code>Run As—java application</code></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/03/14/50510.shtml" title="代码生成 Tools">https://onxs.github.io/2018/03/14/50510.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CMS/" rel="tag"><i class="fa fa-tag"></i> CMS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/03/11/17154.shtml" rel="prev" title="Logback 日志组件的使用">
+                  <i class="fa fa-chevron-left"></i> Logback 日志组件的使用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/03/15/38422.shtml" rel="next" title="Java 对象复制 Clone 技术">
+                  Java 对象复制 Clone 技术 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="908ab87e28c552c0662db2b6937c16df"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/03/14/50510.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

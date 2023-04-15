@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/03/23/58642.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/03/23/58642.shtml","path":"2018/03/23/58642.shtml","title":"Java NIO Path and Files"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java NIO Path and Files | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Path%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">Path 接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Files%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">Files 工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">1、读写文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%A4%8D%E5%88%B6%E3%80%81%E5%89%AA%E5%88%87%E3%80%81%E5%88%A0%E9%99%A4"><span class="nav-number">2.2.</span> <span class="nav-text">2、复制、剪切、删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95"><span class="nav-number">2.3.</span> <span class="nav-text">3、创建文件和目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="nav-number">2.4.</span> <span class="nav-text">4、获取文件信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E8%BF%AD%E4%BB%A3%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">2.5.</span> <span class="nav-text">5、迭代目录中的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%99%E6%97%B6%E5%80%99%E9%AB%98%E7%A7%91%E6%8A%80%E6%9D%A5%E4%BA%86%E2%80%94%E2%80%94Files%E8%8E%B7%E5%BE%97%E5%8F%AF%E8%BF%AD%E4%BB%A3%E7%9A%84%E7%9B%AE%E5%BD%95%E6%B5%81%EF%BC%8C"><span class="nav-number">2.6.</span> <span class="nav-text">这时候高科技来了 ——Files 获得可迭代的目录流，</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E5%85%A5%E4%B8%80%E4%B8%AA%E7%9B%AE%E5%BD%95Path%EF%BC%8C%E9%81%8D%E5%8E%86%E5%AD%90%E5%AD%99%E7%9B%AE%E5%BD%95%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E7%9B%AE%E5%BD%95Path%E7%9A%84Stream%EF%BC%8C%E6%B3%A8%E6%84%8F%E8%BF%99%E9%87%8C%E6%89%80%E6%9C%89%E6%B6%89%E5%8F%8A%E7%9A%84Path%E9%83%BD%E6%98%AF%E7%9B%AE%E5%BD%95%E8%80%8C%E4%B8%8D%E6%98%AF%E6%96%87%E4%BB%B6%EF%BC%81"><span class="nav-number">2.6.1.</span> <span class="nav-text">传入一个目录 Path，遍历子孙目录返回一个目录 Path 的 Stream，注意这里所有涉及的 Path 都是目录而不是文件！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E5%BE%97%E5%88%B0%E6%9F%90%E4%B8%AA%E7%9B%AE%E5%BD%95%E7%9A%84%E6%89%80%E6%9C%89%E5%AD%90%E5%AD%99%E6%96%87%E4%BB%B6%E9%9B%86%E5%90%88%E5%86%8D%E8%BF%AD%E4%BB%A3%E4%B8%8D%E5%A4%9F%E7%88%BD%EF%BC%9F%E6%9D%A5%EF%BC%8C%E6%88%91%E4%BB%AC%E6%9D%A5%E7%9B%B4%E6%8E%A5%E9%81%8D%E5%8E%86%E6%9F%90%E4%B8%AA%E7%9B%AE%E5%BD%95%E7%9A%84%E6%89%80%E6%9C%89%E5%AD%90%E5%AD%99%E6%88%90%E5%91%98%EF%BC%88%E5%8C%85%E6%8B%AC%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">2.7.</span> <span class="nav-text">遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%92%B1%E4%BB%AC%E6%9D%A5%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B%EF%BC%8C"><span class="nav-number">2.7.1.</span> <span class="nav-text">咱们来总结一下，</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZIP%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">ZIP 文件系统</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/03/23/58642.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java NIO Path and Files | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java NIO Path and Files<a href="https://github.com/onxs/blog/tree/dev/source/_posts/fileupload/POST001.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-23 20:30:36" itemprop="dateCreated datePublished" datetime="2018-03-23T20:30:36+08:00">2018-03-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NIO/" itemprop="url" rel="index"><span itemprop="name">NIO</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Java NIO Path and Files" href="/2018/03/23/58642.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::cd5c5a66abd8d95a2d7bb1b693d024a4" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://s2.loli.net/2023/04/15/diM976RveSq8Dfh.jpg"></p>
+<p>Java NIO Path 接口和 Files 类配合操作文件 </p>
+<span id="more"></span>
+<h2 id="Path接口"><a href="#Path接口" class="headerlink" title="Path接口"></a>Path 接口</h2><hr>
+<p>1、Path 表示的是一个目录名序列，其后还可以跟着一个文件名，路径中第一个部件是根部件时就是绝对路径，例如 / 或 C:\ ，而允许访问的根部件取决于文件系统；</p>
+<p>2、以根部件开始的路径是绝对路径，否则就是相对路径；</p>
+<p>3、静态的 <strong>Paths.get</strong> 方法接受一个或多个字符串，字符串之间<strong>自动使用</strong>默认文件系统的路径分隔符连接起来（Unix 是 /，Windows 是 \ ），这就解决了跨平台的问题，接着解析连接起来的结果，如果不是合法路径就抛出 InvalidPathException 异常，否则就返回一个 Path 对象；</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//假设是Unix的文件系统</span>
+<span class="token class-name">Path</span> absolute <span class="token operator">=</span> <span class="token class-name">Paths</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/home"</span><span class="token punctuation">,</span> <span class="token string">"cat"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//绝对路径 </span>
+<span class="token class-name">Path</span> relative <span class="token operator">=</span> <span class="token class-name">Pahts</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"ixenos"</span><span class="token punctuation">,</span> <span class="token string">"config"</span><span class="token punctuation">,</span> <span class="token string">"user.properties"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//相对路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>4、由 String 路径获取 Path 对象</p>
+<p><strong>get 还可以获取一整条路径</strong>（即多个部件构成的单个字符串），例如从配置文件中读取路径：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> baseDir <span class="token operator">=</span> properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"base.dir"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token comment">//可能获得 /opt/ixenos 或者 C:\Program Files\ixenos</span>
+ <span class="token class-name">Path</span> basePath <span class="token operator">=</span> <span class="token class-name">Paths</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>baseDir<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>5、组合或解析路径</p>
+<p>　　1) 调用 <strong>p.resolve(q)</strong> 将按下面的规则返回一个 Path：如果 q 是绝对路径，则返回 q，否则<strong>追加路径</strong>返回 p/q 或者 p\q</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Path</span> workRelative <span class="token operator">=</span> <span class="token class-name">Paths</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"work"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Path</span> workPath <span class="token operator">=</span> basePath<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>workRelative<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token comment">//resolve也可以接受字符串形参</span>
+<span class="token class-name">Path</span> workPath <span class="token operator">=</span> basePath<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"work"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>　　2) 调用 <strong>p.resolveSibling(“q”)</strong> 将解析指定路径 p 的父路径 o ，并<strong>产生兄弟路径</strong> o/q</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Path</span> tempPath <span class="token operator">=</span> workPath<span class="token punctuation">.</span><span class="token function">resolveSibling</span><span class="token punctuation">(</span><span class="token string">"temp"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token comment">/*
+   如果workPath是 /opt/ixenos/work
+    那么将创建 /opt/ixenos/temp  
+ */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>　　3) 调用 <strong>p.relativize(r)</strong> 将产生一个冗余路径 q，对 q 进行解析将产生<strong>相对路径 r，</strong>最终 r 不包含和 p 的交集路径</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*
+    pathA为 /home/misty
+    pathB为 /home/ixenos/config 
+
+    现已pathA对pathB进行相对化操作，将产生冗余路径
+*/</span>
+<span class="token class-name">Path</span> pathC <span class="token operator">=</span> pathA<span class="token punctuation">.</span><span class="token function">relativize</span><span class="token punctuation">(</span>pathB<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//此时pathC为 ../ixenos/config</span>
+
+<span class="token comment">/*
+    normalize方法将移除冗余部件
+*/</span>
+<span class="token class-name">Path</span> pathD <span class="token operator">=</span> pathC<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//pathD为 /ixenos/config</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>　　4) <strong>toAbsolutePath</strong> 将产生给定路径的<strong>绝对路径</strong>，从根部件开始</p>
+<p>　　5) Path 类还有一些有用的断开和组合路径的方法，比如 <strong>getParent</strong>、<strong>getFileName</strong>、<strong>getRoot</strong>// 获得根目录</p>
+<p>　　6) Path 有个 <strong>toFile</strong> 方法用来跟<strong>遗留类 File 类</strong>打交道，File 类也有个 toPath 方法</p>
+<h2 id="Files工具类"><a href="#Files工具类" class="headerlink" title="Files工具类"></a>Files 工具类</h2><hr>
+<h3 id="1、读写文件"><a href="#1、读写文件" class="headerlink" title="1、读写文件"></a>1、<strong>读写文件</strong></h3><p>方法签名:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">static</span> path <span class="token operator">*</span><span class="token operator">*</span>write<span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token class-name">Path</span> path<span class="token punctuation">,</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes<span class="token punctuation">,</span> <span class="token class-name">OpenOption</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> options<span class="token punctuation">)</span>
+　<span class="token keyword">static</span> path <span class="token function">write</span><span class="token punctuation">(</span><span class="token class-name">Path</span> path<span class="token punctuation">,</span> <span class="token class-name">Iterable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">CharSequence</span><span class="token punctuation">&gt;</span></span> lines<span class="token punctuation">,</span> <span class="token class-name">OpenOption</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> options<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>这里只列举下面用到的方法，更多方法请看 API 文档…</p>
+<p><strong>其中 OpenOption 是个 nio 接口，StandardOpenOption 是其枚举实现类，各枚举实例功能请查看 API 文档</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*
+    Files提供的简便方法适用于处理中等长度的文本文件
+    如果要处理的文件长度较大，或者二进制文件，那么还是应该使用经典的IO流 
+*/</span>
+<span class="token comment">//将文件所有内容读入byte数组中</span>
+<span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> <span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">readAllBytes</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//传入Path对象</span>
+
+<span class="token comment">//之后可以根据字符集构建字符串</span>
+<span class="token class-name">String</span> content <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>bytes<span class="token punctuation">,</span> charset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//也可以直接当作行序列读入</span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> lines <span class="token operator">=</span> <span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">readAllLines</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> charset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//相反，也可以写一个字符串到文件中，默认是覆盖</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> content<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span>charset<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//传入byte[]</span>
+
+<span class="token comment">//追加内容，根据参数决定追加等功能</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> content<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span>charset<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">StandardOpenOption</span><span class="token punctuation">.</span><span class="token constant">APPEND</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//传入枚举对象，打开追加开关</span>
+
+<span class="token comment">//将一个行String的集合List写出到文件中</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> lines<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2、复制、剪切、删除"><a href="#2、复制、剪切、删除" class="headerlink" title="2、复制、剪切、删除"></a><strong>2、复制、剪切、删除</strong></h3><p>方法签名:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">　	<span class="token keyword">static</span> path <span class="token function">copy</span><span class="token punctuation">(</span><span class="token class-name">Path</span> source<span class="token punctuation">,</span> <span class="token class-name">Path</span> target<span class="token punctuation">,</span> <span class="token class-name">CopyOption</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> options<span class="token punctuation">)</span>
+　　<span class="token keyword">static</span> path <span class="token function">move</span><span class="token punctuation">(</span><span class="token class-name">Path</span> source<span class="token punctuation">,</span> <span class="token class-name">Path</span> target<span class="token punctuation">,</span> <span class="token class-name">CopyOption</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> options<span class="token punctuation">)</span>
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token class-name">Path</span> path<span class="token punctuation">)</span> <span class="token comment">//如果path不存在文件将抛出异常，此时调用下面的比较好</span>
+　　<span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">deleteIfExists</span><span class="token punctuation">(</span><span class="token class-name">Path</span> path<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>　　<a href="">这里只列举下面用到的方法，更多方法请看 API 文档…</a></p>
+<p><strong>其中 CopyOption 是个 nio 接口，StandardCopyOption 是其枚举实现类，各枚举实例功能请查看 API 文档</strong></p>
+<p>　　其中有个 <strong>ATOMIC_MOVE 可以填入用来保证原子性操作</strong>，要么移动成功完成，要么源文件保持在原位置</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//复制</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span>fromPath<span class="token punctuation">,</span> toPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//剪切</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">move</span><span class="token punctuation">(</span>fromPath<span class="token punctuation">,</span> toPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+    以上如果toPath已存在，那么操作失败，
+    如果要覆盖，需传入参数REPLACE_EXISTING
+    还要复制文件属性，传入COPY_ATTRIBUTES
+*/</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span>fromPath<span class="token punctuation">,</span> toPath<span class="token punctuation">,</span> <span class="token class-name">StandardCopyOption</span><span class="token punctuation">.</span><span class="token constant">REPLACE_EXISTING</span><span class="token punctuation">,</span> <span class="token class-name">StandardCopyOption</span><span class="token punctuation">.</span><span class="token constant">COPY_ATTRIBUTES</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3、创建文件和目录"><a href="#3、创建文件和目录" class="headerlink" title="3、创建文件和目录"></a><strong>3、创建文件和目录</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//创建新目录，除了最后一个部件，其他必须是已存在的</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">createDirectory</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment">//创建路径中的中间目录，能创建不存在的中间部件</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">createDirectories</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+   创建一个空文件，检查文件存在，如果已存在则抛出异常
+   而检查文件存在是原子性的，因此在此过程中无法执行文件创建操作
+*/</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">createFile</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//添加前/后缀创建临时文件或临时目录</span>
+<span class="token class-name">Path</span> newPath <span class="token operator">=</span> <span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">createTempFile</span><span class="token punctuation">(</span>dir<span class="token punctuation">,</span> prefix<span class="token punctuation">,</span> suffix<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Path</span> newPath <span class="token operator">=</span> <span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">createTempDirectory</span><span class="token punctuation">(</span>dir<span class="token punctuation">,</span> prefix<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4、获取文件信息"><a href="#4、获取文件信息" class="headerlink" title="4、获取文件信息"></a><strong>4、获取文件信息</strong></h3><p>略，具体看 API 文档，或者 corejava page51</p>
+<h3 id="5、迭代目录中的文件"><a href="#5、迭代目录中的文件" class="headerlink" title="5、迭代目录中的文件"></a>5、迭代目录中的文件</h3><p>　　<strong>旧的 File 类</strong>有两个方法获取目录中所有文件构成的字符串数组，String [] list () 和 String [] list (FileFilter filter)，但是<strong>当目录中包含大量文件时，这两方法性能会非常低。</strong></p>
+<p><strong>原因分析：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//File类list所有文件</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">SecurityManager</span> security <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">getSecurityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//文件系统权限获取</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>security <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            security<span class="token punctuation">.</span><span class="token function">checkRead</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isInvalid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> fs<span class="token punctuation">.</span><span class="token function">list</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//底层调用FileSystem的list</span>
+    <span class="token punctuation">}</span>
+
+  <span class="token comment">//FileSystem抽象类的list</span>
+ <span class="token comment">//File类中定义fs是由DefaultFileSystem静态生成的</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">FileSystem</span> fs <span class="token operator">=</span> <span class="token class-name">DefaultFileSystem</span><span class="token punctuation">.</span><span class="token function">getFileSystem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//因此我们来看一下DefaultFileSystem类，发现是生成一个WinNtFileSystem对象</span>
+<span class="token keyword">class</span> <span class="token class-name">DefaultFileSystem</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/**
+     * Return the FileSystem object for Windows platform.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">FileSystem</span> <span class="token function">getFileSystem</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WinNTFileSystem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//而WinNtFileSystem类继承于FileSystem抽象类，这里我们主要观察它的list(File file)方法</span>
+    <span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">native</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token class-name">File</span> f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*我们可以看到这是个native方法，说明list的操作是由操作系统的文件系统控制的，当目录中包含大量的文件时，这个方法的性能将会非常低。
+由此为了替代，NIO的Files类设计了newDirectoryStream(Path dir)及其重载方法，将生成Iterable对象（可用foreach迭代）*/</span><span class="token operator">/</span><span class="token operator">/</span><span class="token operator">~</span>
+
+
+ <span class="token comment">//回调过滤</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token class-name">FilenameFilter</span> filter<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//采用接口回调</span>
+        <span class="token class-name">String</span> names<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//调用list所有</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>names <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>filter <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> names<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> v <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> names<span class="token punctuation">.</span>length <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>filter<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> names<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">//回调FilenameFileter对象的accept方法</span>
+                v<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>names<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> v<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="这时候高科技来了——Files获得可迭代的目录流，"><a href="#这时候高科技来了——Files获得可迭代的目录流，" class="headerlink" title="这时候高科技来了——Files获得可迭代的目录流，"></a>这时候高科技来了 ——Files 获得可迭代的目录流，</h3><h4 id="传入一个目录Path，遍历子孙目录返回一个目录Path的Stream，注意这里所有涉及的Path都是目录而不是文件！"><a href="#传入一个目录Path，遍历子孙目录返回一个目录Path的Stream，注意这里所有涉及的Path都是目录而不是文件！" class="headerlink" title="传入一个目录Path，遍历子孙目录返回一个目录Path的Stream，注意这里所有涉及的Path都是目录而不是文件！"></a>传入一个目录 Path，遍历子孙目录返回一个目录 Path 的 Stream，注意这里所有涉及的 Path 都是目录而不是文件！</h4><p>因此，Files 类设计了 **newDirectoryStream (Path dir)** 及其重载方法，将生成 Iterable 对象（可用 foreach 迭代）</p>
+<p>遍历目录得到一个可迭代的子孙文件集合</p>
+<table>
+<thead>
+<tr>
+<th><code>staticDirectoryStream&lt;Path&gt;</code></th>
+<th><code>newDirectoryStream(Path dir)</code>Opens a directory, returning a <a href=""><code>DirectoryStream</code></a> to iterate over all entries in the directory.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>staticDirectoryStream&lt;Path&gt;</code></td>
+<td><code>newDirectoryStream(Path dir, DirectoryStream.Filter&lt;? superPath&gt; filter)</code>Opens a directory, returning a <a href=""><code>DirectoryStream</code></a> to iterate over the entries in the directory.</td>
+</tr>
+<tr>
+<td><code>staticDirectoryStream&lt;Path&gt;</code></td>
+<td><code>newDirectoryStream(Path dir, String glob)</code></td>
+</tr>
+</tbody></table>
+<p>　　返回一个 <strong>目录流 ，可以看成一个存放着全部 Path 的实现了 Iterable 的集合</strong>，</p>
+<p>　　　　因此可用迭代器或 foreach 迭代，只是使用迭代器的时候要注意不能 invoke 另一个 Iterator：</p>
+<ul>
+<li><ul>
+<li><strong>While DirectoryStream extends Iterable, it is not a general-purpose Iterable as it supports only a single Iterator; invoking the iterator method to obtain a second or subsequent iterator throws IllegalStateException.</strong> </li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">try</span><span class="token punctuation">(</span><span class="token class-name">DirectoryStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Path</span><span class="token punctuation">&gt;</span></span> entries <span class="token operator">=</span> <span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">newDirectoryStream</span><span class="token punctuation">(</span>dir<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">Path</span> entry <span class="token operator">:</span> entries<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>　　可以传入 glob 参数，即使用 <strong>glob 模式</strong>来<strong>过滤文件</strong>（以取代 <code>list(FileFilter filter)：newDirectoryStream(Path dir, String glob)</code> 注意是 String 类型</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">try</span><span class="token punctuation">(</span><span class="token class-name">DirectoryStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Path</span><span class="token punctuation">&gt;</span></span> entries <span class="token operator">=</span> <span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">newDirectoryStream</span><span class="token punctuation">(</span>dir<span class="token punctuation">,</span> <span class="token string">"*.java"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//</span>
+<span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>　　<strong>glob 模式</strong></p>
+<p>所谓的 glob 模式是指 shell 所使用的简化了的<strong>正则表达式</strong>。</p>
+<p>1. 星号 * 匹配<strong>路径组成部分</strong> 0 个或多个字符；例如 *.java 匹配<strong>当前目录中</strong>的所有 Java 文件</p>
+<p>2. 两星号 ** 匹配<strong>跨目录边界</strong> 0 个或多个字符；例如 <strong>.java 匹配在</strong>所有子目录中 ** 的 Java 文件</p>
+<p>3. 问号（?）只匹配一个字符；例如？？？？.java 匹配所有<strong>四个字符</strong>的 Java 文件，不包括扩展名；使用？是因为 * 是通配符不指定数量</p>
+<p>4.[…] 匹配<strong>一个</strong>字符集合，可以用连线 [0-9] 和取反符 [!0-9]；例如 Test [0-9A-F].java 匹配 Testx.java，假设 x 是一个十六进制数字，[0-9A-F] 是匹配单个字符为十六进制数字，比如 B（十六进制不区分大小写）</p>
+<p>　　<em>如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如 [0-9] 表示匹配所有 0 到 9 的数字）</em>。</p>
+<p>5.{…} 匹配由逗号隔开的<strong>多个可选项</strong>之中的一个；例如 *.{java,class} 匹配所有 Java 文件和类 class 文件</p>
+<p>6.\ 转义上述任意模式中的字符；例如 <em>*</em> 匹配所有子目录中文件名包含 * 的文件，这里为 ** 转义，前面是匹配 0 个或多个字符</p>
+<p>下面是网友总结的 Glob 模式：</p>
+<table>
+<thead>
+<tr>
+<th>Glob 模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td> *.txt</td>
+<td> 匹配所有扩展名为.txt 的文件</td>
+</tr>
+<tr>
+<td> *.{html,htm}</td>
+<td> 匹配所有扩展名为.html 或.htm 的文件。{ } 用于组模式，它使用逗号分隔</td>
+</tr>
+<tr>
+<td> ?.txt</td>
+<td> 匹配任何单个字符做文件名且扩展名为.txt 的文件</td>
+</tr>
+<tr>
+<td><em>.</em></td>
+<td> 匹配所有含扩展名的文件</td>
+</tr>
+<tr>
+<td> C:\Users*</td>
+<td> 匹配所有在 C 盘 Users 目录下的文件。反斜线 “\” 用于对紧跟的字符进行转义</td>
+</tr>
+<tr>
+<td> /home/**</td>
+<td>UNIX 平台上匹配所有 /home 目录及子目录下的文件。** 用于匹配当前目录及其所有子目录</td>
+</tr>
+<tr>
+<td> [xyz].txt</td>
+<td> 匹配所有单个字符作为文件名，且单个字符只含 “x” 或 “y” 或 “z” 三种之一，且扩展名为.txt 的文件。方括号 [] 用于指定一个集合</td>
+</tr>
+<tr>
+<td> [a-c].txt</td>
+<td> 匹配所有单个字符作为文件名，且单个字符只含 “a” 或 “b” 或 “c” 三种之一，且扩展名为.txt 的文件。减号 “-” 用于指定一个范围，且只能用在方括号 [] 内</td>
+</tr>
+<tr>
+<td> [!a].txt</td>
+<td> 匹配所有单个字符作为文件名，且单个字符不能包含字母 “a”，且扩展名为.txt 的文件。叹号 “!” 用于否定</td>
+</tr>
+</tbody></table>
+<h3 id="遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）"><a href="#遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）" class="headerlink" title="遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）"></a>遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）</h3><p>　　我们可以调用 Files 类的 <strong>walkFileTree</strong> 方法，并传入一个 FileVisitor 接口类型的对象（还有更多方法在 API 里等你发现……）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*传入一个FileVisitor子类的匿名对象*/</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">walkFileTree</span><span class="token punctuation">(</span>dir<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">SimpleFileVisitor</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Path</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+         <span class="token comment">//walkFileTree回调此方法来遍历所有子孙</span>
+         <span class="token keyword">public</span> <span class="token class-name">FileVisitResult</span> <span class="token function">visitFile</span><span class="token punctuation">(</span><span class="token class-name">Path</span> path<span class="token punctuation">,</span> <span class="token class-name">BasicFileAttributes</span> attrs<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span>
+         <span class="token punctuation">{</span>
+              <span class="token keyword">if</span><span class="token punctuation">(</span>attrs<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//自定义的选择，属于业务代码，这和walkFileTree的宗旨(遍历所有子孙成员)无关</span>
+                  <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token keyword">return</span> <span class="token class-name">FileVisitResult</span><span class="token punctuation">.</span><span class="token constant">CONTINUE</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+
+         <span class="token keyword">public</span> <span class="token class-name">FileVisitResult</span> <span class="token function">visitFileFailed</span><span class="token punctuation">(</span><span class="token class-name">Path</span> path<span class="token punctuation">,</span> <span class="token class-name">IOException</span> exc<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span>
+         <span class="token punctuation">{</span>
+              <span class="token keyword">return</span> <span class="token class-name">FileVisitResult</span><span class="token punctuation">.</span><span class="token constant">CONTINUE</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="咱们来总结一下，"><a href="#咱们来总结一下，" class="headerlink" title="咱们来总结一下，"></a>咱们来总结一下，</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">newDirectoryStream</span><span class="token punctuation">(</span><span class="token class-name">Path</span> dir<span class="token punctuation">)</span> <span class="token comment">//遍历后返回一个可迭代的子孙文件集合；</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">walkFileTree</span><span class="token punctuation">(</span><span class="token class-name">Path</span> dir<span class="token punctuation">,</span> <span class="token class-name">FileVisitor</span> fv<span class="token punctuation">)</span> <span class="token comment">//是一个遍历子孙目录和文件的过程；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="ZIP文件系统"><a href="#ZIP文件系统" class="headerlink" title="ZIP文件系统"></a>ZIP 文件系统</h2><hr>
+<p>由上文知道，Paths 类会在<strong>默认的文件系统</strong>中查找路径，即在用户本地磁盘中的文件。</p>
+<p>其实，我们也可以有其他的文件系统，比如 <strong>ZIP 文件系统</strong>。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token comment">/*假设zipname是某个ZIP文件的名字*/</span>
+<span class="token class-name">FileSystem</span> fs <span class="token operator">=</span> <span class="token class-name">FileSystems</span><span class="token punctuation">.</span><span class="token function">newFileSystem</span><span class="token punctuation">(</span><span class="token class-name">Paths</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>zipname<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p> 上述代码将建立一个<strong>基于 zipname 的文件系统，它包含 ZIP 文档中的所有文件</strong>。</p>
+<p>　　1）如果知道<strong>文件名（String 类型）</strong>，那么从这个 ZIP 文档中复制出这个文件就很容易：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span>fs<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">,</span> targetPath<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>　　　　Q：fs.getPath 是使用了 ZIP 文件系统来 getPath，那么默认的文件系统能调用吗？</p>
+<p>　　　　A：能。FileSystem 类中有一个静态的 getDefault () 方法，返回一个默认的文件系统对象，同样可以由文件名 getPath。</p>
+<p>　　　　　　* 具体 getPath (String name) 是遍历还是随机访问，有空再去看源码实现。<br>　　2）要列出 ZIP 文档中的所有文件，同样可以用 walkFileTree 遍历文件树</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">FileSystem</span> fs <span class="token operator">=</span> <span class="token class-name">FileSystems</span><span class="token punctuation">.</span><span class="token function">newFileSystem</span><span class="token punctuation">(</span><span class="token class-name">Paths</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//walkFileTree需要传入一个要被遍历的目录Path，和一个FileVisitor对象</span>
+<span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">walkFileTree</span><span class="token punctuation">(</span>fs<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+        newSimpleFileVisitor<span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Path</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+               <span class="token keyword">public</span> <span class="token class-name">FileVisitResult</span> <span class="token function">visitFile</span><span class="token punctuation">(</span><span class="token class-name">Path</span> file<span class="token punctuation">,</span> <span class="token class-name">BasicFileAttributes</span> attrs<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span><span class="token punctuation">{</span>
+                     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                     <span class="token keyword">return</span> <span class="token class-name">FileVisitResult</span><span class="token punctuation">.</span><span class="token constant">CONTINUE</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/03/23/58642.shtml" title="Java NIO Path and Files">https://onxs.github.io/2018/03/23/58642.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/NIO/" rel="tag"><i class="fa fa-tag"></i> NIO</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/03/22/41980.shtml" rel="prev" title="WebUploader 上传组件">
+                  <i class="fa fa-chevron-left"></i> WebUploader 上传组件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/03/24/25709.shtml" rel="next" title="Java 文件上传及下载">
+                  Java 文件上传及下载 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="cd5c5a66abd8d95a2d7bb1b693d024a4"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/03/23/58642.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

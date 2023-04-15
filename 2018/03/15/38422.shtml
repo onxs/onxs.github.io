@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/03/15/38422.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/03/15/38422.shtml","path":"2018/03/15/38422.shtml","title":"Java 对象复制 Clone 技术"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java 对象复制 Clone 技术 | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E5%85%8B%E9%9A%86%E5%AF%B9%E8%B1%A1%E6%8A%80%E6%9C%AF"><span class="nav-number">1.</span> <span class="nav-text">什么时候使用克隆对象技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0clone%E6%96%B9%E6%B3%95%E7%9A%84%E6%AD%A5%E9%AA%A4%EF%BC%88%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">实现 clone 方法的步骤（）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%85%E5%85%8B%E9%9A%86%E4%B8%8E%E6%B7%B1%E5%85%8B%E9%9A%86%EF%BC%88%E5%BD%B1%E5%AD%90%E5%85%8B%E9%9A%86%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">浅克隆与深克隆（影子克隆）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E8%BF%9B%E8%A1%8C%E6%B7%B1%E5%BA%A6clone%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">怎么进行深度 clone？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E9%9B%86%E5%90%88%E7%9A%84%E6%B7%B1%E5%85%8B%E9%9A%86"><span class="nav-number">5.</span> <span class="nav-text">Java 集合的深克隆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%B3%A8%E6%84%8F"><span class="nav-number">6.</span> <span class="nav-text">简单注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hibernate%E5%BC%82%E5%B8%B8Found-shared-references%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">Hibernate 异常 Found shared references 的解决办法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/03/15/38422.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java 对象复制 Clone 技术 | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 对象复制 Clone 技术<a href="https://github.com/onxs/blog/tree/dev/source/_posts/Java/POST009.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-15 16:44:36" itemprop="dateCreated datePublished" datetime="2018-03-15T16:44:36+08:00">2018-03-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Java 对象复制 Clone 技术" href="/2018/03/15/38422.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::4544baa36b8e7c643360e8293ad0bf37" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://s2.loli.net/2023/04/15/9eUKufQW6zqTG4J.jpg"></p>
+<p>在编码过程经常会碰到将一个对象传递给另一个对象，java 中对于基本型变量采用的是值传递，而对于对象比如 bean 传递时采用的是引用传递也就是地址传递，而很多时候对于对象传递我们也希望能够象值传递一样，使得传递之前和之后有不同的内存地址，在这种情况下就可以 clone 一个新的对象来用.</p>
+<span id="more"></span>
+<h3 id="什么时候使用克隆对象技术"><a href="#什么时候使用克隆对象技术" class="headerlink" title="什么时候使用克隆对象技术"></a>什么时候使用克隆对象技术</h3><p>如：有一个对象 A，在某一时刻 A 中已经包含了一些有效值，A 是用来保存从数据库得到很多数据的一个对象。此时可能会需要一个和 A 完全相同新对象 B，B 用来修改 A 里面的某一个属性的值，仅仅是用来负责显示一下，不需要使得 A. 也受到影响。并且此函数的返回类型是 A 类型的。并且此后对 B 任何改动都不会影响到 A 中的值，也就是说，A 与 B 是两个独立的对象，但 B 的初始值是由 A 对象确定的。在 Java 语言中，用简单的赋值语句是不能满足这种需求的。实现 clone（）方法是不错的选择。</p>
+<p>Java 的所有类都默认继承 java.lang.Object 类，在 java.lang.Object 类中有一个方法 clone ()。该方法将返回 Object 对象的一个拷贝。要说明的有两点：</p>
+<ul>
+<li>一是拷贝对象返回的是一个新对象，而不是一个引用。</li>
+<li>二是拷贝对象与用  new 操作符返回的新对象的区别就是这个拷贝已经包含了一些原来对象的信息，而不是对象的初始信息。</li>
+</ul>
+<p>怎样应用 clone () 方法？</p>
+<h4 id="实现clone方法的步骤（）"><a href="#实现clone方法的步骤（）" class="headerlink" title="实现clone方法的步骤（）"></a>实现 clone 方法的步骤（）</h4><ol>
+<li><p>实现 Cloneable 接口</p>
+</li>
+<li><p>重载 Object 类中的 clone () 方法，重载时需定义为 public</p>
+</li>
+<li><p>在重载方法中，调用 <code>super.clone()</code></p>
+</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">CloneClass</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> aInt<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">CloneClass</span> o <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span><span class="token punctuation">{</span>
+            o <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">CloneClass</span><span class="token punctuation">)</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">CloneNotSupportedException</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+｝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="浅克隆与深克隆（影子克隆）"><a href="#浅克隆与深克隆（影子克隆）" class="headerlink" title="浅克隆与深克隆（影子克隆）"></a>浅克隆与深克隆（影子克隆）</h3><p>​       克隆 (默认就是浅克隆) 就是复制一个对象的复本。若只需要复制对象的字段值（对于基本数据类型，如:int,long,float 等，则复制值；对于复合数据类型仅复制该字段值，如数组变量则复制地址，对于对象变量则复制对象的 reference。</p>
+<p>下面的例子包含三个类 UnCloneA，CloneB，CloneMain。</p>
+<p>CloneB 类包含了一个 UnCloneA 的实例和一个 int 类型变量，并且重载 clone () 方法。</p>
+<p>CloneMain 类初始化 CloneB 类的一个实例 b1，然后调用 clone () 方法生成了一个 b1 的拷贝 b2。最后考察一下 b1 和 b2 的输出：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">clone</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">UnCloneA</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">UnCloneA</span><span class="token punctuation">(</span><span class="token keyword">int</span> ii<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        i <span class="token operator">=</span> ii<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doubleValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        i <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">CloneB</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> aInt<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">UnCloneA</span> unCA <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UnCloneA</span><span class="token punctuation">(</span><span class="token number">111</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    publicCloneB <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">CloneB</span> o <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span><span class="token punctuation">{</span>
+            o <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">CloneB</span><span class="token punctuation">)</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">CloneNotSupportedException</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CloneMain</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">CloneB</span> b1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CloneB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        b1<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before clone,b1.aInt = "</span><span class="token operator">+</span> b1<span class="token punctuation">.</span>aInt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before clone,b1.unCA = "</span><span class="token operator">+</span> b1<span class="token punctuation">.</span>unCA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CloneB</span> b2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">CloneB</span><span class="token punctuation">)</span>b1<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        b2<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">;</span>
+        b2<span class="token punctuation">.</span>unCA<span class="token punctuation">.</span><span class="token function">doubleValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"================================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after clone,b1.aInt = "</span><span class="token operator">+</span> b1<span class="token punctuation">.</span>aInt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after clone,b1.unCA = "</span><span class="token operator">+</span> b1<span class="token punctuation">.</span>unCA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"================================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after clone,b2.aInt = "</span><span class="token operator">+</span> b2<span class="token punctuation">.</span>aInt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after clone,b2.unCA = "</span><span class="token operator">+</span> b2<span class="token punctuation">.</span>unCA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">/</span> <span class="token constant">RUN</span> <span class="token constant">RESULT</span><span class="token operator">:</span>
+before clone<span class="token punctuation">,</span>b1<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">11</span>
+before clone<span class="token punctuation">,</span>b1<span class="token punctuation">.</span>unCA <span class="token operator">=</span> <span class="token number">111</span>
+after clone<span class="token punctuation">,</span>b1<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">11</span>
+after clone<span class="token punctuation">,</span>b1<span class="token punctuation">.</span>unCA <span class="token operator">=</span> <span class="token number">222</span>
+after clone<span class="token punctuation">,</span>b2<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">22</span>
+after clone<span class="token punctuation">,</span>b2<span class="token punctuation">.</span>unCA <span class="token operator">=</span> <span class="token number">222</span>
+<span class="token operator">*</span><span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出的结果说明 int 类型的变量 aInt 和 UnCloneA 的实例对象 unCA 的 clone 结果不一致，</p>
+<p>int 类型是真正的被 clone 了，因为改变了 b2 中的 aInt 变量，对 b1 的 aInt 没有产生影响，</p>
+<p>也就是说，b2.aInt 与 b1.aInt 已经占据了不同的内存空间，b2.aInt 是 b1.aInt 的一个真正拷贝。</p>
+<p>相反，对 b2.unCA 的改变同时改变了 b1.unCA，很明显，b2.unCA 和 b1.unCA 是仅仅指向同一个对象的不同引用！（也就是对对象中的对象克隆失败）</p>
+<p>从中可以看出，调用 Object 类中 clone () 方法产生的效果是：先在内存中开辟一块和原始对象一样的空间，然后原样拷贝原始对象中的内容。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">Channel</span> <span class="token function">copy</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> cid<span class="token punctuation">,</span><span class="token class-name">String</span> solution<span class="token punctuation">,</span> <span class="token class-name">String</span> mobileSolution<span class="token punctuation">,</span> <span class="token class-name">Integer</span> siteId<span class="token punctuation">,</span>
+			<span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> pathMap<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token class-name">Channel</span> c<span class="token operator">=</span><span class="token function">findById</span><span class="token punctuation">(</span>cid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//旧</span>
+		<span class="token class-name">Channel</span> channel<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Channel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//新</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token class-name">ChannelExt</span> ext<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ChannelExt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token class-name">ChannelTxt</span> channelTxt<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ChannelTxt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			channel<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">Channel</span><span class="token punctuation">)</span> c<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			ext<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">ChannelExt</span><span class="token punctuation">)</span> c<span class="token punctuation">.</span><span class="token function">getChannelExt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span><span class="token function">getChannelTxt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+				channelTxt<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">ChannelTxt</span><span class="token punctuation">)</span> c<span class="token punctuation">.</span><span class="token function">getChannelTxt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对基本数据类型，这样的操作是没有问题的，但对非基本类型变量，我们知道它们保存的仅仅是对象的引用，这也导致 clone 后的非基本类型变量和原始对象中相应的变量指向的是同一个对象。也就没有达到克隆的效果。</p>
+<p>大多时候，这种 clone 的结果往往不是我们所希望的结果，这种 clone 也被称为” 影子 clone”。要想让 b2.unCA 指向与 b2.unCA 不同的对象，而且 b2.unCA 中还要包含 b1.unCA 中的信息作为初始信息，就要实现深度 clone。</p>
+<h3 id="怎么进行深度clone？"><a href="#怎么进行深度clone？" class="headerlink" title="怎么进行深度clone？"></a>怎么进行深度 clone？</h3><p>深克隆与浅克隆的区别在于对复合数据类型的复制。若对象中的某个字段为复合类型，在克隆对象的时候，需要为该字段重新创建一个对象。</p>
+<p>把上面的例子改成深度 clone 很简单，需要两个改变：一是让 UnCloneA 类也实现和 CloneB 类一样的 clone 功能（实现 Cloneable 接口，重载 clone () 方法）。二是在 CloneB 的 clone () 方法中加入一句 <code>o.unCA = (UnCloneA)unCA.clone()</code></p>
+<p>程序如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">UnCloneA</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span><span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">UnCloneA</span><span class="token punctuation">(</span><span class="token keyword">int</span> ii<span class="token punctuation">)</span> <span class="token punctuation">{</span> i <span class="token operator">=</span> ii<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doubleValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> i <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">UnCloneA</span> o <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span><span class="token punctuation">{</span>
+            o <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">UnCloneA</span><span class="token punctuation">)</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">CloneNotSupportedException</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">CloneB</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> aInt<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">UnCloneA</span> unCA <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UnCloneA</span><span class="token punctuation">(</span><span class="token number">111</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">CloneB</span> o <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span><span class="token punctuation">{</span>
+            o <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">CloneB</span><span class="token punctuation">)</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">CloneNotSupportedException</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        o<span class="token punctuation">.</span>unCA <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">UnCloneA</span><span class="token punctuation">)</span>unCA<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CloneMain</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">CloneB</span> b1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CloneB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        b1<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before clone,b1.aInt = "</span><span class="token operator">+</span> b1<span class="token punctuation">.</span>aInt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before clone,b1.unCA = "</span><span class="token operator">+</span> b1<span class="token punctuation">.</span>unCA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CloneB</span> b2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">CloneB</span><span class="token punctuation">)</span>b1<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        b2<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">;</span>
+        b2<span class="token punctuation">.</span>unCA<span class="token punctuation">.</span><span class="token function">doubleValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after clone,b1.aInt = "</span><span class="token operator">+</span> b1<span class="token punctuation">.</span>aInt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after clone,b1.unCA = "</span><span class="token operator">+</span> b1<span class="token punctuation">.</span>unCA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after clone,b2.aInt = "</span><span class="token operator">+</span> b2<span class="token punctuation">.</span>aInt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"after clone,b2.unCA = "</span><span class="token operator">+</span> b2<span class="token punctuation">.</span>unCA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">/</span> <span class="token constant">RUN</span> <span class="token constant">RESULT</span><span class="token operator">:</span>
+before clone<span class="token punctuation">,</span>b1<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">11</span>
+before clone<span class="token punctuation">,</span>b1<span class="token punctuation">.</span>unCA <span class="token operator">=</span> <span class="token number">111</span>
+after clone<span class="token punctuation">,</span>b1<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">11</span>
+after clone<span class="token punctuation">,</span>b1<span class="token punctuation">.</span>unCA <span class="token operator">=</span> <span class="token number">111</span>
+after clone<span class="token punctuation">,</span>b2<span class="token punctuation">.</span>aInt <span class="token operator">=</span> <span class="token number">22</span>
+after clone<span class="token punctuation">,</span>b2<span class="token punctuation">.</span>unCA <span class="token operator">=</span> <span class="token number">222</span>
+<span class="token operator">*</span><span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以看出，现在 b2.unCA 的改变对 b1.unCA 没有产生影响。此时 b1.unCA 与 b2.unCA 指向了两个不同的 UnCloneA 实例，而且在 CloneB b2 = (CloneB) b1.clone (); 调用的那一刻 b1 和 b2 拥有相同的值，在这里，b1.i = b2.i = 11。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>不是所有的类都能实现深度 clone 的。例如，如果把上面的 CloneB 类中的 UnCloneA 类型变量改成 StringBuffer 类型，看一下 JDK API 中关于 StringBuffer 的说明，StringBuffer 没有重载 clone () 方法，更为严重的是 StringBuffer 还是一个 final 类，这也是说我们也不能用继承的办法间接实现 StringBuffer 的 clone。如果一个类中包含有 StringBuffer 类型对象或和 StringBuffer 相似类的对象，我们有两种选择：要么只能实现影子 clone，要么就在类的 clone () 方法中加一句（假设是 SringBuffer 对象，而且变量名仍是 unCA）：</p>
+<p> <code>o.unCA = new StringBuffer(unCA.toString()); //原来的是：o.unCA = (UnCloneA)unCA.clone();</code></p>
+<p>还要知道的是除了基本数据类型能自动实现深度 clone 以外，String 对象是一个例外，它 clone 后的表现好象也实现了深度 clone，虽然这只是一个假象，但却大大方便了我们的编程。<br>通过以上我们可以看出在某些情况下，我们可以利用 clone 方法来实现对象只见的复制，但对于比较复杂的对象（比如对象中包含其他对象，其他对象又包含别的对象…..）这样我们必须进行层层深度 clone，每个对象需要实现 cloneable 接口。</p>
+<h3 id="Java集合的深克隆"><a href="#Java集合的深克隆" class="headerlink" title="Java集合的深克隆"></a>Java 集合的深克隆</h3><p>下面例子有一个 <code>Employee</code> 集合，Employee 是可变对象，成员变量 <code>name</code> 和 <code>designation</code>。它们存储在 <code>HashSet</code> 中。使用 <code>java.util.Collection</code> 接口的 <code>addAll()</code> 方法创建集合拷贝。然后修改存储在原始集合每个 <code>Employee</code> 对象的 <code>designation</code> 值。理想情况下这个改变不会影响克隆集合，因为克隆集合和原始集合应该相互独立，但是克隆集合也被改变了。修正这个问题的方法是对存储在 <code>Collection</code> 类中的元素深克隆。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Collection</span></span><span class="token punctuation">;</span> 
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashSet</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Iterator</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Logger</span></span><span class="token punctuation">;</span> 
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">LoggerFactory</span></span><span class="token punctuation">;</span>
+ 
+<span class="token comment">/** 
+* Java program to demonstrate copy constructor of Collection provides shallow 
+* copy and techniques to deep clone Collection by iterating over them. 
+* @author http://javarevisited.blogspot.com 
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CollectionCloningTest</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Logger</span> logger <span class="token operator">=</span> <span class="token class-name">LoggerFactory</span><span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token class-name">CollectionCloningclass</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token comment">// deep cloning Collection in Java </span>
+        <span class="token class-name">Collection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> org <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        org<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Employee</span><span class="token punctuation">(</span><span class="token string">"Joe"</span><span class="token punctuation">,</span> <span class="token string">"Manager"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        org<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Employee</span><span class="token punctuation">(</span><span class="token string">"Tim"</span><span class="token punctuation">,</span> <span class="token string">"Developer"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        org<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Employee</span><span class="token punctuation">(</span><span class="token string">"Frank"</span><span class="token punctuation">,</span> <span class="token string">"Developer"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ 
+        <span class="token comment">// creating copy of Collection using copy constructor </span>
+        <span class="token class-name">Collection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> copy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>org<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Original Collection {}"</span><span class="token punctuation">,</span> org<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Copy of Collection {}"</span><span class="token punctuation">,</span> copy <span class="token punctuation">)</span><span class="token punctuation">;</span>
+         
+        <span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> itr <span class="token operator">=</span> org<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token keyword">while</span><span class="token punctuation">(</span>itr<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+            itr<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setDesignation</span><span class="token punctuation">(</span><span class="token string">"staff"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">}</span> 
+ 
+        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Original Collection after modification {}"</span><span class="token punctuation">,</span> org<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Copy of Collection without modification {}"</span><span class="token punctuation">,</span> copy <span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ 
+        <span class="token comment">// deep Cloning List in Java </span>
+ 
+    <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span>
+ 
+<span class="token keyword">class</span> <span class="token class-name">Employee</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span> 
+    <span class="token keyword">private</span> <span class="token class-name">String</span> designation<span class="token punctuation">;</span> 
+     
+    <span class="token keyword">public</span> <span class="token class-name">Employee</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">String</span> designation<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>designation <span class="token operator">=</span> designation<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
+     
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getDesignation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">return</span> designation<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
+ 
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setDesignation</span><span class="token punctuation">(</span><span class="token class-name">String</span> designation<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>designation <span class="token operator">=</span> designation<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
+ 
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
+ 
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
+ 
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">return</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"%s: %s"</span><span class="token punctuation">,</span> name<span class="token punctuation">,</span> designation <span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">-</span> <span class="token class-name">Original</span> <span class="token class-name">Collection</span> <span class="token punctuation">[</span><span class="token class-name">Joe</span><span class="token operator">:</span> <span class="token class-name">Manager</span><span class="token punctuation">,</span> <span class="token class-name">Frank</span><span class="token operator">:</span> <span class="token class-name">Developer</span><span class="token punctuation">,</span> <span class="token class-name">Tim</span><span class="token operator">:</span> <span class="token class-name">Developer</span><span class="token punctuation">]</span> 
+<span class="token operator">-</span> <span class="token class-name">Copy</span> of <span class="token class-name">Collection</span> <span class="token punctuation">[</span><span class="token class-name">Joe</span><span class="token operator">:</span> <span class="token class-name">Manager</span><span class="token punctuation">,</span> <span class="token class-name">Frank</span><span class="token operator">:</span> <span class="token class-name">Developer</span><span class="token punctuation">,</span> <span class="token class-name">Tim</span><span class="token operator">:</span> <span class="token class-name">Developer</span><span class="token punctuation">]</span> 
+<span class="token operator">-</span> <span class="token class-name">Original</span> <span class="token class-name">Collection</span> after modification <span class="token punctuation">[</span><span class="token class-name">Joe</span><span class="token operator">:</span> staff<span class="token punctuation">,</span> <span class="token class-name">Frank</span><span class="token operator">:</span> staff<span class="token punctuation">,</span> <span class="token class-name">Tim</span><span class="token operator">:</span> staff<span class="token punctuation">]</span> 
+<span class="token operator">-</span> <span class="token class-name">Copy</span> of <span class="token class-name">Collection</span> without modification <span class="token punctuation">[</span><span class="token class-name">Joe</span><span class="token operator">:</span> staff<span class="token punctuation">,</span> <span class="token class-name">Frank</span><span class="token operator">:</span> staff<span class="token punctuation">,</span> <span class="token class-name">Tim</span><span class="token operator">:</span> staff<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以看到改变原始 <code>Collection</code> 中 <code>Employee</code> 对象 (改变 designation 为”<code>staff</code>“) 在克隆集合中也有所反映，因为克隆是浅拷贝，指向堆中相同的 <code>Employee</code> 对象。为了修正这个问题，需要遍历集合，深克隆 <code>Employee</code> 对象，在这之前，要重写 <code>Employee</code> 对象的 clone 方法。</p>
+<ol>
+<li><p><code>Employee</code> 实现 <code>Cloneable</code> 接口</p>
+</li>
+<li><p>为 <code>Employee</code> 类增加下面的 <code>clone()</code> 方法</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token class-name">Employee</span> <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token class-name">Employee</span> clone <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> 
+        <span class="token keyword">try</span><span class="token punctuation">{</span> 
+            clone <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Employee</span><span class="token punctuation">)</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ 
+        <span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">CloneNotSupportedException</span> e<span class="token punctuation">)</span><span class="token punctuation">{</span> 
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// won't happen </span>
+        <span class="token punctuation">}</span>
+          
+        <span class="token keyword">return</span> clone<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>不使用拷贝构造函数，使用下面的代码来深拷贝集合</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Collection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> copy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>org<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ 
+<span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Employee</span><span class="token punctuation">&gt;</span></span> iterator <span class="token operator">=</span> org<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token keyword">while</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+    copy<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>运行相同的代码更改原始集合，克隆集合不会也被更改。</p>
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<p>可以看到克隆集合和原始集合相互独立，它们指向不同的对象。<br><a target="_blank" rel="noopener" href="http://www.importnew.com/?attachment_id=10852"><img src="http://incdn1.b0.upaiyun.com/2014/04/8de7420211451f17a303eda3a5cb6710.png" alt="Shallow vs Deep Clone Java"></a></p>
+<p>这就是 <strong>Java 中如何克隆集合</strong>的内容。现在我们知道拷贝构造函数或者 <code>List</code> 或 <code>Set</code> 等各种集合类的 <code>addAll()</code> 方法仅仅创建了<em>集合的浅拷贝</em>，而且原始集合和克隆集合指向相同的对象。为避免这个问题，应该深克隆集合，遍历集合克隆每个元素。尽管这要求集合中的对象必须支持深克隆操作。</p>
+<p>后面这些话是比较重要的：(易于理解)</p>
+<p>各个集合类提供的拷贝构造函数作为克隆 <code>List</code>，<code>Set</code>，<code>ArrayList</code>，<code>HashSet</code> 或者其他集合实现的方法。需要记住的是，Java 集合的拷贝构造函数只提供浅拷贝而不是深拷贝，这意味着存储在原始 List 和克隆 List 中的对象是相同的，指向 Java 堆内存中相同的位置。</p>
+<h3 id="简单注意"><a href="#简单注意" class="headerlink" title="简单注意"></a>简单注意</h3><ol>
+<li> 在克隆 java 对象的时候不会调用构造器</li>
+<li> java 提供一种叫浅拷贝（shallow copy）的默认方式实现 clone，创建好对象的副本后然后通过赋值拷贝内容，意味着如果你的类包含引用类型，那么原始对象和克隆都将指向相同的引用内容，这是很危险的，因为发生在可变的字段上任何改变将反应到他们所引用的共同内容上。为了避免这种情况，需要对引用的内容进行深度克隆。</li>
+<li> 克隆方法用于创建对象的拷贝，为了使用 clone 方法，类必须实现 <code>java.lang.Cloneable</code> 接口<code>重写protected方法clone</code>，如果没有实现 Clonebale 接口会抛出 <code>CloneNotSupportedException.</code></li>
+</ol>
+<h3 id="Hibernate异常Found-shared-references的解决办法"><a href="#Hibernate异常Found-shared-references的解决办法" class="headerlink" title="Hibernate异常Found shared references的解决办法"></a>Hibernate 异常 Found shared references 的解决办法</h3><ul>
+<li><p>在项目中的续签模块中，由于在谈判成功后要新建一份合同，并要将原合同中的站点信息设置到新合同中去，在合同的 Entity 中有一个 list &lt;站点&gt; 来关联的，一份合同可以有多少站点！ </p>
+</li>
+<li><p>在新增合同的代码如下： </p>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">RenewalItem</span> item <span class="token operator">=</span> renewalItemDao<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token class-name">PropertyContract</span> pc <span class="token operator">=</span> item<span class="token punctuation">.</span><span class="token function">getPropertyContract</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//旧合同  </span>
+<span class="token class-name">PropertyContract</span> newPc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PropertyContract</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//新合同  </span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">BSProperty</span><span class="token punctuation">&gt;</span></span> bsList <span class="token operator">=</span> pc<span class="token punctuation">.</span><span class="token function">getBsProperty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token operator">!=</span>bsList <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>bsList<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  
+newPc<span class="token punctuation">.</span><span class="token function">setBsProperty</span><span class="token punctuation">(</span>bsList<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//将旧合同中的关联站点设置到新合同中去。  </span>
+<span class="token punctuation">}</span>  
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  
+renewalItemDao<span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>此时会报：<code>org.hibernate.HibernateException: Found shared references to a collection</code>，这样的异常信息，意思是指发现共享引用集合，经过上网 GOOGLE, 有一帖子说： </p>
+<p>解决方法：  </p>
+<ol>
+<li><strong>在拷贝后，新建一个集合，将原来的集合元素添加进去，并赋值给新拷贝的实体 </strong> </li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">RenewalItem</span> item <span class="token operator">=</span> renewalItemDao<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token class-name">PropertyContract</span> pc <span class="token operator">=</span> item<span class="token punctuation">.</span><span class="token function">getPropertyContract</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//旧合同  </span>
+<span class="token class-name">PropertyContract</span> newPc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PropertyContract</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//新合同  </span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">BSProperty</span><span class="token punctuation">&gt;</span></span> bsList <span class="token operator">=</span> pc<span class="token punctuation">.</span><span class="token function">getBsProperty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token operator">!=</span>bsList <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>bsList<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">BSProperty</span><span class="token punctuation">&gt;</span></span> newBsList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">BSProperty</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>bsList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">BSProperty</span> bs <span class="token operator">:</span> bsList<span class="token punctuation">)</span><span class="token punctuation">{</span>  
+  newBsList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>bs<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>  
+newPc<span class="token punctuation">.</span><span class="token function">setBsProperty</span><span class="token punctuation">(</span>newBsList<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//将旧合同中的关联站点设置到新合同中去。  </span>
+<span class="token punctuation">}</span>  
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  
+renewalItemDao<span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/03/15/38422.shtml" title="Java 对象复制 Clone 技术">https://onxs.github.io/2018/03/15/38422.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/03/14/50510.shtml" rel="prev" title="代码生成 Tools">
+                  <i class="fa fa-chevron-left"></i> 代码生成 Tools
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/03/16/6321.shtml" rel="next" title="Github 搜索技巧">
+                  Github 搜索技巧 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="4544baa36b8e7c643360e8293ad0bf37"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/03/15/38422.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

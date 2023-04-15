@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2017/12/04/54997.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2017/12/04/54997.shtml","path":"2017/12/04/54997.shtml","title":"穷忙族的人生"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>穷忙族的人生 | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2017/12/04/54997.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="穷忙族的人生 | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          穷忙族的人生<a href="https://github.com/onxs/blog/tree/dev/source/_posts/idea/%E7%A9%B7%E5%BF%99%E6%97%8F%E7%9A%84%E4%BA%BA%E7%94%9F.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-12-04 12:34:36" itemprop="dateCreated datePublished" datetime="2017-12-04T12:34:36+08:00">2017-12-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Think/" itemprop="url" rel="index"><span itemprop="name">Think</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="穷忙族的人生" href="/2017/12/04/54997.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::2fe54eb764678303c4df5f3bb6a107cb" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://s2.loli.net/2023/04/14/yG8VlEoHI5z71A9.png"></p>
+<p>  穷忙族来自英文单词 “working poor”，原指那些薪水不多，整日奔波劳动，却始终无法摆脱贫穷的人。但是随着逐渐壮大的 “穷忙一族” 队伍，主要界定为每周工时低于平均工时的三分之二、收入低于全体平均 60% 者。这个定义又逐渐发展成一种为了填补空虚生活，而不得不连续消费，之后继续投入忙碌的工作中，而在消费过后最终又重返空虚的 “穷忙”。<br>  <span id="more"></span><br>随着经济的发展和城市化进程的加快，个体的生存压力确实在增强，<br>  但绝对没有 “紧张” 到要让 “穷忙族” 同时兼几份职拼命赚钱的程度；盲从、攀比的心理，或许存在于部分人之中，可不会是普遍性的主流心态，至于个人欲望，在现代文明的视野下，为了物质享受不惜放弃一切的人不是没有，但毕竟还是少数。<br>  问题的关键恐怕还是在于，现实社会存在的 “结构性危机”—— 社会结构，原本是一个 “流水不腐” 的动态机构框架。社会阶层之间，有一条不断流动循环的 “河流”。穷人成为富人或者富人再次变得一贫如洗，大众变成精英或者精英沦落为草根，都是很正常的事情。但现实却是，户籍、收入分配、教育等诸多领域体制性的落后甚至是不公正，逐渐导致精英 “寡头化” 和底层人 “固化”，阶层与阶层之间的流动困难。穷人变富越来越难，草根成为精英近乎天方夜谭。</p>
+<p>香港曾经有一档电视真人秀，叫做《穷富翁大作战》，专门邀请富人体验穷人的生活。</p>
+<p>有一期节目的主人公是田北辰。他的父亲田元灏是香港纺织界的头面人物，人称” 一代裤王”。他本科毕业于康奈尔大学电子工程专业，又去读了哈佛大学 MBA，回到香港后创办了服装品牌 G2000 和 U2，是那种很努力的” 富二代”。</p>
+<p>他崇尚自由竞争和人生奋斗，座右铭是” 如果你今天对自己满意，明天就会被淘汰”，一直宣扬 “如果你有斗志，弱者也可以变成强者。”</p>
+<p>但是，参加了这次电视节目以后，他的观点发生了 180 度转变，对着电视镜头公开说：</p>
+<p>“这个社会在极严厉地惩罚，那些没条件读书的人。穷人一輩子都不可能变有钱人。在強弱悬殊的情况下，只有弱者越弱，越來越慘！”</p>
+<p>田北辰为什么改变观点，认为穷人不可能翻身呢？原来，节目组请他体验了两天清洁工的生活，薪资是每小时 25 港币，每天的生活费只有 50 港币，住在只有 1.6 平方米的” 笼屋”，月租 1350 港币。</p>
+<p>所谓” 笼屋”，外面看着像衣橱，门一拉开，里面只能放下一张床，关上门四面全挨着木板墙，东西都挂在墙上。就是这种条件，房产中介还称它为” 豪华笼屋”，因为还有 600 港币的更低档，就是在马桶上放一块木板睡人。</p>
+<p>上班时间是早上五点，地铁头班车还没开，只能坐夜宵巴士，车费是 13 港币，田北辰惊呼：” 每天生活费只有 50 港币，这怎么坐得起！”</p>
+<p>开始工作后，好不容易熬到中午吃饭，但只有 15 元的预算，大部分的饭要 20 元，他最后只能坐在街边的楼梯上，就着白开水嚼干粮。</p>
+<p>吃完了，还要抓紧时间躺在花坛上休息一会。</p>
+<p>做满 9 个小时，就可以下班了。但是，真正的清洁工为了养家户口，还要去做夜班，一天在外近 17 个小时，只能睡 5、6 个小时。田北辰说，因为只有两天，自己才有斗志坚持下去，如果要做一个月，甚至半年，那就太绝望了！</p>
+<p>“没有学历、技术的人，为了活下去，不是住笼屋就是要工作到半夜，对于他们，最重要事情是下一顿吃什么，怎么会有时间和精力去思考未来怎么发展？来来去去都在死胡同！”</p>
+<p>每天忙于工作，干到累死，但还是很穷，只能租屋住，没有自己的积蓄，一旦停止工作或者生病在床，生活来源顿时就成问题。田北辰体验的这种人生，社会学家早就注意到了，起名为” 穷忙族”，百度百科的定义如下。</p>
+<p>“穷忙族是指那些薪水不多，整日奔波劳动，却始终无法摆脱贫穷的人。最早出现于上世纪 90 年代的美国，指拼命工作仍然无法摆脱最低水准生活的人们。日本经济学家门仓贵史在《穷忙族》一书中，他对” 穷忙族” 下的定义是：每天繁忙地工作却依然不能过上富裕生活的人。”</p>
+<p>不仅香港有” 穷忙族”，内地也越来越多。举例来说，根据报道，2016 年上海送外卖最多的送餐员，是一位叫做何文妹的中年女性，至少送出了 12214 单。即使全年无休，每天平均也要 33 单，从午饭时间一直送到深夜，一刻不停。电瓶车的电瓶，一天要准备 6 组。车上插着两个手机，一个导航，一个接单。</p>
+<p>这种强度的劳动，每年能有多少收入呢？每单的送餐费是 8 元，这就是说，何文妹一年的送餐总收入在 10 万元左右。扣除电瓶费、车辆维护费、通信费等等以后，净收入大概还能剩下 8 万多元。这是” 送餐王” 的收入水平，大部分送餐员的收入，应该远不如她，可能只有一半左右。</p>
+<p>上海的底层劳动者，收入基本就是这种水平。他们还要用这些钱支付房租。每天下班回到家，累得就想睡觉，睁开眼就要去上班，日复一日，人生的出路在哪里？</p>
+<p>将来的” 穷忙族”，不仅是低技能的底层劳动者，还将包括很多受过高等教育、写字楼工作的白领。年轻人如果没有家庭支持，想要靠自己的努力出人头地，会变得越来越难。因为单靠工资收入，已经不足以积累财富了。</p>
+<p>有一项统计说：</p>
+<p>“1993 年属于低等收入者的城里人，到了 1995 年有 43% 都能向上爬。而相比之下，2011 年属于低等收入者的城里人，到了 2013 年只有 20% 摘掉最底层的帽子。一个不恰当的比喻，如果上世纪 90 年代算是城市穷人的黄金时代的话，那今天这种好日子已经结束了。”</p>
+<p>“一方面，城里穷人越来越难走出贫困；另一方面，城里富人的位置也坐得越来越稳。1993-1995 年，城里的高等收入者有 64% 的概率能一直当富人。而到了 2011-2013 年，高等收入者竟然有 84% 的概率能保证自己不被从富人列表中除名。”</p>
+<p>上面的数字就是说，如果你是穷人，80% 的概率以后你还是穷人；如果你是富人，84% 的概率是以后你还是富人。一个台湾人感叹说：</p>
+<p>“那种奴隶化的生活（长时间工作，却仅能勉强满足温饱）才是历史的常态。过去三十年社会阶层的大幅流动，是历史的不正常，现在开始回归常态。99% 的我们，都面临着这种大趋势的吞噬：你的工资不变，但房价和物价却是越来越高，于是你必需花更多时间来挣钱，甚至一天做二份工，最后成为没有自己时间的奴隶。”</p>
+<p>总的来看，下一代青年不太可能有上一代那么多机会。经济增长率已经开始放缓，还将继续放缓，人口增长高峰已经过去，老龄化越来越严重，老人的消费远不及年轻人。矿业、制造业、零售业、证券业…… 除了高科技，几乎所有行业都不会有以前那么高的增长率。上一代人赶上了中国经济起飞，还拥有依靠房地产翻身的机会，但是下一代人不会再有这样的机会。你现在买入一套房子，十年后价值翻上十倍，完全是零可能。</p>
+<p>越来越多的人将会发现，即使从小就努力学习，从很好的学校毕业，后来努力工作，但迎接他们的将是” 长久的低薪、难升迁的职场、高昂的物价、买不起的房子……”。尽管你很努力，待人友善，有公德心，但就是挣不到钱，只能在社会的底层挣扎。</p>
+<p>2015 年，社会工作者藤田孝典调查日本的老人问题。</p>
+<p>他发现，很多老人年轻时都拿过中产阶级的薪水（400 万日元），但是现在已经沦落到社会的底层，过着非常困苦的生活。” 七老八十还要在大热天当廉价劳工，因经济拮据而妻离子散，唯有独居烂屋，孤零零度过晚年。”</p>
+<p>藤田孝典将这些老人称为” 下流老人”（底层老人）。他称，日本的下流老人以后可能会达到 1 亿人。要知道，日本现在的总人口也只有 1.27 亿。</p>
+<p>下流老人有三大特征。（1）收入极低，即使政府提供补助费，也难以维持健康饮食，以及一般家庭应有的生活；（2）存款不足，老人必须提心吊胆地过活，一旦碰到突发事故或慢性病，日常已经捉襟见肘的生活，就会面临崩溃危险；（3）老无所依，子女连自己都养不起，更遑论赡养老人。日本不少老人因家庭破碎而长期独居，平日缺乏与亲朋邻里的交流，关系疏离，一旦发生意外无人照应。在晚年失去可以依靠的人，是下流老人最悲苦的特征。</p>
+<p>下流老人的根源就是，钱花光了，人还没死。日本媒体还发明了一个词” 老后破产”，这就是长寿的恶梦。</p>
+<p>现代科技如此发达，人的寿命越来越长，可是工作又积累不了财富，于是，” 清贫青年，流沙中年，下流老人” 就成了大多数人必然的命运归宿。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2017/12/04/54997.shtml" title="穷忙族的人生">https://onxs.github.io/2017/12/04/54997.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Think/" rel="tag"><i class="fa fa-tag"></i> Think</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/12/03/2295.shtml" rel="prev" title="YAML 脚本学习笔记">
+                  <i class="fa fa-chevron-left"></i> YAML 脚本学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/12/04/54997.shtml" rel="next" title="穷忙族的人生">
+                  穷忙族的人生 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="2fe54eb764678303c4df5f3bb6a107cb"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2017/12/04/54997.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

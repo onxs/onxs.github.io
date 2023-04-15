@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/02/28/51267.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/02/28/51267.shtml","path":"2018/02/28/51267.shtml","title":"API 开发规范"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>API 开发规范 | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E8%A7%84%E8%8C%83%E5%BB%BA%E8%AE%AE%E9%87%87%E7%94%A8RESTful-%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%AE%9E%E6%96%BD%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">整体规范建议采用 RESTful 方式来实施。</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%8D%8F%E8%AE%AE"><span class="nav-number"></span> <span class="nav-text">1. 协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%9F%9F%E5%90%8D"><span class="nav-number"></span> <span class="nav-text">2. 域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-api%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="nav-number"></span> <span class="nav-text">3. api 版本控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-API-%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%99"><span class="nav-number"></span> <span class="nav-text">4. API 路径规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-HTTP%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="nav-number"></span> <span class="nav-text">5. HTTP 请求方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E8%BF%87%E6%BB%A4%E4%BF%A1%E6%81%AF"><span class="nav-number"></span> <span class="nav-text">6. 过滤信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-API-%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0"><span class="nav-number"></span> <span class="nav-text">7. API 传入参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE"><span class="nav-number"></span> <span class="nav-text">8. 返回数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-%E9%9D%9ERestful-Api%E7%9A%84%E9%9C%80%E6%B1%82"><span class="nav-number"></span> <span class="nav-text">9. 非 Restful Api 的需求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-%E9%A1%B5%E9%9D%A2%E7%BA%A7%E7%9A%84api"><span class="nav-number"></span> <span class="nav-text">9.1 页面级的 api</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E5%90%88api"><span class="nav-number"></span> <span class="nav-text">9.2 自定义组合 api</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-Api%E5%85%B1%E5%BB%BA%E5%B9%B3%E5%8F%B0"><span class="nav-number"></span> <span class="nav-text">10. Api 共建平台</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-1-%E4%BB%80%E4%B9%88%E6%98%AFRAP"><span class="nav-number"></span> <span class="nav-text">10.1 什么是 RAP?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-2-RAP%E7%9A%84%E7%89%B9%E8%89%B2"><span class="nav-number"></span> <span class="nav-text">10.2 RAP 的特色</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-RESTful%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83"><span class="nav-number"></span> <span class="nav-text">11. RESTful 接口规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URI"><span class="nav-number"></span> <span class="nav-text">URI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URI%E8%A7%84%E8%8C%83"><span class="nav-number"></span> <span class="nav-text">URI 规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC"><span class="nav-number"></span> <span class="nav-text">版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request"><span class="nav-number"></span> <span class="nav-text">Request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Response"><span class="nav-number"></span> <span class="nav-text">Response</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number"></span> <span class="nav-text">错误处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number"></span> <span class="nav-text">其他</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/02/28/51267.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="API 开发规范 | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          API 开发规范<a href="https://github.com/onxs/blog/tree/dev/source/_posts/API/POST001.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-28 16:44:36" itemprop="dateCreated datePublished" datetime="2018-02-28T16:44:36+08:00">2018-02-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/API/" itemprop="url" rel="index"><span itemprop="name">API</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="API 开发规范" href="/2018/02/28/51267.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::fc98899ae0e43b02d4a2cd2dfc24164f" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://s2.loli.net/2023/04/15/cCuqDaphf9gGX1n.png"></p>
+<p>API 开发规范</p>
+<span id="more"></span>
+<h6 id="整体规范建议采用RESTful-方式来实施。"><a href="#整体规范建议采用RESTful-方式来实施。" class="headerlink" title="整体规范建议采用RESTful 方式来实施。"></a>整体规范建议采用 RESTful 方式来实施。</h6><h1 id="1-协议"><a href="#1-协议" class="headerlink" title="1. 协议"></a>1. 协议</h1><p>API 与用户的通信协议，总是使用 HTTPs 协议，确保交互数据的传输安全。</p>
+<h1 id="2-域名"><a href="#2-域名" class="headerlink" title="2. 域名"></a>2. 域名</h1><p>应该尽量将 API 部署在专用域名之下。</p>
+<pre class="line-numbers language-none"><code class="language-none">https://api.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果确定 API 很简单，不会有进一步扩展，可以考虑放在主域名下。</p>
+<pre class="line-numbers language-none"><code class="language-none">https://example.org/api/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="3-api版本控制"><a href="#3-api版本控制" class="headerlink" title="3. api版本控制"></a>3. api 版本控制</h1><p>应该将 API 的版本号放入 URL。</p>
+<pre class="line-numbers language-none"><code class="language-none">https://api.example.com/v{n}/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>另一种做法是，将版本号放在 HTTP 头信息中，但不如放入 URL 方便和直观。Github 采用这种做法。</p>
+<p>采用多版本并存，增量发布的方式</p>
+<p>v {n} n 代表版本号，分为整形和浮点型</p>
+<p>整形的版本号：大功能版本发布形式；具有当前版本状态下的所有 API 接口，例如：v1,v2</p>
+<p>浮点型：为小版本号，只具备补充 api 的功能，其他 api 都默认调用对应大版本号的 api 例如：v1.1 v2.2</p>
+<h1 id="4-API-路径规则"><a href="#4-API-路径规则" class="headerlink" title="4. API 路径规则"></a>4. API 路径规则</h1><p>路径又称” 终点”（endpoint），表示 API 的具体网址。</p>
+<p>在 RESTful 架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的” 集合”（collection），所以 API 中的名词也应该使用复数。</p>
+<p>举例来说，有一个 API 提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。</p>
+<pre class="line-numbers language-none"><code class="language-none">https://api.example.com/v1/products
+
+https://api.example.com/v1/users
+
+https://api.example.com/v1/employees<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="5-HTTP请求方式"><a href="#5-HTTP请求方式" class="headerlink" title="5. HTTP请求方式"></a>5. HTTP 请求方式</h1><p>对于资源的具体操作类型，由 HTTP 动词表示。</p>
+<p>常用的 HTTP 动词有下面四个（括号里是对应的 SQL 命令）。</p>
+<p>GET（SELECT）：从服务器取出资源（一项或多项）。</p>
+<p>POST（CREATE）：在服务器新建一个资源。</p>
+<p>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</p>
+<p>DELETE（DELETE）：从服务器删除资源。</p>
+<p>下面是一些例子。</p>
+<p>GET /product：列出所有商品</p>
+<p>POST /product：新建一个商品</p>
+<p>GET /product/ID：获取某个指定商品的信息</p>
+<p>PUT /product/ID：更新某个指定商品的信息</p>
+<p>DELETE /product/ID：删除某个商品</p>
+<p>GET /product/ID/purchase ：列出某个指定商品的所有投资者</p>
+<p>get /product/ID/purchase/ID：获取某个指定商品的指定投资者信息</p>
+<h1 id="6-过滤信息"><a href="#6-过滤信息" class="headerlink" title="6. 过滤信息"></a>6. 过滤信息</h1><p>如果记录数量很多，服务器不可能都将它们返回给用户。API 应该提供参数，过滤返回结果。</p>
+<p>下面是一些常见的参数。</p>
+<p>?limit=10：指定返回记录的数量</p>
+<p>?offset=10：指定返回记录的开始位置。</p>
+<p>?page=2&amp;per_page=100：指定第几页，以及每页的记录数。</p>
+<p>?sortby=name&amp;order=asc：指定返回结果按照哪个属性排序，以及排序顺序。</p>
+<p>?producy_type=1：指定筛选条件</p>
+<h1 id="7-API-传入参数"><a href="#7-API-传入参数" class="headerlink" title="7. API 传入参数"></a>7. API 传入参数</h1><p>传入参数分为 4 种类型：</p>
+<p>地址栏参数</p>
+<p>* restful 地址栏参数 /api/v1/product/122 122 为产品编号，获取产品为 122 的信息</p>
+<p>* get 方式的查询字串 见过滤信息小节</p>
+<p>请求 body 数据</p>
+<p>cookie</p>
+<p>request header</p>
+<p>cookie 和 header 一般都是用于 OAuth 认证的 2 种途径</p>
+<h1 id="8-返回数据"><a href="#8-返回数据" class="headerlink" title="8. 返回数据"></a>8. 返回数据</h1><p>只要 api 接口成功接到请求，就不能返回 200 以外的 HTTP 状态。</p>
+<p>为了保障前后端的数据交互的顺畅，建议规范数据的返回，并采用固定的数据格式封装。</p>
+<p>接口返回模板：</p>
+<pre class="line-numbers language-none"><code class="language-none">{
+    status:0,
+
+    data:{}||[],
+
+    msg:’’
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>status: 接口的执行的状态</p>
+<p>=0 表示成功</p>
+<p>&lt;0 表示有异常 =””</p>
+<p>Data 接口的主数据</p>
+<p>可以根据实际返回数组或 JSON 对象</p>
+<p>Msg 信息</p>
+<p>当 status!=0 都应该有错误信息</p>
+<h1 id="9-非Restful-Api的需求"><a href="#9-非Restful-Api的需求" class="headerlink" title="9. 非Restful Api的需求"></a>9. 非 Restful Api 的需求</h1><p>由于实际业务开展过程中，可能会出现各种的 api 不是简单的 restful 规范能实现的，因此，需要有一些 api 突破 restful 规范原则。特别是移动互联网的 api 设计，更需要有一些特定的 api 来优化数据请求的交互。</p>
+<h2 id="9-1-页面级的api"><a href="#9-1-页面级的api" class="headerlink" title="9.1 页面级的api"></a>9.1 页面级的 api</h2><p>把当前页面中需要用到的所有数据通过一个接口一次性返回全部数据</p>
+<p>举例</p>
+<p>api/v1/get-home-data 返回首页用到的所有数据</p>
+<p>这类 API 有一个非常不好的地址，只要业务需求变动，这个 api 就需要跟着变更。</p>
+<h2 id="9-2-自定义组合api"><a href="#9-2-自定义组合api" class="headerlink" title="9.2 自定义组合api"></a>9.2 自定义组合 api</h2><p>把当前用户需要在第一时间内容加载的多个接口合并成一个请求发送到服务端，服务端根据请求内容，一次性把所有数据合并返回，相比于页面级 api，具备更高的灵活性，同时又能很容易的实现页面级的 api 功能。</p>
+<p>规范</p>
+<p>地址：api/v1/batApi</p>
+<p>传入参数：</p>
+<pre class="line-numbers language-none"><code class="language-none">data:[
+    {url:'api1',type:'get',data:{...}},
+
+    {url:'api2',type:'get',data:{...}},
+
+    {url:'api3',type:'get',data:{...}},
+
+    {url:'api4',type:'get',data:{...}}
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>返回数据</p>
+<pre class="line-numbers language-none"><code class="language-none">{
+    status:0,
+    msg:'',
+    data:[
+        {status:0,msg:'',data:[]},
+
+        {status:-1,msg:'',data:{}},
+
+        {status:1,msg:'',data:{}},
+
+        {status:0,msg:'',data:[]},
+    ]
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="10-Api共建平台"><a href="#10-Api共建平台" class="headerlink" title="10. Api共建平台"></a>10. Api 共建平台</h1><p>RAP 是一个 GUI 的 WEB 接口管理工具。在 RAP 中，您可定义接口的 URL、请求 &amp; 响应细节格式等等。通过分析这些数据，RAP 提供 MOCK 服务、测试服务等自动化工具。RAP 同时提供大量企业级功能，帮助企业和团队高效的工作。</p>
+<h2 id="10-1-什么是RAP"><a href="#10-1-什么是RAP" class="headerlink" title="10.1 什么是RAP?"></a>10.1 什么是 RAP?</h2><p>在前后端分离的开发模式下，我们通常需要定义一份接口文档来规范接口的具体信息。如一个请求的地址、有几个参数、参数名称及类型含义等等。RAP 首先方便团队录入、查看和管理这些接口文档，并通过分析结构化的文档数据，重复利用并生成自测数据、提供自测控制台等等… 大幅度提升开发效率。</p>
+<h2 id="10-2-RAP的特色"><a href="#10-2-RAP的特色" class="headerlink" title="10.2 RAP的特色"></a>10.2 RAP 的特色</h2><p>强大的 GUI 工具 给力的用户体验，你将会爱上使用 RAP 来管理您的 API 文档。</p>
+<p>完善的 MOCK 服务 文档定义好的瞬间，所有接口已经准备就绪。有了 MockJS，无论您的业务模型有多复杂，它都能很好的满足。</p>
+<p>庞大的用户群 RAP 在阿里巴巴有 200 多个大型项目在使用，也有许多著名的公司、开源人士在使用。RAP 跟随这些业务的成行而成长，专注细节，把握质量，经得住考验。</p>
+<p>免费 + 专业的技术支持 RAP 是免费的，而且你的技术咨询都将在 24 小时内得到答复。大多数情况，在 1 小时内会得到答复。</p>
+<p>RAP 是一个可视化接口管理工具 通过分析接口结构，动态生成模拟数据，校验真实接口正确性， 围绕接口定义，通过一系列自动化工具提升我们的协作效率。我们的口号：提高效率，回家吃晚饭！</p>
+<h1 id="11-RESTful接口规范"><a href="#11-RESTful接口规范" class="headerlink" title="11. RESTful接口规范"></a>11. RESTful 接口规范</h1><h2 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h2><h3 id="URI规范"><a href="#URI规范" class="headerlink" title="URI规范"></a>URI 规范</h3><ol>
+<li><p>不用大写；</p>
+</li>
+<li><p>用中杠 - 不用下杠 _ ；</p>
+</li>
+<li><p>参数列表要 encode；</p>
+</li>
+<li><p>URI 中的名词表示资源集合，使用复数形式。</p>
+</li>
+<li><p>在 RESTful <a target="_blank" rel="noopener" href="http://lib.csdn.net/base/architecture">架构</a>中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词（特殊情况可以使用动词），而且所用的名词往往与<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/mysql">数据库</a>的表格名对应。</p>
+</li>
+</ol>
+<p>资源集合 vs 单个资源</p>
+<p>URI 表示资源的两种方式：资源集合、单个资源。</p>
+<p>资源集合：</p>
+<pre><code>   /zoos //所有动物园
+
+   /zoos/1/animals //id为1的动物园中的所有动物
+</code></pre>
+<p>单个资源：</p>
+<pre><code>   /zoos/1//id为1的动物园
+
+   /zoos/1;2;3//id为1，2，3的动物园
+</code></pre>
+<p>避免层级过深的 URI</p>
+<p>在 url 中表达层级，用于 按实体关联关系进行对象导航 ，一般根据 id 导航。</p>
+<p>过深的导航容易导致 url 膨胀，不易维护，如 GET /zoos/1/areas/3/animals/4 ，尽量使用查询参数代替路径中的实体导航，如 GET/animals?zoo=1&amp;area=3 ；</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>应该将 API 的版本号放入到 URI 中</p>
+<p>​           <a target="_blank" rel="noopener" href="https://api.example.com/v1/zoos">https://api.example.com/v1/zoos</a></p>
+<h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><p>HTTP 方法</p>
+<p>通过标准 HTTP 方法对资源 CRUD：</p>
+<ol>
+<li>GET：查询（从服务器取出资源一项或多项）</li>
+</ol>
+<p>GET /zoos</p>
+<p>GET /zoos/1</p>
+<p>GET/zoos/1/employees</p>
+<p>POST：创建单个新资源。 POST 一般向 “资源集合” 型 uri 发起</p>
+<p>POST/animals  // 新增动物</p>
+<p>POST/zoos/1/employees// 为 id 为 1 的动物园雇佣员工</p>
+<ol start="2">
+<li>PUT：更新单个资源（全量），客户端提供完整的更新后的资源。与之对应的是 PATCH，PATCH 负责部分更新，客户端提供要更新的那些字段。 PUT/PATCH 一般向 “单个资源” 型 uri 发起</li>
+</ol>
+<p>PUT/animals/1</p>
+<p>PUT /zoos/1</p>
+<ol start="3">
+<li>DELETE：删除</li>
+</ol>
+<p>DELETE/zoos/1/employees/2</p>
+<p>DELETE/zoos/1/employees/2;4;5</p>
+<p>DELETE/zoos/1/animals  // 删除 id 为 1 的动物园内的所有动物</p>
+<p>HEAD / OPTION/ PATCH 用的不多，就不多解释了。</p>
+<ol start="4">
+<li>HEAD：获取资源的元数据</li>
+<li> OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的</li>
+<li> PATCH：在服务器更新资源（客户端提供改变的属性）</li>
+</ol>
+<p>安全性和幂等性</p>
+<ol>
+<li><pre><code> 安全性 ：不会改变资源状态，可以理解为只读的；
+</code></pre>
+</li>
+<li><pre><code> 幂等性 ：执行1次和执行N次，对资源状态改变的效果是等价的。
+</code></pre>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>.</th>
+<th> 安全性</th>
+<th>幂等性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td> GET</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>×</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<p>安全性和幂等性均不保证反复请求能拿到相同的 response。以 DELETE 为例，第一次 DELETE 返回 200 表示删除成功，第二次返回 404 提示资源不存在，这是允许的。</p>
+<p>复杂查询</p>
+<p>查询可以捎带以下参数：</p>
+<table>
+<thead>
+<tr>
+<th>.</th>
+<th> 示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>过滤条件</td>
+<td> ?type=1&amp;age=16</td>
+<td> 允许一定的 uri 冗余，如 /zoos/1 与 /zoos?id=1</td>
+</tr>
+<tr>
+<td> 排序</td>
+<td> ?sort=age&amp;order=asc</td>
+<td> 指定返回结果按照哪个属性排序，以及排序顺序</td>
+</tr>
+<tr>
+<td>投影</td>
+<td> ?whitelist=id,name,email</td>
+<td></td>
+</tr>
+<tr>
+<td> 分页</td>
+<td> ? page=2&amp;per_page=100</td>
+<td> 指定第几页，以及每页的记录数</td>
+</tr>
+</tbody></table>
+<p>Bookmarker</p>
+<p>经常使用的、复杂的查询标签化，降低维护成本。</p>
+<p>如：GET /trades?status=closed&amp;sort=created,desc</p>
+<p>快捷方式：GET /trades#recently-closed 或者 GET /trades/recently-closed</p>
+<p>状态码</p>
+<pre><code>服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）。
+</code></pre>
+<p>§200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。</p>
+<p>§201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。</p>
+<p>§202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）</p>
+<p>§204 NO CONTENT - [DELETE]：用户删除数据成功。</p>
+<p>§400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。</p>
+<p>§401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。</p>
+<p>§403 Forbidden - [*] 表示用户得到授权（与 401 错误相对），但是访问是被禁止的。</p>
+<p>§404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。</p>
+<p>§406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求 JSON 格式，但是只有 XML 格式）。</p>
+<p>§410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。</p>
+<p>§422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。</p>
+<p>§500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</p>
+<p>状态码的完全列表参见<a target="_blank" rel="noopener" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">这里</a></p>
+<p>URI 失效</p>
+<p>随着系统发展，总有一些 API 失效或者迁移，对失效的 API，返回 404 not found 或 410 gone；对迁移的 API，返回 301 重定向。</p>
+<h2 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h2><ol>
+<li><pre><code>不要包装：
+</code></pre>
+</li>
+</ol>
+<p>response 的 body 直接就是数据，不要做多余的包装。错误示例：</p>
+<p>{</p>
+<p>   “success”:true,</p>
+<p>   “data”:{“id”:1,”name”:”xiaotuan”},</p>
+<p>}</p>
+<ol start="2">
+<li><pre><code>各HTTP方法成功处理后的数据格式：
+</code></pre>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>·</th>
+<th>response 格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td> GET</td>
+<td> 单个对象、集合</td>
+</tr>
+<tr>
+<td> POST</td>
+<td> 新增成功的对象</td>
+</tr>
+<tr>
+<td> PUT/PATCH</td>
+<td> 更新成功的对象</td>
+</tr>
+<tr>
+<td> DELETE</td>
+<td> 空</td>
+</tr>
+</tbody></table>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><ol>
+<li><pre><code> 不要发生了错误但给2xx响应，客户端可能会缓存成功的http请求；
+</code></pre>
+</li>
+<li><pre><code> 正确设置http状态码，不要自定义；
+</code></pre>
+</li>
+<li><pre><code> Response body提供
+</code></pre>
+</li>
+</ol>
+<p>即：返回的信息中将 error 作为键名，出错信息作为键值即可</p>
+<p>1) 错误的代码（日志 / 问题追查）；</p>
+<p>2) 错误的描述文本（展示给用户）。</p>
+<p>对第三点的实现稍微多说一点：</p>
+<p>Java 服务器端一般用异常表示 RESTful API 的错误。API 可能抛出两类异常：业务异常和非业务异常。 业务异常 由自己的业务代码抛出，表示一个用例的前置条件不满足、业务规则冲突等，比如参数校验不通过、权限校验失败。 非业务类异常 表示不在预期内的问题，通常由类库、框架抛出，或由于自己的代码逻辑错误导致，比如数据库连接失败、空指针异常、除 0 错误等等。</p>
+<p>业务类异常必须提供 2 种信息：</p>
+<ol>
+<li><pre><code> 如果抛出该类异常，HTTP响应状态码应该设成什么；
+</code></pre>
+</li>
+<li><pre><code> 异常的文本描述；
+</code></pre>
+</li>
+</ol>
+<p>在 Controller 层使用统一的异常拦截器：</p>
+<ol>
+<li><pre><code>设置 HTTP响应状态码：对业务类异常，用它指定的 HTTPcode；对非业务类异常，统一500；
+</code></pre>
+</li>
+<li><pre><code>Response Body的错误码：异常类名
+</code></pre>
+</li>
+<li><pre><code>Response Body的错误描述：对业务类异常，用它指定的错误文本；对非业务类异常，线上可以统一文案如“服务器端错误，请稍后再试”，开发或测试环境中用异常的 stacktrace，服务器端提供该行为的开关。
+</code></pre>
+</li>
+</ol>
+<p>常用的 http 状态码及使用场景：</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td> 400 bad request</td>
+<td> 常用在参数校验</td>
+</tr>
+<tr>
+<td> 401 unauthorized</td>
+<td> 未经验证的用户，常见于未登录。如果经过验证后依然没权限，应该 403（即 authentication 和 authorization 的区别）。</td>
+</tr>
+<tr>
+<td>403 forbidden</td>
+<td> 无权限</td>
+</tr>
+<tr>
+<td> 404 not found</td>
+<td> 资源不存在</td>
+</tr>
+<tr>
+<td> 500 internal server error</td>
+<td> 非业务类异常</td>
+</tr>
+<tr>
+<td> 503 service unavaliable</td>
+<td> 由容器抛出，自己的代码不要抛这个异常</td>
+</tr>
+</tbody></table>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>（1）API 的身份认证应该使用 OAuth2.0 框架</p>
+<p>（2）服务器返回的数据格式，应该尽量使用 JSON，避免使用 XML</p>
+<p>（3）比较复杂的接口不能确定是使用 POST 还是 PUT 时，要看具体的业务层代码，看看接口产生的结果是否幂等，如果幂等用 PUT，相反用 POST</p>
+<p>​      如：接口接收到一资源，资源存在更新，不存在插入新数据，这个接口就要用 PUT</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/02/28/51267.shtml" title="API 开发规范">https://onxs.github.io/2018/02/28/51267.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/API/" rel="tag"><i class="fa fa-tag"></i> API</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/02/27/48599.shtml" rel="prev" title="cms 开发资料">
+                  <i class="fa fa-chevron-left"></i> cms 开发资料
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/03/10/38066.shtml" rel="next" title="库内新增对象的流程及其他技巧">
+                  库内新增对象的流程及其他技巧 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="fc98899ae0e43b02d4a2cd2dfc24164f"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/02/28/51267.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

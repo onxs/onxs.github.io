@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/02/23/56228.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/02/23/56228.shtml","path":"2018/02/23/56228.shtml","title":"Java 成神之路 - Tomcat、Jsp/servlet、Ajax（八）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java 成神之路 - Tomcat、Jsp/servlet、Ajax（八） | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tomcat%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">tomcat 服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat%E7%9A%84%E5%86%85%E5%AD%98%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">tomcat 的内存设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#startup-bat%E5%90%AF%E5%8A%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">startup.bat 启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#windows%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">1.1.2.</span> <span class="nav-text">windows 服务启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9tomcat%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.2.</span> <span class="nav-text">修改 tomcat 端口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E6%83%85%E5%86%B5%E4%B8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">默认情况下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%A4%E4%B8%AAtomcat"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用两个 tomcat</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat%E6%94%B9%E5%90%8D"><span class="nav-number">1.3.</span> <span class="nav-text">tomcat 改名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet"><span class="nav-number">2.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.1.</span> <span class="nav-text">Servlet 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init-%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.1.</span> <span class="nav-text">init () 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#service-%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.2.</span> <span class="nav-text">service () 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doGet-%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.3.</span> <span class="nav-text">doGet () 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doPost-%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.4.</span> <span class="nav-text">doPost () 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#destroy-%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.5.</span> <span class="nav-text">destroy () 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="nav-number">2.1.6.</span> <span class="nav-text">架构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.7.</span> <span class="nav-text">代码示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.2.</span> <span class="nav-text">Servlet 常用类和接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#javax-servlet-Servlet%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.2.1.</span> <span class="nav-text">javax.servlet.Servlet 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#servlet%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">servlet 接口中的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javax-servlet-GenericServlet%E7%B1%BB%EF%BC%88%E5%8D%8F%E8%AE%AE%E6%97%A0%E5%85%B3%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">javax.servlet.GenericServlet 类（协议无关版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GenericServlet%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">GenericServlet 类中的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javax-servlet-http-HttpServlet%E7%B1%BB%EF%BC%88HTTP%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">2.2.3.</span> <span class="nav-text">javax.servlet.http.HttpServlet 类（HTTP 版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HttpServlet%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">HttpServlet 类中的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javax-servlet-ServletRequest%E7%B1%BB%EF%BC%88%E5%8D%8F%E8%AE%AE%E6%97%A0%E5%85%B3%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">2.2.4.</span> <span class="nav-text">javax.servlet.ServletRequest 类（协议无关版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ServletRequest%E4%B8%BB%E8%A6%81%E5%A4%84%E7%90%86%EF%BC%9A"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">ServletRequest 主要处理：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ServletRequest%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">ServletRequest 类中的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javax-servlet-http-HttpServletRequest%E6%8E%A5%E5%8F%A3%EF%BC%88HTTP%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">2.2.5.</span> <span class="nav-text">javax.servlet.http.HttpServletRequest 接口（HTTP 版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HttpServletRequest%E7%B1%BB%E4%B8%BB%E8%A6%81%E5%A4%84%E7%90%86%EF%BC%9A"><span class="nav-number">2.2.5.1.</span> <span class="nav-text">HttpServletRequest 类主要处理：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HttpServletRequest%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.5.2.</span> <span class="nav-text">HttpServletRequest 接口中的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javax-servlet-ServletResponse%E6%8E%A5%E5%8F%A3%EF%BC%88%E5%8D%8F%E8%AE%AE%E6%97%A0%E5%85%B3%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">2.2.6.</span> <span class="nav-text">javax.servlet.ServletResponse 接口（协议无关版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ServletResponse%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.6.1.</span> <span class="nav-text">ServletResponse 接口中的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javax-servlet-http-HttpServletResponse%E6%8E%A5%E5%8F%A3%EF%BC%88HTTP%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">2.2.7.</span> <span class="nav-text">javax.servlet.http.HttpServletResponse 接口（HTTP 版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HttpServletResponse%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.7.1.</span> <span class="nav-text">HttpServletResponse 接口中的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javax-servlet-ServletContext%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.2.8.</span> <span class="nav-text">javax.servlet.ServletContext 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Web%E5%BA%94%E7%94%A8%E4%B8%ADservlet%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8servlet%E4%B8%8A%E4%B8%8B%E6%96%87%E5%BE%97%E5%88%B0%EF%BC%9A"><span class="nav-number">2.2.8.1.</span> <span class="nav-text">Web 应用中 servlet 可以使用 servlet 上下文得到：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ServletContext%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.8.2.</span> <span class="nav-text">ServletContext 接口中的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javax-servlet-http-HttpSession%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.2.9.</span> <span class="nav-text">javax.servlet.http.HttpSession 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HttpSession%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.9.1.</span> <span class="nav-text">HttpSession 接口中的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet%E7%9A%84%E4%B8%A4%E7%A7%8D%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">Servlet 的两种配置方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%90%84%E8%8A%82%E7%82%B9%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">2.3.1.</span> <span class="nav-text">配置中各节点的含义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP"><span class="nav-number">3.</span> <span class="nav-text">JSP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.1.</span> <span class="nav-text">jsp 九大内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#session-application-request%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.1.1.</span> <span class="nav-text">session, application, request 的区别:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp%E4%B8%83%E5%A4%A7%E5%8A%A8%E4%BD%9C"><span class="nav-number">3.2.</span> <span class="nav-text">jsp 七大动作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP%E4%B8%89%E5%A4%A7%E6%8C%87%E4%BB%A4"><span class="nav-number">3.3.</span> <span class="nav-text">JSP 三大指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#El%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%9A"><span class="nav-number">3.4.</span> <span class="nav-text">El 表达式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-JSTL%E6%A0%87%E7%AD%BE%E5%BA%93%E2%80%94-%E5%87%BD%E6%95%B0fn"><span class="nav-number">3.5.</span> <span class="nav-text">JSP-JSTL 标签库 —- 函数 fn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-JSTL%E6%A0%87%E7%AD%BE%E5%BA%93%E2%80%94%E6%A0%B8%E5%BF%83core"><span class="nav-number">3.6.</span> <span class="nav-text">JSP-JSTL 标签库 — 核心 core</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-c-out-gt-%E6%A0%87%E7%AD%BE-%E2%80%94%E2%80%93%E6%8A%8A%E5%86%85%E5%AE%B9%E8%BE%93%E5%87%BA%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">3.6.1.</span> <span class="nav-text">&lt;c:out&gt; 标签 —–把内容输出到浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-c-set-gt-%E6%A0%87%E7%AD%BE-%E2%80%94-%E6%8A%8A%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E5%88%B0%E5%9F%9F%E4%B8%AD"><span class="nav-number">3.6.2.</span> <span class="nav-text">&lt;c:set&gt; 标签 —- 把数据绑定到域中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-c-remove-gt-%E6%A0%87%E7%AD%BE"><span class="nav-number">3.6.3.</span> <span class="nav-text">&lt;c:remove&gt; 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-c-catch-gt-%E6%A0%87%E7%AD%BE"><span class="nav-number">3.6.4.</span> <span class="nav-text">&lt;c:catch&gt; 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-c-if-gt-%E6%A0%87%E7%AD%BE"><span class="nav-number">3.6.5.</span> <span class="nav-text">&lt;c:if&gt; 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-c-choose-gt-%E5%92%8C-lt-c-when-gt-lt-c-otherwise-gt-%E6%A0%87%E7%AD%BE"><span class="nav-number">3.6.6.</span> <span class="nav-text">&lt;c:choose&gt; 和 &lt; c:when&gt;&lt;c:otherwise &gt; 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-c-forEach-var-items-gt-%E6%A0%87%E7%AD%BE"><span class="nav-number">3.6.7.</span> <span class="nav-text">&lt;c:forEach var items&#x2F;&gt; 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-c-url-gt-%E5%92%8C-lt-c-param-gt-%E6%A0%87%E7%AD%BE"><span class="nav-number">3.6.8.</span> <span class="nav-text">&lt;c:url&gt; 和 &lt; c:param &gt; 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-c-redirect-gt-%E6%A0%87%E7%AD%BE"><span class="nav-number">3.6.9.</span> <span class="nav-text">&lt;c:redirect&gt; 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp-forward%E6%A0%87%E7%AD%BE"><span class="nav-number">3.6.10.</span> <span class="nav-text">jsp:forward 标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp%E7%9B%91%E5%90%AC%E5%99%A8"><span class="nav-number">3.7.</span> <span class="nav-text">Jsp 监听器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">3.8.</span> <span class="nav-text">Jsp 过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp%E5%88%86%E9%A1%B5"><span class="nav-number">3.9.</span> <span class="nav-text">Jsp 分页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsp%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-number">3.10.</span> <span class="nav-text">Jsp 上传文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AJax"><span class="nav-number">4.</span> <span class="nav-text">AJax</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-%E8%AF%AD%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">JSON 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99"><span class="nav-number">4.1.1.</span> <span class="nav-text">JSON 语法规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-%E5%90%8D%E7%A7%B0-%E5%80%BC%E5%AF%B9"><span class="nav-number">4.1.2.</span> <span class="nav-text">JSON 名称 &#x2F; 值对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-%E5%80%BC"><span class="nav-number">4.1.3.</span> <span class="nav-text">JSON 值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-%E6%95%B0%E5%AD%97"><span class="nav-number">4.1.4.</span> <span class="nav-text">JSON 数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.1.5.</span> <span class="nav-text">JSON 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-%E6%95%B0%E7%BB%84"><span class="nav-number">4.1.6.</span> <span class="nav-text">JSON 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-%E5%B8%83%E5%B0%94%E5%80%BC"><span class="nav-number">4.1.7.</span> <span class="nav-text">JSON 布尔值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-null"><span class="nav-number">4.1.8.</span> <span class="nav-text">JSON null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-%E4%BD%BF%E7%94%A8-JavaScript-%E8%AF%AD%E6%B3%95"><span class="nav-number">4.1.9.</span> <span class="nav-text">JSON 使用 JavaScript 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.10.</span> <span class="nav-text">JSON 文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E4%B8%AD%E4%BD%BF%E7%94%A8Json"><span class="nav-number">4.2.</span> <span class="nav-text">JS 中使用 Json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E5%AF%B9%E8%B1%A1%E5%92%8CJson%E4%BA%92%E8%BD%AC"><span class="nav-number">4.3.</span> <span class="nav-text">Java 对象和 Json 互转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XMLHttpRequest%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.4.</span> <span class="nav-text">XMLHttpRequest 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8jQuery%E5%AE%9E%E7%8E%B0ajax"><span class="nav-number">4.5.</span> <span class="nav-text">使用 jQuery 实现 ajax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax%E8%8E%B7%E5%8F%96Json%E6%95%B0%E6%8D%AE"><span class="nav-number">4.6.</span> <span class="nav-text">Ajax 获取 Json 数据</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2018/01/16/36591.shtml" rel="bookmark">
+        <time class="popular-posts-time">2018-01-16</time>
+        <br>
+      Java 工具类总结
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2018/02/23/56594.shtml" rel="bookmark">
+        <time class="popular-posts-time">2018-02-23</time>
+        <br>
+      Java 成神之路 - JavaSE 面向对象和 Java 常用类（五）
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2018/01/10/11911.shtml" rel="bookmark">
+        <time class="popular-posts-time">2018-01-10</time>
+        <br>
+      Spring Assert 断言工具类使用
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/02/23/56228.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java 成神之路 - Tomcat、Jsp/servlet、Ajax（八） | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 成神之路 - Tomcat、Jsp/servlet、Ajax（八）<a href="https://github.com/onxs/blog/tree/dev/source/_posts/Java/POST008.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-23 16:44:36" itemprop="dateCreated datePublished" datetime="2018-02-23T16:44:36+08:00">2018-02-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Java 成神之路 - Tomcat、Jsp/servlet、Ajax（八）" href="/2018/02/23/56228.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::4e6446623ac1f375ed9be807dbb38dc5" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>40 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0134.jpg" alt="image"></p>
+<p>Java 成神之路 - Tomcat、Jsp/servlet、Ajax</p>
+<span id="more"></span>
+<h1 id="tomcat服务"><a href="#tomcat服务" class="headerlink" title="tomcat服务"></a>tomcat 服务</h1><h2 id="tomcat的内存设置"><a href="#tomcat的内存设置" class="headerlink" title="tomcat的内存设置"></a>tomcat 的内存设置</h2><p>Tomcat 的启动分为 startupo.bat 启动和注册为 windows 服务的启动，下面一一说明。</p>
+<h3 id="startup-bat启动"><a href="#startup-bat启动" class="headerlink" title="startup.bat启动"></a>startup.bat 启动</h3><p>在 tomcat_home/bin 目录下找到 catalina.bat，用文本编辑器打开，加上下面一行：</p>
+<pre class="line-numbers language-none"><code class="language-none">set JAVA_OPTS= -Xms1024M -Xmx1024M -XX:PermSize=256M -XX:MaxNewSize=256M -XX:MaxPermSize=256M<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>解释一下各个参数：</p>
+<ul>
+<li>-Xms1024M：初始化堆内存大小（注意，不加 M 的话单位是 KB）</li>
+<li>-Xmx1029M：最大堆内存大小</li>
+<li> -XX:PermSize=256M：初始化类加载内存池大小</li>
+<li> -XX:MaxPermSize=256M：最大类加载内存池大小</li>
+<li> -XX:MaxNewSize=256M：这个还不清楚哈，有知道的说声</li>
+</ul>
+<p>还有一个 - server 参数，是指启动 jvm 时以服务器方式启动，比客户端启动慢，但性能较好，大家可以自己选择。</p>
+<h3 id="windows服务启动"><a href="#windows服务启动" class="headerlink" title="windows服务启动"></a>windows 服务启动</h3><p>​       如果你的 tomcat 是注册为 windows 服务并且是以服务方式启动的，那么上面的方法就无效了，因为这时 tomcat 启动是读取注册表的参数，而不是读取批处理文件的参数，这时我们有两种方法来设置 jvm 参数。</p>
+<ol>
+<li>第一种比较简单，tomcat 为我们提供了一个设置启动参数的窗体，双击 tomcat_home/bin 目录下的 tomcat6w.exe，如图</li>
+</ol>
+<p><img src="http://img853.ph.126.net/19ez1FAxdrVVLOWe75iqjQ==/613615449230442622.jpg" alt="Tomcat启动内存设置 - 一个人失眠 - 渴望"></p>
+<p>下方的 Initial memory pool 就是初始化堆内存大小，Maximun memory pool 是最大堆内存大小。</p>
+<p>而要设置 Perm Gen 池的大小就要在 Java Option 里面加参数了，在里面加上：</p>
+<ul>
+<li>-Dcatalina.base=%tomcat_home%</li>
+<li>-Dcatalina.home=%tomcat_home%</li>
+<li>-Djava.endorsed.dirs=%tomcat_home%\endorsed</li>
+<li>-Djava.io.tmpdir=%tomcat_home%\temp</li>
+<li>-XX:PermSize=256M</li>
+<li>-XX:MaxPermSize=256M</li>
+<li>-XX:ReservedCodeCacheSize=48M</li>
+<li>-Duser.timezone=GMT+08</li>
+</ul>
+<p>（PS：网上说每一行后面不要有空格，没试过）</p>
+<ol start="2">
+<li>第二种方法是打开注册表 -&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Apache Software Foundation\Procrun 2.0\Tomcat6\Parameters\Java (路径可能有一点点差别)</li>
+</ol>
+<p><img src="http://img242.ph.126.net/wR1s2msgkQSskIdzeV-hDw==/1430737306621990743.png" alt="Tomcat启动内存设置 - 一个人失眠 - 渴望"></p>
+<p>修改 Options 的值，把刚才上面那些参数加进去就 OK 了。（别忘了先备份一下注册表）</p>
+<h2 id="修改tomcat端口"><a href="#修改tomcat端口" class="headerlink" title="修改tomcat端口"></a>修改 tomcat 端口</h2><h3 id="默认情况下"><a href="#默认情况下" class="headerlink" title="默认情况下"></a>默认情况下</h3><p>tomcat 的端口是 8080，如果出现 8080 端口号冲突，用如下方法可以修改 Tomcat 的端口号：</p>
+<p>在 C:/Tomcat/conf/Server.xml 文件中找到如下文本：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>8080<span class="token punctuation">"</span></span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>HTTP/1.1<span class="token punctuation">"</span></span> 
+               <span class="token attr-name">maxThreads</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">connectionTimeout</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20000<span class="token punctuation">"</span></span> 
+               <span class="token attr-name">redirectPort</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>也有可能是这样的：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>8080<span class="token punctuation">"</span></span> <span class="token attr-name">maxThreads</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">minSpareThreads</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>25<span class="token punctuation">"</span></span> <span class="token attr-name">maxSpareThreads</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>75<span class="token punctuation">"</span></span> <span class="token attr-name">enableLookups</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">redirectPort</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span> <span class="token attr-name">acceptCount</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span> <span class="token attr-name">debug</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">connectionTimeout</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20000<span class="token punctuation">"</span></span> <span class="token attr-name">disableUploadTimeout</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>等等；</p>
+<p>最后：将 port=”8080” 改为如 port=”8081” 等，保存 server.xml，重启 Tomcat，Tomcat 就可以使用 8081 端口。</p>
+<h3 id="使用两个tomcat"><a href="#使用两个tomcat" class="headerlink" title="使用两个tomcat"></a>使用两个 tomcat</h3><p>修改了上面的以后，还要修改两处：</p>
+<ol>
+<li>将 </li>
+</ol>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>8009<span class="token punctuation">"</span></span> <span class="token attr-name">enableLookups</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">redirectPort</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span> <span class="token attr-name">debug</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span>
+<span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>AJP/1.3<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>的 8009 改为其它的端口。</p>
+<ol start="2">
+<li>将 </li>
+</ol>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Server</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>8005<span class="token punctuation">"</span></span> <span class="token attr-name">shutdown</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>SHUTDOWN<span class="token punctuation">"</span></span> <span class="token attr-name">debug</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>的 8005 改为其它的端口。<br>修改以上三处。</p>
+<h2 id="tomcat改名"><a href="#tomcat改名" class="headerlink" title="tomcat改名"></a>tomcat 改名</h2><ol>
+<li><p>找到 tomcat 下面的这个文件：tomcat_home\bin\catalina.bat </p>
+</li>
+<li><p>搜索到：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">:doStart  
+shift  
+if not "%OS%" == "Windows_NT" goto noTitle  
+set EXECJAVA=start "Tomcat" %RUNJAVA%  
+goto gotTitle <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>将”Tomcat” 修改成想替换的名称即可</p>
+</li>
+<li><p>在 tomcat6.0.29 以后的版本则如下： </p>
+</li>
+</ol>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">:doStart  
+shift  
+if not "%OS%" == "Windows_NT" goto noTitle  
+if "%TITLE%" == "" set TITLE=Tomcat  
+set _EXECJAVA=start "%TITLE%" %_RUNJAVA%  
+goto gotTitle <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>同理将 </p>
+<pre class="line-numbers language-none"><code class="language-none">if "%TITLE%" == "" set TITLE=Tomcat <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>改为： </p>
+<pre class="line-numbers language-none"><code class="language-none">if "%TITLE%" == "" set TITLE=你的应用服务名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h1><h2 id="Servlet-生命周期"><a href="#Servlet-生命周期" class="headerlink" title="Servlet 生命周期"></a>Servlet 生命周期</h2><p>Servlet 生命周期可被定义为从创建直到毁灭的整个过程。以下是 Servlet 遵循的过程：</p>
+<ul>
+<li>Servlet 通过调用 <strong>init ()</strong> 方法进行初始化。</li>
+<li>Servlet 调用 <strong>service()</strong> 方法来处理客户端的请求。</li>
+<li>Servlet 通过调用 <strong>destroy()</strong> 方法终止（结束）。</li>
+<li>最后，Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。</li>
+</ul>
+<p>现在让我们详细讨论生命周期的方法。</p>
+<h3 id="init-方法"><a href="#init-方法" class="headerlink" title="init() 方法"></a>init () 方法</h3><p>init 方法被设计成只调用一次。它在第一次创建 Servlet 时被调用，在后续每次用户请求时不再调用。因此，它是用于一次性初始化，就像 Applet 的 init 方法一样。</p>
+<p>Servlet 创建于用户第一次调用对应于该 Servlet 的 URL 时，但是您也可以指定 Servlet 在服务器第一次启动时被加载。</p>
+<p>当用户调用一个 Servlet 时，就会创建一个 Servlet 实例，每一个用户请求都会产生一个新的线程，适当的时候移交给 doGet 或 doPost 方法。init () 方法简单地创建或加载一些数据，这些数据将被用于 Servlet 的整个生命周期。</p>
+<p>init 方法的定义如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 初始化代码...</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service () 方法</h3><p>service () 方法是执行实际任务的主要方法。Servlet 容器（即 Web 服务器）调用 service () 方法来处理来自客户端（浏览器）的请求，并把格式化的响应写回给客户端。</p>
+<p>每次服务器接收到一个 Servlet 请求时，服务器会产生一个新的线程并调用服务。service () 方法检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 doGet、doPost、doPut，doDelete 等方法。</p>
+<p>下面是该方法的特征：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">service</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span> request<span class="token punctuation">,</span> 
+                    <span class="token class-name">ServletResponse</span> response<span class="token punctuation">)</span> 
+      <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span><span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>service () 方法由容器调用，service 方法在适当的时候调用 doGet、doPost、doPut、doDelete 等方法。所以，您不用对 service () 方法做任何动作，您只需要根据来自客户端的请求类型来重写 doGet () 或 doPost () 即可。</p>
+<p>doGet () 和 doPost () 方法是每次服务请求中最常用的方法。下面是这两种方法的特征。</p>
+<h3 id="doGet-方法"><a href="#doGet-方法" class="headerlink" title="doGet() 方法"></a>doGet () 方法</h3><p>GET 请求来自于一个 URL 的正常请求，或者来自于一个未指定 METHOD 的 HTML 表单，它由 doGet () 方法处理。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span>
+                  <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span>
+    <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Servlet 代码</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="doPost-方法"><a href="#doPost-方法" class="headerlink" title="doPost() 方法"></a>doPost () 方法</h3><p>POST 请求来自于一个特别指定了 METHOD 为 POST 的 HTML 表单，它由 doPost () 方法处理。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span>
+                   <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span>
+    <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Servlet 代码</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy() 方法"></a>destroy () 方法</h3><p>destroy () 方法只会被调用一次，在 Servlet 生命周期结束时被调用。destroy () 方法可以让您的 Servlet 关闭数据库连接、停止后台线程、把 Cookie 列表或点击计数器写入到磁盘，并执行其他类似的清理活动。</p>
+<p>在调用 destroy () 方法之后，servlet 对象被标记为垃圾回收。destroy 方法定义如下所示：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 终止化代码...</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h3><p>Servlet 生命周期方案。</p>
+<ul>
+<li>第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。</li>
+<li>Servlet 容器在调用 service () 方法之前加载 Servlet。</li>
+<li>然后 Servlet 容器处理由多个线程产生的多个请求，每个线程执行一个单一的 Servlet 实例的 service () 方法。</li>
+</ul>
+<ol>
+<li>destory 方法被调用后，servlet 被销毁，但是并没有立即被回收，再次请求时，并没有重新初始化。</li>
+</ol>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3>   <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token class-name">String</span> message<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span> <span class="token punctuation">{</span>
+    message <span class="token operator">=</span> <span class="token string">"Hello World , Nect To Meet You: "</span> <span class="token operator">+</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"servlet初始化……"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">PrintWriter</span> writer <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;h1&gt;"</span> <span class="token operator">+</span> message <span class="token operator">+</span> <span class="token string">"&lt;/h1&gt;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    <span class="token comment">// TODO Auto-generated method stub</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">doPost</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"servlet销毁！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>   控制台打印：</p>
+   <pre class="line-numbers language-none"><code class="language-none">servlet初始化……
+servlet销毁！
+2017-7-6 19:48:52 org.apache.catalina.core.StandardContext reload
+信息: Reloading Context with name [/myServlet] has started
+servlet销毁！
+2017-7-6 19:48:52 org.apache.catalina.core.StandardContext reload
+信息: Reloading Context with name [/myServlet] is completed
+servlet初始化……
+servlet销毁！
+servlet销毁！
+servlet销毁！
+servlet销毁！
+servlet销毁！
+servlet销毁！
+servlet销毁！<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Servlet常用类和接口"><a href="#Servlet常用类和接口" class="headerlink" title="Servlet常用类和接口"></a>Servlet 常用类和接口</h2><p>接口：Servlet、ServletConfig、ServletRequest、ServletResponse、HttpServletRequest、HttpServletResponse、ServletContext</p>
+<p>类：HttpServlet (抽象类)、GenericServlet (抽象类)</p>
+<p>基本类和接口</p>
+<h3 id="javax-servlet-Servlet接口"><a href="#javax-servlet-Servlet接口" class="headerlink" title="javax.servlet.Servlet接口"></a>javax.servlet.Servlet 接口</h3><p>servlet 抽象集是 javax.servlet.Servlet 接口，它规定了必须由 Servlet 类实现由 servlet 引擎识别和管理的方法集。<br>Servlet 接口的基本目标是提供生命期方法 init ()、service () 和 destroy () 方法。</p>
+<h4 id="servlet接口中的方法"><a href="#servlet接口中的方法" class="headerlink" title="servlet接口中的方法"></a>servlet 接口中的方法</h4><ul>
+<li>void init (ServletConfit config) throws ServletException     在 servlet 被载入后和实施服务前由 servlet 引擎进行？次性调用。如果 init () 产生溢出 UnavailableException，则 servle 退出服务。       </li>
+<li>ServletConfig getServletConfig ()     返回传递到 servlet 的 init () 方法的 ServletConfig 对象       </li>
+<li>void service (ServletRequest request, ServletResponse response) throws ServletException,IOException     处理 request 对象中描述的请求，使用 response 对象返回请求结果       </li>
+<li>String getServletInfo ()         返回描述 servlet 的一个字符串       </li>
+<li>void destory ()         当 servlet 将要卸载时由 servlet 引擎调用   </li>
+</ul>
+<h3 id="javax-servlet-GenericServlet类（协议无关版本）"><a href="#javax-servlet-GenericServlet类（协议无关版本）" class="headerlink" title="javax.servlet.GenericServlet类（协议无关版本）"></a>javax.servlet.GenericServlet 类（协议无关版本）</h3><p>GenericServlet 是一种与协议无关的 servlet，是一种跟本不对请求提供服务的 servlet，而是简单地从 init () 方法启动后台线程并在 destory () 中杀死。它可以用于模拟操作系统的端口监控进程。<br>servlet API 提供了 Servlet 接口的直接实现，称为 GenericServlet。此类提供除了 service () 方法外所有接口中方法的缺省实现。这意味着通过简单地扩展 GenericServlte 可以编写一个基本的 servlet。<br>除了 Servlet 接口外，GenericServlet 也实现了 ServletConfig 接口，处理初始化参数和 servlet 上下文，提供对授权传递到 init () 方法中的 ServletConfig 对象的方法。</p>
+<h4 id="GenericServlet类中的方法"><a href="#GenericServlet类中的方法" class="headerlink" title="GenericServlet类中的方法"></a>GenericServlet 类中的方法</h4><ul>
+<li>void destory ()     编飞组成单词 “destory” 的一个注册入口       </li>
+<li>String getInitParameter (String name)     返回具有指定名称的初始化参数值。通过凋用 config.getInitParameter (name) 实现。       </li>
+<li>Enumeration getInitParameterNames ()     返回此 serv] et 已编码的所有初始化参数的？个枚举类型值。调用 config.getInitParameterNames () 获得列表。如果未提供初始化参数，则返回？个空的枚举类型值（但不是 null）       </li>
+<li>ServletConfig getServletConfig ()     返回传递到 init () 方法的 ServletConfig 对象       </li>
+<li>ServletContext getServletContext ()     返回在 config 对象中引用的 ServletContext       </li>
+<li>String getServletInfo ()     返回空字符串       </li>
+<li>void init (ServletConfig config) throws ServletException     在一实例变量中保存 config 对象。编写组成单词 “init” 的注册入口，然后调用方法 init ()       </li>
+<li>void init () throws ServletException     可以被跳过以处理 servlet 初始化。在 config 对象被保存后 init (ServletConfig config) 的结尾处自动被调用.servlet 作者经常会忘记调用 super.init (config)        </li>
+<li>void log (String msg)     编写注册 servlet 的入口。为此调用 servlet 上下文的 log () 方法.servlet 的名字被加到消息文本的开头。       </li>
+<li>void log (String msg,Throwable t)     编写一个入口和 servlet 注册的栈轨迹。此方法也是 ServletContext 中相应方法的一个副本。       </li>
+<li>abstract void service (Request request,Response response) throws ServletException,IOException     由 servlet 引擎调用为请求对象描述的请求提供服务。这是 GenericServlet 中唯一的抽象方法。因此它也是唯一必须被子类所覆盖的方法。        </li>
+<li>String getServletName ()     返回在 Web 应用发布描述器（web.xml）中指定的 servlet 的名字。     </li>
+</ul>
+<h3 id="javax-servlet-http-HttpServlet类（HTTP版本）"><a href="#javax-servlet-http-HttpServlet类（HTTP版本）" class="headerlink" title="javax.servlet.http.HttpServlet类（HTTP版本）"></a>javax.servlet.http.HttpServlet 类（HTTP 版本）</h3><p>虽然 servlet API 允许扩展到其它协议，但最终所有的 servlet 均在 Web 环境下实施操作，只有几种 servlet 直接扩展了 GenericServlet。对 servlet 更一般的是扩展其 HTTP 子类 HttpServlet。<br>HttpServlet 类通过调用指定到 HTTP 请求方法的方法实现 service ()，亦即对 DELETE、HEAD、GET、OPTIONS、POST、PUT 和 TRACE，分别调用 doDelete ()、doHead ()、doGet ()、doOptions ()、doPost ()、doPut () 和 doTrace () 方法，将请求和响应对象置入其 HTTP 指定子类。</p>
+<h4 id="HttpServlet类中的方法"><a href="#HttpServlet类中的方法" class="headerlink" title="HttpServlet类中的方法"></a>HttpServlet 类中的方法</h4><ul>
+<li>Void doGet (HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException     由 servlet 引擎调用用处理一个 HTTP GET 请求。输入参数、HTTP 头标和输入流可从 request 对象、response 头标和 response 对象的输出流中获得。       </li>
+<li>Void doPost (HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException     由 servlet 引擎调用用处理一个 HTTP POST 请求。输入参数、HTTP 头标和输入流可从 request 对象、response 头标和 response 对象的输出流中获得。       </li>
+<li>Void doPut (HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException     由 servlet 引擎调用用处理一个 HTTP PUT 请求。本方法中请求 URI 指出被载入的文件位置。       </li>
+<li>Void doDelete (HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException     由 servlet 引擎调用用处理一个 HTTP DELETE 请求。请求 URI 指出资源被删除。       </li>
+<li>Void doOptions (HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException     由 servlet 引擎调用用处理一个 HTTP OPTIONS 请求。返回一个 Allow 响应头标表明此 servlet 支持的 HTTP 方法。一个 servlet 不需要覆盖此方法，因为 HttpServlet 方法已经实现规范所需的功能。       </li>
+<li>Void doTrace (HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException     由 servlet 引擎调用用处理一个 HTTP TRACE 请求。使得请求头标被反馈成响应关标。一个 servlet 不需要覆盖此方法，因为 HttpServlet 方法已经实现 HTTP 规范所需的功能。        </li>
+<li>Void service (HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException     Service (Request request,Response response) 调用的一个立即方法，带有指定 HTTP 请求和响应。此方法实际上将请求导向 doGet ()、doPost () 等等。不应该覆盖此方法。        </li>
+<li>Void service (Request request,Response response) throws ServletException,IOException     将请求和响应对象置入其指定的 HTTP 子类，并调用指定 HTTP 的 service () 方法。     </li>
+</ul>
+<h3 id="javax-servlet-ServletRequest类（协议无关版本）"><a href="#javax-servlet-ServletRequest类（协议无关版本）" class="headerlink" title="javax.servlet.ServletRequest类（协议无关版本）"></a>javax.servlet.ServletRequest 类（协议无关版本）</h3><p>ServletRequest 接口封装了客户端请求的细节。它与协议无关，并有一个指定 HTTP 的子接口。</p>
+<h4 id="ServletRequest主要处理："><a href="#ServletRequest主要处理：" class="headerlink" title="ServletRequest主要处理："></a>ServletRequest 主要处理：</h4><ol>
+<li>找到客户端的主机名和 IP 地址</li>
+<li>检索请求参数</li>
+<li>取得和设置属性</li>
+<li>取得输入和输出流</li>
+</ol>
+<h4 id="ServletRequest类中的方法"><a href="#ServletRequest类中的方法" class="headerlink" title="ServletRequest类中的方法"></a>ServletRequest 类中的方法</h4><ul>
+<li>Object getAttribute (String name)     返回具有指定名字的请求属性，如果不存在则返回 null。属性可由 servlet 引擎设置或使用 setAttribute () 显式加入。       </li>
+<li>Enumeration getAttributeName ()     返回请求中所有属性名的枚举。如果不存在属性，则返回一个空的枚举。       </li>
+<li>String getCharacteEncoding ()     返回请求所用的字符编码。       </li>
+<li>Int getContentLength ()     指定输入流的长度，如果未知则返回 - 1。       </li>
+<li>ServletInputStream getInputStream () throws IOException     返回与请求相关的（二进制）输入流。可以调用 getInputStream () 或 getReader () 方法之一。       </li>
+<li>String getParameter (String name)     返回指定输入参数，如果不存在，返回 null。       </li>
+<li>Enumeration getParameterName ()     返回请求中所有参数名的一个可能为空的枚举。       </li>
+<li>String [] getParameterValues (String name)     返回指定输入参数名的取值数组，如果取值不存在则返回 null。它在参数具有多个取值的情况下十分有用。       </li>
+<li>String get Protocol ()     返回请求使用协议的名称和版本。       </li>
+<li>String getScheme ()     返回请求 URI 的子串，但不包含第一个冒号前的内容。       </li>
+<li>String getServerName ()     返回处理请求的服务器的主机名。       </li>
+<li>String getServerPort ()     返回接收主机正在侦听的端口号。       </li>
+<li>BufferedReader getReader () throws IOException     返回与请求相关输入数据的一个字符解读器。此方法与 getInputStream () 只可分别调用，不能同时使用。       </li>
+<li>String getRemoteAddr ()     返回客户端主机的数字型 IP 地址。       </li>
+<li>String getRemoteHost ()     如果知道，返回客户端主机名。       </li>
+<li>void setAttribute (String name,Object obj)     以指定名称保存请求中指定对象的引用。       </li>
+<li>void removeAttribute (String name)     从请求中删除指定属性       </li>
+<li>Locale getLocale ()     如果已知，返回客户端的第一现场或者为 null。       </li>
+<li>Enumeration getLocales ()     如果已知，返回客户端的第一现场的一个枚举，否则返回服务器第一现场。       </li>
+<li>boolean isSecure ()     如果请求使用了如 HTTPS 安全隧道，返回 true       </li>
+<li>RequestDispatcher getRequestDispatcher (String name)     返回指定源名称的 RequsetDispatcher 对象。 </li>
+</ul>
+<h3 id="javax-servlet-http-HttpServletRequest接口（HTTP版本）"><a href="#javax-servlet-http-HttpServletRequest接口（HTTP版本）" class="headerlink" title="javax.servlet.http.HttpServletRequest接口（HTTP版本）"></a>javax.servlet.http.HttpServletRequest 接口（HTTP 版本）</h3><h4 id="HttpServletRequest类主要处理："><a href="#HttpServletRequest类主要处理：" class="headerlink" title="HttpServletRequest类主要处理："></a>HttpServletRequest 类主要处理：</h4><p>1. 读取和写入 HTTP 头标</p>
+<ol start="2">
+<li>取得和设置 cookies</li>
+<li> 取得路径信息</li>
+<li>标识 HTTP 会话</li>
+</ol>
+<h4 id="HttpServletRequest接口中的方法"><a href="#HttpServletRequest接口中的方法" class="headerlink" title="HttpServletRequest接口中的方法"></a>HttpServletRequest 接口中的方法</h4><ul>
+<li>String getAuthType ()     如果 servlet 由一个鉴定方案所保护，如 HTTP 基本鉴定，则返回方案名称。       </li>
+<li>String getContextPath ()     返回指定 servlet 上下文（web 应用）的 URL 的前缀。       </li>
+<li>Cookie [] getCookies ()     返回与请求相关 cookie 的一个数组。       </li>
+<li>Long getDateHeader (String name)     将输出转换成适合构建 Date 对象的 long 类型取值的 getHeader () 的简化版。       </li>
+<li>String getHeader (String name)     返回指定的 HTTP 头标指。如果其由请求给出，则名字应为大小写不敏感。       </li>
+<li>Enumeration getHeaderNames ()     返回请求给出的所有 HTTP 头标名称的权举值。       </li>
+<li>Enumeration getHeaders (String name)     返回请求给出的指定类型的所有 HTTP 头标的名称的枚举值，它对具有多取值的头标非常有用。       </li>
+<li>int getIntHeader (String name)     将输出转换为 int 取值的 getHeader () 的简化版。       </li>
+<li>String getMethod ()     返回 HTTP 请求方法（例如 GET、POST 等等）       </li>
+<li>String getPathInfo ()     返回在 URL 中指定的任意附加路径信息。       </li>
+<li>String getPathTranslated ()     返回在 URL 中指定的任意附加路径信息，被子转换成一个实际路径。       </li>
+<li>String getQueryString ()     返回查询字符串，即 URL 中？后面的部份。       </li>
+<li>String getRemoteUser ()     如果用户通过鉴定，返回远程用户名，否则为 null。       </li>
+<li>String getRequestedSessionId ()     返回客户端的会话 ID       </li>
+<li>String getRequestURI ()     返回 URL 中一部分，从 “/” 开始，包括上下文，但不包括任意查询字符串。       </li>
+<li>String getServletPath ()     返回请求 URI 上下文后的子串       </li>
+<li>HttpSession getSession ()     调用 getSession (true) 的简化版。       </li>
+<li>HttpSession getSession (boolean create)     返回当前 HTTP 会话，如果不存在，则创建一个新的会话，create 参数为 true。       </li>
+<li>Principal getPrincipal ()     如果用户通过鉴定，返回代表当前用户的 java.security.Principal 对象，否则为 null。       </li>
+<li>boolean isRequestedSessionIdFromCookie ()     如果请求的会话 ID 由一个 Cookie 对象提供，则返回 true，否则为 false。       </li>
+<li>boolean isRequestedSessionIdFromURL ()     如果请求的会话 ID 在请求 URL 中解码，返回 true，否则为 false       </li>
+<li>boolean isRequestedSessionIdValid ()     如果客户端返回的会话 ID 仍然有效，则返回 true。       </li>
+<li>Boolean isUserInRole (String role)     如果当前已通过鉴定用户与指定角色相关，则返回 true，如果不是或用户未通过鉴定，则返回 false。     </li>
+</ul>
+<h3 id="javax-servlet-ServletResponse接口（协议无关版本）"><a href="#javax-servlet-ServletResponse接口（协议无关版本）" class="headerlink" title="javax.servlet.ServletResponse接口（协议无关版本）"></a>javax.servlet.ServletResponse 接口（协议无关版本）</h3><p>ServletResponse 对象将一个 servlet 生成的结果传到发出请求的客户端。ServletResponse 操作主要是作为输出流及其内容类型和长度的包容器，它由 servlet 引擎创建.</p>
+<h4 id="ServletResponse接口中的方法"><a href="#ServletResponse接口中的方法" class="headerlink" title="ServletResponse接口中的方法"></a>ServletResponse 接口中的方法</h4><ul>
+<li>void flushBuffer () throws IOException     发送缓存到客户端的输出内容。因为 HTTP 需要头标在内容前被发送，调用此方法发送状态行和响应头标，以确认请求。       </li>
+<li>int getBufferSize ()     返回响应使用的缓存大小。如果缓存无效则返加 0。       </li>
+<li>String getCharacterEncoding ()     返回响应使用字符解码的名字。除非显式设置，否则为 ISO-8859-1       </li>
+<li>Locale getLocale ()     返回响应使用的现场。除非用 setLocale () 修改，否则缺省为服务器现场。       </li>
+<li>OutputStream getOutputStream () throws IOException     返回用于将返回的二进制输出写入客户端的流，此方法和 getWrite () 方法二者只能调用其一。       </li>
+<li>Writer getWriter () throws IOException     返回用于将返回的文本输出写入客户端的一个字符写入器，此方法和 getOutputStream () 二者只能调用其一。       </li>
+<li>boolean isCommitted ()     如果状态和响应头标已经被发回客户端，则返回 true，在响应被确认后发送响应头标毫无作用。       </li>
+<li>void reset ()     清除输出缓存及任何响应头标。如果响应已得到确认，则引发事件 IllegalStateException。       </li>
+<li>void setBufferSize (int nBytes)     设置响应的最小缓存大小。实际缓存大小可以更大，可以通过调用 getBufferSize () 得到。如果输出已被写入，则产生 IllegalStateException。       </li>
+<li>void setContentLength (int length)     设置内容体的长度。       </li>
+<li>void setContentType (String type)     设置内容类型。在 HTTP servlet 中即设置 Content-Type 头标。       </li>
+<li>void setLocale (Locale locale)     设置响应使用的现场。在 HTTP servlet 中，将对 Content-Type 头标取值产生影响。     </li>
+</ul>
+<h3 id="javax-servlet-http-HttpServletResponse接口（HTTP版本）"><a href="#javax-servlet-http-HttpServletResponse接口（HTTP版本）" class="headerlink" title="javax.servlet.http.HttpServletResponse接口（HTTP版本）"></a>javax.servlet.http.HttpServletResponse 接口（HTTP 版本）</h3><p>HttpServletResponse 加入表示状态码、状态信息和响应头标的方法，它还负责对 URL 中写入一 Web 页面的 HTTP 会话 ID 进行解码。</p>
+<h4 id="HttpServletResponse接口中的方法"><a href="#HttpServletResponse接口中的方法" class="headerlink" title="HttpServletResponse接口中的方法"></a>HttpServletResponse 接口中的方法</h4><ul>
+<li>void addCookie (Cookie cookie)     将一个 Set-Cookie 头标加入到响应。       </li>
+<li>void addDateHeader (String name,long date)     使用指定日期值加入带有指定名字（或代换所有此名字头标）的响应头标的方法。       </li>
+<li>void setHeader (String name,String value)     设置具有指定名字和取值的一个响应头标。       </li>
+<li>void addIntHeader (String name,int value)     使用指定整型值加入带有指定名字的响应头标（或代换此名字的所有头标）。       </li>
+<li>boolean containsHeader (String name)     如果响应已包含此名字的头标，则返回 true。       </li>
+<li>String encodeRedirectURL (String url)     如果客户端不知道接受 cookid，则向 URL 加入会话 ID。第一种形式只对在 sendRedirect () 中使用的 URL 进行调用。其他被编码的 URLs 应被传递到 encodeURL ()       </li>
+<li>String encodeURL(String url)           </li>
+<li>void sendError (int status)     设置响应状态码为指定值（可选的状态信息）。HttpServleetResponse 定义了一个完整的整数常量集合表示有效状态值。       </li>
+<li>void sendError(int status,String msg)           </li>
+<li>void setStatus (int status)     设置响应状态码为指定指。只应用于不产生错误的响应，而错误响应使用 sendError ()。     </li>
+</ul>
+<h3 id="javax-servlet-ServletContext接口"><a href="#javax-servlet-ServletContext接口" class="headerlink" title="javax.servlet.ServletContext接口"></a>javax.servlet.ServletContext 接口</h3><p>一个 servlet 上下文是 servlet 引擎提供用来服务于 Web 应用的接口。Servlet 上下文具有名字（它属于 Web 应用的名字）唯一映射到文件系统的一个目录。<br>一个 servlet 可以通过 ServletConfig 对象的 getServletContext () 方法得到 servlet 上下文的引用，如果 servlet 直接或间接调用子类 GenericServlet，则可以使用 getServletContext () 方法。</p>
+<h4 id="Web应用中servlet可以使用servlet上下文得到："><a href="#Web应用中servlet可以使用servlet上下文得到：" class="headerlink" title="Web应用中servlet可以使用servlet上下文得到："></a>Web 应用中 servlet 可以使用 servlet 上下文得到：</h4><ol>
+<li>在调用期间保存和检索属性的功能，并与其他 servlet 共享这些属性。</li>
+</ol>
+<ol start="2">
+<li>读取 Web 应用中文件内容和其他静态资源的功能。</li>
+<li>互相发送请求的方式。</li>
+<li>记录错误和信息化消息的功能。</li>
+</ol>
+<h4 id="ServletContext接口中的方法"><a href="#ServletContext接口中的方法" class="headerlink" title="ServletContext接口中的方法"></a>ServletContext 接口中的方法</h4><ul>
+<li>Object getAttribute (String name)     返回 servlet 上下文中具有指定名字的对象，或使用已指定名捆绑一个对象。从 Web 应用的标准观点看，这样的对象是全局对象，因为它们可以被同一 servlet 在另一时刻访问。或上下文中任意其他 servlet 访问。       </li>
+<li>void setAttribute (String name,Object obj)     设置 servlet 上下文中具有指定名字的对象。       </li>
+<li>Enumeration getAttributeNames ()     返回保存在 servlet 上下文中所有属性名字的枚举。       </li>
+<li>ServletContext getContext (String uripath)     返回映射到另一 URL 的 servlet 上下文。在同一服务器中 URL 必须是以 “/” 开头的绝对路径。       </li>
+<li>String getInitParameter (String name)     返回指定上下文范围的初始化参数值。此方法与 ServletConfig 方法名称不一样，后者只应用于已编码的指定 servlet。此方法应用于上下文中所有的参数。       </li>
+<li>Enumeration getInitParameterNames ()     返回（可能为空）指定上下文范围的初始化参数值名字的枚举值。       </li>
+<li>int getMajorVersion ()     返回此上下文中支持 servlet API 级别的最大和最小版本号。       </li>
+<li>int getMinorVersion()           </li>
+<li>String getMimeType (String fileName)     返回指定文件名的 MIME 类型。典型情况是基于文件扩展名，而不是文件本身的内容（它可以不必存在）。如果 MIME 类型未知，可以返回 null。       </li>
+<li>RequestDispatcher getNameDispatcher (String name)     返回具有指定名字或路径的 servlet 或 JSP 的 RequestDispatcher。如果不能创建 RequestDispatch，返回 null。如果指定路径，必须心 “/” 开头，并且是相对于 servlet 上下文的顶部。       </li>
+<li>RequestDispatcher getNameDispatcher(String path)           </li>
+<li>String getRealPath (String path)     给定一个 URI，返回文件系统中 URI 对应的绝对路径。如果不能进行映射，返回 null。       </li>
+<li>URL getResource (String path)     返回相对于 servlet 上下文或读取 URL 的输入流的指定绝对路径相对应的 URL，如果资源不存在则返回 null。       </li>
+<li>InputStream getResourceAsStream(String path)           </li>
+<li>String getServerInfo ()     返顺 servlet 引擎的名称和版本号。       </li>
+<li>void log(String message)</li>
+<li>void log (String message,Throwable t)     将一个消息写入 servlet 注册，如果给出 Throwable 参数，则包含栈轨迹。       </li>
+<li>void removeAttribute (String name)     从 servlet 上下文中删除指定属性。     </li>
+</ul>
+<h3 id="javax-servlet-http-HttpSession接口"><a href="#javax-servlet-http-HttpSession接口" class="headerlink" title="javax.servlet.http.HttpSession接口"></a>javax.servlet.http.HttpSession 接口</h3><p>HttpSession 类似于哈希表的接口，它提供了 setAttribute () 和 getAttribute () 方法存储和检索对象。HttpSession 提供了一个会话 ID 关键字，一个参与会话行为的客户端在同一会话的请求中存储和返回它。servlet 引擎查找适当的会话对象，并使之对当前请求可用。</p>
+<h4 id="HttpSession接口中的方法"><a href="#HttpSession接口中的方法" class="headerlink" title="HttpSession接口中的方法"></a>HttpSession 接口中的方法</h4><ul>
+<li>Object getAttribute (String name)     将会话中一个对象保存为指定名字，返回或删除前面保存的此名称对象。       </li>
+<li>void setAttribute(String name,Object value)           </li>
+<li>void removeAttribute(String name)           </li>
+<li>Enumeration getAttributeName ()     返回捆绑到当前会话的所有属性名的枚举值。       </li>
+<li>long getCreationTime ()     返回表示会话创建和最后访问日期和时间的一个长整型，该整型形式为 java.util.Date () 构造器中使用的形式。       </li>
+<li>long getLastAccessedTime()           </li>
+<li>String getId ()     返回会话 ID，servlet 引擎设置的一个唯一关键字。       </li>
+<li>ing getMaxInactiveInterval ()     如果没有与客户端发生交互，设置和返回会话存活的最大秒数。       </li>
+<li>void setMasInactiveInterval(int seconds)           </li>
+<li>void invalidate ()     使得会话被终止，释放其中任意对象。       </li>
+<li>boolean isNew ()     如果客户端仍未加入到会话，返回 true。当会话首次被创建，会话 ID 被传入客户端，但客户端仍未进行包含此会话 ID 的第二次请示时，返回 true。</li>
+</ul>
+<h2 id="Servlet的两种配置方式"><a href="#Servlet的两种配置方式" class="headerlink" title="Servlet的两种配置方式"></a>Servlet 的两种配置方式</h2><p>在 Servlet2.5 规范之前，通过 web.xml 文件来配置管理</p>
+<p>Servlet3.0 规范可通过 Annotation 来配置管理 Web 组件</p>
+<ol>
+<li>通过 web.xml 配置 </li>
+</ol>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">white-space</span><span class="token punctuation">:</span>pre</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">&gt;</span></span>GetApplication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">&gt;</span></span>com.fpp.GetApplication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">&gt;</span></span>
+		<span class="token comment">&lt;!-- 通过servletConfig getInitParameter()取出参数 --&gt;</span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-mapping</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">&gt;</span></span>GetApplication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/GetApplication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>使用 @WebServlet Annotation 进行配置 </li>
+</ol>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">@WebServlet(name="GetApplication",urlPatterns="/GetApplication")  
+public class GetApplication extends HttpServlet   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>@WebServlet 支持的常用属性：displayName,initParams,loadOnStartup,name,urlPatterns/value,asyncSupported</p>
+<p>如果打算使用 Annotation 来配置 Servlet，需要注意以下几点：</p>
+<ul>
+<li>不要在 web.xml 文件的根元素（<web-app--->）中指定 metadata-complete=“true”；</web-app---></li>
+<li>不要在 web.xml 文件中配置该 Servlet;</li>
+</ul>
+<h3 id="配置中各节点的含义"><a href="#配置中各节点的含义" class="headerlink" title="配置中各节点的含义"></a>配置中各节点的含义</h3><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- 配置一个servlet --&gt;</span>
+<span class="token comment">&lt;!-- servlet的配置 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- servlet的内部名称，自定义。尽量有意义 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">&gt;</span></span>ServletDemo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- servlet的类全名： 包名+简单类名 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">&gt;</span></span>lm.practice.ServletDemo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!-- servlet的映射配置 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-mapping</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- servlet的内部名称，一定要和上面的内部名称保持一致！！ --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">&gt;</span></span>ServletDemo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- servlet的映射路径（访问servlet的名称） --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/servlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以看到，在配置 Servlet 时，有两个地方需要配置，一个是<servlet> , 另一个是<servlet-mapping>，这两个一个是配置 Servlet，一个是配置其映射信息，其中<servlet>中的<servlet-name>可以随意指定，但要有一定的意义，一般取为类的名称，例如我的类名为 ServletDemo，这里取名为 ServletDemo, 下面的<servlet-class>是类的全路径，package+calssname，一定要是全路径！</servlet-class></servlet-name></servlet></servlet-mapping></servlet></p>
+<p><servlet-mapping>是映射信息，它也有一个<servlet-name>，里面的名字是对应的 Servlet 名，也就是我们上面配置的 Servlet 名字，这里是 ServletDemo，下面的是映射路径，也就是访问 Servlet 的名称，这里也是以方便和有意义为前提的，是我们在访问 Servlet 在浏览器地址栏后面输入的那个信息，例如我的映射路径命名为 /servlet，在地址栏中输入 <a target="_blank" rel="noopener" href="http://localhost/20170323/servlet">http://localhost/20170323/servlet</a></servlet-name></servlet-mapping></p>
+<p>注意：这里的映射路径一定不是丢掉 /，否则就会出错了，一定要写成 /servlet，不能是 servlet</p>
+<p>这里说一下在配置映射路径的时候，有以下两种：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>url-pattern</th>
+<th> 浏览器输入</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>精确匹配</td>
+<td> /servlet</td>
+<td><a target="_blank" rel="noopener" href="http://localhost:8080/day10/servlet">http://localhost:8080/day10/servlet</a></td>
+</tr>
+<tr>
+<td> 模糊匹配</td>
+<td> /*</td>
+<td><a target="_blank" rel="noopener" href="http://localhost:8080/20170323/%E4%BB%BB%E6%84%8F%E8%B7%AF%E5%BE%84">http://localhost:8080/20170323 / 任意路径</a></td>
+</tr>
+<tr>
+<td>模糊匹配</td>
+<td> /lm/*</td>
+<td><a target="_blank" rel="noopener" href="http://localhost:8080/20170323/lm/%E4%BB%BB%E6%84%8F%E8%B7%AF%E5%BE%84">http://localhost:8080/20170323/lm/ 任意路径</a></td>
+</tr>
+<tr>
+<td>模糊匹配</td>
+<td> *. 后缀名 </td>
+<td><a target="_blank" rel="noopener" href="http://localhost:8080/20170323/%E4%BB%BB%E6%84%8F%E8%B7%AF%E5%BE%84.do">http://localhost:8080/20170323 / 任意路径.do</a></td>
+</tr>
+<tr>
+<td> 模糊匹配</td>
+<td> *.do</td>
+<td></td>
+</tr>
+<tr>
+<td> 模糊匹配</td>
+<td> *.action</td>
+<td></td>
+</tr>
+<tr>
+<td> 模糊匹配</td>
+<td> *.html (伪静态)</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>注意：</p>
+<ol>
+<li>url-pattern 要么以 / 开头，要么以<em>开头。  绝对不能漏掉斜杠！！！！！！！！！</em></li>
+<li><em>不能同时使用两种模糊匹配，例如 /lm/</em>.do 是非法路径</li>
+<li>当有输入的 URL 有多个 servlet 同时被匹配的情况下：<ul>
+<li>精确匹配优先。（长的最像优先被匹配）</li>
+<li>以后缀名结尾的模糊匹配先级最低！！！</li>
+</ul>
+</li>
+</ol>
+<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><p>一。三大指令：</p>
+<ol>
+<li>page: 该指令是针对当前页面的指令。</li>
+<li>include: 用于指定如何包含另一个页面。</li>
+<li>tablib: 用于定义和访问自定义标签。</li>
+</ol>
+<p>二。七大动作：</p>
+<ol>
+<li>forward: 执行页面转向，将请求的处理转发到下一个页面。</li>
+<li>param: 用于传递参数，必须与其他支持参数曲标签一起使用。</li>
+<li>include: 用于动态引入一个 JSP 页面。</li>
+<li> plugin: 用于下载 JavaBean 或 Applet 到客户端执行。</li>
+<li>useBean: 使用 JavaBean。</li>
+<li>setProperty: 修改 JavaBean 实例的属性值。</li>
+<li>getProperty: 获取 JavaBean 实例的属性值。</li>
+</ol>
+<p>三。九大对象：</p>
+<ol>
+<li>application:</li>
+</ol>
+<p> javax.servlet.ServletContext 的实例，该实例代表 JSP 所属的 Web 应用本身，可用于 JSP 页面，或者 Servlet 之间交换信息。</p>
+<p>常用的方法有 getAttribute (String attNarne) , setAttribute (String attNarne , String attValue) 和 getInitPararneter (String paramNarne) 等。</p>
+<ol>
+<li>config: </li>
+</ol>
+<p>javax.servlet.ServletConfig 的实例，该实例代表该 JSP 的配置信息。常用的方法有 getInitPararneter (StringparamNarne) 及 getInitPararneternarnes () 等方法。事实上， JSP 页面通常无须配置，也就不存在配置信息。因此，该对象更多地在 Servlet 中有效。</p>
+<ol>
+<li>exception:</li>
+</ol>
+<p> java.lang.Throwable 的实例，该实例代表其他页面中的异常和错误。只有当页面是错误处理页面，即编译指令 page 的 isErrorPage 属性为 true 时，该对象才可以使用。</p>
+<p>常用的方法有 getMessageO 和 printStackTraceO 等。</p>
+<ol>
+<li>out:</li>
+</ol>
+<p> javax.servlet.jsp.JspWriter 的实例，该实例代表 JSP 页面的输出流，用于输出内容，形成 HTML 页面。</p>
+<ol>
+<li>page: </li>
+</ol>
+<p>代表该页面本身，通常没有太大用处。也就是 Servlet 中的 this，其类型就是生成的 Serlet 。</p>
+<ol>
+<li>pageContext:</li>
+</ol>
+<p>javax.servlet.jsp.PageContext 的实例，该对象代表该 JSP 页面上下文，使用该对象可以访问页面中的共享数据。</p>
+<p>常用的方法有 getServletContextO 和 getServletConfigO 等。</p>
+<ol>
+<li>request:</li>
+</ol>
+<p> javax.servlet.http:HttpServletRequest 的实例，该对象封装了一次请求，客户端的请求参数都被封装在该对象里。这是一个常用的对象，获取客户端请求参数必须使用该对象。封装请求属性，封装地址栏参数，封装表单域值。</p>
+<p>常用的方法有 getPararneter (StringparamNarne), getPararneterValues (String paramName), setAttribute (String atttibuteName,Object attributeValue),getAttribute (String attributeName) 和 setCharacterEncoding (Stringenv) 等。</p>
+<ol>
+<li>response:</li>
+</ol>
+<p> javax.servlet.http.HttpServletResponse 的实例，代表服务器对客户端的响应。通常，也很少使用该对象直接响应，输出响应使用 out 对象，而 response 对象常用于重定向。</p>
+<p>常用的方法有 sendRedirect (java.lang.Stringlocation) 等。</p>
+<ol>
+<li>session:</li>
+</ol>
+<p> javax.servlet.http.HttpSession 的实例，该对象代表一次会话。从客户端浏览器与站点建立连接起，开始会话，直到关闭浏览器时结束会话。</p>
+<p>常用的方法有:getAttribute (StringattName),setAttribute (StringattName,String attValue) 等。</p>
+<h2 id="jsp九大内置对象"><a href="#jsp九大内置对象" class="headerlink" title="jsp九大内置对象"></a>jsp 九大内置对象</h2><ol>
+<li>out 向客户端输出数据，字节流。如 out.print (“dgaweyr”);</li>
+<li>request 接收客户端的 http 请求.</li>
+</ol>
+<ul>
+<li>String getParameter (String name):   得到表单参数名 name 的值.</li>
+<li>String [] getParameterValues (String name):  (得到 String [] 复选框时常用).</li>
+<li>setAttribute (String name,Object obj):  设置属性名为 name, 属性值为 obj.</li>
+<li>getAttribute (String name);  得到属性值.</li>
+</ul>
+<ol start="3">
+<li>response: 封装 jsp 产生的回应，然后发送到客户端以响应客户的请求。重定向跳转任意界面.(服务器跳转)</li>
+</ol>
+<ul>
+<li>addCookie(Cookie cookie):</li>
+<li>sendRedirect (“/wel.jsp”): 跳转到指定页面</li>
+</ul>
+<ol start="4">
+<li> session: 用于保存用户信息，跟踪用户行为，当前打开的浏览器内，多个页面共享数据. session 对象指的是客户端与服务器的一次会话，从客户连到服务器的一个 WebApplication 开始，直到客户端与服务器断开连接为止。它是 HttpSession 类的实例.</li>
+</ol>
+<ul>
+<li>setAttribute (String name,Object obj): 设置属性名为 name, 属性值为 obj.</li>
+<li>getAttribute (String name): 得到属性值.</li>
+</ul>
+<ol start="5">
+<li>application 对象：实现了用户间数据的共享，可存放全局变量。它开始于服务器的启动，直到服务器的关闭，在此期间，此对象将一直存在；这样在用户的前后连接或不同用户之间的连接中，可以对此对象的同一属性进行操作；在任何地方对此对象属性的操作，都将影响到其他用户对此的访问。服务器的启动和关闭决定了 application 对象的生命。它是 ServletContext 类的实例.</li>
+</ol>
+<h3 id="session-application-request的区别"><a href="#session-application-request的区别" class="headerlink" title="session, application, request的区别:"></a>session, application, request 的区别:</h3><p>一个项目中 session 尽量少用几个，因为过多的 session 会影响程序的执行效率。它主要用于保存登录信息 (用户信息，权限，资源) 即频繁使用的信息.</p>
+<p>application: 用于多个浏览器之间共享数据，多个用户共享该对象，可以做计数器。它的用法与 session 完全一样.</p>
+<p>数据范围:</p>
+<p>application (服务器关闭时失效)&gt;session (浏览器关闭时失效)&gt;request (只能用于两个跳转页面之间)</p>
+<ol start="6">
+<li>page 对象代表 jsp 这个实体本身，即当前页面有效。相当于 java 中的 this.</li>
+</ol>
+<p>数据范围:page&lt;session&lt;application</p>
+<ol start="7">
+<li>exception: 代表运行时的异常.</li>
+</ol>
+<p>在会发生异常的页面加入指令:&lt;%@ page errorPage=” 处理错误的页面.jsp”%&gt;</p>
+<p>在处理异常的页面写入:&lt;%@ page isErrorPage=”true”%&gt;</p>
+<ol start="8">
+<li><p>pageContext 对象 pageContext 对象提供了对 JSP 页面内所有的对象及名字空间的访问，也就是说他可以访问到本页所在的 SESSION, 也可以取本页面所在的 application 的某一属性值，他相当于页面中所有功能的集大成者，它的本类名也叫 pageContext.</p>
+</li>
+<li><p>config  jsp 对应的 servlet 的配置，可以得到 web.xml 中的初使化参数.</p>
+</li>
+</ol>
+<h2 id="jsp七大动作"><a href="#jsp七大动作" class="headerlink" title="jsp七大动作"></a>jsp 七大动作</h2><ol>
+<li>include 动态包含 (分别编译) 用于动态引入一个 JSP 页面。</li>
+</ol>
+<p>用 jsp:include 动作实现</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp: include page="included.jsp" flush="true" /&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>它总是会检查所含文件中的变化，适合用于包含动态页面，并且可以带参数。flush 属性：用 true ，表示页面可刷新。默认为 false;</p>
+<ol start="2">
+<li>useBean 动作 (jsp 页面使用 javaBean 的第二种方式):  使用 JavaBean。</li>
+</ol>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp:useBean id="对象名" class="包名.类名" scope="作用范围(request/page/application/session)"/&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>作用域默认为 page (本页面有效).</p>
+<ol start="3">
+<li>getProperty 动作 (name 为 useBean 动作中的 id).  获取 JavaBean 实例的属性值。</li>
+</ol>
+<p>从对象中取出属性值：</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp:getProperty name="javaBean对象" property="javaBean对象属性名" /&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="4">
+<li>setProperty 动作 (name 为 useBean 动作中的 id):  修改 JavaBean 实例的属性值。</li>
+</ol>
+<p>为对象设置属性值：</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp:setProperty name="javaBean对象" property="javaBean对象属性名" value=http://www.hake.cc/kf/201109/"值"/&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>为对象设置属性值:</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp:setProperty property="javaBean对象属性名" name="javaBean对象" param="username"/&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">(param="username" 相当于 value=http://www.hake.cc/kf/201109/&lt;%=request.getParameter("username")%&gt;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="5">
+<li>param 动作 (传递参数)): 用于传递参数，必须与其他支持参数曲标签一起使用。</li>
+</ol>
+<p>到达跳转页面可以通过 request.getParameter (“参数名”) 方式取出参数值</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp:include page="转向页面的url" &gt;
+           &lt;jsp:param   name="参数名1" value=http://www.hake.cc/kf/201109/"参数值1"&gt;
+		  &lt;jsp:param   name="参数名2" value=http://www.hake.cc/kf/201109/"参数值2"&gt;
+           ...........
+&lt;/jsp:include&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>或:</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp:forward page="转向页面的url" &gt;
+           &lt;jsp:param   name="参数名1" value=http://www.hake.cc/kf/201109/"参数值1"&gt;
+           &lt;jsp:param   name="参数名2" value=http://www.hake.cc/kf/201109/"参数值2"&gt;
+           ...........
+&lt;/jsp:forward&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="6">
+<li>forward 动作：执行页面转向，将请求的处理转发到下一个页面。</li>
+</ol>
+<p>跳转页面</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp:forward page="login.jsp" /&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="7">
+<li>plugin 动作:jsp:plugin: 用于指定在客户端运行的插件 用于下载 JavaBean 或 Applet 到客户端执行。</li>
+</ol>
+<h2 id="JSP三大指令"><a href="#JSP三大指令" class="headerlink" title="JSP三大指令"></a>JSP 三大指令</h2><ol>
+<li>page 指令：该指令是针对当前页面的指令。</li>
+</ol>
+<ul>
+<li>指定页面编码。例:</li>
+</ul>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page language="java" contentType="text/html;charset=gbk" pageEncoding="gbk" %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>导入包，例:</li>
+</ul>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page import="java.util.,java.text." %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>include 指令 用于指定如何包含另一个页面。</li>
+</ol>
+<p>静态包含 (统一编译):</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ include file="included.jsp"%&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>taglib 用于定义和访问自定义标签。</li>
+</ol>
+<p>Jsp 中的静态包含与动态包含</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp: include page="included.jsp"/&gt;//动态include
+&lt;%@ include file="included.jsp"%&gt;//静态include<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>静态 include 的结果是把其他 jsp 引入当前 jsp, 两者合为一体，可以达到数据的共享即可以说是统一编译的，而<br> 动态 include 的结构是两者独立的，直到输出时才合并即为分别编译的.</li>
+<li> 动态 include 的 jsp 文件独立性很强，是一个单独的 jsp 文件，需要使用的对象，页面设置，都由自己创建，而静态 include 纯粹是把代码写在外面的一种共享方法，所有的变量都是可以和 include 它的主文件共享，两者高度紧密结合，不能 有变量同名的冲突。而页面设置也可以借用主文件的.</li>
+<li> 动态包含总是检查被包含页面的变化，静态包含不一定检查被包含页面的变化.</li>
+<li> 动态包含可带参数，静态包含不能带参数。如 <code>(&lt;jsp: include page="included.jsp"&gt;放入参数/jsp:include);</code></li>
+</ul>
+<h2 id="El表达式："><a href="#El表达式：" class="headerlink" title="El表达式："></a>El 表达式：</h2><p>​         ${} ：可以自动获取域中对象，request，session，application，pageContext，EL 找不到返回空白字符串。</p>
+<p>​    EL 表达式中 11 大内置对象</p>
+<p>​           1，pageContext        获取页面 context 的 Map 对象     </p>
+<p>​           2，pageScope        获取页面域的 Map 对象</p>
+<p>​           3，requestScope        获取 request 域的 Map 对象</p>
+<p>​           4，sessionScope        获取 session 域 Map 对象</p>
+<p>​           5，applicationScope      获取 context 的 Map 对象</p>
+<p>​           6，param                     获取一个请求参数</p>
+<p>​           7，paramValues        获取一个请求参数数组    </p>
+<p>​           8， header                  获取一个请求域对象</p>
+<p>​           9，headerValues</p>
+<p>​          10，cookies</p>
+<p>​          11，initParam               获取 web.xml 中的参数</p>
+<p>El 表达式中可以直接获取域中的数据：</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%  
+     pageContext.setAttribute("NAME","哈哈");  
+ %&gt;              
+ 姓名：${NAME}&lt;br/&gt;  
+ &lt;hr/&gt;  
+ &lt;%  
+     User user = new User(2015,"呵呵",10000D);  
+     request.setAttribute("USER",user);  
+ %&gt;  
+ 编号：${USER.id}&lt;br/&gt;  
+ 姓名：${USER.name}&lt;br/&gt;&lt;!--自动调用getter方法--&gt;  
+ 薪水：${USER.sal}&lt;br/&gt;  
+ &lt;hr/&gt;  
+ &lt;%  
+     List&lt;String&gt; nameList = new ArrayList&lt;String&gt;();  
+     nameList.add("A");  
+     nameList.add("B");  
+     nameList.add("C");  
+     session.setAttribute("NAMELIST",nameList);      
+ %&gt;  
+ 第二个元素是：${NAMELIST[1]}&lt;br/&gt;  
+ &lt;hr/&gt;  
+ &lt;%  
+     Map&lt;String,Integer&gt; map = new LinkedHashMap&lt;String,Integer&gt;();  
+     map.put("jack",10000);  
+     map.put("marry",12000);  
+     map.put("sisi",14000);  
+     application.setAttribute("MAP",map);      
+ %&gt;  
+ SISI的工资是：${MAP['sisi']}&lt;br/&gt;  
+ &lt;hr/&gt;  
+ &lt;%  
+     String[] strArray = {"北京","上海","广州","深圳"};  
+     pageContext.setAttribute("STRARRAY",strArray);  
+ %&gt;  
+ 你目前所在的城市是：${STRARRAY[2]}&lt;br/&gt;      
+ &lt;hr/&gt;  
+ 姓名：${NAMEE}&lt;br/&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>EL 表达式中的运算符：</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page language="java" pageEncoding="UTF-8"%&gt;  
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;  
+&lt;html&gt;  
+  &lt;body&gt;  
+      
+    10+3=${10+3}&lt;br/&gt;  
+    10-3=${10-3}&lt;br/&gt;  
+    10*3=${10*3}&lt;br/&gt;  
+    10/3=${10/3}&lt;br/&gt;  
+    10%3=${10%3}&lt;br/&gt;  
+    &lt;hr/&gt;  
+    true &amp;&amp; false = ${true &amp;&amp; false}&lt;br/&gt;  
+    true || false = ${true || false}&lt;br/&gt;  
+    ! false = ${! false}&lt;br/&gt;  
+    &lt;hr/&gt;  
+    10&gt;3=${10&gt;3}&lt;br/&gt;  
+    10!=3=${10 ne 3}&lt;br/&gt;  
+    10==3=${10 eq 3}&lt;br/&gt;  
+      
+  &lt;/body&gt;  
+&lt;/html&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>EL 表达式中的三木运算符：</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page language="java" pageEncoding="UTF-8"%&gt;  
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;  
+&lt;html&gt;  
+  &lt;body&gt;  
+    &lt;%  
+          
+        pageContext.setAttribute("city","深圳");  
+    %&gt;  
+    城市：  
+    &lt;select name="city"&gt;  
+        &lt;option&gt;选择城市&lt;/option&gt;  
+        &lt;option ${city=='北京'?'selected':''}&gt;北京&lt;/option&gt;  
+        &lt;option ${city=='上海'?'selected':''}&gt;上海&lt;/option&gt;  
+        &lt;option ${city=='深圳'?'selected':''}&gt;深圳&lt;/option&gt;  
+        &lt;option ${city=='广州'?'selected':''}&gt;广州&lt;/option&gt;  
+    &lt;/select&gt;              
+  &lt;/body&gt;  
+&lt;/html&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page language="java" pageEncoding="UTF-8"%&gt;  
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;  
+&lt;html&gt;  
+  &lt;body&gt;  
+    当前web应用的根目录名：${pageContext.request.contextPath}&lt;br/&gt;  
+    &lt;a href="${pageContext.request.contextPath}/el/03_el.jsp"&gt;点点&lt;/a&gt;&lt;br/&gt;  
+    &lt;%  
+        session.setAttribute("NAME","哈哈");  
+    %&gt;      
+    姓名：${sessionScope.NAME}&lt;br/&gt;  
+    参数值：${param.name}&lt;br/&gt;  
+    第三个爱好是：${paramValues.like[2]}&lt;br/&gt;  
+    请求头1：${header.host}&lt;br/&gt;  
+    请求头2：${headerValues["Accept-Encoding"][0]}&lt;br/&gt;  
+    cookie的名：${cookie.PASS.name}&lt;br/&gt;  
+    cookie的值：${cookie.PASS.value}&lt;br/&gt;  
+    &lt;hr/&gt;  
+    web初始化参数之driver为：${initParam.driver}&lt;br/&gt;  
+    web初始化参数之url为：${initParam.url}&lt;br/&gt;  
+      
+  &lt;/body&gt;  
+&lt;/html&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="JSP-JSTL标签库—-函数fn"><a href="#JSP-JSTL标签库—-函数fn" class="headerlink" title="JSP-JSTL标签库—-函数fn"></a>JSP-JSTL 标签库 —- 函数 fn</h2><p>​    1，导入相关的 jstl 包</p>
+<p>​    2，要在使用 jstl 的页面中用 taglib 指令引入相关包</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %&gt;  
+	   fn:toLowerCase("str")       字符串变成小写
+       fn:toUpperCase("str")       字符串变成大写
+       fn:trim("str")                       去掉字符串两端空白
+       fn:split("String","regex")     切割字符串
+       fn:join("array","#")              用#把array中每个元素连接
+       fn:indexOf("str","s")           返回第二个参数在第一个参数首次出现的位置    
+       fn:contains("s1","s2")         返回第二个参数是否包含在第一个参数
+       fn:startsWith("s1","s2")      第一个参数是否以第二个参数开头        
+       fn:endsWith("s1","s2")       第一个参数是否以第二个参数结尾    
+       fn:replace("s1","s2","s3")   把s1中的所有s2用s3替换
+       fn:substring("s1",a,b)         把s1中的第a个字符到b-1个字符截取出来
+       fn:substringAfter()              ${fn:substringAfter("www@163@com","@")}
+       fn:substringBefore()           ${fn:substringBefore("www@163@com","@")}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="JSP-JSTL标签库—核心core"><a href="#JSP-JSTL标签库—核心core" class="headerlink" title="JSP-JSTL标签库—核心core"></a>JSP-JSTL 标签库 — 核心 core</h2><h3 id="lt-c-out-gt-标签-—–把内容输出到浏览器"><a href="#lt-c-out-gt-标签-—–把内容输出到浏览器" class="headerlink" title="<c:out>标签 —–把内容输出到浏览器"></a>&lt;c:out&gt; 标签 —–把内容输出到浏览器</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%&gt;  
+&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt;  
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;  
+&lt;html&gt;  
+  &lt;head&gt;  
+   &lt;%  
+       pageContext.setAttribute("script", "&lt;script&gt;alert('哈哈');&lt;/script&gt;");  
+    %&gt;  
+  &lt;/head&gt;  
+   
+  &lt;body&gt;  
+  &lt;!-- 
+      escapeXml="false" 表示不转义js代码 
+   --&gt;  
+     &lt;c:out value="${script} }" escapeXml="false"/&gt;  
+  &lt;/body&gt;  
+&lt;/html&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="lt-c-set-gt-标签-—-把数据绑定到域中"><a href="#lt-c-set-gt-标签-—-把数据绑定到域中" class="headerlink" title="<c:set>标签 —- 把数据绑定到域中"></a>&lt;c:set&gt; 标签 —- 把数据绑定到域中</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%&gt;  
+&lt;%@ page import="itcast.util.User" %&gt;  
+&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt;  
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;  
+&lt;html&gt;  
+  &lt;head&gt;  
+    &lt;title&gt;My JSP '02_c_set.jsp' starting page&lt;/title&gt;  
+    &lt;meta http-equiv="pragma" content="no-cache"&gt;  
+    &lt;meta http-equiv="cache-control" content="no-cache"&gt;  
+    &lt;meta http-equiv="expires" content="0"&gt;      
+    &lt;meta http-equiv="keywords" content="keyword1,keyword2,keyword3"&gt;  
+    &lt;meta http-equiv="description" content="This is my page"&gt;  
+  
+  &lt;/head&gt;  
+   
+  &lt;body&gt;  
+      &lt;!--  
+          class User{  
+              private String id;  
+              private String name;  
+              public void setId(String id){  
+                  this.id = id;  
+              }  
+              public void setName(String name){  
+                  this.name = name;  
+              }  
+              public String getId(){  
+                  return this.id;  
+              }  
+              public String getName(){  
+                  return this.name;  
+              }  
+          }  
+       --&gt;  
+    &lt;%  
+     User user = new User();  
+     pageContext.setAttribute("USER", user);  
+    %&gt;  
+    &lt;c:set target="${pageScope.USER}" property="id" value="2015"/&gt;  
+    &lt;c:set target="${pageScope.USER}" property="name" value="笨笨"/&gt;  
+      
+    编号:${pageScope.USER.id}&lt;br/&gt;  
+    姓名:${pageScope.USER.name}  
+      
+  &lt;/body&gt;  
+&lt;/html&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="lt-c-remove-gt-标签"><a href="#lt-c-remove-gt-标签" class="headerlink" title="<c:remove>标签"></a>&lt;c:remove&gt; 标签</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;c:remove var="NAME" scope="page"/&gt;  移除pageContext域中的名为NAME的数据<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="lt-c-catch-gt-标签"><a href="#lt-c-catch-gt-标签" class="headerlink" title="<c:catch>标签"></a>&lt;c:catch&gt; 标签</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;c:catch var="myError"&gt;   
+           &lt;% int i = 10/0; %&gt;
+    &lt;/c:catch&gt;
+    原因为：${myError.message}&lt;br/&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="lt-c-if-gt-标签"><a href="#lt-c-if-gt-标签" class="headerlink" title="<c:if>标签"></a>&lt;c:if&gt; 标签</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;c:if test="判断条件"&gt;
+ &lt;/c:if&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="lt-c-choose-gt-和-lt-c-when-gt-lt-c-otherwise-gt-标签"><a href="#lt-c-choose-gt-和-lt-c-when-gt-lt-c-otherwise-gt-标签" class="headerlink" title="<c:choose>和<c:when><c:otherwise>标签"></a>&lt;c:choose&gt; 和 &lt; c:when&gt;&lt;c:otherwise &gt; 标签</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;c:choose&gt;
+         &lt;c:when test=""&gt;
+         &lt;/c:when&gt;
+         &lt;c:when test=""&gt;
+         &lt;/c:when&gt;
+         &lt;c:when test=""&gt;
+         &lt;/c:when&gt;
+         &lt;c:otherwise&gt;
+         &lt;/c:otherwise&gt;
+   &lt;/c:choose&gt;    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="lt-c-forEach-var-items-gt-标签"><a href="#lt-c-forEach-var-items-gt-标签" class="headerlink" title="<c:forEach var items/>标签"></a>&lt;c:forEach var items/&gt; 标签</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page language="java" pageEncoding="UTF-8"%&gt;  
+&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt;  
+&lt;%@ page import="java.util.*" %&gt;  
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;  
+&lt;html&gt;  
+  &lt;body&gt;  
+      
+    &lt;%  
+        List&lt;String&gt; nameList = new ArrayList&lt;String&gt;();  
+        nameList.add("小德子");  
+        nameList.add("小格子");  
+        nameList.add("小桌子");  
+        nameList.add("小羊子");  
+        nameList.add("小凳子");  
+        pageContext.setAttribute("NAMELIST",nameList);      
+    %&gt;          
+    &lt;table border="2" align="center"&gt;          
+        &lt;tr&gt;  
+            &lt;th&gt;索引&lt;/th&gt;  
+            &lt;th&gt;编号&lt;/th&gt;  
+            &lt;th&gt;姓名&lt;/th&gt;  
+            &lt;th&gt;是第一个元素吗&lt;/th&gt;  
+            &lt;th&gt;是最后个元素吗&lt;/th&gt;  
+        &lt;/tr&gt;          
+        &lt;c:forEach var="xxx" items="${NAMELIST}" varStatus="stat" begin="0" end="2"&gt;  
+            &lt;tr&gt;  
+                &lt;td&gt;  
+                    ${stat.index}  
+                &lt;/td&gt;  
+                &lt;td&gt;  
+                    ${stat.count}  
+                &lt;/td&gt;  
+                &lt;td&gt;  
+                    ${xxx}  
+                &lt;/td&gt;  
+                &lt;td&gt;  
+                    ${stat.first}  
+                &lt;/td&gt;  
+                &lt;td&gt;  
+                    ${stat.last}  
+                &lt;/td&gt;  
+            &lt;/tr&gt;  
+        &lt;/c:forEach&gt;  
+    &lt;/table&gt;                  
+  &lt;/body&gt;  
+&lt;/html&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="lt-c-url-gt-和-lt-c-param-gt-标签"><a href="#lt-c-url-gt-和-lt-c-param-gt-标签" class="headerlink" title="<c:url>和<c:param>标签"></a>&lt;c:url&gt; 和 &lt; c:param &gt; 标签</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;!-- /表示当前web应用的根目录 --&gt;
+      &lt;c:url var="downURL" value="/DownloadServlet"&gt;
+          &lt;!-- c:param负责编码 --&gt;
+          &lt;c:param name="filename" value="三国123abc"/&gt;
+      &lt;/c:url&gt;
+    &lt;a href="${downURL}" style="text-decoration:none"&gt;
+        下载三图[GET]
+    &lt;/a&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="lt-c-redirect-gt-标签"><a href="#lt-c-redirect-gt-标签" class="headerlink" title="<c:redirect>标签"></a>&lt;c:redirect&gt; 标签</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;c:redirect url="/core/07_c_forEach.jsp"/&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="jsp-forward标签"><a href="#jsp-forward标签" class="headerlink" title="jsp:forward标签"></a>jsp:forward 标签</h3><pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;jsp:forward page="/core/07_c_forEach.jsp"/&gt;   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Jsp监听器"><a href="#Jsp监听器" class="headerlink" title="Jsp监听器"></a>Jsp 监听器</h2><p>参考 <a target="_blank" rel="noopener" href="http://blog.csdn.net/u011024652/article/details/52293932">http://blog.csdn.net/u011024652/article/details/52293932</a></p>
+<h2 id="Jsp过滤器"><a href="#Jsp过滤器" class="headerlink" title="Jsp过滤器"></a>Jsp 过滤器</h2><p>参考 <a target="_blank" rel="noopener" href="http://blog.csdn.net/u011024652/article/details/52186200">http://blog.csdn.net/u011024652/article/details/52186200</a></p>
+<h2 id="Jsp分页"><a href="#Jsp分页" class="headerlink" title="Jsp分页"></a>Jsp 分页</h2><p>参考 <a target="_blank" rel="noopener" href="http://blog.csdn.net/u011054333/article/details/54632265">http://blog.csdn.net/u011054333/article/details/54632265</a></p>
+<h2 id="Jsp上传文件"><a href="#Jsp上传文件" class="headerlink" title="Jsp上传文件"></a>Jsp 上传文件</h2><p>参考 <a target="_blank" rel="noopener" href="http://blog.csdn.net/sinat_34803353/article/details/53249354">http://blog.csdn.net/sinat_34803353/article/details/53249354</a></p>
+<h1 id="AJax"><a href="#AJax" class="headerlink" title="AJax"></a>AJax</h1><h2 id="JSON-语法"><a href="#JSON-语法" class="headerlink" title="JSON 语法"></a>JSON 语法</h2><hr>
+<p>JSON 语法是 JavaScript 语法的子集。</p>
+<hr>
+<h3 id="JSON-语法规则"><a href="#JSON-语法规则" class="headerlink" title="JSON 语法规则"></a>JSON 语法规则</h3><p>JSON 语法是 JavaScript 对象表示语法的子集。</p>
+<ul>
+<li>数据在名称 / 值对中</li>
+<li>数据由逗号分隔</li>
+<li>大括号保存对象</li>
+<li>中括号保存数组</li>
+</ul>
+<hr>
+<h3 id="JSON-名称-值对"><a href="#JSON-名称-值对" class="headerlink" title="JSON 名称/值对"></a>JSON 名称 / 值对</h3><p>JSON 数据的书写格式是：名称 / 值对。</p>
+<p>名称 / 值对包括字段名称（在双引号中），后面写一个冒号，然后是值：</p>
+<p><code>"name" : "菜鸟教程"</code></p>
+<p>这很容易理解，等价于这条 JavaScript 语句：</p>
+<p>name = “菜鸟教程”</p>
+<hr>
+<h3 id="JSON-值"><a href="#JSON-值" class="headerlink" title="JSON 值"></a>JSON 值</h3><p>JSON 值可以是：</p>
+<ul>
+<li>数字（整数或浮点数）</li>
+<li>字符串（在双引号中）</li>
+<li>逻辑值（true 或 false）</li>
+<li>数组（在中括号中）</li>
+<li>对象（在大括号中）</li>
+<li>null</li>
+</ul>
+<hr>
+<h3 id="JSON-数字"><a href="#JSON-数字" class="headerlink" title="JSON 数字"></a>JSON 数字</h3><p>JSON 数字可以是整型或者浮点型：</p>
+<p><code>{ "age":30 }</code></p>
+<hr>
+<h3 id="JSON-对象"><a href="#JSON-对象" class="headerlink" title="JSON 对象"></a>JSON 对象</h3><p>JSON 对象在大括号（{}）中书写：</p>
+<p>对象可以包含多个名称 / 值对：</p>
+<p><code>{ "name":"菜鸟教程" , "url":"www.runoob.com" }</code></p>
+<p>这一点也容易理解，与这条 JavaScript 语句等价：</p>
+<p><code>name = "菜鸟教程"url = "www.runoob.com"</code></p>
+<hr>
+<h3 id="JSON-数组"><a href="#JSON-数组" class="headerlink" title="JSON 数组"></a>JSON 数组</h3><p>JSON 数组在中括号中书写：</p>
+<p>数组可包含多个对象：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span><span class="token property">"sites"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"菜鸟教程"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.runoob.com"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"google"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.google.com"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"微博"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.weibo.com"</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在上面的例子中，对象 “sites” 是包含三个对象的数组。每个对象代表一条关于某个网站（name、url）的记录。</p>
+<hr>
+<h3 id="JSON-布尔值"><a href="#JSON-布尔值" class="headerlink" title="JSON 布尔值"></a>JSON 布尔值</h3><p>JSON 布尔值可以是 true 或者 false：</p>
+<p><code>{ "flag":true }</code></p>
+<hr>
+<h3 id="JSON-null"><a href="#JSON-null" class="headerlink" title="JSON null"></a>JSON null</h3><p>JSON 可以设置 null 值：</p>
+<p><code>{ "runoob":null }</code></p>
+<hr>
+<h3 id="JSON-使用-JavaScript-语法"><a href="#JSON-使用-JavaScript-语法" class="headerlink" title="JSON 使用 JavaScript 语法"></a>JSON 使用 JavaScript 语法</h3><p>因为 JSON 使用 JavaScript 语法，所以无需额外的软件就能处理 JavaScript 中的 JSON。</p>
+<p>通过 JavaScript，您可以创建一个对象数组，并像这样进行赋值：</p>
+<hr>
+<h3 id="JSON-文件"><a href="#JSON-文件" class="headerlink" title="JSON 文件"></a>JSON 文件</h3><ul>
+<li>JSON 文件的文件类型是 “.json”</li>
+<li>JSON 文本的 MIME 类型是 “application/json”</li>
+</ul>
+<h2 id="JS中使用Json"><a href="#JS中使用Json" class="headerlink" title="JS中使用Json"></a>JS 中使用 Json</h2><p>参考： <a target="_blank" rel="noopener" href="http://blog.csdn.net/xujie3/article/details/52954940">http://blog.csdn.net/xujie3/article/details/52954940</a></p>
+<h2 id="Java对象和Json互转"><a href="#Java对象和Json互转" class="headerlink" title="Java对象和Json互转"></a>Java 对象和 Json 互转</h2><p>参考： <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangf-keep/p/6480019.html">https://www.cnblogs.com/wangf-keep/p/6480019.html</a></p>
+<h2 id="XMLHttpRequest对象"><a href="#XMLHttpRequest对象" class="headerlink" title="XMLHttpRequest对象"></a>XMLHttpRequest 对象</h2><p>参考： <a target="_blank" rel="noopener" href="http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_create.asp">http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_create.asp</a></p>
+<h2 id="使用jQuery实现ajax"><a href="#使用jQuery实现ajax" class="headerlink" title="使用jQuery实现ajax"></a>使用 jQuery 实现 ajax</h2><p>参考:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jackcheblog/p/7065421.html">https://www.cnblogs.com/jackcheblog/p/7065421.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/starof/p/6434791.html">https://www.cnblogs.com/starof/p/6434791.html</a></li>
+</ul>
+<h2 id="Ajax获取Json数据"><a href="#Ajax获取Json数据" class="headerlink" title="Ajax获取Json数据"></a>Ajax 获取 Json 数据</h2><p>参考： <a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangyongl/p/6399955.html">https://www.cnblogs.com/zhangyongl/p/6399955.html</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/02/23/56228.shtml" title="Java 成神之路 - Tomcat、Jsp&#x2F;servlet、Ajax（八）">https://onxs.github.io/2018/02/23/56228.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/02/23/786.shtml" rel="prev" title="Java 成神之路 - 数据库、PowerDesigner、JDBC（七）">
+                  <i class="fa fa-chevron-left"></i> Java 成神之路 - 数据库、PowerDesigner、JDBC（七）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/02/24/52460.shtml" rel="next" title="重构思想">
+                  重构思想 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="4e6446623ac1f375ed9be807dbb38dc5"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/02/23/56228.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

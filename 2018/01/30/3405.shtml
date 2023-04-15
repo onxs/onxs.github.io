@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/01/30/3405.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/01/30/3405.shtml","path":"2018/01/30/3405.shtml","title":"hybrid app 技术开发 APP 应用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>hybrid app 技术开发 APP 应用 | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%AE%89%E8%A3%85%E6%97%B6%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">第一部分  安装时总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#win%E7%B3%BB%E7%BB%9F%E4%B8%8Bnodejs%E5%AE%89%E8%A3%85%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.1.</span> <span class="nav-text">win 系统下 nodejs 安装及环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E4%B8%8B%E8%BD%BDnodejs"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">第一步：下载 nodejs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85nodejs"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">第二步：安装 nodejs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9Anpm%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">第三步：npm 安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">第四步：安装相关环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85CoffeeScript"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">第五步：安装 CoffeeScript</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9A%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.0.1.6.</span> <span class="nav-text">第六步：创建项目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E6%AD%A5-%E5%88%9B%E5%BB%BAcordova%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.0.1.7.</span> <span class="nav-text">第七步 创建 cordova 项目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E6%AD%A5-%E5%AE%89%E8%A3%85Android-SDK"><span class="nav-number">1.0.1.8.</span> <span class="nav-text">第八步 安装 Android SDK</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B9%9D%E6%AD%A5-%E5%AE%89%E8%A3%85Ionic"><span class="nav-number">1.0.1.9.</span> <span class="nav-text">第九步 安装 Ionic</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E6%AD%A5-%E5%AE%89%E8%A3%85gulp%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81%E5%90%88%E5%B9%B6-%E6%B7%B7%E6%B7%86%E5%B7%A5%E5%85%B7"><span class="nav-number">1.0.1.10.</span> <span class="nav-text">第十步 安装 gulp 相关代码合并。混淆工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E6%AD%A5-%E7%BC%96%E8%AF%91%E6%B5%8B%E8%AF%95"><span class="nav-number">1.0.1.11.</span> <span class="nav-text">第十一步 编译测试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E7%82%B9%E9%9B%86%E5%90%88"><span class="nav-number">1.0.2.</span> <span class="nav-text">重点集合</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ionic%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E6%88%96%E8%80%85cordova%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">ionic 安装失败或者 cordova 安装失败解决方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">第二部分 开发过程总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Angular-%E6%8F%90%E4%BE%9B3%E7%A7%8D%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA%E5%B9%B6%E6%B3%A8%E5%86%8C%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Angular 提供 3 种方法创建并注册服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bower%E5%AE%89%E8%A3%85restangular%E5%A4%B1%E8%B4%A5"><span class="nav-number">2.0.2.</span> <span class="nav-text">bower 安装 restangular 失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#restangular%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E7%9A%84js"><span class="nav-number">2.0.3.</span> <span class="nav-text">restangular 需要用到的 js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">2.0.4.</span> <span class="nav-text">跨域错误解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96"><span class="nav-number">2.0.5.</span> <span class="nav-text">国际化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AngularJS-iframe%E8%B7%A8%E5%9F%9F%E6%89%93%E5%BC%80%E5%86%85%E5%AE%B9%E6%97%B6%E6%8A%A5%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">2.0.6.</span> <span class="nav-text">AngularJS iframe 跨域打开内容时报错误的解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E4%B8%8D%E5%90%8C%E5%9F%9F%E7%9A%84%E5%86%85%E5%AE%B9%E6%97%B6%E6%8A%A5%E4%B8%8B%E9%9D%A2%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">2.0.7.</span> <span class="nav-text">打开不同域的内容时报下面的错误</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/01/30/3405.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="hybrid app 技术开发 APP 应用 | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hybrid app 技术开发 APP 应用<a href="https://github.com/onxs/blog/tree/dev/source/_posts/Android/POST24.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-30 15:44:36" itemprop="dateCreated datePublished" datetime="2018-01-30T15:44:36+08:00">2018-01-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ionic/" itemprop="url" rel="index"><span itemprop="name">ionic</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="hybrid app 技术开发 APP 应用" href="/2018/01/30/3405.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::8ca947bebf4f971a97eff72bc8801de0" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0107.jpg" alt="image"></p>
+<p>hybrid app 技术开发 APP 应用。而现在主流的 <strong>Hybrid app</strong> 框架是 <strong>phonegap</strong>。在使用 phonegap 做混合式开发之前需要下载很多软件及插件。如：<strong>JavaJDK、node.js、cordova、ionic、Android studio、AndroidSDK</strong> 等软件及相应的插件。（请不要下载 phonegap 应用程序，不要混淆）<br>下面就来简单介绍一下，如何安装 cordova 和 ionic 及常用的命令总结。</p>
+<span id="more"></span>
+<h2 id="第一部分-安装时总结"><a href="#第一部分-安装时总结" class="headerlink" title="第一部分  安装时总结"></a>第一部分  安装时总结</h2><h4 id="win系统下nodejs安装及环境配置"><a href="#win系统下nodejs安装及环境配置" class="headerlink" title="win系统下nodejs安装及环境配置"></a>win 系统下 nodejs 安装及环境配置</h4><h5 id="第一步：下载nodejs"><a href="#第一步：下载nodejs" class="headerlink" title="第一步：下载nodejs"></a>第一步：下载 nodejs</h5><p>官网：<a target="_blank" rel="noopener" href="http://nodejs.org/download/">http://nodejs.org/download/</a></p>
+<h5 id="第二步：安装nodejs"><a href="#第二步：安装nodejs" class="headerlink" title="第二步：安装nodejs"></a>第二步：安装 nodejs</h5><ol>
+<li><p>下载完成之后，双击”node-v0.10.28-x86.msi”，开始安装 nodejs，自定义安装在 D:\dev\nodejs 下面。</p>
+</li>
+<li><p>在 cmd 控制台输入：node -v，控制台将打印出：v0.10.28，出现版本提示表示安装成功。</p>
+</li>
+<li><p>该引导步骤会将 node.exe 文件安装到 D:\dev\nodejs\ 目录下，并将该目录添加进 PATH 环境变量。</p>
+</li>
+</ol>
+<h5 id="第三步：npm安装"><a href="#第三步：npm安装" class="headerlink" title="第三步：npm安装"></a>第三步：npm 安装</h5><p>由于新版的 nodejs 已经集成了 npm，所以之前 npm 也一并安装好了。同样可以使用 cmd 命令行输入”npm -v” 来测试是否成功安装。出现版本提示表示安装成功。</p>
+<h5 id="第四步：安装相关环境"><a href="#第四步：安装相关环境" class="headerlink" title="第四步：安装相关环境"></a>第四步：安装相关环境</h5><pre><code>npm install -g express-generator
+npm install jade -g
+npm install mysql -g
+</code></pre>
+<p>默认情况下上述组件都是安装在 D:\dev\nodejs\node_modules 文件夹下，这也是 nodejs 相关组件的自动查找路径。</p>
+<h5 id="第五步：安装CoffeeScript"><a href="#第五步：安装CoffeeScript" class="headerlink" title="第五步：安装CoffeeScript"></a>第五步：安装 CoffeeScript</h5><pre class="line-numbers language-none"><code class="language-none">npm install coffee-script -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>确认安装的命令：coffee -v，出现版本号表示成功安装。</p>
+<p>补充说明：<br>所有命令都是 - g 进行全局安装的，这样安装的安装包都在当前用户下，在磁盘的所有其他地方都可以访问到，比较方面。否则安装在当前目录下，只能在当前目录下使用。</p>
+<p>安装 express 问题<br>安装 nodejs 安装包后，通过 npm 安装 express 后，运行 express 提示” express” 不是内部或外部命令，原因是版本问题，当前版本是 4.0.0，改成 3.5.0 即可运行。</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install -g express@3.5.0 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注意：express 测试版本用大写 V</p>
+<p>npm 命令集合：</p>
+<ol>
+<li>npm install moduleNames：安装 Node 模块</li>
+</ol>
+<ul>
+<li><p> npm install express<br>默认会安装 express 的最新版本，也可以通过在后面加版本号的方式安装指定版本，如 npm install <a href="mailto:express@3.0.6">express@3.0.6</a></p>
+</li>
+<li><p>npm install <name> -g<br>将包安装到全局环境中</name></p>
+<p>但是代码中，直接通过 require () 的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了 vmarket 后，就可以在命令行中直接运行 vm 命令</p>
+</li>
+<li><p>npm install <name> –save<br>安装的同时，将信息写入 package.json 中项目路径中如果有 package.json 文件时，直接使用 npm install 方法就可以根据 dependencies 配置安装所有的依赖包，这样代码提交到 github 时，就不用提交 node_modules 这个文件夹了。</name></p>
+</li>
+</ul>
+<ol start="2">
+<li>全局安装命令为 npm install -g moduleName。</li>
+<li>npm view moduleNames：查看 node 模块的 package.json 文件夹</li>
+<li> npm list：查看当前目录下已安装的 node 包</li>
+<li> npm help：查看帮助命令</li>
+<li> npm view moudleName dependencies：查看包的依赖关系</li>
+<li> npm view moduleName repository.url：查看包的源文件地址</li>
+<li> npm view moduleName engines：查看包所依赖的 Node 的版本</li>
+<li> npm help folders：查看 npm 使用的所有文件夹</li>
+<li> npm rebuild moduleName：用于更改包内容后进行重建</li>
+<li> npm outdated：检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新</li>
+<li> npm update moduleName：更新 node 模块</li>
+<li> npm uninstall moudleName：卸载 node 模块</li>
+<li>一个 npm 包是包含了 package.json 的文件夹，package.json 描述了这个文件夹的结构。访问 npm 的 json 文件夹的方法如下：</li>
+</ol>
+<ul>
+<li>$ npm help json 此命令会以默认的方式打开一个网页，如果更改了默认打开程序则可能不会以网页的形式打开。</li>
+</ul>
+<ol start="15">
+<li>发布一个 npm 包的时候，需要检验某个包名是否已存在 $ npm search packageName</li>
+<li>npm init：会引导你创建一个 package.json 文件，包括名称。版本。作者这些信息等</li>
+<li> npm root：查看当前包的安装路径</li>
+<li> npm root -g：查看全局的包的安装路径</li>
+<li> npm -v：查看 npm 安装的版本</li>
+<li> npm install –save moduleName 安装模块到本目录</li>
+</ol>
+<p>更多命令请参看 npm 官方文档：<a target="_blank" rel="noopener" href="https://www.npmjs.org/doc/">https://www.npmjs.org/doc/</a></p>
+<ol start="21">
+<li>npm install -g cnpm –registry=<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org(npm镜像源指向淘宝)/">https://registry.npm.taobao.org（npm 镜像源指向淘宝）</a> </li>
+<li>cnpm install -g cordova ionic（安装 cordova ionic） </li>
+<li>cnpm update -g cordova ionic（更新 cordova ionic） </li>
+<li>ionic -help（查看帮助） </li>
+<li>ionic -v（查看版本） </li>
+<li>ionic start myApp blank（空项目） </li>
+<li>ionic start myApp tabs（带导航条） </li>
+<li>ionic start myApp sidemenu（带侧滑菜单） </li>
+<li>ionic platform add android（添加 android 平台） </li>
+<li>ionic platform remove android（移除 android 平台） </li>
+<li>ionic build android（编译项目 apk）</li>
+<li>ionic emulate android（运行项目 apk 手机连接在手机运行 模拟器连接在模拟器运行） </li>
+<li>ionic run android （相当于 build + emulate） </li>
+<li>ionic serve （开启服务调试） </li>
+<li>ionic build ios（编译项目 ipk）</li>
+<li>ionic emulate ios（运行项目 ipk） </li>
+</ol>
+<h5 id="第六步：创建项目"><a href="#第六步：创建项目" class="headerlink" title="第六步：创建项目"></a>第六步：创建项目</h5><pre><code>express /tmp/foo &amp;&amp; cd /tmp/foo
+npm install //下载依赖包
+npm start //启动项目
+</code></pre>
+<p>目录介绍:</p>
+<pre><code>node_moduls  存放所有的项目依赖库
+package.json  项目依赖配置及开发者信息
+app.js 程序启动文件
+public 静态文件（css js img）
+routes 路由文件（MVC中的C，controller）
+Viesws 页面文件（Ejs模板）
+</code></pre>
+<h5 id="第七步-创建cordova项目"><a href="#第七步-创建cordova项目" class="headerlink" title="第七步 创建cordova项目"></a>第七步 创建 cordova 项目</h5><p>（注意：当第一次创建或编译项目的时候，可能系统会自动下载一些东西，需要一些时间。）</p>
+<ol>
+<li>在某个目录下创建 cordova 项目，打开命令行</li>
+</ol>
+<p>输入：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cordova  create  <span class="token builtin class-name">test</span>  com.cordova.test   <span class="token builtin class-name">test</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p> （创建 cordova 工程  &lt;文件夹名&gt; &lt; 包名 &gt; &lt;app 名 &gt;）</p>
+<ol start="2">
+<li>文件夹目录</li>
+</ol>
+<ul>
+<li> hooks：存放自定义 cordova 命令的脚本文件。每个 project 命令都可以定义 before 和 after 的 Hook，比如：before_build、after_build。没用过，不展开了。</li>
+<li>platforms：平台目录，各自的平台代码就放在这里，可以放一下平台专属的代码，现在这个目录应该是空的，后面会介绍如何创建平台。</li>
+<li>plugins：插件目录，安装的插件会放在这里。后面会有专门的文章介绍开发插件。</li>
+<li>www：最重要的目录，存放项目主题的 HTML5 和 JS 代码的目录。app 一开始打开的就是这个目录中 index.html 文件。</li>
+<li>config.xml：主要是 cordova 的一些配置，比如：项目使用了哪些插件、应用图标 icon 和启动页面 SplashScreen，修改 app 的版本，名字等信息，还有平台的配置。</li>
+</ul>
+<ol start="3">
+<li>添加平台支持</li>
+</ol>
+<p>用命令行打开对应的文件夹，</p>
+<p>添加平台 输入：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cordova platforms <span class="token function">add</span> android<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>移除平台 输入：</p>
+<pre class="line-numbers language-none"><code class="language-none">cordova platforms rm android <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p> （移除 android 平台支持）</p>
+<p>也可以通过 @版本号，来添加不同版本的 android 平台，如：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cordova platforms <span class="token function">rm</span> android @4.1.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>现在就可以在 www 文件夹内写自己的 js 和 html 代码了。</p>
+<p>添加插件 输入:</p>
+<pre class="line-numbers language-none"><code class="language-none">cordova plugin add cordova-plugin-file<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p> (cordova plugin add &lt; 插件官方名称&gt;)</p>
+<p>插件搜索地址：<a target="_blank" rel="noopener" href="http://cordova.apache.org/plugins/">http://cordova.apache.org/plugins/</a></p>
+<p>也可以通过 github 查找一些第三方插件 输入：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cordova plugin <span class="token function">add</span> https://github.com/phonegap/phonegap-plugin-barcodescanner.git //这个是扫描二维码插件  <span class="token punctuation">(</span>github项目地址<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>github 地址：<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
+<p>删除插件 输入：</p>
+<pre class="line-numbers language-none"><code class="language-none">cordova plugin rm cordova-plugin-file<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（使用 rm 和 remove 都可以）</p>
+<p>插件列表 输入：</p>
+<pre class="line-numbers language-none"><code class="language-none">cordova plugin list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（查看当前安装了哪些插件）</p>
+<p>编译调试程序</p>
+<p>不是每一句代码都需要运行，根据自己的需求进行选择。</p>
+<ul>
+<li>cordova install android // 将编译好的应用程序安装到模拟器上。</li>
+<li>cordova emulate android // 在模拟器上运行（前提是创建好 AVD）</li>
+<li>cordova serve android // 在浏览器运行</li>
+<li> cordova build android // 打包 cordova 项目到 android 平台。</li>
+<li>cordova run android // 通过 USB 直接安装到真机（该语句已经包括了 build 命令）</li>
+</ul>
+<p>例如：我现在是手边直接连着测试手机，所以我就会直接用 cordova run android</p>
+<p>中间省略…</p>
+<p>出现 LAUNCH SUCCESS 则编译成功，已经安装到手机上了。</p>
+<h5 id="第八步-安装Android-SDK"><a href="#第八步-安装Android-SDK" class="headerlink" title="第八步 安装Android SDK"></a>第八步 安装 Android SDK</h5><ol>
+<li>下载 Android SDK，点击安装，直接默认路径即可！</li>
+</ol>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a></p>
+<ol start="2">
+<li><p> 默认路径安装后，安装完成，开始配置环境变量。</p>
+</li>
+<li><p>打开计算机属性 —— 高级系统设置 —— 环境变量（如上文）</p>
+</li>
+<li><p>新建一个环境变量，变量名：ANDROID_HOME，变量值：C:\Program Files (x86)\Android\android-sdk（以你安装目录为准，确认里面有 tools 和 add-ons 等多个文件夹），点击确认。</p>
+</li>
+<li><p>在变量 PATH 后面加上变量值 % ANDROID_HOME%\tools; 点击确认即可。 如果没有这个变量，新建一个即可！新建方法见上文！</p>
+</li>
+<li><p>Android SDK 配置完成，接下来验证配置是否成功。</p>
+</li>
+<li><p> 点击运行 —— 输入 cmd—— 回车 —— 输入 android -h—— 回车</p>
+</li>
+<li><p> ionic  Android 环境搭建过程遇到的问题 <a target="_blank" rel="noopener" href="http://bbs.ionic-china.com/read.php?tid=7&amp;fid=4">http://bbs.ionic-china.com/read.php?tid=7&amp;fid=4</a> </p>
+</li>
+</ol>
+<h5 id="第九步-安装Ionic"><a href="#第九步-安装Ionic" class="headerlink" title="第九步 安装Ionic"></a>第九步 安装 Ionic</h5><ol>
+<li> 执行 npm install -g ionic</li>
+<li> 创建一个 Ionic APP 执行 ionic start myapp [template]<br>Template 有如下三种 默认是 tabs project:<br>tabs（默认）.  sidemenu.  blank</li>
+<li> 安装模板  ionic install –save 模板</li>
+<li> cordova 是页面与设备桥接</li>
+<li> npm install –save bower</li>
+</ol>
+<h5 id="第十步-安装gulp相关代码合并-混淆工具"><a href="#第十步-安装gulp相关代码合并-混淆工具" class="headerlink" title="第十步 安装gulp相关代码合并.  混淆工具"></a>第十步 安装 gulp 相关代码合并。混淆工具</h5><pre><code>npm install gulp  
+npm install gulp-concat:合并文件
+npm install gulp-rename:重命名文件
+npm install gulp-sass:支持sass
+npm install gulp-minify-css:压缩css 
+npm install gulp-connect  配置一个web服务器
+</code></pre>
+<h5 id="第十一步-编译测试"><a href="#第十一步-编译测试" class="headerlink" title="第十一步 编译测试"></a>第十一步 编译测试</h5><ol>
+<li><p>android 版本</p>
+<p> cd myapp<br> ionic platform add android<br> ionic build android<br> ionic run android<br> 如果要在虚拟机中测试，可以改用<br> ionic emulate android</p>
+</li>
+<li><p>ios 版本</p>
+<p> $ ionic start myapp tabs<br> $ cd myapp<br> $ ionic platform add ios<br> $ ionic build ios<br> $ ionic emulate ios</p>
+</li>
+<li><p>浏览器同时修改端口号</p>
+<p> cd myapp<br> ionic serve -p 8105</p>
+</li>
+<li><p>连接数据线直接测试</p>
+<p> ionic run android</p>
+</li>
+</ol>
+<h4 id="重点集合"><a href="#重点集合" class="headerlink" title="重点集合"></a>重点集合</h4><h5 id="ionic安装失败或者cordova安装失败解决方法"><a href="#ionic安装失败或者cordova安装失败解决方法" class="headerlink" title="ionic安装失败或者cordova安装失败解决方法"></a>ionic 安装失败或者 cordova 安装失败解决方法</h5><p>镜像使用方法（三种办法任意一种都能解决问题，建议使用 ##### 第三种，将配置写死，下次用的时候配置还在）:</p>
+<ol>
+<li><p>通过 config 命令</p>
+<p> npm config set registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br> npm info underscore （如果上面配置正确这个命令会有字符串 response）</p>
+</li>
+<li><p>命令行指定</p>
+<p> npm –registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a> info underscore </p>
+</li>
+<li><p>编辑～/.npmrc 加入下面内容</p>
+<p> registry = <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br> 搜索镜像: <a target="_blank" rel="noopener" href="https://npm.taobao.org/">https://npm.taobao.org</a><br> 建立或使用镜像，参考: <a target="_blank" rel="noopener" href="https://github.com/cnpm/cnpmjs.org">https://github.com/cnpm/cnpmjs.org</a></p>
+</li>
+<li><p> 使用 cnpm (强烈建议)</p>
+<p> 安装 cnpm<br> npm install -g cnpm –registry=<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br> 以后所有的 npm 可用 cnpm 代替，如:cnpm install ionic</p>
+</li>
+<li><p>如果还是一直失败，将 ionic 文件下载解压后放到 C:\Users\Auser\AppData\Roaming\npm\node_modules 中</p>
+</li>
+<li><p>配置环境变量</p>
+<p>node 的 npm 命令 Path : C:\Documents and Settings\Administrator\Application Data\npm</p>
+<p>补齐 npm 文件夹下有关于 ionic 的文件 <a target="_blank" rel="noopener" href="http://download.csdn.net/detail/superjunjin/8417723">http://download.csdn.net/detail/superjunjin/8417723</a></p>
+<p>补齐 ionic 项目下 node_modules 等文件 <a target="_blank" rel="noopener" href="http://download.csdn.net/detail/superjunjin/8417731">http://download.csdn.net/detail/superjunjin/8417731</a><br>（具体文件见最后的压缩包）</p>
+<pre class="line-numbers language-none"><code class="language-none">ionic start myApp sidemenu  //创建带有左侧带有menu栏的示例项目
+ionic start myApp blank   //创建空白项目<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ol>
+<h2 id="第二部分-开发过程总结"><a href="#第二部分-开发过程总结" class="headerlink" title="第二部分 开发过程总结"></a>第二部分 开发过程总结</h2><h4 id="Angular-提供3种方法创建并注册服务"><a href="#Angular-提供3种方法创建并注册服务" class="headerlink" title="Angular 提供3种方法创建并注册服务"></a>Angular 提供 3 种方法创建并注册服务</h4><ol>
+<li>Provider  </li>
+<li>Factory  </li>
+<li>Service</li>
+</ol>
+<p>Providers 是唯一一种你可以传进 .config () 函数的 service。当你想要在 service 对象启用之前，先进行模块范围的配置，那就应该用 provider。</p>
+<h4 id="bower安装restangular失败"><a href="#bower安装restangular失败" class="headerlink" title="bower安装restangular失败"></a>bower 安装 restangular 失败</h4><p>（报错：Bower : ENOGIT git is not installed or not in the PATH）</p>
+<ol>
+<li>添加 git 路径到环境变量 PATH 中（命令：set PATH=% PATH%;D:\Program Files\Git\bin）</li>
+<li>运行 bower install restangular 即可安装成功 </li>
+<li><a target="_blank" rel="noopener" href="http://www.ng-newsletter.com/posts/restangular.html">http://www.ng-newsletter.com/posts/restangular.html</a></li>
+<li>restangular 文档：<a target="_blank" rel="noopener" href="https://github.com/mgonto/restangular#element-methods">https://github.com/mgonto/restangular#element-methods</a></li>
+<li> 安装 bower install underscore</li>
+</ol>
+<h4 id="restangular需要用到的js"><a href="#restangular需要用到的js" class="headerlink" title="restangular需要用到的js"></a>restangular 需要用到的 js</h4><p>(js 少引入报错：Uncaught ReferenceError: _ is not defined from restangular)</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&lt;script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://cdn.jsdelivr.net/restangular/latest/restangular.min.js"&gt;&lt;/script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="跨域错误解决办法"><a href="#跨域错误解决办法" class="headerlink" title="跨域错误解决办法"></a>跨域错误解决办法</h4><p>（XMLHttpRequest cannot load  ‘’. No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘ ‘ is therefore not allowed access. ）</p>
+<p>Java 代码中返回结果集前增加</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Access-Control-Allow-Origin"</span><span class="token punctuation">,</span> <span class="token string">"*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h4><p> <a target="_blank" rel="noopener" href="http://yijiebuyi.com/blog/3b55056c87b73ba606c19e9338dca679.html">http://yijiebuyi.com/blog/3b55056c87b73ba606c19e9338dca679.html</a></p>
+<ol>
+<li> 安装 bower install angular-translate</li>
+<li> 安装 bower install angular-translate-loader-static-files</li>
+<li>angular 国际化不存在乱码，如果出现乱码可能是中文 json 文件编码非 UTF-8 格式</li>
+<li>国际化使用（移动端有问题  无法使用）：</li>
+</ol>
+<p>需要引入 JS</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"lib/angular/angular.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"lib/angular-translate/angular-translate.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p>建立文件夹 i18n 存放 cn.json/en.json</p>
+<pre class="line-numbers language-none"><code class="language-none">en.json：{"100001":"Login","100002":"Register"}
+cn.json：{"100001":"登录","100002":"注册"}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p>在 app.js 中 config 里配置如下</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//国际化配置</span>
+$translateProvider<span class="token punctuation">.</span><span class="token function">preferredLanguage</span><span class="token punctuation">(</span><span class="token string">'cn'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$translateProvider<span class="token punctuation">.</span><span class="token function">useStaticFilesLoader</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">prefix</span><span class="token operator">:</span> <span class="token string">'/i18n/'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">suffix</span><span class="token operator">:</span> <span class="token string">'.json'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>html 页面使用</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">'100001'</span> <span class="token operator">|</span> translate <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token number">5.</span>按钮切换语种
+<span class="token punctuation">.</span><span class="token function">controller</span><span class="token punctuation">(</span><span class="token string">'LanguageSwitchingCtrl'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'$scope'</span><span class="token punctuation">,</span> <span class="token string">'$translate'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">scope<span class="token punctuation">,</span> $translate</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+scope<span class="token punctuation">.</span><span class="token function-variable function">switching</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">lang</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  $translate<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>lang<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="AngularJS-iframe跨域打开内容时报错误的解决办法"><a href="#AngularJS-iframe跨域打开内容时报错误的解决办法" class="headerlink" title="AngularJS iframe跨域打开内容时报错误的解决办法"></a>AngularJS iframe 跨域打开内容时报错误的解决办法</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>myFrame<span class="token punctuation">"</span></span> <span class="token attr-name">ng-src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{url}}<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>100%<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>100%<span class="token punctuation">"</span></span> <span class="token attr-name">seamless</span> <span class="token attr-name">frameborder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="打开不同域的内容时报下面的错误"><a href="#打开不同域的内容时报下面的错误" class="headerlink" title="打开不同域的内容时报下面的错误"></a>打开不同域的内容时报下面的错误</h4><p><code>Blocked loading resource from url not allowed by $sceDelegate policy</code></p>
+<p>解决方案：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">$sceDelegateProvider</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   $sceDelegateProvider<span class="token punctuation">.</span><span class="token function">resourceUrlWhitelist</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+       <span class="token comment">// Allow same origin resource loads.</span>
+       <span class="token string">'self'</span><span class="token punctuation">,</span>
+       <span class="token comment">// Allow loading from our assets domain.  Notice the difference between * and **.</span>
+       <span class="token string">'http://media.w3.org/**'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/01/30/3405.shtml" title="hybrid app 技术开发 APP 应用">https://onxs.github.io/2018/01/30/3405.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ionic/" rel="tag"><i class="fa fa-tag"></i> ionic</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/29/55294.shtml" rel="prev" title="JavaScript 中的 Bind，Call 和 Apply">
+                  <i class="fa fa-chevron-left"></i> JavaScript 中的 Bind，Call 和 Apply
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/02/01/1042.shtml" rel="next" title="晋升研究员，阿里十年他都经历了什么">
+                  晋升研究员，阿里十年他都经历了什么 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="8ca947bebf4f971a97eff72bc8801de0"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/01/30/3405.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

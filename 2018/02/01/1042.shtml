@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/02/01/1042.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/02/01/1042.shtml","path":"2018/02/01/1042.shtml","title":"晋升研究员，阿里十年他都经历了什么"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>晋升研究员，阿里十年他都经历了什么 | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#01-%E4%B8%8D%E6%89%92%E5%B1%82%E7%9A%AE%EF%BC%8C%E4%BD%A0%E6%80%8E%E4%B9%88%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E6%98%AF%E8%B0%81%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">01 不扒层皮，你怎么知道自己是谁？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#02-%E4%B8%BB%E7%AE%A1%E6%90%AD%E4%BA%86%E5%8D%8A%E6%9D%A1%E5%91%BD%EF%BC%8C%E6%88%91%E5%AD%A6%E5%88%B0%E4%BA%86%E4%B8%A4%E4%B8%AA%E5%AD%97%E2%80%9C%E6%8B%85%E5%BD%93%E2%80%9D"><span class="nav-number">2.</span> <span class="nav-text">02 主管搭了半条命，我学到了两个字 “担当”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#03-%E7%A6%BB%E5%BC%80%E5%9C%BA%E6%99%AF%E5%92%8C%E4%B8%9A%E5%8A%A1%E7%9A%84%E4%BF%AE%E7%82%BC%E9%83%BD%E6%98%AF%E4%BC%AA%E5%91%BD%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">03 离开场景和业务的修炼都是伪命题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#04-%E8%B6%8A%E6%83%B3%E8%AF%81%E6%98%8E%E8%87%AA%E5%B7%B1-%E6%AD%BB%E5%BE%97%E8%B6%8A%E5%BF%AB"><span class="nav-number">4.</span> <span class="nav-text">04 越想证明自己 死得越快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#05-%E5%96%84%E4%BA%8E%E6%80%BB%E7%BB%93%E6%89%8D%E8%83%BD%E8%8E%B7%E5%BE%97%E5%8A%A0%E9%80%9F%E5%BA%A6"><span class="nav-number">5.</span> <span class="nav-text">05 善于总结才能获得加速度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#06-%E6%8A%80%E6%9C%AF%E4%BA%BA%E5%8D%83%E4%B8%87%E5%88%AB%E9%99%B7%E5%9C%A8%E6%8A%80%E6%9C%AF%E7%9A%84%E5%9C%88%E5%AD%90%E9%87%8C"><span class="nav-number">6.</span> <span class="nav-text">06 技术人千万别陷在技术的圈子里</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#07-%E5%A5%BD%E5%A5%87%E5%BF%83%E4%B8%8E%E4%B8%89%E4%B8%AAWhy"><span class="nav-number">7.</span> <span class="nav-text">07 好奇心与三个 Why</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#08-%E4%B8%80%E4%B8%AA%E8%AE%A1%E8%BE%83KPI%E7%9A%84%E4%B8%BB%E7%AE%A1"><span class="nav-number">8.</span> <span class="nav-text">08 一个计较 KPI 的主管</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#09-%E4%BA%BA%E7%94%9F%E6%B2%A1%E6%9C%89%E7%99%BD%E8%B5%B0%E7%9A%84%E8%B7%AF"><span class="nav-number">9.</span> <span class="nav-text">09 人生没有白走的路</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/02/01/1042.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="晋升研究员，阿里十年他都经历了什么 | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          晋升研究员，阿里十年他都经历了什么<a href="https://github.com/onxs/blog/tree/dev/source/_posts/idea/POST89.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-01 15:44:36" itemprop="dateCreated datePublished" datetime="2018-02-01T15:44:36+08:00">2018-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Think/" itemprop="url" rel="index"><span itemprop="name">Think</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="晋升研究员，阿里十年他都经历了什么" href="/2018/02/01/1042.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::345eb9cd2e10ea468ec7116c6d0be47b" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0109.jpg" alt="image"></p>
+<p>在上海工作 8 年后，身为部门经理的钱磊，管理着一家 ERP 公司的百十来号员工，“再往上爬就是老板和他儿子了…… 从这个领域的技术角度来讲算是做到了顶。”05 年，钱磊就开始关注一家名字奇怪，做事也奇怪的公司。</p>
+<span id="more"></span>
+
+<p>要不要折腾一下？2008 年 5 月的一天钱磊对新婚的妻子说，想去杭州发展，那里有个公司叫阿里巴巴……</p>
+<p>阿里技术人钱磊</p>
+<blockquote>
+<p>#侧面像马总，正面比马总帅#</p>
+<p>—— 他的内网标签之一</p>
+</blockquote>
+<h4 id="01-不扒层皮，你怎么知道自己是谁？"><a href="#01-不扒层皮，你怎么知道自己是谁？" class="headerlink" title="01 不扒层皮，你怎么知道自己是谁？"></a>01 不扒层皮，你怎么知道自己是谁？</h4><p>告别上海的家和妻子，钱磊拖着行李箱独自来了杭州。</p>
+<p>豪情万丈地入职，不料压根没有 “蜜月期”……“刚来的那两周，时时刻刻觉得自己是不是要背着包回上海了……” 钱磊并不回避刚入职时的囧境。</p>
+<p>“不舒服，压力大。在原来的公司里，我就是拍板的人，来了以后发现其它人都挺厉害的。端着架子放不下，总想着自己好歹也是在业内干了八九年的人，在这里被刚毕业一两年的工程师挑战……”</p>
+<p>像他这样外地来杭的人，一般入职后就开始着手找房子，钱磊则是在宾馆里住了整整两周。</p>
+<p>“那段经历对我来说还是蛮宝贵的，不是有句阿里土话嘛，当你觉得不舒服的时候，就是成长的时候。一个人四平八稳时，很难获得成长。”</p>
+<h4 id="02-主管搭了半条命，我学到了两个字“担当”"><a href="#02-主管搭了半条命，我学到了两个字“担当”" class="headerlink" title="02 主管搭了半条命，我学到了两个字“担当”"></a>02 主管搭了半条命，我学到了两个字 “担当”</h4><p>“硬” 着陆半个月后，扒了层 “皮” 的钱磊又被主管砸了块 “石头”。</p>
+<p>他们要用技术的手段彻底解决业务问题 —— 为阿里巴巴最早的 “产品后台” B2B 的 CRM 做系统重构。这就好比开着汽车换引擎，百年老宅动地基……</p>
+<p>“最重要的一个责任落在了我身上，研发框架。当时业务给我们的时间只有两个月。我用了两周时间搭框架、做论证。对于一个入职不久的新人来讲，挑战非常大。”</p>
+<p>这种打仗的感觉，让钱磊渐渐忘记了自己是谁，业务在奔跑，系统延迟一天上线，影响就越大。每天几百人依靠这个系统工作。</p>
+<p>“…… 我的主管被业务方总经理请去喝了两个小时的茶，他是把半条命都搭上了。做不好，没有退路。为了系统上线，当时还停了两天业务，对公司来说每一分钟都是损失。”</p>
+<p>系统上线后虽然又经历了多次调试，但这是一次技术对业务的引领，而不是以往那样跟在后面打配合。因为框架的通用性还不错。直到现在，这套 CRM 还在使用。</p>
+<p>把业务风险和技术风险搭在一起，并不是一个最好的选择，但却是当时唯一的选择。“我从主管身上学到了两个字‘担当’，这是一个管理者的气质。”</p>
+<p>阿里管理者气质：担当</p>
+<h4 id="03-离开场景和业务的修炼都是伪命题"><a href="#03-离开场景和业务的修炼都是伪命题" class="headerlink" title="03 离开场景和业务的修炼都是伪命题"></a>03 离开场景和业务的修炼都是伪命题</h4><p>接手用户权限中心的技术团队后，钱磊开始实打实地接触客户。在这几年里，他从偏技术的架构，转为偏业务的架构。“离业务太远，做出来的东西不是场景驱动，后续会有较多的问题。架构师别把自己修炼成仙了，给公司留下的却是与业务无关的垃圾。”</p>
+<p>当时 B2B 的 ICBU 遇到了用户权益打包的问题，底层需要一个产品化的解决方案，“原来每年销售做完规划以后，技术同学都要算，会花掉多少人力去做一个新的产品配置。每次都靠研发同学冲到代码里面写一大堆。我们做了权益包功能后，只花几个小时就能配置好了。权益的产品化解决了 ICBU 的一个大问题。这又是一次技术引领业务的实例。”</p>
+<blockquote>
+<p>阿里土话：业绩永远都是附属品</p>
+</blockquote>
+<h4 id="04-越想证明自己-死得越快"><a href="#04-越想证明自己-死得越快" class="headerlink" title="04 越想证明自己 死得越快"></a>04 越想证明自己 死得越快</h4><p>两年前，钱磊调到共享平台，做会员和安全。他们团队从技术和产品端入手，解决了移动端与 PC 端会员整体链路兼容的问题。降低了一半与帐户相关的客服电话量。“现在帐户相关的客服量在 7% 左右，我们的目标是三年后降到 0。”</p>
+<p>从中间件到信息平台，再到共享平台，钱磊接的摊子越来越大，2015 年，入职的第 7 年，他获得了一次提名晋升 P10（研究员）的机会。</p>
+<p>“面试的时候，自我感觉还不错，毕竟这几年也做了几件拿得出手的东西……” 一个月后，钱磊却得知了自己晋升失败的消息。</p>
+<p>“心里肯定有波动啊。” 提起两年前的那次晋升面试，钱磊坦白：“我当时还请了两天假，出去放空了一下。想明白了几件事，第一，这几年我在阿里巴巴学到的东西是不是已经远远超出过去？第二，公司给予的平台和空间是不是足够我成长？第三，我为业务创造最大化的价值了吗？当我连续问了自己几个问题后，一下子就看透了。证明自己没什么大意思，给业务和用户创造价值才是最踏实的。越想证明自己的人，死得越快。”</p>
+<blockquote>
+<p>阿里土话：总是想要证明自己时，就没有了投入工作的心态</p>
+</blockquote>
+<h4 id="05-善于总结才能获得加速度"><a href="#05-善于总结才能获得加速度" class="headerlink" title="05 善于总结才能获得加速度"></a>05 善于总结才能获得加速度</h4><p>钱磊觉得自己这九年来做得最正确的事，就是坚持总结和反思。“我几乎每个月都会给自己留出做总结的时候，这个月自己和团队做了什么事，还有哪些提升空间。一定要趁热打铁记录下来，反思能让我保持头脑的清晰。</p>
+<p>我觉得一个不善于总结的人，就是在吃老本，吃惯性，吃你的智商和知识。反思就是获得加速度的那个点。这是工作多年来，让我最受益的一个习惯。”</p>
+<h4 id="06-技术人千万别陷在技术的圈子里"><a href="#06-技术人千万别陷在技术的圈子里" class="headerlink" title="06 技术人千万别陷在技术的圈子里"></a>06 技术人千万别陷在技术的圈子里</h4><p>钱磊在自己的内网签名里写着 “知行合一” 四个字。身为技术男，在业务相关的书之外，他独爱王阳明和南怀瑾，“王阳明的知行合一，是我的座右铭，倾听内心的声音，力量强大。南怀瑾的《庄子》我读了好几遍，佩服他为人的格局。我觉得技术同学特别需要打开思路，千万不要局限在技术这个圈子里。要有自己丰富的阅历，去看很多东西，触类旁通，在某些时候形成链接，对你的技术思考、业务思考都有帮助。”</p>
+<blockquote>
+<p>阿里土话：成长是自己的事</p>
+</blockquote>
+<h4 id="07-好奇心与三个Why"><a href="#07-好奇心与三个Why" class="headerlink" title="07 好奇心与三个Why"></a>07 好奇心与三个 Why</h4><p>带了七八年团队，最多的时候钱磊一年要参加 50 多场面试，有招聘新人的，也有晋升的。他选人用人会特别看重对方的心态：</p>
+<p>“我觉得心态非常重要，我们面试人的时候，一定要去看他的进取心和好奇心。我觉得这两者是面向未来的能力。</p>
+<p>我会问三个 Why：为什么这样做？这样做背后有什么问题和思考？你的业务价值支撑点是什么？我对技术同学的要求是：至少你自己做的事儿，如果到‘P7’这个级别，一定是问不倒的，一定经得起我问三个‘为什么’。如果你经不起问的话，我认为你做这个事要么是需求驱动，要么你就是一个吃瓜群众。我非常在意一个人的独立思考能力。”</p>
+<blockquote>
+<p>终极三问，why,how,who</p>
+</blockquote>
+<h4 id="08-一个计较KPI的主管"><a href="#08-一个计较KPI的主管" class="headerlink" title="08 一个计较KPI的主管"></a>08 一个计较 KPI 的主管</h4><p>肯定会带出一个计较 KPI 的团队</p>
+<p>钱磊说自己的管理之道就是四个字 “言传身教”，“首先，要做好自己，不要对别人要求很高，对自己要求很低。再有，你是业务驱动、客户价值驱动，还是 KPI 驱动？一个天天计较自己 KPI 的人，肯定带不出一个不计较 KPI 的团队。</p>
+<p>我们团队的 KPI 很简单，就是回归到业务场景。我的 KPI 已经连续几年都是以客服量为衡量点。你这个产品怎么样，上了多少功能，都不是最主要的因素，关键是你最终解决了客户的什么问题。客户用脚来投票。我会带着团队的 D（业务负责人）一起 review 团队的 KPI。</p>
+<blockquote>
+<p>阿里土话：刚工作的几年比谁更踏实，再过几年比谁更激情</p>
+</blockquote>
+<h4 id="09-人生没有白走的路"><a href="#09-人生没有白走的路" class="headerlink" title="09 人生没有白走的路"></a>09 人生没有白走的路</h4><p>2017 年 7 月，钱磊通过 “绿色通道”（免试）晋升为 P10（研究员），既在意料之中，又在意料之外。尽管不做要求，他还是准备了一个简单的 PPT，那是写给自己的 9 年总结。</p>
+<p>钱磊的办公桌面一如典型的技术男那样简单。桌上摆着他 5 岁女儿的照片。问起他印象最深刻的一个瞬间，他不加思索地回答：“2015 年双 11，连续熬了两个通宵后，11 月 13 日的凌晨，我走到园区一号楼取车，眼前的夜空很美，身后是灯火通明的楼宇。就是一种很幸福的感觉。我，在这里，和大家在一起。我们和这家公司，挺伟大的……”</p>
+<p>这就是一个阿里技术男的成长史。哪有那么多成长快乐，每一步都不是白走的路。你怎样选择和对待人生，人生就怎么样待你。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/02/01/1042.shtml" title="晋升研究员，阿里十年他都经历了什么">https://onxs.github.io/2018/02/01/1042.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Think/" rel="tag"><i class="fa fa-tag"></i> Think</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/30/3405.shtml" rel="prev" title="hybrid app 技术开发 APP 应用">
+                  <i class="fa fa-chevron-left"></i> hybrid app 技术开发 APP 应用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/02/01/12275.shtml" rel="next" title="gradle 入门笔记">
+                  gradle 入门笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="345eb9cd2e10ea468ec7116c6d0be47b"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/02/01/1042.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

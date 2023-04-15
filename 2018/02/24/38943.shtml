@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/02/24/38943.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/02/24/38943.shtml","path":"2018/02/24/38943.shtml","title":"Java 基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java 基础 | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-final"><span class="nav-number">1.1.</span> <span class="nav-text">1. final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-static"><span class="nav-number">1.2.</span> <span class="nav-text">2. static</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-%E9%80%9A%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">Object 通用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%A6%82%E8%A7%88"><span class="nav-number">2.1.</span> <span class="nav-text">1. 概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-clone"><span class="nav-number">2.2.</span> <span class="nav-text">2. clone()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-equals"><span class="nav-number">2.3.</span> <span class="nav-text">3. equals()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="nav-number">3.1.</span> <span class="nav-text">1. 访问权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.2.</span> <span class="nav-text">2. 抽象类与接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-super"><span class="nav-number">3.3.</span> <span class="nav-text">3. super()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String"><span class="nav-number">4.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-String-StringBuffer-and-StringBuilder"><span class="nav-number">4.1.</span> <span class="nav-text">1. String, StringBuffer and StringBuilder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-String-%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">4.2.</span> <span class="nav-text">2. String 不可变的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-String-intern"><span class="nav-number">4.3.</span> <span class="nav-text">3. String.intern()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E8%BF%90%E7%AE%97"><span class="nav-number">5.</span> <span class="nav-text">基本类型与运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.1.</span> <span class="nav-text">1. 包装类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-switch"><span class="nav-number">5.2.</span> <span class="nav-text">2. switch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84"><span class="nav-number">6.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8"><span class="nav-number">7.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-number">8.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">9.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-number">9.1.</span> <span class="nav-text">1. 三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Java-%E5%90%84%E7%89%88%E6%9C%AC%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">9.2.</span> <span class="nav-text">2. Java 各版本的新特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Java-%E4%B8%8E-C-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">9.3.</span> <span class="nav-text">3. Java 与 C++ 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-JRE-or-JDK"><span class="nav-number">9.4.</span> <span class="nav-text">4. JRE or JDK</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/02/24/38943.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java 基础 | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 基础<a href="https://github.com/onxs/blog/tree/dev/source/_posts/InterviewNote/POST%20(13).md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-24 16:44:36" itemprop="dateCreated datePublished" datetime="2018-02-24T16:44:36+08:00">2018-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Interview/" itemprop="url" rel="index"><span itemprop="name">Interview</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Java 基础" href="/2018/02/24/38943.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::70e25065f7a7e6fe1fa12c80f609951c" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0137.jpg" alt="image"></p>
+<p>Java 面试笔记</p>
+<span id="more"></span>
+
+
+<h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><h2 id="1-final"><a href="#1-final" class="headerlink" title="1. final"></a>1. final</h2><p><strong>数据</strong></p>
+<p>声明数据为常量，可以是编译时常量，也可以是在运行时被初始化后不能被改变的常量。</p>
+<p>对于基本类型，final 使数值不变；对于引用对象，final 使引用不变，也就不能引用其它对象，但是被引用的对象本身是可以修改的。</p>
+<p><strong>方法</strong></p>
+<p>声明方法不能被子类覆盖。</p>
+<p>private 方法隐式地被指定为 final，如果在子类中定义的方法和基类中的一个 private 方法签名相同，此时子类的方法不是覆盖基类方法，而是重载了。</p>
+<p><strong>类</strong></p>
+<p>声明类不允许被继承。</p>
+<h2 id="2-static"><a href="#2-static" class="headerlink" title="2. static"></a>2. static</h2><p><strong>变量</strong></p>
+<p>静态变量在内存中只存在一份，只在类第一次实例化时初始化一次，同时类所有的实例都共享静态变量，可以直接通过类名来访问它。</p>
+<p>但是实例变量则不同，它是伴随着实例的，每创建一个实例就会产生一个实例变量，它与该实例同生共死。</p>
+<p><strong>方法</strong></p>
+<p>静态方法在类加载的时候就存在了，它不依赖于任何实例，所以 static 方法必须实现，也就是说他不能是抽象方法 abstract。</p>
+<p><strong>静态语句块</strong></p>
+<p>静态语句块和静态变量一样在类第一次实例化时运行一次。</p>
+<p><strong>初始化顺序</strong></p>
+<p>静态数据优先于其它数据的初始化，静态变量和静态语句块哪个先运行取决于它们在代码中的顺序。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> staticField <span class="token operator">=</span> <span class="token string">" 静态变量 "</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">static</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 静态初始化块 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>实例变量和普通语句块的初始化在静态变量和静态语句块初始化结束之后。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span> field <span class="token operator">=</span> <span class="token string">" 变量 "</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 初始化块 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>最后才是构造函数中的数据进行初始化</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">InitialOrderTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 构造器 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>存在继承的情况下，初始化顺序为：</p>
+<ol>
+<li>父类（静态变量、静态初始化块）</li>
+<li>子类（静态变量、静态初始化块）</li>
+<li>父类（变量、初始化块）</li>
+<li>父类（构造器）</li>
+<li>子类（变量、初始化块）</li>
+<li>子类（构造器）</li>
+</ol>
+<h1 id="Object-通用方法"><a href="#Object-通用方法" class="headerlink" title="Object 通用方法"></a>Object 通用方法</h1><h2 id="1-概览"><a href="#1-概览" class="headerlink" title="1. 概览"></a>1. 概览</h2><ul>
+<li>public final native Class&lt;?&gt; getClass()</li>
+<li>public native int hashCode()</li>
+<li>public boolean equals(Object obj)</li>
+<li>protected native Object clone() throws CloneNotSupportedException</li>
+<li>public String toString()</li>
+<li>public final native void notify()</li>
+<li>public final native void notifyAll()</li>
+<li>public final native void wait(long timeout) throws InterruptedException</li>
+<li>public final void wait(long timeout, int nanos) throws InterruptedException</li>
+<li>public final void wait() throws InterruptedException</li>
+<li>protected void finalize() throws Throwable { }</li>
+</ul>
+<h2 id="2-clone"><a href="#2-clone" class="headerlink" title="2. clone()"></a>2. clone()</h2><p><strong>浅拷贝</strong></p>
+<p>引用类型引用的是同一个对象，clone () 方法默认就是浅拷贝实现。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/d990c0e7-64d1-4ba3-8356-111bc91e53c5.png"></p>
+<p><strong>深拷贝</strong></p>
+<p>可以使用序列化实现。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/2e5620c4-b558-46fe-8f12-00c9dd597a61.png"></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/869033/how-do-i-copy-an-object-in-java">How do I copy an object in Java?</a></p>
+</blockquote>
+<h2 id="3-equals"><a href="#3-equals" class="headerlink" title="3. equals()"></a>3. equals()</h2><ul>
+<li>对于基本类型，== 就是判断两个值是否相等；</li>
+<li>对于引用类型，== 是判断两个引用是否引用同一个对象，而 equals () 是判断引用的对象是否等价。</li>
+</ul>
+<p>等价性：<a target="_blank" rel="noopener" href="https://github.com/CyC2018/InterviewNotes/blob/master/notes/Java%20%E5%AE%B9%E5%99%A8.md#%E6%95%A3%E5%88%97"> 散列 </a></p>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><h2 id="1-访问权限"><a href="#1-访问权限" class="headerlink" title="1. 访问权限"></a>1. 访问权限</h2><p>Java 中有三个访问权限修饰符：private、protected 以及 public，如果不加访问修饰符，表示包级可见。</p>
+<p>可以对类或类中的成员（字段以及方法）加上访问修饰符。成员可见表示其它类可以用成员所在类的对象访问到该成员；类可见表示其它类可以用这个类创建对象，可以把类当做包中的一个成员，然后包表示一个类，这样就好理解了。</p>
+<p>protected 用于修饰成员，表示在继承体系中成员对于子类可见。但是这个访问修饰符对于类没有意义，因为包没有继承体系。</p>
+<p>更详细的内容：<a target="_blank" rel="noopener" href="http://www.importnew.com/18097.html"> 浅析 Java 中的访问权限控制 </a></p>
+<h2 id="2-抽象类与接口的区别"><a href="#2-抽象类与接口的区别" class="headerlink" title="2. 抽象类与接口的区别"></a>2. 抽象类与接口的区别</h2><p>抽象类至少包含一个抽象方法，该抽象方法必须在子类中实现。由于抽象类没有抽象方法的具体实现，因此不能对抽象类进行实例化。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">GenericServlet</span> <span class="token keyword">implements</span> <span class="token class-name">Servlet</span><span class="token punctuation">,</span> <span class="token class-name">ServletConfig</span><span class="token punctuation">,</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+    <span class="token comment">// abstract method</span>
+    <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">service</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">ServletResponse</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+    <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Its implementation</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// other method related to Servlet</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接口定义了一组方法，但是接口都没有方法的实现，也就是说这些方法都是抽象方法。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Externalizable</span> <span class="token keyword">extends</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">void</span> <span class="token function">writeExternal</span><span class="token punctuation">(</span><span class="token class-name">ObjectOutput</span> out<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">void</span> <span class="token function">readExternal</span><span class="token punctuation">(</span><span class="token class-name">ObjectInput</span> in<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ClassNotFoundException</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>更详细的内容：<a target="_blank" rel="noopener" href="http://www.importnew.com/12399.html">Java 抽象类与接口的区别 </a></p>
+<h2 id="3-super"><a href="#3-super" class="headerlink" title="3. super()"></a>3. super()</h2><p>用来访问父类的构造函数父类的方法，第二种情况中，子类需要重载父类的方法。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Subclass</span> <span class="token keyword">extends</span> <span class="token class-name">Superclass</span> <span class="token punctuation">{</span>
+    <span class="token comment">// overrides printMethod in Superclass</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">printMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">printMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Printed in Subclass"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Subclass</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Subclass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        s<span class="token punctuation">.</span><span class="token function">printMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/java/IandI/super.html">Using the Keyword super</a></p>
+</blockquote>
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h2 id="1-String-StringBuffer-and-StringBuilder"><a href="#1-String-StringBuffer-and-StringBuilder" class="headerlink" title="1. String, StringBuffer and StringBuilder"></a>1. String, StringBuffer and StringBuilder</h2><p><strong>是否可变</strong></p>
+<p>String 不可变，StringBuffer 和 StringBuilder 可变。</p>
+<p><strong>是否线程安全</strong></p>
+<p>String 不可变，因此是线程安全的。</p>
+<p>StringBuilder 不是线程安全的；StringBuffer 是线程安全的，使用 synchronized 来同步。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2971315/string-stringbuffer-and-stringbuilder">String, StringBuffer, and StringBuilder</a></p>
+</blockquote>
+<h2 id="2-String-不可变的原因"><a href="#2-String-不可变的原因" class="headerlink" title="2. String 不可变的原因"></a>2. String 不可变的原因</h2><p><strong>可以缓存 hash 值</strong></p>
+<p>因为 String 的 hash 值经常被使用，例如 String 用做 HashMap 等。不可变的特性可以使得 hash 值也不可变，因此就只需要进行一次计算。</p>
+<p><strong>String Pool 的需要</strong></p>
+<p>如果 String 已经被创建过了，那么就会从 String Pool 中取得引用。只有 String 是不可变的，才可能使用 String Pool。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/f76067a5-7d5f-4135-9549-8199c77d8f1c.jpg"></p>
+<p><strong>安全性</strong></p>
+<p>String 经常作为参数，例如网络连接参数等，在作为网络连接参数的情况下，如果 String 是可变的，那么在网络连接过程中，String 被改变，改变 String 对象的那一方以为现在连接的是其它主机，而实际情况却不一定是。String 不可变性可以保证参数不可变。</p>
+<p><strong>线程安全</strong></p>
+<p>String 不可变性天生具备线程安全，可以在多个线程中使用。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.programcreek.com/2013/04/why-string-is-immutable-in-java/">Why String is immutable in Java?</a></p>
+</blockquote>
+<h2 id="3-String-intern"><a href="#3-String-intern" class="headerlink" title="3. String.intern()"></a>3. String.intern()</h2><p>使用 String.intern () 可以保证所有相同内容的字符串变量引用相同的内存对象。</p>
+<p>更详细的内容：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/95f516cb75ef"> 揭开 String.intern () 那神秘的面纱 </a></p>
+<h1 id="基本类型与运算"><a href="#基本类型与运算" class="headerlink" title="基本类型与运算"></a>基本类型与运算</h1><h2 id="1-包装类型"><a href="#1-包装类型" class="headerlink" title="1. 包装类型"></a>1. 包装类型</h2><p>八个基本类型：boolean 1 byte 8 char 16 short 16 int 32 float 32 long 64 double 64</p>
+<p>基本类型都有对应的包装类型，它们之间的赋值使用自动装箱与拆箱完成。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Integer</span> x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>     <span class="token comment">// 装箱</span>
+<span class="token keyword">int</span> y <span class="token operator">=</span> x<span class="token punctuation">;</span>         <span class="token comment">// 拆箱</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>new Integer (123) 与 Integer.valueOf (123) 的区别在于，Integer.valueOf (123) 可能会使用缓存对象，因此多次使用 Integer.valueOf (123) 会取得同一个对象的引用。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token class-name">Integer</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token class-name">Integer</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"a==b? "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a<span class="token operator">==</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+     <span class="token class-name">Integer</span> c <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token class-name">Integer</span> d <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"c==d? "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>c<span class="token operator">==</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">a==b? false
+c==d? true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>valueOf () 方法的实现比较简单，就是先判断值是否在缓存池中，如果在的话就直接使用缓存池的内容。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Integer</span> <span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> <span class="token keyword">int</span> offset <span class="token operator">=</span> <span class="token number">128</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> <span class="token operator">-</span><span class="token number">128</span> <span class="token operator">&amp;&amp;</span> i <span class="token operator">&lt;=</span> <span class="token number">127</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// must cache</span>
+        <span class="token keyword">return</span> <span class="token class-name">IntegerCache</span><span class="token punctuation">.</span>cache<span class="token punctuation">[</span>i <span class="token operator">+</span> offset<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>The following is the list of primitives stored as immutable objects:</p>
+<ul>
+<li>boolean values true and false</li>
+<li>all byte values</li>
+<li>short values between -128 and 127</li>
+<li>int values between -128 and 127</li>
+<li>char in the range \u0000 to \u007F</li>
+</ul>
+<p>自动装箱过程编译器会调用 valueOf () 方法，因此多个 Integer 对象使用装箱来创建并且值相同，那么就会引用相同的对象，这样做很显然是为了节省内存开销。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Integer</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token class-name">Integer</span> y <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>c<span class="token operator">==</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9030817/differences-between-new-integer123-integer-valueof123-and-just-123">Differences between new Integer(123), Integer.valueOf(123) and just 123
+</a></p>
+</blockquote>
+<h2 id="2-switch"><a href="#2-switch" class="headerlink" title="2. switch"></a>2. switch</h2><p>A switch works with the byte, short, char, and int primitive data types. It also works with enumerated types (discussed in Classes and Inheritance) and a few special classes that “wrap” certain primitive types: Character, Byte, Short, and Integer (discussed in Simple Data Objects).</p>
+<p>In the JDK 7 release, you can use a String object in the expression of a switch statement.</p>
+<p>switch 不支持 long，是因为 swicth 的设计初衷是为那些只需要对少数几个值进行等值判断，如果值过于复杂，那么还是用 if 比较合适。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2676210/why-cant-your-switch-statement-data-type-be-long-java">Why can’t your switch statement data type be long, Java?</a></p>
+</blockquote>
+<p>switch 使用查找表的方式来实现，JVM 中使用的指令是 lookupswitch。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span></span>String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token class-name">Code</span><span class="token operator">:</span>
+   <span class="token class-name">Stack</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token class-name">Locals</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token class-name">Args_size</span><span class="token operator">=</span><span class="token number">1</span>
+   <span class="token number">0</span><span class="token operator">:</span>   iconst_1
+   <span class="token number">1</span><span class="token operator">:</span>   lookupswitch<span class="token punctuation">{</span> <span class="token comment">//2</span>
+                <span class="token number">1</span><span class="token operator">:</span> <span class="token number">28</span><span class="token punctuation">;</span>
+                <span class="token number">2</span><span class="token operator">:</span> <span class="token number">31</span><span class="token punctuation">;</span>
+                <span class="token keyword">default</span><span class="token operator">:</span> <span class="token number">31</span> <span class="token punctuation">}</span>
+   <span class="token number">28</span><span class="token operator">:</span>  <span class="token keyword">goto</span>    <span class="token number">31</span>
+   <span class="token number">31</span><span class="token operator">:</span>  <span class="token keyword">return</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/12020048/how-does-javas-switch-work-under-the-hood">How does Java’s switch work under the hood?</a></p>
+</blockquote>
+<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><p>每个类都有一个 <strong>Class</strong> 对象，包含了与类有关的信息。当编译一个新类时，会产生一个同名的 .class 文件，该文件内容保存着 Class 对象。</p>
+<p>类加载相当于 Class 对象的加载。类在第一次使用时才动态加载到 JVM 中，可以使用 Class.forName (‘com.mysql.jdbc.Driver.class’) 这种方式来控制类的加载，该方法会返回一个 Class 对象。</p>
+<p>反射可以提供运行时的类信息，并且这个类可以在运行时才加载进来，甚至在编译时期该类的 .class 不存在也可以加载进来。</p>
+<p>Class 和 java.lang.reflect 一起对反射提供了支持，java.lang.reflect 类库包含了 <strong>Field</strong>、<strong>Method</strong> 以及 <strong>Constructor</strong> 类。可以使用 get () 和 set () 方法读取和修改 Field 对象关联的字段，可以使用 invoke () 方法调用与 Method 对象关联的方法，可以用 Constructor 创建新的对象。</p>
+<p>IDE 使用反射机制获取类的信息，在使用一个类的对象时，能够把类的字段、方法和构造函数等信息列出来供用户选择。</p>
+<p>更详细的内容：<a target="_blank" rel="noopener" href="http://www.sczyh30.com/posts/Java/java-reflection-1/"> 深入解析 Java 反射（1）- 基础 </a></p>
+<h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><p>Throwable 可以用来表示任何可以作为异常抛出的类，分为两种：<strong>Error</strong> 和 <strong>Exception</strong>，其中 Error 用来表示编译时系统错误。</p>
+<p>Exception 分为两种：<strong>受检异常</strong> 和 <strong>非受检异常</strong>。受检异常需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复；非受检异常是程序运行时错误，例如除 0 会引发 Arithmetic Exception，此时程序奔溃并且无法恢复。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/48f8f98e-8dfd-450d-8b5b-df4688f0d377.jpg"></p>
+<p>更详细的内容：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.tianmaying.com/tutorial/Java-Exception">Java 入门之异常处理 </a></li>
+<li><a target="_blank" rel="noopener" href="http://www.importnew.com/7383.html">Java 异常的面试问题及答案 -Part 1</a></li>
+</ul>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型提供了编译时的类型检测机制，该机制允许程序员在编译时检测到非法的类型。泛型是 Java 中一个非常重要的知识点，在 Java 集合类框架中泛型被广泛应用。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Box</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token comment">// T stands for "Type"</span>
+    <span class="token keyword">private</span> <span class="token class-name">T</span> t<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token class-name">T</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span>t <span class="token operator">=</span> t<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> t<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>更详细的内容：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ziwenxie.site/2017/03/01/java-generic/">Java 泛型详解 </a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1033693">10 道 Java 泛型面试题 </a></li>
+</ul>
+<h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><h2 id="1-三大特性"><a href="#1-三大特性" class="headerlink" title="1. 三大特性"></a>1. 三大特性</h2><p><a target="_blank" rel="noopener" href="https://github.com/CyC2018/InterviewNotes/blob/master/notes/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3.md#%E5%B0%81%E8%A3%85%E7%BB%A7%E6%89%BF%E5%A4%9A%E6%80%81"> 封装、继承、多态 </a></p>
+<h2 id="2-Java-各版本的新特性"><a href="#2-Java-各版本的新特性" class="headerlink" title="2. Java 各版本的新特性"></a>2. Java 各版本的新特性</h2><p>New highlights in Java SE 8</p>
+<ol>
+<li>Lambda Expressions</li>
+<li>Pipelines and Streams</li>
+<li>Date and Time API</li>
+<li>Default Methods</li>
+<li>Type Annotations</li>
+<li>Nashhorn JavaScript Engine</li>
+<li>Concurrent Accumulators</li>
+<li>Parallel operations</li>
+<li>PermGen Error Removed</li>
+</ol>
+<p>New highlights in Java SE 7</p>
+<ol>
+<li>Strings in Switch Statement</li>
+<li>Type Inference for Generic Instance Creation</li>
+<li>Multiple Exception Handling</li>
+<li>Support for Dynamic Languages</li>
+<li>Try with Resources</li>
+<li>Java nio Package</li>
+<li>Binary Literals, Underscore in literals</li>
+<li>Diamond Syntax</li>
+</ol>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.selfgrowth.com/articles/difference-between-java-18-and-java-17">Difference between Java 1.8 and Java 1.7?</a></p>
+</blockquote>
+<p>更详细的内容：<a target="_blank" rel="noopener" href="http://www.importnew.com/19345.html">Java 8 特性 </a></p>
+<h2 id="3-Java-与-C-的区别"><a href="#3-Java-与-C-的区别" class="headerlink" title="3. Java 与 C++ 的区别"></a>3. Java 与 C++ 的区别</h2><p>Java 是纯粹的面向对象语言，所有的对象都继承自 java.lang.Object，C++ 为了兼容 C 即支持面向对象也支持面向过程。</p>
+<p>比较详细的内容：</p>
+<table>
+<thead>
+<tr>
+<th>Java</th>
+<th>C++</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Java does not support pointers, templates, unions, operator overloading, structures etc. The Java language promoters initially said “No pointers!”, but when many programmers questioned how you can work without pointers, the promoters began saying “Restricted pointers.” Java supports what it calls “references”. References act a lot like pointers in C++ languages but you cannot perform arithmetic on pointers in Java. References have types, and they’re type-safe. These references cannot be interpreted as raw address and unsafe conversion is not allowed.</td>
+<td>C++ supports structures, unions, templates, operator overloading, pointers and pointer arithmetic.</td>
+</tr>
+<tr>
+<td>Java support automatic garbage collection. It does not support destructors as C++ does.</td>
+<td>C++ support destructors, which is automatically invoked when the object is destroyed.</td>
+</tr>
+<tr>
+<td>Java does not support conditional compilation and inclusion.</td>
+<td>Conditional inclusion (#ifdef #ifndef type) is one of the main features of C++.</td>
+</tr>
+<tr>
+<td>Java has built in support for threads. In Java, there is a <code>Thread</code> class that you inherit to create a new thread and override the <code>run()</code> method.</td>
+<td>C++ has no built in support for threads. C++ relies on non-standard third-party libraries for thread support.</td>
+</tr>
+<tr>
+<td>Java does not support default arguments. There is no scope resolution operator (::) in Java. The method definitions must always occur within a class, so there is no need for scope resolution there either.</td>
+<td>C++ supports default arguments. C++ has scope resolution operator (::) which is used to to define a method outside a class and to access a global variable within from the scope where a local variable also exists with the same name.</td>
+</tr>
+<tr>
+<td>There is no <em>goto</em> statement in Java. The keywords <code>const</code> and <code>goto</code> are reserved, even though they are not used.</td>
+<td>C++ has <em>goto</em> statement. However, it is not considered good practice to use of <em>goto</em> statement.</td>
+</tr>
+<tr>
+<td>Java doesn’t provide multiple inheritance, at least not in the same sense that C++ does.</td>
+<td>C++ does support multiple inheritance. The keyword <code>virtual</code> is used to resolve ambiguities during multiple inheritance if there is any.</td>
+</tr>
+<tr>
+<td>Exception handling in Java is different because there are no destructors. Also, in Java, try/catch must be defined if the function declares that it may throw an exception.</td>
+<td>While in C++, you may not include the try/catch even if the function throws an exception.</td>
+</tr>
+<tr>
+<td>Java has method overloading, but no operator overloading. The <code>String</code> class does use the <code>+</code> and <code>+=</code> operators to concatenate strings and <code>String</code>expressions use automatic type conversion, but that’s a special built-in case.</td>
+<td>C++ supports both method overloading and operator overloading.</td>
+</tr>
+<tr>
+<td>Java has built-in support for documentation comments (<code>/** ... */</code>); therefore, Java source files can contain their own documentation, which is read by a separate tool usually <code>javadoc</code> and reformatted into HTML. This helps keeping documentation maintained in easy way.</td>
+<td>C++ does not support documentation comments.</td>
+</tr>
+<tr>
+<td>Java is interpreted for the most part and hence platform independent.</td>
+<td>C++ generates object code and the same code may not run on different platforms.</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://cs-fundamentals.com/tech-interview/java/differences-between-java-and-cpp.php">What are the main differences between Java and C++?</a></p>
+</blockquote>
+<h2 id="4-JRE-or-JDK"><a href="#4-JRE-or-JDK" class="headerlink" title="4. JRE or JDK"></a>4. JRE or JDK</h2><ul>
+<li>JRE is the JVM program, Java application need to run on JRE.</li>
+<li>JDK is a superset of JRE, JRE + tools for developing java programs. e.g, it provides the compiler “javac”</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/02/24/38943.shtml" title="Java 基础">https://onxs.github.io/2018/02/24/38943.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Interview/" rel="tag"><i class="fa fa-tag"></i> Interview</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/02/24/1744.shtml" rel="prev" title="Java 容器">
+                  <i class="fa fa-chevron-left"></i> Java 容器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/02/24/11330.shtml" rel="next" title="Java IO">
+                  Java IO <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="70e25065f7a7e6fe1fa12c80f609951c"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/02/24/38943.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

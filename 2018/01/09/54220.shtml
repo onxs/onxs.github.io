@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/01/09/54220.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/01/09/54220.shtml","path":"2018/01/09/54220.shtml","title":"CAS 单点登录（二）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CAS 单点登录（二） | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CAS%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">CAS 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Cas-Server"><span class="nav-number">2.</span> <span class="nav-text">部署 Cas Server</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AFtomcat7%E7%9A%84https%E9%80%9A%E9%81%93"><span class="nav-number">2.1.</span> <span class="nav-text">开启 tomcat7 的 https 通道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Cas-Server-1"><span class="nav-number">2.2.</span> <span class="nav-text">部署 Cas Server</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cas-Server%E4%B8%AD%E5%90%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.</span> <span class="nav-text">Cas Server 中各配置文件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8WEB-INF-classes%E4%B8%8B%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9C%89%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">在 WEB-INF&#x2F;classes 下的配置文件有：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8WEB-INF%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9C%89%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">在 WEB-INF 根目录下的配置文件有：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8WEB-INF-spring-configuration%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%98%AFCas-Server%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84%E6%89%80%E6%9C%89%E4%B8%8ESpring%E7%9B%B8%E5%85%B3%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%8C%E5%85%B7%E4%BD%93%E6%9C%89%EF%BC%9A"><span class="nav-number">3.3.</span> <span class="nav-text">在 WEB-INF&#x2F;spring-configuration 目录下的配置文件是 Cas Server 中使用到的所有与 Spring 相关的配置文件，具体有：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cas%EF%BC%8804%EF%BC%89%E2%80%94%E2%80%94%E6%9B%B4%E6%94%B9%E8%AE%A4%E8%AF%81%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">Cas（04）—— 更改认证方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9Cas-Server%E7%9A%84%E5%85%B6%E5%AE%83%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">修改 Cas Server 的其它配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9host-name"><span class="nav-number">5.1.</span> <span class="nav-text">修改 host.name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9SSO-Session%E7%9A%84%E8%B6%85%E6%97%B6%E7%AD%96%E7%95%A5"><span class="nav-number">5.2.</span> <span class="nav-text">修改 SSO Session 的超时策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%85%81%E8%AE%B8%E7%AE%A1%E7%90%86service%E7%9A%84%E8%A7%92%E8%89%B2"><span class="nav-number">5.3.</span> <span class="nav-text">修改允许管理 service 的角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9logout%E5%90%8E%E7%9A%84%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">5.4.</span> <span class="nav-text">修改 logout 后的重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%81%E7%94%A8logout%E5%90%8E%E7%9A%84%E5%9B%9E%E8%B0%83"><span class="nav-number">5.5.</span> <span class="nav-text">禁用 logout 后的回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9service-ticket%E7%9A%84%E8%B6%85%E6%97%B6%E6%97%B6%E9%97%B4"><span class="nav-number">5.6.</span> <span class="nav-text">修改 service ticket 的超时时间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81"><span class="nav-number">6.</span> <span class="nav-text">基于数据库的认证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BindModeSearchDatabaseAuthenticationHandler"><span class="nav-number">6.1.</span> <span class="nav-text">BindModeSearchDatabaseAuthenticationHandler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QueryDatabaseAuthenticationHandler"><span class="nav-number">6.2.</span> <span class="nav-text">QueryDatabaseAuthenticationHandler</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PrefixSuffixPrincipalNameTransformer"><span class="nav-number">6.2.1.</span> <span class="nav-text">PrefixSuffixPrincipalNameTransformer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DefaultPasswordEncoder"><span class="nav-number">6.2.2.</span> <span class="nav-text">DefaultPasswordEncoder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SearchModeSearchDatabaseAuthenticationHandler"><span class="nav-number">6.3.</span> <span class="nav-text">SearchModeSearchDatabaseAuthenticationHandler</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E4%BD%BF%E7%94%A8Cas%E8%BF%9B%E8%A1%8C%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">建立使用 Cas 进行单点登录的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5cas-client-core-xxx-jar%E5%88%B0classpath"><span class="nav-number">7.1.</span> <span class="nav-text">加入 cas-client-core-xxx.jar 到 classpath</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEFilter"><span class="nav-number">7.2.</span> <span class="nav-text">配置 Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AuthenticationFilter"><span class="nav-number">7.2.1.</span> <span class="nav-text">AuthenticationFilter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TicketValidationFilter"><span class="nav-number">7.2.2.</span> <span class="nav-text">TicketValidationFilter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HttpServletRequestWrapperFilter"><span class="nav-number">7.2.3.</span> <span class="nav-text">HttpServletRequestWrapperFilter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AssertionThreadLocalFilter"><span class="nav-number">7.2.4.</span> <span class="nav-text">AssertionThreadLocalFilter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ESpring%E7%9A%84Filter%E9%85%8D%E7%BD%AE"><span class="nav-number">7.2.5.</span> <span class="nav-text">基于 Spring 的 Filter 配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%81%E4%B9%A6%E5%88%B0%E4%BF%A1%E4%BB%BB%E5%BA%93"><span class="nav-number">7.3.</span> <span class="nav-text">添加证书到信任库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%87%BA"><span class="nav-number">8.</span> <span class="nav-text">单点登出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cas-Client%E7%AB%AF%E9%85%8D%E7%BD%AE%E5%8D%95%E7%82%B9%E7%99%BB%E5%87%BA"><span class="nav-number">8.1.</span> <span class="nav-text">Cas Client 端配置单点登出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cas-Server%E7%AB%AF%E7%A6%81%E7%94%A8%E5%8D%95%E7%82%B9%E7%99%BB%E5%87%BA"><span class="nav-number">8.2.</span> <span class="nav-text">Cas Server 端禁用单点登出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9A%E8%BF%87Proxy%E8%AE%BF%E9%97%AE%E5%85%B6%E5%AE%83Cas%E5%BA%94%E7%94%A8"><span class="nav-number">9.</span> <span class="nav-text">通过 Proxy 访问其它 Cas 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">9.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">9.2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E7%AB%AF"><span class="nav-number">9.2.1.</span> <span class="nav-text">代理端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A2%AB%E4%BB%A3%E7%90%86%E7%AB%AF"><span class="nav-number">9.2.2.</span> <span class="nav-text">被代理端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E7%A4%BA%E4%BE%8B"><span class="nav-number">9.3.</span> <span class="nav-text">请求示例</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2018/01/04/34685.shtml" rel="bookmark">
+        <time class="popular-posts-time">2018-01-04</time>
+        <br>
+      CAS 单点登录 (一)
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/01/09/54220.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CAS 单点登录（二） | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CAS 单点登录（二）<a href="https://github.com/onxs/blog/tree/dev/source/_posts/cas/POST92.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-09 21:34:36" itemprop="dateCreated datePublished" datetime="2018-01-09T21:34:36+08:00">2018-01-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CAS/" itemprop="url" rel="index"><span itemprop="name">CAS</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="CAS 单点登录（二）" href="/2018/01/09/54220.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::b0ab7b71083c73e8ea28a71474f01985" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>38 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0082.jpg" alt="image"></p>
+<p>Cas 的全称是 Centeral Authentication Service，是对单点登录 SSO（Single Sign On）的一种实现。其由 Cas Server 和 Cas Client 两部分组成，Cas Server 是核心，而 Cas Client 通常就对应于我们的应用。一个 Cas Server 可以对应于多个 Cas Client。它允许我们在一个 Client 进行登录以后无需再让用户输入用户名和密码进行认证即可访问其它 Client 应用。</p>
+<span id="more"></span>
+<h1 id="CAS简介"><a href="#CAS简介" class="headerlink" title="CAS简介"></a>CAS 简介</h1><p>Cas Server 的主要作用是通过发行和验证 Ticket（票）来对用户进行认证和授权访问 Client 应用，用于认证的凭证信息都是由 Cas Server 管理的。而 Cas Client 就对应于我们真正的应用，当然其中会使用到 Cas 相关的类，用于与 Cas Server 进行交互。官网有两张图最能体现 Cas 的架构和原理。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/cas/CAS008.jpg" alt="image"></p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/cas/CAS009.jpg" alt="image"></p>
+<p>如你所见，在第一次访问应用 app1 时，由于没有登录会直接跳转到 Cas Server 去进行登录认证，此时将附带查询参数 service 在 Cas Server 的登录地址上，表示登录成功后将要跳转的地址。此时 Cas Server 检查到没有之前成功登录后生成的 SSO Session 信息，那么就会引导用户到登录页面进行登录。用户输入信息提交登录请求，Cas Server 认证成功后将生成对应的 SSO Session，以及名为 CASTGC 的 cookie，该 cookie 包含用来确定用户 SSO Session 的 Ticket Granting Ticket（TGT）。之后会生成一个 Service Ticket（ST），并将以 ticket 作为查询参数名，以该 ST 作为查询参数值跳转到登录时 service 对应的 URL。如：</p>
+<p> http(s)://domain/app1?ticket=ST-2-59fS6KxvmykibRXyoPJE</p>
+<p>之后的操作对用户来说都是透明的，即不可见的。app1 之后将以 service 和 ticket 作为查询参数请求 Cas Server 对 service 进行验证，验证通过后 Cas Server 将返回当前用户的用户名等信息。app1 就会给当前用户生成其自身的 Session，以后该用户以该 Session 都可以成功的访问 app1，而不需要再去请求 Cas Server 进行认证。当该用户再去访问 app2 的时候，由于其在 app2 上没有对应的 Session 信息，将会跳转到 Cas Server 的登录地址，Cas Server 此时发现其包含名为 CASTGC 的 cookie，将获取其中包含的 TGT 来获取对应的 SSO Session，然后会将用户重定向到 app2 对应的地址，以 Service Ticket 作为查询参数。之后 app2 会向 Cas Server 发送请求校验该 Service Ticket，校验成功后 app2 将建立该用户对应的 Session 信息，以后该用户以该 Session 就可以自由的访问 app2 了。</p>
+<p>综上所述，我们知道，各系统之间的单点登录是通过 Cas Server 生成的 SSO Session 来交流的，而用户与实际的应用系统进行交互的时候，各应用系统将建立单独的 Session，以满足用户与该系统的交互需求。</p>
+<p>（注：本文是基于 cas 3.5.2 所写）</p>
+<h1 id="部署Cas-Server"><a href="#部署Cas-Server" class="headerlink" title="部署Cas Server"></a>部署 Cas Server</h1><p>Cas 应用都需要有一个 Cas Server。Cas Server 是基于 Java Servlet 实现的，其要求部署在 Servlet2.4 以上版本的 Web 容器中。在此笔者将其部署到 tomcat7 中。Cas Server 是要求使用 https 协议进行访问的，所以如果你的 Web 容器没有开启 https 通道，则需先开启。</p>
+<h2 id="开启tomcat7的https通道"><a href="#开启tomcat7的https通道" class="headerlink" title="开启tomcat7的https通道"></a>开启 tomcat7 的 https 通道</h2><p>官方文档在这里 <a target="_blank" rel="noopener" href="http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html%E3%80%82%E7%AE%80%E5%8D%95%E6%9D%A5%E8%AF%B4%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4%E5%A6%82%E4%B8%8B%EF%BC%9A">http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html。简单来说具体步骤如下：</a></p>
+<ol>
+<li>利用 Java 的 keytool 工具创建一个 keystore 文件，该文件保存了服务端的证书和私钥。打开命令窗口敲入如下命令：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">%JAVA_HOME%\bin\keytool -genkey -alias tomcat -keyalg RSA<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="2">
+<li><p>根据提示输入密码等信息，笔者选择的是 “password”，该密码稍后将用于配置 tomcat。</p>
+</li>
+<li><p>打开 tomcat 安装目录 conf/server.xml 文件，将如下语句的注释打开，并加上属性 keystorePass，密码为我们在建立 keystore 时设立的密码。这样我们就可以使用 https 来访问 tomcat 了。默认其会到 ${user.home}/.keystore 寻找 keystore 文件，我们之前建立的 keystore 文件默认就在这个位置。</p>
+</li>
+</ol>
+<pre class="line-numbers language-XML" data-language="XML"><code class="language-XML">&lt;Connector port="8443" protocol="org.apache.coyote.http11.Http11Protocol" SSLEnabled="true"  
+           maxThreads="150" scheme="https" secure="true"  
+           clientAuth="false" sslProtocol="TLS"  
+                    keystorePass="password"/&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="部署Cas-Server-1"><a href="#部署Cas-Server-1" class="headerlink" title="部署Cas Server"></a>部署 Cas Server</h2><p>从官网下载的 cas server 中会含有一个 cas server 对应的 war 包，对应路径为 cas-server-3.5.2\modules\cas-server-webapp-3.5.2.war，我们可以把该 war 包重命名为 cas.war，然后丢到 tomcat 的 webapps 目录下。之后我们就可以启动 tomcat，然后访问 <a target="_blank" rel="noopener" href="https://localhost:8443/cas/login%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0Cas%E7%9A%84%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E4%BA%86%E3%80%82">https://localhost:8443/cas/login 就可以看到 Cas 的登录页面了。</a></p>
+<p>这些 UI 如果不想用，都是可以进行修改，自定义的。敲入用户名和密码就可以进行登录了。默认使用的 AuthenticationHandler 的处理逻辑是，只要用户名和密码一致就可以登录成功。</p>
+<h1 id="Cas-Server中各配置文件介绍"><a href="#Cas-Server中各配置文件介绍" class="headerlink" title="Cas Server中各配置文件介绍"></a>Cas Server 中各配置文件介绍</h1><p> Cas Server 中所有的配置文件都是放在 WEB-INF 目录及其子目录下的。</p>
+<h2 id="在WEB-INF-classes下的配置文件有："><a href="#在WEB-INF-classes下的配置文件有：" class="headerlink" title="在WEB-INF/classes下的配置文件有："></a>在 WEB-INF/classes 下的配置文件有：</h2><ul>
+<li> cas-theme-default.properties：该文件存放的是 css 文件的路径，用户可以在这里指定使用的 css 文件为自定义的 css 文件，也可以更改配置文件中对应的 css 文件已更改默认的样式。</li>
+<li> 系列 messages_*.properties：国际化支持对应的资源文件。</li>
+<li> default_views.properties 和 protocol_views.properties：Cas Server 中使用到的视图配置文件，用于定义对应视图的处理类及其文件路径。</li>
+<li> log4j.xml：log4j 的配置文件。</li>
+</ul>
+<h2 id="在WEB-INF根目录下的配置文件有："><a href="#在WEB-INF根目录下的配置文件有：" class="headerlink" title="在WEB-INF根目录下的配置文件有："></a>在 WEB-INF 根目录下的配置文件有：</h2><ul>
+<li> web.xml：这个文件就是大伙熟悉的 web.xml 文件。</li>
+<li> cas-servlet.xml：该文件是 Cas Server 使用到的 Spring MVC 的配置文件，里面定义了一些 Controller 及 View 相关的内容。</li>
+<li> cas.properties：该文件是 Cas Server 配置的主要文件。与 Spring 相关的所有配置使用的外部属性都定义在这个文件中。</li>
+<li> deployerConfigContext.xml：该文件是专为 Cas Server 部署人员抽取出来的一个文件，其中的内容通常都是 Cas Server 部署人员需要进行更改的内容。</li>
+<li> login-webflow.xml：登录使用到的 Spring Web Flow 配置文件。</li>
+<li> restlet-servlet.xml：使用到的 Restful API 的相关配置。</li>
+<li> WEB-INF/spring-configuration：该目录中存放的是 Cas Server 加载的 Spring 相关的配置文件。</li>
+<li> WEB-INF/unused-spring-configuration：该目录中存放的是没有用到，但是有需要时可以将它们 copy 到 spring-configuration 目录下的文件。</li>
+</ul>
+<h2 id="在WEB-INF-spring-configuration目录下的配置文件是Cas-Server中使用到的所有与Spring相关的配置文件，具体有："><a href="#在WEB-INF-spring-configuration目录下的配置文件是Cas-Server中使用到的所有与Spring相关的配置文件，具体有：" class="headerlink" title="在WEB-INF/spring-configuration目录下的配置文件是Cas Server中使用到的所有与Spring相关的配置文件，具体有："></a>在 WEB-INF/spring-configuration 目录下的配置文件是 Cas Server 中使用到的所有与 Spring 相关的配置文件，具体有：</h2><ul>
+<li> applicationContext.xml：该文件中定义了主要使用的 bean，通常不需要修改。</li>
+<li> argumentExtractorsConfiguration.xml：该文件中定义了需要使用的协议，默认只有 CAS 和 SAML 是可用的。</li>
+<li> log4jConfiguration.xml：log4j 初始化对应的配置。</li>
+<li> propertyFileConfigure.xml：用于指定外部属性文件的位置，默认指定的就是前面提到的 cas.properties 文件。</li>
+<li> securityContext.xml：这是 Cas Server 中使用到的 Spring Security 相关内容的配置文件，默认不需要进行修改。</li>
+<li> ticketExpirationPolicies.xml：用于指定 TicketGranting Ticket 和 Service Ticket 的过期策略，一般不需要修改。</li>
+<li> ticketGrantingTicketCookieGenerator.xml：TicketGranting Ticket 对应的 CookieGenerator 的配置。</li>
+<li> ticketRegistry.xml：DefaultTicketRegistry 对应的配置。</li>
+<li> uniqueIdGenerators.xml：唯一主键生成相关的配置。</li>
+<li> warnCookieGenerator.xml：用于生成警告的 CookieGenerator 对应配置。</li>
+</ul>
+<h1 id="Cas（04）——更改认证方式"><a href="#Cas（04）——更改认证方式" class="headerlink" title="Cas（04）——更改认证方式"></a>Cas（04）—— 更改认证方式</h1><p>在 Cas Server 的 WEB-INF 目录下有一个 deployerConfigContext.xml 文件，该文件是基于 Spring 的配置文件，里面存放的内容常常是部署人员需要修改的内容。其中认证方式也是定义在这个文件中的，id 为 authenticationManager 的 bean 的 authenticationHandlers 即定义了需要使用的 AuthenticationHandler 列表。默认使用了两个 AuthenticationHandler，第一个是用来确保当前使用的是 https 协议的 HttpBasedServiceCredentialsAuthenticationHandler，第二个是我们需要改的，其简单认证用户名与密码相等的 SimpleTestUsernamePasswordAuthenticationHandler。我们只需要更改这里的 SimpleTestUsernamePasswordAuthenticationHandler 就行了。Cas 中已经为我们提供了不少 AuthenticationHandler 的实现，包括基于数据库认证的实现，当然用户也可以实现自己的 AuthenticationHandler。下面将以使用数据库进行认证为例讲解如何更改认证方式。</p>
+<p>Cas 的各个模块都是基于 Maven 开发的，Cas Server 也不例外。所以官方推荐我们使用 Maven 的 War 覆盖机制来修改 Cas Server 的配置文件。Maven 的 War 覆盖机制是指当一个 package 类型为 war 的 Maven 项目 A 中引入了一个 package 类型为 war 的项目 B 作为依赖时，最终项目 A 打包的 war 包中不仅会包含项目 A 的内容，还会包含项目 B 的内容，且相同位置的文件项目 A 中的会覆盖项目 B 中的，即当项目 A 和项目 B 在 WEB-INF 下都拥有一个 web.xml 文件时，最终生成的 war 包中将使用项目 A 在 WEB-INF 下的 web.xml 文件；而当项目 A 在 WEB-INF 下没有 web.xml 文件，而项目 B 在 WEB-INF 下拥有 web.xml 文件时最终生成的 war 包中将使用项目 B 在 WEB-INF 下的 web.xml 文件。所以如果我们要修改 Cas Server 的配置文件，我们可以建立一个自己的基于 Maven 的 Web 项目，然后引入 Cas Server 作为依赖，并在自己的项目中建立对应的 deployerConfigContext.xml 文件。下面来看详细步骤。</p>
+<ol>
+<li>建立基于 Maven 的 Web 项目，取名为 myCasServer。</li>
+<li>打开 pom.xml 文件，删除默认的依赖项，添加如下内容。</li>
+</ol>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-war-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>warName</span><span class="token punctuation">&gt;</span></span>cas<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>warName</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.jasig.cas<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>cas-server-webapp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${cas.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type</span><span class="token punctuation">&gt;</span></span>war<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>type</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">&gt;</span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cas.version</span><span class="token punctuation">&gt;</span></span>3.5.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cas.version</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repositories</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repository</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>ja-sig<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>http://oss.sonatype.org/content/repositories/releases/ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repository</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repositories</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li><p>删除 myCasServer 项目中 src/main/webapp 下的 index.jsp 文件和 src/main/webapp/WEB-INF 下的 web.xml 文件，因为在 cas-server-webapp 中都存在对应的文件，不删除的话打包后的结果将是 myCasServer 中的覆盖 cas-server-webapp 中的。如果这个时候使用 Maven 进行打包的话你将得到一个和 cas-server-webapp 一模一样的 war 包。</p>
+</li>
+<li><p>使用数据库进行认证的话还需要添加对应的依赖，打开 myCasServer 的 pom.xml 文件，添加如下依赖。</p>
+</li>
+</ol>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.jasig.cas<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>cas-server-support-jdbc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${cas.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">&gt;</span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="5">
+<li>将 cas-server-webapp/WEB-INF 下的 deployerConfigContext.xml 文件 copy 到 myCasServer 的 src/main/webapp/WEB-INF 目录下。</li>
+<li>基于数据库的 AuthenticationHandler 有多种，这里以 QueryDatabaseAuthenticationHandler 为例。QueryDatabaseAuthenticationHandler 需要配置两个参数，dataSource 和 sql。dataSource 就是数据源，表示从哪个数据源进行查询。sql 是对应的查询语句，其会接收 username 作为参数，然后查询出对应的密码，之后 QueryDatabaseAuthenticationHandler 会将查询出来的密码与用户提交的密码进行匹配。所以这里我们打开复制到 myCasServer 中的 deployerConfigContext.xml 文件，找到 id 为 authenticationManager 的 bean 的 authenticationHandlers 属性定义，将最后一个 AuthenticationHandler 替换成我们想要的 QueryDatabaseAuthenticationHandler。</li>
+</ol>
+<p> 替换前：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>authenticationHandlers<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>list</span><span class="token punctuation">&gt;</span></span>
+            &lt;beanclass="org.jasig.cas.authentication.handler.support.HttpBasedServiceCredentialsAuthenticationHandler"
+                p:httpClient-ref="httpClient" /&gt;
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span>
+           <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.authentication.handler.support.SimpleTestUsernamePasswordAuthenticationHandler<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>list</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p> 替换后：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>authenticationHandlers<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>list</span><span class="token punctuation">&gt;</span></span>
+            &lt;beanclass="org.jasig.cas.authentication.handler.support.HttpBasedServiceCredentialsAuthenticationHandler"
+                p:httpClient-ref="httpClient" /&gt;
+            &lt;beanclass="org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler"&gt;
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sql<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>select password from t_user where username = ?<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>list</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>像 dataSource 的定义及其需要使用到的依赖包我就不贴了，比较常用。</p>
+<p>打包以后生成的 war 包中使用的 AuthenticationHandler 就会是我们在 myCasServer 的 src/main/webapp/WEB-INF 目录下的 deployerConfigContext.xml 文件中定义的 QueryDatabaseAuthenticationHandler 了。以后需要修改 Cas Server 中的其它内容也可以依照此种方式进行修改。</p>
+<h1 id="修改Cas-Server的其它配置"><a href="#修改Cas-Server的其它配置" class="headerlink" title="修改Cas Server的其它配置"></a>修改 Cas Server 的其它配置</h1><h2 id="修改host-name"><a href="#修改host-name" class="headerlink" title="修改host.name"></a>修改 host.name</h2><p>host.name 是定义在 cas.properties 文件中的一个属性。该属性将被定义在 uniqueIdGenerators.xml 文件中的各种 UniqueTicketIdGenerator 用来生成 TGT、ST 等 ticket。默认在生成这些 ticket 时会将 host.name 作为对应 ticket 的后缀。host.name 的设置在集群环境下将非常有用，其值对于每个节点来说都必须是唯一的，这样在整个集群环境下生成出的各种 ticket 也必定是唯一的。当然，如果只是在单机环境下使用，我们也可以不修改它。</p>
+<h2 id="修改SSO-Session的超时策略"><a href="#修改SSO-Session的超时策略" class="headerlink" title="修改SSO Session的超时策略"></a>修改 SSO Session 的超时策略</h2><p>SSO Session 的超时策略是由 TicketGrantingTicketExpirationPolicy 来描述的，其定义在 ticketExpirationPolicies.xml 文件中的。以下是其定义：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- Provides both idle and hard timeouts, for instance 2 hour sliding window with an 8 hour max lifetime --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>grantingTicketExpirationPolicy<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.ticket.support.TicketGrantingTicketExpirationPolicy<span class="token punctuation">"</span></span>
+          <span class="token attr-name"><span class="token namespace">p:</span>maxTimeToLiveInSeconds</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${tgt.maxTimeToLiveInSeconds:28800}<span class="token punctuation">"</span></span>
+          <span class="token attr-name"><span class="token namespace">p:</span>timeToKillInSeconds</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${tgt.timeToKillInSeconds:7200}<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们可以看到它需要指定两个参数，maxTimeToLiveInSeconds 和 timeToKillInSeconds，它们的单位都是秒。其中 timeToKillInSeconds 表示用户在多久不进行操作的情况下将超时，maxTimeToLiveInSeconds 表示 SSO Session 的最大有效时间，从生成到指定时间后就将超时。timeToKillInSeconds 默认是 7200 秒，即 2 小时；maxTimeToLiveInSeconds 默认是 28800 秒，即 8 小时。用户如果需要修改的话可以之前介绍的 Maven War 覆盖的方式在 ticketExpirationPolicies.xml 文件中修改，也可以在 cas.properties 文件中通过对应的属性进行修改。</p>
+<h2 id="修改允许管理service的角色"><a href="#修改允许管理service的角色" class="headerlink" title="修改允许管理service的角色"></a>修改允许管理 service 的角色</h2><p>有的时候我们需要查看或管理 Cas Server 端的 service 注册情况。这就需要我们在 cas.properties 文件中指定用户访问 service 管理页面需要的角色，这是通过 cas.securityContext.serviceProperties.adminRoles 来指定的，默认是 ROLE_ADMIN。之后我们就可以通过访问 “/services/manage.html” 来对 Cas Server 上注册的 service 进行管理了。在访问该 URL 时可能会出现国际化时某信息在 zh_CN 中找不到的问题，解决方法可以将对应的信息在 messages_zh_CN.properties 中加上，或者将 messages_en.properties 文件 copy 一份重命名为 messages.properties，英文版本的 messages 相对而言应该是比较全的。Cas Server 的权限控制也是基于 Spring Security 的，其主要配置文件是 WEB-INF/spring 目录下的 securityContext.xml 文件，关于权限相关的内容可以在这里查找。</p>
+<h2 id="修改logout后的重定向"><a href="#修改logout后的重定向" class="headerlink" title="修改logout后的重定向"></a>修改 logout 后的重定向</h2><p>默认情况下，Cas 客户端应用通过 Cas Server 的 logout 登出后是会展示 Cas Server 的默认登出结果页面的。如果用户希望在 Cas Server 登出后能够跳转到自己的应用来，则可以在访问 Cas Server 的 logout 时通过参数 service 传递登出后需要跳转的地址。有一点需要注意的是指定的 service 需要是在 Cas Server 注册过的，我们可以通过访问 Cas Server 的 “/services/manage.html” 对 service 进行管理，包括增、删、改、查等。另外我们还需要启用 Cas Server 在 logout 后的重定向功能，该功能默认是不启用的。通过去掉 cas.properties 文件中属性 cas.logout.followServiceRedirects=false 前面的注释，并修改其值为 true 可以启用 logout 后的重定向了。</p>
+<h2 id="禁用logout后的回调"><a href="#禁用logout后的回调" class="headerlink" title="禁用logout后的回调"></a>禁用 logout 后的回调</h2><p>默认情况下在通过访问 Cas Server 的 logout 进行登出后 Cas Server 将依次回调其中注册的各个 Cas Client 应用，以进行单点登出。如果用户不希望 Cas Server 在 logout 后回调 Cas Client 应用，则可以通过设置 cas.properties 文件中的 slo.callbacks.disabled=true 来禁用其回调。</p>
+<h2 id="修改service-ticket的超时时间"><a href="#修改service-ticket的超时时间" class="headerlink" title="修改service ticket的超时时间"></a>修改 service ticket 的超时时间</h2><p>service ticket 的默认有效时间是 10 秒。通常来说这已经足够了，因为从 Cas Server 生成 service ticket 返回给 Cas client 应用，到 Cas client 应用发送 service ticket 到 Cas Server 进行验证这个过程 10 秒已经足够。这也是为什么如果我们使用 debug 追踪 Cas 应用的认证过程时经常会失败的原因，因为追踪的时候 service ticket 已经过了 10 秒的有效期了。如果用户需要修改它可以通过 cas .properties 文件中的 st.timeToKillInSeconds 属性进行修改。</p>
+<h1 id="基于数据库的认证"><a href="#基于数据库的认证" class="headerlink" title="基于数据库的认证"></a>基于数据库的认证</h1><p>Cas Server 自身已经为我们实现了几种基于 JDBC 的 AuthenticationHandler 实现，但它们不包含在 Cas Server 的核心包里面，而是包含在 cas-server-support-jdbc 中，如果我们要使用 Cas Server 已经实现好的基于 JDBC 的 AuthenticationHandler，我们必须先将 cas-server-support-jdbc 对应的 jar 包、相关数据库的驱动，以及所需要使用的数据源实现等 jar 包加入 Cas Server 的类路径中。如果是基于 Maven 的 war 覆盖机制来修改 Cas Server 的配置文件，则我们可以在自己的 Maven 项目的依赖中加入如下项（对应的驱动就没贴出来了）。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.jasig.cas<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>cas-server-support-jdbc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${cas.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">&gt;</span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Cas Server 默认已经实现好的基于 JDBC 的 AuthenticationHandler 有三个，它们都继承自 AbstractJdbcUsernamePasswordAuthenticationHandler，而且在认证过程中都需要一个 DataSource。下面来对它们做一个简要的介绍。</p>
+<h2 id="BindModeSearchDatabaseAuthenticationHandler"><a href="#BindModeSearchDatabaseAuthenticationHandler" class="headerlink" title="BindModeSearchDatabaseAuthenticationHandler"></a>BindModeSearchDatabaseAuthenticationHandler</h2><p>BindModeSearchDatabaseAuthenticationHandler 将试图以传入的用户名和密码从配置的 DataSource 中建立一个连接，如果连接成功，则表示认证成功，否则就是认证失败。以下是 BindModeSearchDatabaseAuthenticationHandler 源码的一段主要代码，通过它我们可以明显的看清其逻辑：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">authenticateUsernamePasswordInternal</span><span class="token punctuation">(</span>
+        <span class="token keyword">final</span> <span class="token class-name">UsernamePasswordCredentials</span> credentials<span class="token punctuation">)</span>
+        <span class="token keyword">throws</span> <span class="token class-name">AuthenticationException</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> <span class="token class-name">String</span> username <span class="token operator">=</span> credentials<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">final</span> <span class="token class-name">String</span> password <span class="token operator">=</span> credentials<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">final</span> <span class="token class-name">Connection</span> c <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+               <span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">DataSourceUtils</span><span class="token punctuation">.</span><span class="token function">releaseConnection</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            returntrue<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            returnfalse<span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>当然，这种实现也需要你的 DataSource 支持 getConnection (user,password) 才行，否则将返回 false。dbcp 的 BasicDataSource 的不支持的，而 c3p0 的 ComboPooledDataSource 支持。</p>
+<p>以下是一个使用 BindModeSearchDatabaseAuthenticationHandler 的配置示例：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>authenticationManager<span class="token punctuation">"</span></span>
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.authentication.AuthenticationManagerImpl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      ...
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>authenticationHandlers<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>list</span><span class="token punctuation">&gt;</span></span>
+            ...
+            &lt;beanclass="org.jasig.cas.adaptors.jdbc.BindModeSearchDatabaseAuthenticationHandler"&gt;
+               <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+            ...
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>list</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+      ...
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="QueryDatabaseAuthenticationHandler"><a href="#QueryDatabaseAuthenticationHandler" class="headerlink" title="QueryDatabaseAuthenticationHandler"></a>QueryDatabaseAuthenticationHandler</h2><p>使用 QueryDatabaseAuthenticationHandler 需要我们指定一个 SQL，该 SQL 将接收一个用户名作为查询条件，然后返回对应的密码。该 SQL 将被 QueryDatabaseAuthenticationHandler 用来通过传入的用户名查询对应的密码，如果存在则将查询的密码与查询出来的密码进行匹配，匹配结果将作为认证结果。如果对应的用户名不存在也将返回 false。</p>
+<p>以下是 QueryDatabaseAuthenticationHandler 的一段主要代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">authenticateUsernamePasswordInternal</span><span class="token punctuation">(</span>finalUsernamePasswordCredentials credentials<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">AuthenticationException</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> <span class="token class-name">String</span> username <span class="token operator">=</span> <span class="token function">getPrincipalNameTransformer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">transform</span><span class="token punctuation">(</span>credentials<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">final</span> <span class="token class-name">String</span> password <span class="token operator">=</span> credentials<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">final</span> <span class="token class-name">String</span> encryptedPassword <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getPasswordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>
+
+            password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">final</span> <span class="token class-name">String</span> dbPassword <span class="token operator">=</span> <span class="token function">getJdbcTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">queryForObject</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sql<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> dbPassword<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>encryptedPassword<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">IncorrectResultSizeDataAccessException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// this means the username was not found.</span>
+
+            returnfalse<span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面的逻辑非常明显。此外，如你所见，QueryDatabaseAuthenticationHandler 使用的用户名会经过 PrincipalNameTransformer 进行转换，而密码会经过 PasswordEncoder 进行编码。Cas Server 中基于 JDBC 的 AuthenticationHandler 实现中使用到的 PrincipalNameTransformer 默认是不进行任何转换的 NoOpPrincipalNameTransformer，而默认使用的 PasswordEncoder 也是不会经过任何编码的 PlainTextPasswordEncoder。当然了，cas-server-jdbc-support 对它们也有另外两种支持，即 PrefixSuffixPrincipalNameTransformer 和 DefaultPasswordEncoder。</p>
+<h3 id="PrefixSuffixPrincipalNameTransformer"><a href="#PrefixSuffixPrincipalNameTransformer" class="headerlink" title="PrefixSuffixPrincipalNameTransformer"></a>PrefixSuffixPrincipalNameTransformer</h3><p>PrefixSuffixPrincipalNameTransformer 的作用很明显，如其名称所描述的那样，其在转换时会将用户名加上指定的前缀和后缀。所以用户在使用的时候需要指定 prefix 和 suffix 两个属性，默认是空。</p>
+<h3 id="DefaultPasswordEncoder"><a href="#DefaultPasswordEncoder" class="headerlink" title="DefaultPasswordEncoder"></a>DefaultPasswordEncoder</h3><p>DefaultPasswordEncoder 底层使用的是标准 Java 类库中的 MessageDigest 进行加密的，其支持 MD5、SHA 等加密算法。在使用时需要通过构造参数 encodingAlgorithm 来指定使用的加密算法，可以使用 characterEncoding 属性注入来指定获取字节时使用的编码，不指定则使用默认编码。以下是 DefaultPasswordEncoder 的源码，其展示了 DefaultPasswordEncoder 的加密逻辑。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">DefaultPasswordEncoder</span> <span class="token keyword">implements</span> <span class="token class-name">PasswordEncoder</span> <span class="token punctuation">{</span>
+    privatestaticfinalchar<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token constant">HEX_DIGITS</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token char">'0'</span><span class="token punctuation">,</span> <span class="token char">'1'</span><span class="token punctuation">,</span> <span class="token char">'2'</span><span class="token punctuation">,</span> <span class="token char">'3'</span><span class="token punctuation">,</span> <span class="token char">'4'</span><span class="token punctuation">,</span> <span class="token char">'5'</span><span class="token punctuation">,</span> <span class="token char">'6'</span><span class="token punctuation">,</span> <span class="token char">'7'</span><span class="token punctuation">,</span> <span class="token char">'8'</span><span class="token punctuation">,</span><span class="token char">'9'</span><span class="token punctuation">,</span> <span class="token char">'a'</span><span class="token punctuation">,</span> <span class="token char">'b'</span><span class="token punctuation">,</span> <span class="token char">'c'</span><span class="token punctuation">,</span> <span class="token char">'d'</span><span class="token punctuation">,</span> <span class="token char">'e'</span><span class="token punctuation">,</span> <span class="token char">'f'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@NotNull</span>
+    privatefinal <span class="token class-name">String</span> encodingAlgorithm<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> characterEncoding<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">DefaultPasswordEncoder</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">String</span> encodingAlgorithm<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>encodingAlgorithm <span class="token operator">=</span> encodingAlgorithm<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">encode</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">String</span> password<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>password <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            returnnull<span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+            <span class="token class-name">MessageDigest</span> messageDigest <span class="token operator">=</span> <span class="token class-name">MessageDigest</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>encodingAlgorithm<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">hasText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>characterEncoding<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                messageDigest<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>password<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>characterEncoding<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+                messageDigest<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>password<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            finalbyte<span class="token punctuation">[</span><span class="token punctuation">]</span> digest <span class="token operator">=</span> messageDigest<span class="token punctuation">.</span><span class="token function">digest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token function">getFormattedText</span><span class="token punctuation">(</span>digest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">NoSuchAlgorithmException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            thrownew <span class="token class-name">SecurityException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">UnsupportedEncodingException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            thrownew <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">/**
+     * Takes the raw bytes from the digest and formats them correct.
+     * @param bytes the raw bytes from the digest.
+     * @return the formatted bytes.
+     */</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">getFormattedText</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> <span class="token class-name">StringBuilder</span> buf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span>bytes<span class="token punctuation">.</span>length <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> bytes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            buf<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token constant">HEX_DIGITS</span><span class="token punctuation">[</span><span class="token punctuation">(</span>bytes<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;&gt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0x0f</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            buf<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token constant">HEX_DIGITS</span><span class="token punctuation">[</span>bytes<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;</span> <span class="token number">0x0f</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> buf<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    publicfinalvoid <span class="token function">setCharacterEncoding</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">String</span> characterEncoding<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>characterEncoding <span class="token operator">=</span> characterEncoding<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果在认证时需要使用 DefaultPasswordEncoder，则需要确保数据库中保存的密码的加密方式和 DefaultPasswordEncoder 的加密算法及逻辑是一致的。如果这些都不能满足你的需求，则用户可以实现自己的 PrincipalNameTransformer 和 PasswordEncoder。</p>
+<p>以下是一个配置使用 QueryDatabaseAuthenticationHandler 进行认证，且使用 DefaultPasswordEncoder 对密码进行 MD5 加密的示例：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>authenticationManager<span class="token punctuation">"</span></span>
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.authentication.AuthenticationManagerImpl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      ...
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>authenticationHandlers<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>list</span><span class="token punctuation">&gt;</span></span>
+            ...
+            &lt;beanclass="org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler"&gt;
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>passwordEncoder<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>passwordEncoder<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sql<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>select password from t_user where username = ?<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+            ...
+
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>list</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+
+      ...
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>passwordEncoder<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.authentication.handler.DefaultPasswordEncoder<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MD5<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token comment">&lt;!-- 加密算法 --&gt;</span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="SearchModeSearchDatabaseAuthenticationHandler"><a href="#SearchModeSearchDatabaseAuthenticationHandler" class="headerlink" title="SearchModeSearchDatabaseAuthenticationHandler"></a>SearchModeSearchDatabaseAuthenticationHandler</h2><p>SearchModeSearchDatabaseAuthenticationHandler 的主要逻辑是将传入的用户名和密码作为条件从指定的表中进行查询，如果对应记录存在则表示认证通过。使用该 AuthenticationHandler 时需要我们指定查询时使用的表名（tableUsers）、用户名对应的字段名（fieldUser）和密码对应的字段名（fieldPassword）。此外，还可以选择性的使用 PrincipalNameTransformer 和 PasswordEncoder。以下是 SearchModeSearchDatabaseAuthenticationHandler 源码中的一段主要代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">SQL_PREFIX</span> <span class="token operator">=</span> <span class="token string">"Select count('x') from "</span><span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@NotNull</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> fieldUser<span class="token punctuation">;</span>
+    
+    <span class="token annotation punctuation">@NotNull</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> fieldPassword<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@NotNull</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> tableUsers<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> sql<span class="token punctuation">;</span>
+
+    protectedfinalboolean <span class="token function">authenticateUsernamePasswordInternal</span><span class="token punctuation">(</span>finalUsernamePasswordCredentials credentials<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">AuthenticationException</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">final</span> <span class="token class-name">String</span> transformedUsername <span class="token operator">=</span> <span class="token function">getPrincipalNameTransformer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">transform</span><span class="token punctuation">(</span>credentials<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">final</span> <span class="token class-name">String</span> encyptedPassword <span class="token operator">=</span> <span class="token function">getPasswordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>credentials<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        finalint count <span class="token operator">=</span> <span class="token function">getJdbcTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">queryForInt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sql<span class="token punctuation">,</span>
+
+           transformedUsername<span class="token punctuation">,</span> encyptedPassword<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> count <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    publicvoid <span class="token function">afterPropertiesSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>sql <span class="token operator">=</span> <span class="token constant">SQL_PREFIX</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>tableUsers <span class="token operator">+</span> <span class="token string">" Where "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>fieldUser
+
+        <span class="token operator">+</span> <span class="token string">" = ? And "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>fieldPassword <span class="token operator">+</span> <span class="token string">" = ?"</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以下是一个使用 SearchModeSearchDatabaseAuthenticationHandler 的配置示例：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>authenticationManager<span class="token punctuation">"</span></span>
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.authentication.AuthenticationManagerImpl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+      ...
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>authenticationHandlers<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>list</span><span class="token punctuation">&gt;</span></span>
+            ...
+
+            &lt;beanclass="org.jasig.cas.adaptors.jdbc.SearchModeSearchDatabaseAuthenticationHandler"&gt;
+
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>passwordEncoder<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>passwordEncoder<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tableUsers<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>t_user<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token comment">&lt;!-- 指定从哪个用户表查询用户信息 --&gt;</span>
+
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fieldUser<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token comment">&lt;!-- 指定用户名在用户表对应的字段名 --&gt;</span>
+
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fieldPassword<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token comment">&lt;!-- 指定密码在用户表对应的字段名 --&gt;</span>
+
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+
+            ...
+
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>list</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+
+      ...
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>至此，cas-server-support-jdbc 中支持 JDBC 的三个 AuthenticationHandler 就讲完了。如果用户觉得它们都不能满足你的要求，则还可以选择使用自己实现的 AuthenticationHandler。至于其它认证方式，请参考官方文档。</p>
+<h1 id="建立使用Cas进行单点登录的应用"><a href="#建立使用Cas进行单点登录的应用" class="headerlink" title="建立使用Cas进行单点登录的应用"></a>建立使用 Cas 进行单点登录的应用</h1><p>根据之前的描述我们知道，Cas 由两部分组成，Cas Server 和 Cas Client。Cas Server 是 Cas 自己的服务端，而 Cas Client 是 Cas 客户端，其需要与我们自己的应用进行集成。</p>
+<h2 id="加入cas-client-core-xxx-jar到classpath"><a href="#加入cas-client-core-xxx-jar到classpath" class="headerlink" title="加入cas-client-core-xxx.jar到classpath"></a>加入 cas-client-core-xxx.jar 到 classpath</h2><p>在我们下载的 Cas Client 压缩包的 modules 目录下可以找到一个名为 cas-client-core-xxx.jar 的 jar 文件，首先需要将该 jar 包加入我们应用的类路径下，笔者这里使用的是 cas-client-core-3.1.11.jar。如果用户的应用是使用 Maven 构造的，则可以在应用的 pom.xml 文件中加入如下依赖。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.jasig.cas.client<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>cas-client-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.1.11<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="配置Filter"><a href="#配置Filter" class="headerlink" title="配置Filter"></a>配置 Filter</h2><p>然后需要我们在应用的 web.xml 文件中配置四个 Filter，这四个 Filter 必须按照固定的顺序来进行配置，而且它们必须配置在应用的其它 Filter 之前。它们的先后顺序要求如下：</p>
+<ul>
+<li>AuthenticationFilter</li>
+<li>TicketValidationFilter</li>
+<li>HttpServletRequestWrapperFilter</li>
+<li>AssertionThreadLocalFilter</li>
+</ul>
+<p>这些 Filter 有的必须指定某些参数，有的可以指定某些参数，这些参数可以通过 context-param 来指定，也可以通过 init-param 来指定。Cas Client 默认会先从 init-param 取，没取到则从 context-param 取，所以当 init-param 和 context-param 都指定了某个参数时，init-param 指定的将拥有更高的优先级。所以当多个 Filter 需要共用一个参数时，我们可以把它定义为 context-param。</p>
+<h3 id="AuthenticationFilter"><a href="#AuthenticationFilter" class="headerlink" title="AuthenticationFilter"></a>AuthenticationFilter</h3><p>AuthenticationFilter 用来拦截所有的请求，用以判断用户是否需要通过 Cas Server 进行认证，如果需要则将跳转到 Cas Server 的登录页面。如果不需要进行登录认证，则请求会继续往下执行。</p>
+<p>AuthenticationFilter 有两个用户必须指定的参数，一个是用来指定 Cas Server 登录地址的 casServerLoginUrl，另一个是用来指定认证成功后需要跳转地址的 serverName 或 service。service 和 serverName 只需要指定一个就可以了。当两者都指定了，参数 service 将具有更高的优先级，即将以 service 指定的参数值为准。service 和 serverName 的区别在于 service 指定的是一个确定的 URL，认证成功后就会确切的跳转到 service 指定的 URL；而 serverName 则是用来指定主机名，其格式为 {protocol}:{hostName}:{port}，如：<a href="https://localhost:8443，当指定的是serverName时，AuthenticationFilter将会把它附加上当前请求的URI，以及对应的查询参数来构造一个确定的URL，如指定serverName为“http://localhost”，而当前请求的URI为“/app”，查询参数为“a=b&amp;b=c”，则对应认证成功后的跳转地址将为“http://localhost/app?a=b&amp;b=c”。">https://localhost:8443，当指定的是 serverName 时，AuthenticationFilter 将会把它附加上当前请求的 URI，以及对应的查询参数来构造一个确定的 URL，如指定 serverName 为 “http://localhost”，而当前请求的 URI 为 “/app”，查询参数为 “a=b&amp;b=c”，则对应认证成功后的跳转地址将为 “http://localhost/app?a=b&amp;b=c”。</a></p>
+<p>除了上述必须指定的参数外，AuthenticationFilter 还可以指定如下可选参数：</p>
+<ul>
+<li>renew：当指定 renew 为 true 时，在请 Cas Server 时将带上参数 “renew=true”，默认为 false。</li>
+<li>gateway：指定 gateway 为 true 时，在请求 Cas Server 时将带上参数 “gateway=true”，默认为 false。</li>
+<li>artifactParameterName：指定 ticket 对应的请求参数名称，默认为 ticket。</li>
+<li>serviceParameterName：指定 service 对应的请求参数名称，默认为 service。</li>
+</ul>
+<p>如下是一个配置 AuthenticationFilter 的示例，serverName 由于在接下来配置的 Filter 中还要用，所以利用 context-param 将其配置为一个公用的参数。“elim” 对应我的电脑名。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context-param</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">&gt;</span></span>serverName<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">&gt;</span></span>http://elim:8080<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context-param</span><span class="token punctuation">&gt;</span></span>
+   
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casAuthenticationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.jasig.cas.client.authentication.AuthenticationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>init-param</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">&gt;</span></span>casServerLoginUrl<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">&gt;</span></span>https://elim:8443/cas/login<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>init-param</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+   
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casAuthenticationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="TicketValidationFilter"><a href="#TicketValidationFilter" class="headerlink" title="TicketValidationFilter"></a>TicketValidationFilter</h3><p>在请求通过 AuthenticationFilter 的认证之后，如果请求中携带了参数 ticket 则将会由 TicketValidationFilter 来对携带的 ticket 进行校验。TicketValidationFilter 只是对验证 ticket 的这一类 Filter 的统称，其并不对应 Cas Client 中的一个具体类型。Cas Client 中有多种验证 ticket 的 Filter，都继承自 AbstractTicketValidationFilter，它们的验证逻辑都是一致的，都有 AbstractTicketValidationFilter 实现，所不同的是使用的 TicketValidator 不一样。笔者这里将以 Cas10TicketValidationFilter 为例，其它还有 Cas20ProxyReceivingTicketValidationFilter 和 Saml11TicketValidationFilter。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casTicketValidationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.jasig.cas.client.validation.Cas10TicketValidationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>init-param</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">&gt;</span></span>casServerUrlPrefix<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">&gt;</span></span>https://elim:8443/cas<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>init-param</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casTicketValidationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>必须指定的参数：</p>
+<ul>
+<li>casServerUrlPrefix：用来指定 Cas Server 对应 URL 地址的前缀，如上面示例的 “<a target="_blank" rel="noopener" href="https://elim:8443/cas%E2%80%9D%E3%80%82">https://elim:8443/cas”。</a></li>
+<li>serverName 或 service：语义跟前面介绍的一致。</li>
+</ul>
+<p>可选参数：</p>
+<ul>
+<li>redirectAfterValidation ：表示是否验证通过后重新跳转到该 URL，但是不带参数 ticket，默认为 true。</li>
+<li>useSession ：在验证 ticket 成功后会生成一个 Assertion 对象，如果 useSession 为 true，则会将该对象存放到 Session 中。如果为 false，则要求每次请求都需要携带 ticket 进行验证，显然 useSession 为 false 跟 redirectAfterValidation 为 true 是冲突的。默认为 true。</li>
+<li>exceptionOnValidationFailure ：表示 ticket 验证失败后是否需要抛出异常，默认为 true。</li>
+<li>renew：当值为 true 时将发送 “renew=true” 到 Cas Server，默认为 false。</li>
+</ul>
+<h3 id="HttpServletRequestWrapperFilter"><a href="#HttpServletRequestWrapperFilter" class="headerlink" title="HttpServletRequestWrapperFilter"></a>HttpServletRequestWrapperFilter</h3><p>HttpServletRequestWrapperFilter 用于将每一个请求对应的 HttpServletRequest 封装为其内部定义的 CasHttpServletRequestWrapper，该封装类将利用之前保存在 Session 或 request 中的 Assertion 对象重写 HttpServletRequest 的 getUserPrincipal ()、getRemoteUser () 和 isUserInRole () 方法。这样在我们的应用中就可以非常方便的从 HttpServletRequest 中获取到用户的相关信息。以下是一个配置 HttpServletRequestWrapperFilter 的示例：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casHttpServletRequestWrapperFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.jasig.cas.client.util.HttpServletRequestWrapperFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+   
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casHttpServletRequestWrapperFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="AssertionThreadLocalFilter"><a href="#AssertionThreadLocalFilter" class="headerlink" title="AssertionThreadLocalFilter"></a>AssertionThreadLocalFilter</h3><p>AssertionThreadLocalFilter 是为了方便用户在应用的其它地方获取 Assertion 对象，其会将当前的 Assertion 对象存放到当前的线程变量中，那么以后用户在程序的任何地方都可以从线程变量中获取当前 Assertion，无需再从 Session 或 request 中进行解析。该线程变量是由 AssertionHolder 持有的，我们在获取当前的 Assertion 时也只需要通过 AssertionHolder 的 getAssertion () 方法获取即可，如：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Assertion</span> assertion <span class="token operator">=</span> <span class="token class-name">AssertionHolder</span><span class="token punctuation">.</span><span class="token function">getAssertion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>像 AssertionThreadLocalFilter 这种设计理念是非常好的，实际应用中使用的也比较多，Spring Security 中也有用到这种理念。为了便于大家了解，特贴出 AssertionHolder 的源码如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AssertionHolder</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * ThreadLocal to hold the Assertion for Threads to access.
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">ThreadLocal</span> threadLocal <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ThreadLocal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * Retrieve the assertion from the ThreadLocal.
+     */</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Assertion</span> <span class="token function">getAssertion</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">Assertion</span><span class="token punctuation">)</span> threadLocal<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * Add the Assertion to the ThreadLocal.
+     */</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">setAssertion</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">Assertion</span> assertion<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        threadLocal<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>assertion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * Clear the ThreadLocal.
+     */</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        threadLocal<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以下是配置 AssertionThreadLocalFilter 的示例：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casAssertionThreadLocalFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.jasig.cas.client.util.AssertionThreadLocalFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casAssertionThreadLocalFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="基于Spring的Filter配置"><a href="#基于Spring的Filter配置" class="headerlink" title="基于Spring的Filter配置"></a>基于 Spring 的 Filter 配置</h3><p>使用 Cas 单点登录的应用需要我们在应用的 web.xml 文件中配置上述介绍的四个 Filter，但如果用户的应用是使用 Spring 开发的，则我们可以只在 web.xml 文件中配置四个 Spring 的 DelegatingFilterProxy 用来代理需要配置的四个 Filter，对应的 Filter 名称对应我们需要代理的 Spring ApplicationContext 中 bean 的名称，此时我们需要将对应的 Filter 配置为 Spring ApplicationContext 中的一个 bean 对象。所以此时对应的 web.xml 文件的定义应该是这样的：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casAuthenticationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.springframework.web.filter.DelegatingFilterProxy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+   
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casAuthenticationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casTicketValidationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.springframework.web.filter.DelegatingFilterProxy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casTicketValidationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casHttpServletRequestWrapperFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.springframework.web.filter.DelegatingFilterProxy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casHttpServletRequestWrapperFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+   
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casAssertionThreadLocalFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.springframework.web.filter.DelegatingFilterProxy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casAssertionThreadLocalFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>而对应的 Filter 应该都以对应的名称定义为 Spring ApplicationContext 中的一个 bean。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>casAuthenticationFilter<span class="token punctuation">"</span></span>
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.client.authentication.AuthenticationFilter<span class="token punctuation">"</span></span>
+      <span class="token attr-name"><span class="token namespace">p:</span>casServerLoginUrl</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://elim:8443/cas/login<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">p:</span>renew</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>
+      <span class="token attr-name"><span class="token namespace">p:</span>gateway</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">p:</span>serverName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://elim:8080<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>casTicketValidationFilter<span class="token punctuation">"</span></span>
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.client.validation.Cas10TicketValidationFilter<span class="token punctuation">"</span></span>
+      <span class="token attr-name"><span class="token namespace">p:</span>serverName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://elim:8080<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">p:</span>redirectAfterValidation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ticketValidator<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.client.validation.Cas10TicketValidator<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment">&lt;!-- 对应于casServerUrlPrefix --&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://elim:8443/cas<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>casHttpServletRequestWrapperFilter<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.client.util.HttpServletRequestWrapperFilter<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+   
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>casAssertionThreadLocalFilter<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.client.util.AssertionThreadLocalFilter<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="添加证书到信任库"><a href="#添加证书到信任库" class="headerlink" title="添加证书到信任库"></a>添加证书到信任库</h2><p>在 ticket 验证成功后，还需要验证证书，这需要我们将之前建立的证书导出并添加到当前 JRE 的证书信任库中，否则将验证失败。JRE 在寻找证书时将根据当前使用的 host 来寻找，且会用该 host 匹配之前创建证书时指定的用户名称，如果匹配则表示找到。这也就意味着我们在创建证书时指定的用户名称需要是我们的 host。我的机器名称为 “elim”，我就把它作为我的 host，那么对应的证书应该这样创建。</p>
+<pre class="line-numbers language-none"><code class="language-none">keytool -genkey -keyalg RSA -alias tomcat -dname "cn=elim" -storepass changeit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>该语句是对我们之前介绍的 keytool -genkey -alias tomcat -keyalg RSA 的精写，它已经通过相应的参数指定了对应的参数值，而不需要再与用户交互了。如果还用之前的语句生成证书的话，那么对应的值应该这样填：</p>
+<p>之后会在用户的对应目录下生成一个.keystore 文件。之后需要将该文件导出为一个证书到 % JAVA_HOME%/jre/lib/security 目录下，对应指令为：</p>
+<pre class="line-numbers language-none"><code class="language-none">keytool -export -alias tomcat -file %JAVA_HOME%/jre/lib/security/tomcat.crt -storepass changeit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>之后需要将导出的 tomcat.crt 证书添加到运行时使用的 JRE 的受信任证书库中，此时如果出现异常可将原本 % JAVA_HOME%/jre/lib/security 目录下的 cacerts 删除后继续执行以下指令。</p>
+<pre class="line-numbers language-none"><code class="language-none">keytool -import -alias tomcat -file %JAVA_HOME%/jre/lib/security/tomcat.crt -keystore %JAVA_HOME%/jre/lib/security/cacerts -storepass changeit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>经过以上几步后就可以启用我们自己的 Cas Client 应用了，然后初次访问该应用时就会跳转到 Cas Server 进行登录认证。认证成功后将跳转到我们自己的 Client 应用进行 ticket 的验证，验证通过后就可以自由的访问我们的 Client 应用了。</p>
+<p>（注：本文是基于 Cas Server3.5.2 和 Cas Client3.1.11 所写）</p>
+<h1 id="单点登出"><a href="#单点登出" class="headerlink" title="单点登出"></a>单点登出</h1><h2 id="Cas-Client端配置单点登出"><a href="#Cas-Client端配置单点登出" class="headerlink" title="Cas Client端配置单点登出"></a>Cas Client 端配置单点登出</h2><p>单点登出功能跟单点登录功能是相对应的，旨在通过 Cas Server 的登出使所有的 Cas Client 都登出。Cas Server 的登出是通过请求 “/logout” 发生的，即如果你的 Cas Server 部署的访问路径为 “<a target="_blank" rel="noopener" href="https://localhost:8443/cas%E2%80%9D%E6%97%B6%EF%BC%8C%E9%80%9A%E8%BF%87%E8%AE%BF%E9%97%AE%E2%80%9Chttps://localhost:8443/cas/logout%E2%80%9D%E5%8F%AF%E4%BB%A5%E8%A7%A6%E5%8F%91Cas">https://localhost:8443/cas” 时，通过访问 “https://localhost:8443/cas/logout” 可以触发 Cas</a> Server 的登出操作，进而触发 Cas Client 的登出。在请求 Cas Server 的 logout 时，Cas Server 会将客户端携带的 TGT 删除，同时回调该 TGT 对应的所有 service，即所有的 Cas Client。Cas Server 中对应的 TGT 失效时默认也会触发同样的操作。Cas Client 如果需要响应该回调，进而在 Cas Client 端进行登出操作的话就需要有对应的支持。具体来说，需要在 Cas Client 应用的 web.xml 文件中添加如下 Filter 和 Listener。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener-class</span><span class="token punctuation">&gt;</span></span>org.jasig.cas.client.session.SingleSignOutHttpSessionListener<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener-class</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener</span><span class="token punctuation">&gt;</span></span>
+   
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casSingleSignOutFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.jasig.cas.client.session.SingleSignOutFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+   
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>casSingleSignOutFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>SingleSignOutFilter 需要配置在所有 Filter 之前，当 Cas Client 通过 Cas Server 登录成功，Cas Server 会携带生成的 Service Ticket 回调 Cas Client，此时 SingleSignOutFilter 会将 Service Ticket 与当前的 Session 绑定在一起。当 Cas Server 在进行 logout 后回调 Cas Client 应用时也会携带该 Service Ticket，此时 Cas Client 配置的 SingleSignOutFilter 将会使对应的 Session 失效，进而达到登出的目的。</p>
+<p>SingleSignOutHttpSessionListener 用于在 Cas Client 应用中的 Session 过期时将其从对应的映射关系中移除。</p>
+<h2 id="Cas-Server端禁用单点登出"><a href="#Cas-Server端禁用单点登出" class="headerlink" title="Cas Server端禁用单点登出"></a>Cas Server 端禁用单点登出</h2><p>单点登出功能默认在 Cas Server 端是启用的。可能因为某种原因用户想禁用它。在 Cas Server 的 WEB-INF/spring-configuration 目录下有一个 argumentExtractorsConfiguration.xml 文件，其中定义了两个 ArgumentExtractor 类型的 bean，一个是针对于 Cas 协议的，一个是针对于 SAMP1.1 协议的，但是它们都定义了一个共同的属性 disableSingleSignOut，如下所示，该值对应的是一个属性替换变量，默认为 false。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span>
+      <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>casArgumentExtractor<span class="token punctuation">"</span></span>
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.web.support.CasArgumentExtractor<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">p:</span>httpClient-ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>noRedirectHttpClient<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">p:</span>disableSingleSignOut</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${slo.callbacks.disabled:false}<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>samlArgumentExtractor<span class="token punctuation">"</span></span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.jasig.cas.web.support.SamlArgumentExtractor<span class="token punctuation">"</span></span>
+             <span class="token attr-name"><span class="token namespace">p:</span>httpClient-ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>noRedirectHttpClient<span class="token punctuation">"</span></span>
+             <span class="token attr-name"><span class="token namespace">p:</span>disableSingleSignOut</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${slo.callbacks.disabled:false}<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在前面的内容中已经介绍过，Cas Server 的所有属性替换变量都是定义在 WEB-INF/cas.properties 文件中的。所以如果需要禁用 Cas Server 的 logout 功能，我们可以在 cas.properties 文件中指定 “slo.callbacks.disabled=true”。</p>
+<p>（注：本文是基于 Cas Server3.5.2 和 Cas Client3.1.11 所写）</p>
+<h1 id="通过Proxy访问其它Cas应用"><a href="#通过Proxy访问其它Cas应用" class="headerlink" title="通过Proxy访问其它Cas应用"></a>通过 Proxy 访问其它 Cas 应用</h1><p>考虑这样一种场景：有两个应用 App1 和 App2，它们都是受 Cas Server 保护的，即请求它们时都需要通过 Cas Server 的认证。现需要在 App1 中通过 Http 请求访问 App2，显然该请求将会被 App2 配置的 Cas 的 AuthenticationFilter 拦截并转向 Cas Server，Cas Server 将引导用户进行登录认证，这样我们也就不能真正的访问到 App2 了。针对这种应用场景，Cas 也提供了对应的支持。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Cas Proxy 可以让我们轻松的通过 App1 访问 App2 时通过 Cas Server 的认证，从而访问到 App2。其主要原理是这样的，App1 先通过 Cas Server 的认证，然后向 Cas Server 申请一个针对于 App2 的 proxy ticket，之后在访问 App2 时把申请到的针对于 App2 的 proxy ticket 以参数 ticket 传递过去。App2 的 AuthenticationFilter 将拦截到该请求，发现该请求携带了 ticket 参数后将放行交由后续的 Ticket Validation Filter 处理。Ticket Validation Filter 将会传递该 ticket 到 Cas Server 进行认证，显然该 ticket 是由 Cas Server 针对于 App2 发行的，App2 在申请校验时是可以校验通过的，这样我们就可以正常的访问到 App2 了。针对 Cas Proxy 的原理，官网有一张图很能说明问题，如下所示。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>Cas Proxy 实现的核心是 Cas20ProxyReceivingTicketValidationFilter，该 Filter 是 Ticket Validation Filter 的一种。使用 Cas Proxy 时我们需要使用 Cas20ProxyReceivingTicketValidationFilter 作为我们的 Ticket Validation Filter，而且对于代理端而言该 Filter 需要放置在 AuthenticationFilter 之前。对于上述应用场景而言，App1 就是我们的代理端，而 App2 就是我们的被代理端。Cas20ProxyReceivingTicketValidationFilter 在代理端与被代理端的配置是不一样的。我们先来看一下在代理端的配置。</p>
+<h3 id="代理端"><a href="#代理端" class="headerlink" title="代理端"></a>代理端</h3><p>既然 Cas20ProxyReceivingTicketValidationFilter 是一个 Ticket Validation Filter，所以之前我们介绍的 Ticket Validation Filter 需要配置的参数，在这里也需要配置，Ticket Validation Filter 可以配置的参数这里也可以配置。所不同的是对于代理端的 Cas20ProxyReceivingTicketValidationFilter 必须指定另外的两个参数，proxyCallbackUrl 和 proxyReceptorUrl。</p>
+<ol>
+<li>proxyCallbackUrl：</li>
+</ol>
+<p>用于指定一个回调地址，在代理端通过 Cas Server 校验 ticket 成功后，Cas Server 将回调该地址以传递 pgtId 和 pgtIou，Cas20ProxyReceivingTicketValidationFilter 在接收到对应的响应后会将它们保存在内部持有的 ProxyGrantingTicketStorage 中。之后在对传递过来的 ticket 进行 validate 的时候又会根据 pgtIou 从 ProxyGrantingTicketStorage 中获取对应的 pgtId，用以保存在 AttributePrincipal 中，而 AttributePrincipal 又会保存在 Assertion 中。proxyCallbackUrl 因为是指定 Cas Server 回调的地址，所以其必须是一个可以供外部访问的绝对地址。此外，因为 Cas Server 默认只回调使用安全通道协议 https 进行通信的地址，所以我们的 proxyCallbackUrl 需要是一个使用 https 协议访问的地址。</p>
+<ol start="2">
+<li>proxyReceptorUrl：</li>
+</ol>
+<p>该地址是 proxyCallbackUrl 相对于代理端的一个地址，Cas20ProxyReceivingTicketValidationFilter 将根据该地址来决定请求是否来自 Cas Server 的回调。</p>
+<p>下面是一个 Cas20ProxyReceivingTicketValidationFilter 在代理端配置的示例，需要注意的是该 Filter 需要配置在 AuthenticationFilter 之前，所以完整配置如下：</p>
+<pre class="line-numbers language-XML" data-language="XML"><code class="language-XML">&lt;context-param&gt;
+      &lt;param-name&gt;serverName&lt;/param-name&gt;
+      &lt;param-value&gt;https://elim:8043&lt;/param-value&gt;
+   &lt;/context-param&gt;
+
+   &lt;filter&gt;
+      &lt;filter-name&gt;proxyValidationFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter&lt;/filter-class&gt;
+      &lt;init-param&gt;
+         &lt;param-name&gt;casServerUrlPrefix&lt;/param-name&gt;
+         &lt;param-value&gt;https://elim:8443/cas&lt;/param-value&gt;
+      &lt;/init-param&gt;
+
+      &lt;init-param&gt;
+         &lt;param-name&gt;proxyCallbackUrl&lt;/param-name&gt;
+         &lt;param-value&gt;https://elim:8043/app1/proxyCallback&lt;/param-value&gt;
+      &lt;/init-param&gt;
+
+      &lt;init-param&gt;
+         &lt;param-name&gt;proxyReceptorUrl&lt;/param-name&gt;
+         &lt;param-value&gt;/proxyCallback&lt;/param-value&gt;
+      &lt;/init-param&gt;
+   &lt;/filter&gt;
+
+   &lt;filter-mapping&gt;
+      &lt;filter-name&gt;proxyValidationFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt; 
+
+   &lt;filter&gt;
+      &lt;filter-name&gt;casAuthenticationFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.jasig.cas.client.authentication.AuthenticationFilter&lt;/filter-class&gt;
+      &lt;init-param&gt;
+         &lt;param-name&gt;casServerLoginUrl&lt;/param-name&gt;
+         &lt;param-value&gt;https://elim:8443/cas/login&lt;/param-value&gt;
+      &lt;/init-param&gt;
+   &lt;/filter&gt;
+
+   &lt;filter-mapping&gt;
+      &lt;filter-name&gt;casAuthenticationFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt;
+
+   &lt;filter&gt;
+      &lt;filter-name&gt;casHttpServletRequestWrapperFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.jasig.cas.client.util.HttpServletRequestWrapperFilter&lt;/filter-class&gt;
+   &lt;/filter&gt;
+
+   &lt;filter-mapping&gt;
+      &lt;filter-name&gt;casHttpServletRequestWrapperFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt;
+
+   &lt;filter&gt;
+      &lt;filter-name&gt;casAssertionThreadLocalFilter&lt;/filter-name&gt;
+     &lt;filter-class&gt;org.jasig.cas.client.util.AssertionThreadLocalFilter&lt;/filter-class&gt;
+   &lt;/filter&gt;
+   
+   &lt;filter-mapping&gt;
+      &lt;filter-name&gt;casAssertionThreadLocalFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="被代理端"><a href="#被代理端" class="headerlink" title="被代理端"></a>被代理端</h3><p>在被代理端 Cas20ProxyReceivingTicketValidationFilter 是扮演 Ticket Validation Filter 的角色，它可以验证正常通过 Cas Server 登录认证成功后返回的 ticket，也可以认证来自其它代理端传递过来的 proxy ticket，当然，最终的认证都是通过 Cas Server 来完成的。既然 Cas20ProxyReceivingTicketValidationFilter 在被代理端是作为 Ticket Validation Filter 来使用的，所以 Ticket Validation Filter 可以有的参数其都可以配置。在被代理端需要配置一个参数用以表示接受来自哪些应用的代理，这个参数可以是 acceptAnyProxy，也可以是 allowedProxyChains。acceptAnyProxy 表示接受所有的，其对应的参数值是 true 或者 false；而 allowedProxyChains 则用以指定具体接受哪些应用的代理，多个应用就写多行，allowedProxyChains 的值对应的是代理端提供给 Cas Server 的回调地址，如果使用前文示例的代理端配置，我们就可以指定被代理端的 allowedProxyChains 为 “<a target="_blank" rel="noopener" href="https://elim:8043/app1/proxyCallback%E2%80%9D%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%BD%93app1%E4%BD%9C%E4%B8%BA%E4%BB%A3%E7%90%86%E7%AB%AF%E6%9D%A5%E8%AE%BF%E9%97%AE%E8%AF%A5%E8%A2%AB%E4%BB%A3%E7%90%86%E7%AB%AF%E6%97%B6%E5%B0%B1%E8%83%BD%E9%80%9A%E8%BF%87%E9%AA%8C%E8%AF%81%EF%BC%8C%E5%BE%97%E5%88%B0%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%93%8D%E5%BA%94%E3%80%82%E4%B8%8B%E9%9D%A2%E6%98%AF%E4%B8%80%E4%B8%AA%E8%A2%AB%E4%BB%A3%E7%90%86%E7%AB%AF%E9%85%8D%E7%BD%AECas20ProxyReceivingTicketValidationFilter%E7%9A%84%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B%E3%80%82">https://elim:8043/app1/proxyCallback”，这样当 app1 作为代理端来访问该被代理端时就能通过验证，得到正确的响应。下面是一个被代理端配置 Cas20ProxyReceivingTicketValidationFilter 的完整配置示例。</a></p>
+<pre class="line-numbers language-XML" data-language="XML"><code class="language-XML">&lt;context-param&gt;
+      &lt;param-name&gt;serverName&lt;/param-name&gt;
+      &lt;param-value&gt;http://elim:8081&lt;/param-value&gt;
+   &lt;/context-param&gt;
+   
+   &lt;filter&gt;
+      &lt;filter-name&gt;casSingleSignOutFilter&lt;/filter-name&gt;
+      &lt;filter-class&gt;org.jasig.cas.client.session.SingleSignOutFilter&lt;/filter-class&gt;
+   &lt;/filter&gt;
+
+   &lt;filter-mapping&gt;
+      &lt;filter-name&gt;casSingleSignOutFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt;
+
+   &lt;filter&gt;
+      &lt;filter-name&gt;casAuthenticationFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.jasig.cas.client.authentication.AuthenticationFilter&lt;/filter-class&gt;
+      &lt;init-param&gt;
+         &lt;param-name&gt;casServerLoginUrl&lt;/param-name&gt;
+         &lt;param-value&gt;https:// elim:8443/cas/login&lt;/param-value&gt;
+      &lt;/init-param&gt;
+   &lt;/filter&gt;
+
+   &lt;filter-mapping&gt;
+      &lt;filter-name&gt;casAuthenticationFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt;
+
+   &lt;filter&gt;
+      &lt;filter-name&gt;proxyValidationFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter&lt;/filter-class&gt;
+      &lt;init-param&gt;
+         &lt;param-name&gt;casServerUrlPrefix&lt;/param-name&gt;
+         &lt;param-value&gt;https://elim:8443/cas&lt;/param-value&gt;
+      &lt;/init-param&gt;
+
+      &lt;init-param&gt;
+         &lt;param-name&gt;acceptAnyProxy&lt;/param-name&gt;
+         &lt;param-value&gt;true&lt;/param-value&gt;
+      &lt;/init-param&gt;
+   &lt;/filter&gt;
+
+   &lt;filter-mapping&gt;
+      &lt;filter-name&gt;proxyValidationFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt;
+   
+   &lt;filter&gt;
+      &lt;filter-name&gt;casHttpServletRequestWrapperFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.jasig.cas.client.util.HttpServletRequestWrapperFilter&lt;/filter-class&gt;
+   &lt;/filter&gt;
+
+   &lt;filter-mapping&gt;
+      &lt;filter-name&gt;casHttpServletRequestWrapperFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt;
+
+   &lt;filter&gt;
+      &lt;filter-name&gt;casAssertionThreadLocalFilter&lt;/filter-name&gt;
+     &lt;filter-class&gt;org.jasig.cas.client.util.AssertionThreadLocalFilter&lt;/filter-class&gt;
+   &lt;/filter&gt;
+
+   &lt;filter-mapping&gt;
+      &lt;filter-name&gt;casAssertionThreadLocalFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/filter-mapping&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="请求示例"><a href="#请求示例" class="headerlink" title="请求示例"></a>请求示例</h2><p>配置好以后接下来将展示一个 app1 作为代理端访问 app2 的应用示例。该示例的重点在于 app1 的请求发起，对于需要请求的 app2 端的内容我们假设就是一个简单的 jsp 文件，其简单的输出一些文本。对于代理端而言，其请求的发起通常需要经过如下步骤：</p>
+<ol>
+<li>获取到当前的 AttributePrincipal 对象，如果当前可以获取到 request 对象并且使用了 HttpServletRequestWrapperFilter，我们则可以直接从 request 中获取。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">AttributePrincipal principal = (AttributePrincipal) req.getUserPrincipal();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>当然，如果使用了 AssertionThreadLocalFilter，我们也可以从 AssertionHolder 中获取 Assertion，进而获取到对应的 AttributePrincipal 对象。</p>
+<pre class="line-numbers language-none"><code class="language-none">AttributePrincipal principal = AssertionHolder.getAssertion().getPrincipal();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="2">
+<li>通过 AttributePrincipal 获取针对于被代理端对应的 proxy ticket，该操作将促使 AttributePrincipal 向 Cas Server 发起请求，从而获取到对应的 proxy ticket。针对同一 URL 每次从 Cas Server 请求获取到的 proxy ticket 都是不一样的。以下是一个获取针对于 “<a target="_blank" rel="noopener" href="http://elim:8081/app2/getData.jsp%E2%80%9D%E7%9A%84proxy">http://elim:8081/app2/getData.jsp” 的 proxy</a> ticket 的示例：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">String proxyTicket = principal.getProxyTicketFor("http://elim:8081/app2/getData.jsp");<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>在请求被代理端时将获取到的 proxy ticket 以参数 ticket 一起传递过去，如：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">URL url = new URL("http://elim:8081/app2/getData.jsp?ticket=" + proxyTicket);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>完整的示例代码如下所示：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"casProxyTest"</span><span class="token punctuation">,</span> urlPatterns<span class="token operator">=</span><span class="token string">"/cas/proxy/test"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CasProxyTestServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+
+   <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span>
+         <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+        <span class="token function">doPost</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> resp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+
+   <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span>
+         <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+         
+      <span class="token comment">//1、获取到AttributePrincipal对象</span>
+      <span class="token class-name">AttributePrincipal</span> principal <span class="token operator">=</span> <span class="token class-name">AssertionHolder</span><span class="token punctuation">.</span><span class="token function">getAssertion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getPrincipal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">//2、获取对应的proxy ticket</span>
+      <span class="token class-name">String</span> proxyTicket <span class="token operator">=</span> principal<span class="token punctuation">.</span><span class="token function">getProxyTicketFor</span><span class="token punctuation">(</span><span class="token string">"http://elim:8081/app/getData.jsp"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      <span class="token comment">//3、请求被代理应用时将获取到的proxy ticket以参数ticket进行传递</span>
+      <span class="token class-name">URL</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">"http://elim:8081/app/getData.jsp?ticket="</span> <span class="token operator">+</span> <span class="token class-name">URLEncoder</span><span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>proxyTicket<span class="token punctuation">,</span> <span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">HttpURLConnection</span> conn <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">HttpURLConnection</span><span class="token punctuation">)</span>url<span class="token punctuation">.</span><span class="token function">openConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">BufferedReader</span> br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span>conn<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"UTF-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">StringBuffer</span> content <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">String</span> line <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>line<span class="token operator">=</span>br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        content<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"&lt;br/&gt;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      resp<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>content<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/01/09/54220.shtml" title="CAS 单点登录（二）">https://onxs.github.io/2018/01/09/54220.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CAS/" rel="tag"><i class="fa fa-tag"></i> CAS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/08/34811.shtml" rel="prev" title="基于 Redis 的 CAS 集群">
+                  <i class="fa fa-chevron-left"></i> 基于 Redis 的 CAS 集群
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/01/09/60076.shtml" rel="next" title="Travis CI 持续集成 Github">
+                  Travis CI 持续集成 Github <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="b0ab7b71083c73e8ea28a71474f01985"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/01/09/54220.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

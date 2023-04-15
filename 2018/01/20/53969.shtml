@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Pisces | Gemini":240,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/01/20/53969.shtml">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/01/20/53969.shtml","path":"2018/01/20/53969.shtml","title":"CAS Client 集群环境的问题及解决方案"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CAS Client 集群环境的问题及解决方案 | Jimmy Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jimmy Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Jimmy Personal Blog</p>
+      <img class="custom-logo-image" src="/uploads/custom-logo.png" alt="Jimmy Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">1 单点登录的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%A4%9A%E5%BA%94%E7%94%A8%E6%83%85%E5%86%B5%E4%B8%8BSession%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 多应用情况下 Session 信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%BF%E9%97%AECAS-Client-01"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 第一次访问 CAS Client 01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AE%BF%E9%97%AECAS-Client-02"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 第一次访问 CAS Client 02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E5%86%8D%E6%AC%A1%E8%AE%BF%E9%97%AECAS-Clients"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 再次访问 CAS Clients</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-CASClient%E9%85%8D%E7%BD%AE"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 CASClient 配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%BB%9F%E4%B8%80%E6%B3%A8%E9%94%80%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">2 统一注销的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E4%B8%8D%E8%83%BD%E5%AE%9E%E7%8E%B0%E7%BB%9F%E4%B8%80%E6%B3%A8%E9%94%80%E4%BC%9A%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 不能实现统一注销会有什么问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%9AService%E3%80%81TGT%E5%92%8CST"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 基本概念：Service、TGT 和 ST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-Service"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1  Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-TGT%EF%BC%9ATicket-Grangting-Ticket"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2   TGT：Ticket Grangting Ticket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-ST%EF%BC%9AService-Ticket"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3  ST：Service Ticket</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-CAS-Client%E7%9A%84%E7%BB%9F%E4%B8%80%E6%B3%A8%E9%94%80%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 CAS Client 的统一注销配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-CAS-Server%E6%B3%A8%E9%94%80%E8%BF%87%E7%A8%8B"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 CAS Server 注销过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-CAS-Client%E6%B3%A8%E9%94%80%E8%BF%87%E7%A8%8B"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 CAS Client 注销过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E6%80%9D%E8%80%83%EF%BC%9A%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E7%BB%9F%E4%B8%80%E6%B3%A8%E9%94%80%E4%BC%9A%E5%A4%B1%E8%B4%A5"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 思考：什么情况统一注销会失败</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-CAS-Client%E9%9B%86%E7%BE%A4%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">3.</span> <span class="nav-text">3 CAS Client 集群的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Client%E9%9B%86%E7%BE%A4%E5%AF%B9%E7%99%BB%E5%BD%95%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Client 集群对登录的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Client%E9%9B%86%E7%BE%A4%E5%AF%B9%E6%B3%A8%E9%94%80%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Client 集群对注销的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-%E4%BF%AE%E6%94%B9nginx%E5%88%86%E5%8F%91%E7%AD%96%E7%95%A5"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1  修改 nginx 分发策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-%E9%9B%86%E7%BE%A4%E7%9A%84%E8%8A%82%E7%82%B9%E5%AE%9E%E7%8E%B0Session%E5%90%8C%E6%AD%A5"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2  集群的节点实现 Session 同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-%E9%9B%86%E7%BE%A4%E8%8A%82%E7%82%B9%E4%BD%BF%E7%94%A8redis%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3  集群节点使用 redis 保存会话信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4-%E6%AF%8F%E6%AC%A1%E8%AF%B7%E6%B1%82%E9%AA%8C%E8%AF%81%E7%94%A8%E6%88%B7%E6%98%AF%E5%90%A6%E6%B3%A8%E9%94%80"><span class="nav-number">3.2.4.</span> <span class="nav-text">3.2.4  每次请求验证用户是否注销</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-5-%E5%87%A0%E7%A7%8D%E7%AD%96%E7%95%A5%E7%9A%84%E5%88%9D%E6%AD%A5%E8%B0%83%E7%A0%94"><span class="nav-number">3.2.5.</span> <span class="nav-text">3.2.5  几种策略的初步调研</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E4%BD%BF%E7%94%A8redis%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D"><span class="nav-number">4.</span> <span class="nav-text">4 使用 redis 保存会话</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Request%E5%92%8CSession%E7%BC%BA%E7%9C%81%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Request 和 Session 缺省怎么实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-WEB%E8%AF%B7%E6%B1%82%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 WEB 请求的执行过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E5%A6%82%E4%BD%95%E5%AE%9A%E5%88%B6Request"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 如何定制 Request</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-%E5%A2%9E%E5%8A%A0%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">4.3.1.</span> <span class="nav-text">4.3.1  增加过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-Tomcat%E7%9A%84Request%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.3.2.</span> <span class="nav-text">4.3.2  Tomcat 的 Request 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-3-%E6%94%B9%E5%86%99%E4%B9%8B%E5%90%8E%E7%9A%84Request%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.3.3.</span> <span class="nav-text">4.3.3  改写之后的 Request 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-4-%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83%E7%9A%84session%E8%AF%BB%E5%86%99"><span class="nav-number">4.3.4.</span> <span class="nav-text">4.3.4  集群环境的 session 读写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E4%BD%BF%E7%94%A8Spring-Session%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 使用 Spring Session 实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-%E4%BF%AE%E6%94%B9pom-xml"><span class="nav-number">4.4.1.</span> <span class="nav-text">4.4.1  修改 pom.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-%E4%BF%AE%E6%94%B9redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.4.2.</span> <span class="nav-text">4.4.2  修改 redis 配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-3-%E4%BF%AE%E6%94%B9web-xml"><span class="nav-number">4.4.3.</span> <span class="nav-text">4.4.3  修改 web.xml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-%E6%B5%8B%E8%AF%95%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 测试实现效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-1-Session%E4%BF%A1%E6%81%AF%E5%B7%B2%E7%BB%8F%E4%BF%9D%E5%AD%98%E5%88%B0redis%E4%B8%AD"><span class="nav-number">4.5.1.</span> <span class="nav-text">4.5.1  Session 信息已经保存到 redis 中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-2-%E5%88%A0%E9%99%A4redis%E4%B8%AD%E4%BC%9A%E8%AF%9D%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">4.5.2.</span> <span class="nav-text">4.5.2  删除 redis 中会话的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-3-%E7%BB%9F%E4%B8%80%E7%94%A8%E6%88%B7%E6%B3%A8%E9%94%80%E7%9A%84%E6%B5%8B%E8%AF%95"><span class="nav-number">4.5.3.</span> <span class="nav-text">4.5.3  统一用户注销的测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="nav-number">4.6.</span> <span class="nav-text">5 问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%EF%BC%9Ahttps-yq-aliyun-com-articles-49871"><span class="nav-number">4.6.0.1.</span> <span class="nav-text">链接：https:&#x2F;&#x2F;yq.aliyun.com&#x2F;articles&#x2F;49871</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BE%9D%E8%B5%96jar%E5%8C%85"><span class="nav-number">4.6.1.</span> <span class="nav-text">代码依赖 jar 包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E9%80%A0%E7%9A%84HashMapBackedSessionMappingStorage%E7%B1%BB%E4%BB%A3%E7%A0%81"><span class="nav-number">4.6.2.</span> <span class="nav-text">改造的 HashMapBackedSessionMappingStorage 类代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redistemplteBean%E9%85%8D%E7%BD%AE"><span class="nav-number">4.6.3.</span> <span class="nav-text">redistemplteBean 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis-cluster-properties"><span class="nav-number">4.6.4.</span> <span class="nav-text">redis.cluster.properties</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jimmy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Jimmy</p>
+  <div class="site-description" itemprop="description">Jimmy Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/" title="Weibo → https:&#x2F;&#x2F;weibo.com" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/" title="YouTube → https:&#x2F;&#x2F;youtube.com" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">本站镜像网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/01/20/53969.shtml">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jimmy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy Blog">
+      <meta itemprop="description" content="Jimmy Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CAS Client 集群环境的问题及解决方案 | Jimmy Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CAS Client 集群环境的问题及解决方案<a href="https://github.com/onxs/blog/tree/dev/source/_posts/cas/POST91.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-20 23:34:36" itemprop="dateCreated datePublished" datetime="2018-01-20T23:34:36+08:00">2018-01-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CAS/" itemprop="url" rel="index"><span itemprop="name">CAS</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="CAS Client 集群环境的问题及解决方案" href="/2018/01/20/53969.shtml#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::7134ca2e9e8636835d481b6974b6dd5a" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>19 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0092.jpg" alt="image"></p>
+<p>为了描述方便，假设有如下一个单点登录系统。一套 CASServer，两套 CAS Client 系统。为了描述的方便，省略 CAS Server 调用用户系统完成登录，以及 CASClient 从用户系统读取用户详细信息的过程。</p>
+<span id="more"></span>
+
+<h1 id="1-单点登录的过程"><a href="#1-单点登录的过程" class="headerlink" title="1 单点登录的过程"></a><strong>1 单点登录的过程</strong></h1><p>为了描述方便，假设有如下一个单点登录系统。一套 CASServer，两套 CAS Client 系统。为了描述的方便，省略 CAS Server 调用用户系统完成登录，以及 CASClient 从用户系统读取用户详细信息的过程。</p>
+<h2 id="1-1-多应用情况下Session信息"><a href="#1-1-多应用情况下Session信息" class="headerlink" title="1.1 多应用情况下Session信息"></a><strong>1.1 多应用情况下 Session 信息</strong></h2><p>假定有两个 CAS Client 应用，一个 CAS Server。应用的部署，可能在不同的服务器，也可能有不同的访问 IP 或域名，即使是同一个浏览器，在各个应用中的 Session 信息也是不相同的。</p>
+<p>浏览器中，每个应用有一个独立的 JSESSIONIDCookie。某一个应用，不可能读取到浏览器在其他应用中的 Cookie 信息。</p>
+<p>假定用户首先访问 CAS Client 01，系统提醒用户进行一次登录；然后用户访问 CAS Client2，不会再提示登录而是直接登录成功。</p>
+<h2 id="1-2-第一次访问CAS-Client-01"><a href="#1-2-第一次访问CAS-Client-01" class="headerlink" title="1.2 第一次访问CAS Client 01"></a><strong>1.2 第一次访问 CAS Client 01</strong></h2><p>用户打开浏览器后第一次访问，重定向到单点登录后，会提示用户输入账号密码登录。登录成功之后，再跳转回 CAS Client。</p>
+<h2 id="1-3-第一次访问CAS-Client-02"><a href="#1-3-第一次访问CAS-Client-02" class="headerlink" title="1.3 第一次访问CAS Client 02"></a><strong>1.3 第一次访问 CAS Client 02</strong></h2><p>当用户浏览器已经登录系统，切换到另一个 CASClient 时，跟第一次访问有所不同，因为已经登录成功，就不会再提醒输入账号密码登录了。</p>
+<h2 id="1-4-再次访问CAS-Clients"><a href="#1-4-再次访问CAS-Clients" class="headerlink" title="1.4 再次访问CAS Clients"></a><strong>1.4 再次访问 CAS Clients</strong></h2><p>当用户已经访问过 CAS Client 后，当用户再次访问，系统不会再跳转到 CAS Server 做认证。</p>
+<h2 id="1-5-CASClient配置"><a href="#1-5-CASClient配置" class="headerlink" title="1.5 CASClient配置"></a><strong>1.5 CASClient 配置</strong></h2><p>为了实现前述的单点登录过程，以 Java WEB 项目为例，需要在 web.xml 中进行相应的配置。（为了排版，没有填写 Filter 的完整 class 名，请自行查阅补充。）</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>CAS AuthenticationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>*.AuthenticationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>CAS Validation Filter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>*.Cas10TicketValidationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>CAS HttpServletRequest WrapperFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>*.HttpServletRequestWrapperFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>CAS Validation Filter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>CAS AuthenticationFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>CAS HttpServletRequest WrapperFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>仔细看一下配置过滤器可以发现，三个过滤器正好对应流程图中三次访问 CAS Client。</p>
+<ul>
+<li>Authentication Filter：负责将未登录用户跳转到登录界面</li>
+<li> Authentication Filter：负责验证 Service Ticket</li>
+<li>HttpServletRequest WrapperFilter：负责将用户信息封装到 request 和 session 中。</li>
+</ul>
+<h1 id="2-统一注销的过程"><a href="#2-统一注销的过程" class="headerlink" title="2 统一注销的过程"></a><strong>2 统一注销的过程</strong></h1><h2 id="2-1-不能实现统一注销会有什么问题"><a href="#2-1-不能实现统一注销会有什么问题" class="headerlink" title="2.1 不能实现统一注销会有什么问题"></a><strong>2.1 不能实现统一注销会有什么问题</strong></h2><p>当用户访问系统后从系统注销，如何能够从每个应用中都注销？注意前面 1.4 部分的描述，如果用户注销时，并没有注销 CASClient 02 中的会话信息，如果用户在浏览器中直接访问这个应用，因为 Session 存在，并不会提醒用户重新登录。</p>
+<p>这会带来两个潜在的隐患：</p>
+<ol>
+<li>用户注销 user1 后换账号 user2 重新登录，进入 CAS Client 02 之后，当前身份其实还是 user1，并没有如用户预期一样使用 user2 身份。</li>
+<li>用户 user1 点击注销后离开，没有关闭浏览器。这时候其他用户直接打开 CAS Client 02，能够直接盗用 user1 的身份进行操作。</li>
+</ol>
+<h2 id="2-2基本概念：Service、TGT和ST"><a href="#2-2基本概念：Service、TGT和ST" class="headerlink" title="2.2基本概念：Service、TGT和ST"></a><strong>2.2 基本概念：Service、TGT 和 ST</strong></h2><p>CAS 已经考虑到统一注销的问题。</p>
+<p>这里有三个重要的概念 TGT、ST 和 Service，需要着重介绍一下，因为它们同后续统一注销的方案息息相关。</p>
+<h3 id="2-2-1-Service"><a href="#2-2-1-Service" class="headerlink" title="2.2.1  Service"></a><strong>2.2.1  Service</strong></h3><p>这是用户第一次访问 CAS Client 的 URL。假设一个 CAS Client 应用部署在域名 oa.company.com，使用 HTTP 协议，应用首页是 index.htm。当用户第一次访问这个应用时，对应的 URL 地址是 <a target="_blank" rel="noopener" href="http://oa.company.com/index.htm">http://oa.company.com/index.htm</a> 。这个 URL，对 CAS Server 来说，就是一个 service。</p>
+<p>当用户第一次跳转到 CAS Server 的时候，可以看到传了一个参数 service，就是这个值。当 CASServer 生成 Ticket 重定向到 CAS Client 的时候，实际就是在这个 service 中添加了一个参数 ticket 。</p>
+<h3 id="2-2-2-TGT：Ticket-Grangting-Ticket"><a href="#2-2-2-TGT：Ticket-Grangting-Ticket" class="headerlink" title="2.2.2   TGT：Ticket Grangting Ticket"></a><strong>2.2.2   TGT：Ticket Grangting Ticket</strong></h3><p>TGT 是 CAS Server 为每一个登录用户创建的登录令牌。在 CASServer 上拥有了 TGT，用户就可以证明自己在 CASServer 成功登录过。TGT 封装了 SessionCookie 值以及此 Cookie 值对应的用户信息。当 HTTP 请求到来时，CAS 以此 Cookie 值为 key 查询缓存中有无 TGT ，如果有的话，则相信用户已登录过。</p>
+<h3 id="2-2-3-ST：Service-Ticket"><a href="#2-2-3-ST：Service-Ticket" class="headerlink" title="2.2.3  ST：Service Ticket"></a><strong>2.2.3  ST：Service Ticket</strong></h3><p>ST 是 CAS Server 为用户签发的访问某一 service 的认证令牌。用户访问 service 时，service 发现用户没有 ST，浏览器会跳转到 CASServer 去获取 ST。CAS Server 发现用户有 TGT，则签发一个 ST，返回给用户。用户使用 ST 作为 ticket 参数去访问 service，service 拿 ST 去 CAS Server 验证，验证通过后，得到当前登录用户的登录名。</p>
+<p>注意 TGT 和 ST，是一对多的关系。一个 TGT 会维护一个 services 列表，每当为用户创建一个 ST 并认证通过后，会将这个 ST 添加到 TGT 的 services 列表中。这样，在 CASServer 端，这个 services 列表实际维护了一个用户登录过的所有 CASClient。这就为实现统一注销打下了基础。</p>
+<h2 id="2-3-CAS-Client的统一注销配置"><a href="#2-3-CAS-Client的统一注销配置" class="headerlink" title="2.3 CAS Client的统一注销配置"></a><strong>2.3 CAS Client 的统一注销配置</strong></h2><p>CAS Client，为了实现统一注销，除了第一张介绍的三个登录过程的过滤器之外，还需要添加一个统一注销过滤器。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>CAS Single Sign OutFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>*.SingleSignOutFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>CAS Single Sign OutFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener-class</span><span class="token punctuation">&gt;</span></span>*.SingleSignOutHttpSessionListener<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener-class</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener</span><span class="token punctuation">&gt;</span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="2-4-CAS-Server注销过程"><a href="#2-4-CAS-Server注销过程" class="headerlink" title="2.4 CAS Server注销过程"></a><strong>2.4 CAS Server 注销过程</strong></h2><p>用户在浏览器中点击 “注销” 链接，实际浏览器会访问 CASServer 的注销页面。收到注销请求后，CAS Server 会读取到 TGT，并检查当前用户登录过的所有 service，并依次发送注销请求。</p>
+<h2 id="2-5-CAS-Client注销过程"><a href="#2-5-CAS-Client注销过程" class="headerlink" title="2.5 CAS Client注销过程"></a><strong>2.5 CAS Client 注销过程</strong></h2><p>CAS Client 的注销，核心代码是 SingleSignOutFilter，它的关键代码</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">voiddoFilter</span><span class="token punctuation">(</span>servletRequest<span class="token punctuation">,</span> servletResponse<span class="token punctuation">,</span> filterChain<span class="token punctuation">)</span><span class="token punctuation">{</span>
+         <span class="token class-name">HttpServletRequest</span> request <span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">)</span>servletRequest<span class="token punctuation">;</span>
+         <span class="token keyword">if</span> <span class="token punctuation">(</span>handler<span class="token punctuation">.</span><span class="token function">isTokenRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                   handler<span class="token punctuation">.</span><span class="token function">recordSession</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>handler<span class="token punctuation">.</span><span class="token function">isLogoutRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                   handler<span class="token punctuation">.</span><span class="token function">destroySession</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                   <span class="token keyword">return</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+         filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>servletRequest<span class="token punctuation">,</span> servletResponse<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中 handler 是 SingleSignOutHandler 的实例，这个对象完成用户在 CASClient 端登录信息的维护和注销工作。</p>
+<p>至此，CAS 完整的登录和注销过程就完成。</p>
+<h2 id="2-6-思考：什么情况统一注销会失败"><a href="#2-6-思考：什么情况统一注销会失败" class="headerlink" title="2.6 思考：什么情况统一注销会失败"></a><strong>2.6 思考：什么情况统一注销会失败</strong></h2><p>统一注销的实现，需要 CAS Server 通过 HttpClient 访问 CAS Client 的 service。如果这个访问过程失败，就会导致统一注销失败。列了几种情况，不详述。</p>
+<ol>
+<li>开发调试阶段，使用 localhost 访问 CAS Client。</li>
+<li>CAS Server 部署在外网，CAS Client 部署在内网。</li>
+<li>网络安全设置，不允许 CASServer 访问 CAS Client。</li>
+</ol>
+<h1 id="3-CAS-Client集群的影响"><a href="#3-CAS-Client集群的影响" class="headerlink" title="3 CAS Client集群的影响"></a><strong>3 CAS Client 集群的影响</strong></h1><p>前面的论述，一直假定所有的 CAS Client 都是单点部署，没有集群。如果集群，会有什么影响，应该如何来解决？</p>
+<h2 id="3-1-Client集群对登录的影响"><a href="#3-1-Client集群对登录的影响" class="headerlink" title="3.1 Client集群对登录的影响"></a><strong>3.1 Client 集群对登录的影响</strong></h2><p>假设使用 nginx 做集群前端，后面部署两台 CAS Client 01 的实例。我们看看对登录过程会有什么影响。</p>
+<p>为了描述方便，CAS Client 登录过程会有三次请求（对应三个过滤器），我们依次命名为 Authentication Request / Validation Request / Wrapper Request。</p>
+<p>Nginx 缺省的分发规则，并不是 sticky 模式，同一个浏览器的请求，会按照 nginx 自身某种规则进行分发。我们曾经测试过，在双点集群环境下，Authentication Request 和 ValidationRequest 会恰好被分发到两台服务器，这就会导致登录过程死循环。</p>
+<p>出现登录死循环的原因，主要在于 nginx 分发时，没有使用 sticky 策略，也就是同一个浏览器的请求，永远分发给同一台 CAS Client 实例。缺省 nginx 的分发策略，可以根据用户 IP 分发，实现的是同一个 IP 永远分发到同一台 Client，这样就能解决死循环的问题。</p>
+<h2 id="3-2-Client集群对注销的影响"><a href="#3-2-Client集群对注销的影响" class="headerlink" title="3.2 Client集群对注销的影响"></a><strong>3.2 Client 集群对注销的影响</strong></h2><p>当 nginx 实现了 sitcky 转发，同一个浏览器的访问会分发到同一个 Client1 实例，该用户的会话信息也一直保存在 Client1 实例中。</p>
+<p>当用户统一注销时，由 CAS Server 向 Client 发送注销请求，这时候 nginx 无法确保按当前用户进行分发，因此可能会被分发到 Client2。这时候，实际效果是注销失败。</p>
+<p>这个问题，在我们当前的环境中真实存在，还没有合理的解决方法。初步分析，大概有几个修改方向。</p>
+<h3 id="3-2-1-修改nginx分发策略"><a href="#3-2-1-修改nginx分发策略" class="headerlink" title="3.2.1  修改nginx分发策略"></a><strong>3.2.1  修改 nginx 分发策略</strong></h3><p>问题存在的原因，是因为 nginx 在分发注销策略时，不能准确分发。如果能在这个环节进行修改，系统代码和环境，基本不用做任何修改。</p>
+<p>这里有两种分发方法：</p>
+<ul>
+<li>CAS Server 发送的注销请求，分发给对应的后台服务器。</li>
+</ul>
+<ul>
+<li>CAS Server 发送的注销请求，广播到所有的后台服务器。</li>
+</ul>
+<p>初步结论：同架构组进行了沟通，这两种方案都很难实现，特别是广播的方案，没在网络上找到类似成功的案例。</p>
+<h3 id="3-2-2-集群的节点实现Session同步"><a href="#3-2-2-集群的节点实现Session同步" class="headerlink" title="3.2.2  集群的节点实现Session同步"></a><strong>3.2.2  集群的节点实现 Session 同步</strong></h3><p>如果能实现集群 Session 的同步：同步创建、同步注销，主要在一个 Client 上实现了注销，其他 Client 也就同步注销。</p>
+<p>这个会对 Tomcat 性能有影响。</p>
+<h3 id="3-2-3-集群节点使用redis保存会话信息"><a href="#3-2-3-集群节点使用redis保存会话信息" class="headerlink" title="3.2.3  集群节点使用redis保存会话信息"></a><strong>3.2.3  集群节点使用 redis 保存会话信息</strong></h3><p>即使是多个节点，它们的会话信息只有一份。一旦失效，则所有节点都失效。这只是一个设想，没有做技术调研，不知能够实现。</p>
+<p>这有两种修改方法：</p>
+<ul>
+<li>修改 Tomcat 的配置文件，使用 redis 保存 Tomcat 的会话信息。</li>
+</ul>
+<ul>
+<li>修改代码而不是 Tomcat，使用 redis 保存会话信息。</li>
+</ul>
+<p>初步结论：架构组不允许修改生产环境的 Tomcat，否定了第一种方法。我们只能尝试修改代码并利用 redis 保存会话。</p>
+<h3 id="3-2-4-每次请求验证用户是否注销"><a href="#3-2-4-每次请求验证用户是否注销" class="headerlink" title="3.2.4  每次请求验证用户是否注销"></a><strong>3.2.4  每次请求验证用户是否注销</strong></h3><p>首先，在 CAS Server 中实现一个接口，用于判断某一个 ST 对应的 TGT 是否还有效。</p>
+<p>在 SingleSignOutFilter 中，每次访问都调用 CAS Server 的这个新接口，判断用户是否已经注销。如果已经注销，则立刻注销本实例中的会话信息。</p>
+<p>这个方法是比较安全的解决办法，但每次请求都会调用 CASServer 接口，会对性能造成巨大影响。完全不建议用这种方案。</p>
+<h3 id="3-2-5-几种策略的初步调研"><a href="#3-2-5-几种策略的初步调研" class="headerlink" title="3.2.5  几种策略的初步调研"></a><strong>3.2.5  几种策略的初步调研</strong></h3><p>对前面提到的几种方案做了初步调研之后：</p>
+<ul>
+<li>技术实现困难，否定了方案 1</li>
+<li> 性能考虑以及架构组的策略，否定方案 2</li>
+<li> 架构组的策略，否定方案 3 中的第一种做法。</li>
+<li>性能考虑，否定方案 4。</li>
+</ul>
+<p>因此，可能的做法是修改代码，使用 redis 保存会话信息。</p>
+<h1 id="4-使用redis保存会话"><a href="#4-使用redis保存会话" class="headerlink" title="4 使用redis保存会话"></a>4 使用 redis 保存会话</h1><p>在目前的生产环境的限制下，我们只能采用修改代码来实现 redis 保存会话的实现方案。</p>
+<h2 id="4-1-Request和Session缺省怎么实现"><a href="#4-1-Request和Session缺省怎么实现" class="headerlink" title="4.1 Request和Session缺省怎么实现"></a><strong>4.1 Request 和 Session 缺省怎么实现</strong></h2><p>在 Tomcat 缺省的实现中，Session 信息都是保存在 JVM 中，所以不能跨 JVM 共享。</p>
+<p>要想将所有的 session 都保存到 redis 中，一种能想到的简单办法是自己写一个 CustomSession，将会话信息保存到这个自定义的 Session 中，并且利用 redis 等进行保存。但这样做，会带来很大的代码改动，所有涉及到 session 读写操作的地方可能都需要修改。</p>
+<p>我们希望找到更优雅的解决方案，能够修改更少的代码。</p>
+<h2 id="4-2-WEB请求的执行过程"><a href="#4-2-WEB请求的执行过程" class="headerlink" title="4.2 WEB请求的执行过程"></a><strong>4.2 WEB 请求的执行过程</strong></h2><p>Request 和 Session 什么时候创建？如何传递？</p>
+<p>Filter 的调用入口函数是 doFilter，传入的主要参数是 request 和 response。在此之前，Tomcat 已经创建好 request。通常情况下，业务代码不需要关心 request 和 session 等对象如何创建的问题，只需要使用即可。每个过滤器的实现，当需要继续流程的时候，只需要将得到的 request 和 response 传递给下一个 filter 就行。</p>
+<p>但这仅仅是缺省做法，并不表示我们不能修改或重写一个 request 对象。我们想修改 Session 的保存位置，如果能在所有的 Filter 之前插入一个自定义过滤器，定义一个新的 Request 传递给后面的 Filter，并且让后面的 Filter 和 Servlet 感受不到变化，就可以实现这个目标。</p>
+<h2 id="4-3-如何定制Request"><a href="#4-3-如何定制Request" class="headerlink" title="4.3 如何定制Request"></a><strong>4.3 如何定制 Request</strong></h2><h3 id="4-3-1-增加过滤器"><a href="#4-3-1-增加过滤器" class="headerlink" title="4.3.1  增加过滤器"></a><strong>4.3.1  增加过滤器</strong></h3><p>在所有的 Filter 之前，插入一个新的 Filter。</p>
+<p>HttpServletRequest 可以重写吗？</p>
+<h3 id="4-3-2-Tomcat的Request实现"><a href="#4-3-2-Tomcat的Request实现" class="headerlink" title="4.3.2  Tomcat的Request实现"></a><strong>4.3.2  Tomcat 的 Request 实现</strong></h3><h3 id="4-3-3-改写之后的Request实现"><a href="#4-3-3-改写之后的Request实现" class="headerlink" title="4.3.3  改写之后的Request实现"></a><strong>4.3.3  改写之后的 Request 实现</strong></h3><p>在 Session 重写一个 RedisSessionRequest，继承自 HttpServletRequestWrapper，并包含原 request (RequestFacade) 的引用。但需要读取 Form 参数时，直接调用 oriRequest 取值。当需要拿到 Session 对象进行会话信息访问时，调用重载后的函数。</p>
+<p>这样就实现了 request 的封装，在后续的 filter 和 servlet 中通过 request 获取到的 session，都是放在 redis 中的会话数据，不再是缺省保存在 JVM 中的数据。</p>
+<h3 id="4-3-4-集群环境的session读写"><a href="#4-3-4-集群环境的session读写" class="headerlink" title="4.3.4  集群环境的session读写"></a><strong>4.3.4  集群环境的 session 读写</strong></h3><p>当 nginx 将同一个浏览器的请求分发给不同的 Tomcat 时，都会根据 SessionId 从 redis 中读取 Session。因为同一个浏览器发送请求的 SessionID 相同，所以在不同的 Tomcat 实例中，会读取到同一个 Session 对象。</p>
+<h2 id="4-4-使用Spring-Session实现"><a href="#4-4-使用Spring-Session实现" class="headerlink" title="4.4 使用Spring Session实现"></a><strong>4.4 使用 Spring Session 实现</strong></h2><p>根据前面的分析，在项目中自定义 Request，就可以实现需求。Spring Session 已经是一个成熟的开源实现，并且后端实现了将会话保存在 redis、mongodb、jdbc 等多种实现，我们没必要自己发明轮子。</p>
+<p>Spring 提供的例子代码很简洁，跟我们已经实现的业务系统稍微有点不同。在现有系统中，已经定义了 bean jedisConnectionFactory，可以直接使用。</p>
+<h3 id="4-4-1-修改pom-xml"><a href="#4-4-1-修改pom-xml" class="headerlink" title="4.4.1  修改pom.xml"></a><strong>4.4.1  修改 pom.xml</strong></h3><p>在 pom.xml 文件中，添加代码</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.session<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-session-data-redis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.2.0.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-4-2-修改redis配置文件"><a href="#4-4-2-修改redis配置文件" class="headerlink" title="4.4.2  修改redis配置文件"></a><strong>4.4.2  修改 redis 配置文件</strong></h3><p>在项目中已经有 redis 配置文件 spring-redis.xml，在其中添加内容</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>annotation-config</span><span class="token punctuation">/&gt;</span></span>&lt;beans:beanclass="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration"/&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="4-4-3-修改web-xml"><a href="#4-4-3-修改web-xml" class="headerlink" title="4.4.3  修改web.xml"></a><strong>4.4.3  修改 web.xml</strong></h3><p>在所有的过滤器前面添加一个新的过滤器</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>
+ 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>springSessionRepositoryFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+ 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.springframework.web.filter.DelegatingFilterProxy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>springSessionRepositoryFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>
+  	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>
+  	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dispatcher</span><span class="token punctuation">&gt;</span></span>REQUEST<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dispatcher</span><span class="token punctuation">&gt;</span></span>
+  	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dispatcher</span><span class="token punctuation">&gt;</span></span>ERROR<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dispatcher</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="4-5-测试实现效果"><a href="#4-5-测试实现效果" class="headerlink" title="4.5 测试实现效果"></a><strong>4.5 测试实现效果</strong></h2><p>集成 Spring Session 后，经过初步测试，能够达到预想效果。（感谢同事瑞钊的实际测试并提供截图）</p>
+<h3 id="4-5-1-Session信息已经保存到redis中"><a href="#4-5-1-Session信息已经保存到redis中" class="headerlink" title="4.5.1  Session信息已经保存到redis中"></a><strong>4.5.1  Session 信息已经保存到 redis 中</strong></h3><p>用户登录后查看 redis 中的数据，可以看到这些 Session 信息。</p>
+<h3 id="4-5-2-删除redis中会话的影响"><a href="#4-5-2-删除redis中会话的影响" class="headerlink" title="4.5.2  删除redis中会话的影响"></a><strong>4.5.2  删除 redis 中会话的影响</strong></h3><p>用户登录后继续访问系统，不会切换到 CAS 登录页面。</p>
+<p>如果手工删掉 redis 中的 session，重新访问，可以看到需要重新做一个 CAS 认证的过程。</p>
+<h3 id="4-5-3-统一用户注销的测试"><a href="#4-5-3-统一用户注销的测试" class="headerlink" title="4.5.3  统一用户注销的测试"></a><strong>4.5.3  统一用户注销的测试</strong></h3><p>后续需要部署一套生产环境的集群环境，验证统一注销的效果。</p>
+<h2 id="5-问题："><a href="#5-问题：" class="headerlink" title="5 问题："></a>5 问题：</h2><p>问题在于，Cas Client 中有一个实现类 HashMapBackedSessionMappingStorage，这个类的作用，在于存储 tiket 和 sessionId 的映射<br>注销的时候，cas 服务器会发来一个 tiket，退出过滤器需要根据这个 ticket 找到对应的 sessionId 来清除 session 而 HashMapBackedSessionMappingStorage 是存储在 Map 里的，也就是内存里的，而不是 session 里</p>
+<p>如果能保证 nginx 转发的路径是固定的，也就是一个访问者 固定访问一个 tomcat，那固然没问题。<br>所以我觉得 你这个方案测试应该是没问题的。</p>
+<p>但是，如果这个 tomcat 挂掉了呢？</p>
+<p>靠谱的方式应该是把这个映射关系 也存在 redis 里。也就是自己实现一个 RedisBackedSessionMappingStorage</p>
+<h4 id="链接：https-yq-aliyun-com-articles-49871"><a href="#链接：https-yq-aliyun-com-articles-49871" class="headerlink" title="链接：https://yq.aliyun.com/articles/49871"></a>链接：<a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/49871">https://yq.aliyun.com/articles/49871</a></h4><p>casclient 源代码下载链接：<a target="_blank" rel="noopener" href="https://github.com/apereo/java-cas-client">https://github.com/apereo/java-cas-client</a></p>
+<p>cas 官网链接：<a target="_blank" rel="noopener" href="https://www.apereo.org/projects/cas">https://www.apereo.org/projects/cas</a></p>
+<ol>
+<li> 上面一篇引用别人的分析方案介绍，来描述了下项目中遇到的问题，现在介绍本人怎么解决的</li>
+<li>本人项目中用的是改造了 tomcat 做的 session 共享</li>
+<li>所以客户端请求退出，服务端根据 TGT 查看对应的 ST 进行请求客户端，通过 nginx 负载均衡，可能对应到另一台客户端服务器，但是我们的 session 是存入 rediscluster，任意客户端可以根据 sessionid 取到这个，进行删除，这样 session 就没了。即在客户端配置的 SingleSignOutFilter，需要在 HashMapBackedSessionMappingStorage 进行删除存入 redis 的 session 数据，这样就可以退出了，就是这个原理来处理这个退出登录问题</li>
+</ol>
+<h3 id="代码依赖jar包"><a href="#代码依赖jar包" class="headerlink" title="代码依赖jar包"></a>代码依赖 jar 包</h3><p>spring-data-redis-1.7.4.RELEASE.jar；jedis-2.9.0.jar；fastjson-1.2.31.jar；注意 jar 包版本</p>
+<h3 id="改造的HashMapBackedSessionMappingStorage类代码"><a href="#改造的HashMapBackedSessionMappingStorage类代码" class="headerlink" title="改造的HashMapBackedSessionMappingStorage类代码"></a>改造的 HashMapBackedSessionMappingStorage 类代码</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>jasig<span class="token punctuation">.</span>cas<span class="token punctuation">.</span>client<span class="token punctuation">.</span>session</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+- agreements. See the NOTICE file distributed with this work
+- for additional information regarding copyright ownership.
+- Jasig licenses this file to you under the Apache License,
+- Version 2.0 (the "License"); you may not use this file
+- except in compliance with the License.  You may obtain a
+- copy of the License at the following location:
+  *
+- http://www.apache.org/licenses/LICENSE-2.0
+  *
+- Unless required by applicable law or agreed to in writing,
+- software distributed under the License is distributed on an
+- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+- KIND, either express or implied.  See the License for the
+- specific language governing permissions and limitations
+- under the License.
+  */</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashMap</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Map</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span></span><span class="token class-name">TimeUnit</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Resource</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpSession</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>jasig<span class="token punctuation">.</span>cas<span class="token punctuation">.</span>client<span class="token punctuation">.</span>session<span class="token punctuation">.</span></span><span class="token class-name">SessionMappingStorage</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Logger</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">LoggerFactory</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span><span class="token class-name">ApplicationContext</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">EnableMBeanExport</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>support<span class="token punctuation">.</span></span><span class="token class-name">ClassPathXmlApplicationContext</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>redis<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">RedisTemplate</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Component</span></span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+- HashMap backed implementation of SessionMappingStorage.
+- @author Scott Battaglia
+- @version Revision Date
+- @since 3.1
+   */</span>
+  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">HashMapBackedSessionMappingStorage</span> <span class="token keyword">implements</span> <span class="token class-name">SessionMappingStorage</span> <span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token keyword">final</span> <span class="token keyword">transient</span> <span class="token class-name">Logger</span> logger <span class="token operator">=</span> <span class="token class-name">LoggerFactory</span><span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token constant">CASCLIENT_PREFIX</span> <span class="token operator">=</span> <span class="token string">"CASCLI:SESSIONID:"</span><span class="token punctuation">;</span>
+   <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token constant">CASCLIENT_MAPID_PREFIX</span> <span class="token operator">=</span> <span class="token string">"CASCLI:MAPID:"</span><span class="token punctuation">;</span>
+   <span class="token keyword">private</span> <span class="token keyword">int</span> casTimeout<span class="token operator">=</span><span class="token number">86400</span><span class="token punctuation">;</span>
+   <span class="token keyword">private</span> <span class="token class-name">RedisTemplate</span> redisTemplate<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">RedisTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span> <span class="token class-name">RedisTemplate</span> <span class="token function">getRedisTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> redisTemplate<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setRedisTemplate</span><span class="token punctuation">(</span><span class="token class-name">RedisTemplate</span> redisTemplate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	<span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate <span class="token operator">=</span> redisTemplate<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span>  <span class="token class-name">HashMapBackedSessionMappingStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    	<span class="token class-name">ApplicationContext</span> ac <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"classpath:schemeone/xml/spring-core.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    	<span class="token function">setRedisTemplate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">RedisTemplate</span><span class="token punctuation">)</span>ac<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"redisTemplate"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">addSessionById</span><span class="token punctuation">(</span><span class="token class-name">String</span> mappingId<span class="token punctuation">,</span> <span class="token class-name">HttpSession</span> session<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Adding ticket {}"</span><span class="token punctuation">,</span> session<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                <span class="token class-name">String</span> sessionRedisKey <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getCasSessionRedisKey</span><span class="token punctuation">(</span>session<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">String</span> mappingIdRedisKey <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getCasMappingIdRedisKey</span><span class="token punctuation">(</span>mappingId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate<span class="token punctuation">.</span><span class="token function">boundValueOps</span><span class="token punctuation">(</span>sessionRedisKey<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>mappingId<span class="token punctuation">,</span> casTimeout<span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">SECONDS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate<span class="token punctuation">.</span><span class="token function">boundValueOps</span><span class="token punctuation">(</span>mappingIdRedisKey<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>session<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> casTimeout<span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">SECONDS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"Failed Adding {}"</span><span class="token punctuation">,</span> session<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">removeBySessionById</span><span class="token punctuation">(</span><span class="token class-name">String</span> sessionId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	 logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Attempting to remove Session=[{}]"</span><span class="token punctuation">,</span> sessionId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+            <span class="token keyword">final</span> <span class="token class-name">String</span> key <span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate<span class="token punctuation">.</span><span class="token function">boundValueOps</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getCasSessionRedisKey</span><span class="token punctuation">(</span>sessionId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Found mapping for session.  Session Removed."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"No mapping for session found.  Ignoring."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getCasMappingIdRedisKey</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getCasSessionRedisKey</span><span class="token punctuation">(</span>sessionId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token class-name">HttpSession</span> <span class="token function">removeSessionByMappingId</span><span class="token punctuation">(</span><span class="token class-name">String</span> mappingId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    	<span class="token comment">//先去取sessionid</span>
+    	<span class="token keyword">final</span> <span class="token class-name">String</span> sessionId<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate<span class="token punctuation">.</span><span class="token function">boundValueOps</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getCasMappingIdRedisKey</span><span class="token punctuation">(</span>mappingId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    	<span class="token comment">//final HttpSession session = (HttpSession) this.redisTemplate.boundValueOps(sessionId).get();</span>
+    	 <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>sessionId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//	        if (session != null) {</span>
+<span class="token comment">//	            removeBySessionById(session.getId());</span>
+<span class="token comment">//	        }</span>
+<span class="token comment">//	        return session;</span>
+
+    	 <span class="token keyword">if</span> <span class="token punctuation">(</span>sessionId <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">removeBySessionById</span><span class="token punctuation">(</span>sessionId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+      <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">getCasSessionRedisKey</span><span class="token punctuation">(</span> <span class="token class-name">String</span> sessionId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token constant">CASCLIENT_PREFIX</span> <span class="token operator">+</span> sessionId<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      
+      <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">getCasMappingIdRedisKey</span><span class="token punctuation">(</span><span class="token class-name">String</span> mappingId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token constant">CASCLIENT_MAPID_PREFIX</span> <span class="token operator">+</span> mappingId<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="redistemplteBean配置"><a href="#redistemplteBean配置" class="headerlink" title="redistemplteBean配置"></a>redistemplteBean 配置</h3><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
+<span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>aop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/aop<span class="token punctuation">"</span></span>
+<span class="token attr-name"><span class="token namespace">xmlns:</span>context</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/context<span class="token punctuation">"</span></span>
+<span class="token attr-name"><span class="token namespace">xmlns:</span>util</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/util<span class="token punctuation">"</span></span>
+<span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 扫描注解Bean --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.hivescm<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">aop:</span>config</span> <span class="token attr-name">proxy-target-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token comment">&lt;!-- 开启AOP监听 只对当前配置文件有效 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">aop:</span>aspectj-autoproxy</span> <span class="token attr-name">expose-proxy</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>propertyConfigurer<span class="token punctuation">"</span></span>
+	<span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.beans.factory.config.PropertyPlaceholderConfigurer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>locations<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>list</span><span class="token punctuation">&gt;</span></span>
+          <span class="token comment">&lt;!--&lt;value&gt;classpath:schemeone/properties/common/*.properties&lt;/value&gt; --&gt;</span>
+    				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>classpath:schemeone/properties/common/redis.cluster.properties<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+    		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>list</span><span class="token punctuation">&gt;</span></span>
+    	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!--     jedis 配置 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>poolConfig<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>redis.clients.jedis.JedisPoolConfig<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!--         最大空闲数 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>maxIdle<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${redis.maxIdle}<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token comment">&lt;!--         最大建立连接等待时间 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>maxWaitMillis<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${redis.maxWait}<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token comment">&lt;!--         是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>testOnBorrow<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${redis.testOnBorrow}<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!--     配置文件加载 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>resourcePropertySource<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.core.io.support.ResourcePropertySource<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>redis.cluster.properties<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>resource<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>classpath:schemeone/properties/common/redis.cluster.properties<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!--     redisCluster配置 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>redisClusterConfiguration<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.data.redis.connection.RedisClusterConfiguration<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>propertySource<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>resourcePropertySource<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!--     redis服务器中心 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>connectionFactory<span class="token punctuation">"</span></span>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.data.redis.connection.jedis.JedisConnectionFactory<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clusterConfig<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>redisClusterConfiguration<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>poolConfig<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>poolConfig<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${redis.password}<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>timeout<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${redis.timeout}<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span> <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>redisTemplate<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.data.redis.core.RedisTemplate<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>connectionFactory<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>connectionFactory<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token comment">&lt;!--         如果不配置Serializer，那么存储的时候缺省使用String，如果用User类型存储，那么会提示错误User can't cast to String！！  --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>keySerializer<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.data.redis.serializer.StringRedisSerializer<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>valueSerializer<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.data.redis.serializer.JdkSerializationRedisSerializer<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hashKeySerializer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.data.redis.serializer.StringRedisSerializer<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hashValueSerializer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.data.redis.serializer.JdkSerializationRedisSerializer<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span> <span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="redis-cluster-properties"><a href="#redis-cluster-properties" class="headerlink" title="redis.cluster.properties"></a>redis.cluster.properties</h3><pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token comment">#redis\u4E2D\u5FC3</span>
+<span class="token comment">#redis\u7684\u670D\u52A1\u5668\u5730\u5740</span>
+<span class="token key attr-name">redis.host</span><span class="token punctuation">=</span><span class="token value attr-value">192.168.103.158</span>
+<span class="token comment">#redis\u7684\u670D\u52A1\u7AEF\u53E3</span>
+<span class="token key attr-name">redis.port</span><span class="token punctuation">=</span><span class="token value attr-value">6379</span>
+<span class="token comment">#\u5BC6\u7801</span>
+<span class="token key attr-name">redis.password</span><span class="token punctuation">=</span>
+<span class="token comment">#\u6700\u5927\u7A7A\u95F2\u6570</span>
+<span class="token key attr-name">redis.maxIdle</span><span class="token punctuation">=</span><span class="token value attr-value">100</span>
+<span class="token comment">#\u6700\u5927\u8FDE\u63A5\u6570</span>
+<span class="token key attr-name">redis.maxActive</span><span class="token punctuation">=</span><span class="token value attr-value">300</span>
+<span class="token comment">#\u6700\u5927\u5EFA\u7ACB\u8FDE\u63A5\u7B49\u5F85\u65F6\u95F4</span>
+<span class="token key attr-name">redis.maxWait</span><span class="token punctuation">=</span><span class="token value attr-value">1000</span>
+<span class="token comment">#\u5BA2\u6237\u7AEF\u8D85\u65F6\u65F6\u95F4\u5355\u4F4D\u662F\u6BEB\u79D2</span>
+<span class="token key attr-name">redis.timeout</span><span class="token punctuation">=</span><span class="token value attr-value">100000</span>
+<span class="token key attr-name">redis.maxTotal</span><span class="token punctuation">=</span><span class="token value attr-value">1000</span>
+<span class="token key attr-name">redis.minIdle</span><span class="token punctuation">=</span><span class="token value attr-value">8</span>
+<span class="token comment">#\u660E\u662F\u5426\u5728\u4ECE\u6C60\u4E2D\u53D6\u51FA\u8FDE\u63A5\u524D\u8FDB\u884C\u68C0\u9A8C,\u5982\u679C\u68C0\u9A8C\u5931\u8D25,\u5219\u4ECE\u6C60\u4E2D\u53BB\u9664\u8FDE\u63A5\u5E76\u5C1D\u8BD5\u53D6\u51FA\u53E6\u4E00\u4E2A</span>
+<span class="token key attr-name">redis.testOnBorrow</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+
+<span class="token comment">#sentinel</span>
+<span class="token comment">#spring.redis.sentinel.node1.host=127.0.0.1</span>
+<span class="token comment">#spring.redis.sentinel.node2.host=127.0.0.1</span>
+<span class="token comment">#spring.redis.sentinel.node3.host=127.0.0.1</span>
+<span class="token comment">#spring.redis.sentinel.node1.port=26379</span>
+<span class="token comment">#spring.redis.sentinel.node2.port=26479</span>
+<span class="token comment">#spring.redis.sentinel.node3.port=26579</span>
+<span class="token comment">#sentinel</span>
+
+<span class="token comment">#jediscluster</span>
+<span class="token comment">#cluster1.host.port=127.0.0.1:7000</span>
+<span class="token comment">#cluster2.host.port=127.0.0.1:7001</span>
+<span class="token comment">#cluster3.host.port=127.0.0.1:7002</span>
+<span class="token comment">#cluster4.host.port=127.0.0.1:7003</span>
+<span class="token comment">#cluster5.host.port=127.0.0.1:7004</span>
+<span class="token comment">#cluster6.host.port=127.0.0.1:7005</span>
+<span class="token comment">#cluster7.host.port=127.0.0.1:7006</span>
+<span class="token comment">#cluster8.host.port=127.0.0.1:7007</span>
+<span class="token comment">#jediscluster</span>
+
+<span class="token comment">#rediscluster</span>
+<span class="token comment">#spring.redis.cluster.nodes=192.168.103.158:6379</span>
+<span class="token key attr-name">spring.redis.cluster.nodes</span><span class="token punctuation">=</span><span class="token value attr-value">192.168.103.174:6379,192.168.103.174:6389,192.168.103.174:6399,192.168.103.173:6379,192.168.103.173:6389,192.168.103.173:6399</span>
+<span class="token key attr-name">spring.redis.cluster.max-redirects</span><span class="token punctuation">=</span><span class="token value attr-value">3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jimmy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/01/20/53969.shtml" title="CAS Client 集群环境的问题及解决方案">https://onxs.github.io/2018/01/20/53969.shtml</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CAS/" rel="tag"><i class="fa fa-tag"></i> CAS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/16/36591.shtml" rel="prev" title="Java 工具类总结">
+                  <i class="fa fa-chevron-left"></i> Java 工具类总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/01/21/37416.shtml" rel="next" title="输入网址到浏览器呈现发生了什么">
+                  输入网址到浏览器呈现发生了什么 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="7134ca2e9e8636835d481b6974b6dd5a"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC. All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">847k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">51:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":null}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/01/20/53969.shtml"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
