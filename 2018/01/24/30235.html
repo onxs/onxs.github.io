@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Muse | Mist":320,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/01/24/30235.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/01/24/30235.html","path":"2018/01/24/30235.html","title":"日志组件 slf4j 介绍及配置详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>日志组件 slf4j 介绍及配置详解 | MC</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SLF4J%E5%AF%B9%E6%AF%94Log4J%EF%BC%8Clogback%E5%92%8Cjava-util-Logging%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">2.</span> <span class="nav-text">SLF4J 对比 Log4J，logback 和 java.util.Logging 的优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">使用配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maven%E4%BE%9D%E8%B5%96"><span class="nav-number">3.1.</span> <span class="nav-text">maven 依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">日志系统配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#properties%E6%96%87%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">properties 文件方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xml%E6%96%87%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">xml 文件方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E"><span class="nav-number">3.3.</span> <span class="nav-text">日志系统配置说明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%BA%A7%E5%88%AB%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-number">3.3.1.</span> <span class="nav-text">输出级别的种类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF%E8%BE%93%E5%87%BA%E7%9B%AE%E7%9A%84%E5%9C%B0"><span class="nav-number">3.3.2.</span> <span class="nav-text">配置日志信息输出目的地</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.3.3.</span> <span class="nav-text">配置日志信息的格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ConsoleAppender%E9%80%89%E9%A1%B9"><span class="nav-number">3.3.4.</span> <span class="nav-text">ConsoleAppender 选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FileAppender-%E9%80%89%E9%A1%B9"><span class="nav-number">3.3.5.</span> <span class="nav-text">FileAppender 选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RollingFileAppender-%E9%80%89%E9%A1%B9"><span class="nav-number">3.3.6.</span> <span class="nav-text">RollingFileAppender 选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF%E6%A0%BC%E5%BC%8F%E4%B8%AD%E5%87%A0%E4%B8%AA%E7%AC%A6%E5%8F%B7%E6%89%80%E4%BB%A3%E8%A1%A8%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">3.3.7.</span> <span class="nav-text">日志信息格式中几个符号所代表的含义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">常用的过滤器：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%9D%A5%E6%BA%90%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">参考来源：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">mirror</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/01/24/30235.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="日志组件 slf4j 介绍及配置详解 | MC">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          日志组件 slf4j 介绍及配置详解<a href="https://github.com/onxs/blog/tree/dev/source/_posts/POST000146.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-24 14:44:36" itemprop="dateCreated datePublished" datetime="2018-01-24T14:44:36+08:00">2018-01-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SLF4J/" itemprop="url" rel="index"><span itemprop="name">SLF4J</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="日志组件 slf4j 介绍及配置详解" href="/2018/01/24/30235.html#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::20fac04adab6de997fecb965fe99c281" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0101.jpg" alt="image"></p>
+<p>每一个 Java 程序员都知道日志对于任何一个 Java 应用程序尤其是服务端程序是至关重要的，而很多程序员也已经熟悉各种不同的日志库，如 java.util.logging、Apache log4j、logback。但如果你还不知道 SLF4J（Simple logging facade for Java）的话，那么是时候在你的项目中学习使用 SLF4J 了。</p>
+<span id="more"></span>
+
+<h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>SLF4J 不同于其他日志类库，与其它日志类库有很大的不同。SLF4J (Simple logging Facade for Java) 不是一个真正的日志实现，而是一个抽象层（ abstraction layer），它允许你在后台使用任意一个日志类库。如果是在编写供内外部都可以使用的 API 或者通用类库，那么你真不会希望使用你类库的客户端必须使用你选择的日志类库。</p>
+<p>如果一个项目已经使用了 log4j，而你加载了一个类库，比方说 Apache Active MQ—— 它依赖于于另外一个日志类库 logback，那么你就需要把它也加载进去。但如果 Apache Active MQ 使用了 SLF4J，你可以继续使用你的日志类库而无需忍受加载和维护一个新的日志框架的痛苦。</p>
+<p>总的来说，SLF4J 使你的代码独立于任意一个特定的日志 API，这是对于 API 开发者的很好的思想。虽然抽象日志类库的思想已经不是新鲜的事物，而且 Apache commons logging 也已经在使用这种思想了，但 SLF4J 正迅速成为 Java 世界的日志标准。让我们再看几个使用 SLF4J 而不是 log4j、logback 或者 java.util.logging 的理由。</p>
+<h3 id="SLF4J对比Log4J，logback和java-util-Logging的优势"><a href="#SLF4J对比Log4J，logback和java-util-Logging的优势" class="headerlink" title="SLF4J对比Log4J，logback和java.util.Logging的优势"></a>SLF4J 对比 Log4J，logback 和 java.util.Logging 的优势</h3><p>正如我之前说的，在你的代码中使用 SLF4J 写日志语句的主要出发点是使得你的程序独立于任何特定的日志类库，依赖于特定类库可能需要使用不同于你已有的配置，并且导致更多维护的麻烦。除此之外，还有一个 SLF4J API 的特性是使得我坚持使用 SLF4J 而抛弃我长期间钟爱的 Log4j 的理由，是被称为占位符 (place holder)，在代码中表示为 “{}” 的特性。占位符是一个非常类似于在 String 的 format () 方法中的 % s，因为它会在运行时被某个提供的实际字符串所替换。这不仅降低了你代码中字符串连接次数，而且还节省了新建的 String 对象。通过使用 SLF4J，你可以在运行时延迟字符串的建立，这意味着只有需要的 String 对象才被建立。而如果你已经使用 log4j，那么你已经对于在 if 条件中使用 debug 语句这种变通方案十分熟悉了，但 SLF4J 的占位符就比这个好用得多。</p>
+<p>这是你在 Log4j 中使用的方案，但这并不有趣，而且降低了代码可读性，因为它增加了不必要的繁琐重复代码 (boiler-plate code)：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Processing trade with id: "</span> <span class="token operator">+</span> id <span class="token operator">+</span> <span class="token string">" symbol: "</span> <span class="token operator">+</span> symbol<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>另一方面，如果你使用 SLF4J 的话，你可以得到更简洁格式的结果，就像以下展示的一样：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Processing trade with id: {} and symbol : {} "</span><span class="token punctuation">,</span> id<span class="token punctuation">,</span> symbol<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在 SLF4J，我们不需要字符串连接而且不会导致暂时不需要的字符串消耗。取而代之，我们在一个以占位符和参数传递实际值构成的模板格式下写日志信息。你可能会在想万一我有很多个参数怎么办？嗯，那么你可以选择使用变量参数版本的日志方法或者以 Object 数组传递。这是一个相当方便和高效方法的打日志方法。记住，在生产最终日志信息字符串之前，这个方法会检查一个特定的日志级别是不是打开了，这不仅降低了内存消耗而且预先降低了 CPU 去处理字符串连接命令的时间。这里是使用 SLF4J 日志方法的代码，来自于 slf4j-log4j12-1.6.1.jar 中的 Log4j 的适配器类 Log4jLoggerAdapter。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg1<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">FormattingTuple</span> ft <span class="token operator">=</span> <span class="token class-name">MessageFormatter</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>format<span class="token punctuation">,</span> arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">FQCN</span><span class="token punctuation">,</span> <span class="token class-name">Level</span><span class="token punctuation">.</span><span class="token constant">DEBUG</span><span class="token punctuation">,</span> ft<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ft<span class="token punctuation">.</span><span class="token function">getThrowable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>同时，我们应该知道打日志是对应用程序性能有着很大影响，在生产环节上我们建议只进行必要的日志记录。</p>
+<h3 id="使用配置"><a href="#使用配置" class="headerlink" title="使用配置"></a>使用配置</h3><h4 id="maven依赖"><a href="#maven依赖" class="headerlink" title="maven依赖"></a>maven 依赖</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.slf4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>slf4j-api<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.7.21<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.slf4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>slf4j-log4j12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.7.21<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="日志系统配置"><a href="#日志系统配置" class="headerlink" title="日志系统配置"></a>日志系统配置</h4><p>假设现有如下程序：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Logger</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">LoggerFactory</span></span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Logger</span> logger <span class="token operator">=</span> <span class="token class-name">LoggerFactory</span><span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token class-name">Main</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> status <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"status:{}"</span><span class="token punctuation">,</span> status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"status:{}"</span><span class="token punctuation">,</span> status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"end!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以使用以下两种方式对日志系统的输出格式、记录级别、输出方式等进行配置。</p>
+<h5 id="properties文件方式"><a href="#properties文件方式" class="headerlink" title="properties文件方式"></a>properties 文件方式</h5><p>log4j.properties:</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">log4j.rootLogger</span><span class="token punctuation">=</span><span class="token value attr-value">info, ServerDailyRollingFile, stdout</span>
+<span class="token key attr-name">log4j.appender.ServerDailyRollingFile</span><span class="token punctuation">=</span><span class="token value attr-value">org.apache.log4j.DailyRollingFileAppender</span>
+<span class="token key attr-name">log4j.appender.ServerDailyRollingFile.DatePattern</span><span class="token punctuation">=</span><span class="token value attr-value">'.'yyyy-MM-dd</span>
+<span class="token key attr-name">log4j.appender.ServerDailyRollingFile.File</span><span class="token punctuation">=</span><span class="token value attr-value">logs/notify-subscription.log</span>
+<span class="token key attr-name">log4j.appender.ServerDailyRollingFile.layout</span><span class="token punctuation">=</span><span class="token value attr-value">org.apache.log4j.PatternLayout</span>
+<span class="token key attr-name">log4j.appender.ServerDailyRollingFile.layout.ConversionPattern</span><span class="token punctuation">=</span><span class="token value attr-value">%d - %m%n</span>
+<span class="token key attr-name">log4j.appender.ServerDailyRollingFile.Append</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">log4j.appender.stdout</span><span class="token punctuation">=</span><span class="token value attr-value">org.apache.log4j.ConsoleAppender</span>
+<span class="token key attr-name">log4j.appender.stdout.layout</span><span class="token punctuation">=</span><span class="token value attr-value">org.apache.log4j.PatternLayout</span>
+<span class="token key attr-name">log4j.appender.stdout.layout.ConversionPattern</span><span class="token punctuation">=</span><span class="token value attr-value">%d{yyyy-MM-dd HH\:mm\:ss} %p [%c] %m%n</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出结果为：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">2016-05-12 16:08:21 INFO [club.chuxing.learn.Main] status:0 
+2016-05-12 16:08:21 INFO [club.chuxing.learn.Main] end!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h5 id="xml文件方式"><a href="#xml文件方式" class="headerlink" title="xml文件方式"></a>xml 文件方式</h5><p>首先 pom 中添加如下依赖：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>ch.qos.logback<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>logback-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.1.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>ch.qos.logback<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>logback-classic<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.1.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>logback.xml</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span> <span class="token attr-name">debug</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 应用名称 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>APP_NAME<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logtest<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token comment">&lt;!--日志文件的保存路径,首先查找系统属性-Dlog.dir,如果存在就使用其；否则，在当前目录下创建名为logs目录做日志存放的目录 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>LOG_HOME<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${log.dir:-logs}/${APP_NAME}<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token comment">&lt;!-- 日志输出格式 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ENCODER_PATTERN<span class="token punctuation">"</span></span>
+              <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>%d{yyyy-MM-dd  HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg%n<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>contextName</span><span class="token punctuation">&gt;</span></span>${APP_NAME}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>contextName</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token comment">&lt;!-- 控制台日志：输出全部日志到控制台 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>STDOUT<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.core.ConsoleAppender<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>encoder</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.classic.encoder.PatternLayoutEncoder<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Pattern</span><span class="token punctuation">&gt;</span></span>${ENCODER_PATTERN}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Pattern</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>encoder</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>appender</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token comment">&lt;!-- 文件日志：输出全部日志到文件 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>FILE<span class="token punctuation">"</span></span>
+              <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.RollingFileAppender<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rollingPolicy</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.TimeBasedRollingPolicy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>${LOG_HOME}/output.%d{yyyy-MM-dd}.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maxHistory</span><span class="token punctuation">&gt;</span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maxHistory</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rollingPolicy</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>encoder</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.classic.encoder.PatternLayoutEncoder<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">&gt;</span></span>${ENCODER_PATTERN}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>encoder</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>appender</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token comment">&lt;!-- 错误日志：用于将错误日志输出到独立文件 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ERROR_FILE<span class="token punctuation">"</span></span>
+              <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.RollingFileAppender<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rollingPolicy</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.TimeBasedRollingPolicy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>${LOG_HOME}/error.%d{yyyy-MM-dd}.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maxHistory</span><span class="token punctuation">&gt;</span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maxHistory</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rollingPolicy</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>encoder</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.classic.encoder.PatternLayoutEncoder<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">&gt;</span></span>${ENCODER_PATTERN}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>encoder</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.classic.filter.ThresholdFilter<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>level</span><span class="token punctuation">&gt;</span></span>WARN<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>level</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>appender</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token comment">&lt;!-- 独立输出的同步日志 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>SYNC_FILE<span class="token punctuation">"</span></span>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.RollingFileAppender<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rollingPolicy</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.core.rolling.TimeBasedRollingPolicy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>${LOG_HOME}/sync.%d{yyyy-MM-dd}.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fileNamePattern</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maxHistory</span><span class="token punctuation">&gt;</span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maxHistory</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rollingPolicy</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>encoder</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ch.qos.logback.classic.encoder.PatternLayoutEncoder<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">&gt;</span></span>${ENCODER_PATTERN}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>encoder</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>appender</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logger</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log.sync<span class="token punctuation">"</span></span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>DEBUG<span class="token punctuation">"</span></span> <span class="token attr-name">addtivity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>SYNC_FILE<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>logger</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>root</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>level</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>DEBUG<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>STDOUT<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>FILE<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ERROR_FILE<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>root</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">2016-05-12 17:08:32.105 [main] INFO club.chuxing.learn.Main - status:0 
+2016-05-12 17:08:32.114 [main] INFO club.chuxing.learn.Main - end!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="日志系统配置说明"><a href="#日志系统配置说明" class="headerlink" title="日志系统配置说明"></a>日志系统配置说明</h4><h5 id="输出级别的种类"><a href="#输出级别的种类" class="headerlink" title="输出级别的种类"></a>输出级别的种类</h5><ol>
+<li>ERROR 为严重错误 主要是程序的错误</li>
+<li> WARN 为一般警告，比如 session 丢失</li>
+<li> INFO 为一般要显示的信息，比如登录登出</li>
+<li> DEBUG 为程序的调试信息</li>
+</ol>
+<h5 id="配置日志信息输出目的地"><a href="#配置日志信息输出目的地" class="headerlink" title="配置日志信息输出目的地"></a>配置日志信息输出目的地</h5><blockquote>
+<p>log4j.appender.appenderName=??</p>
+<p>org.apache.log4j.ConsoleAppender（控制台）<br>org.apache.log4j.FileAppender（文件）<br>org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件）<br>org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件）<br>org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）</p>
+</blockquote>
+<h5 id="配置日志信息的格式"><a href="#配置日志信息的格式" class="headerlink" title="配置日志信息的格式"></a>配置日志信息的格式</h5><blockquote>
+<p>log4j.appender.appenderName.layout = ??</p>
+<p>org.apache.log4j.HTMLLayout（以 HTML 表格形式布局）<br>org.apache.log4j.PatternLayout（可以灵活地指定布局模式）<br>org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串）<br>org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息）</p>
+</blockquote>
+<h5 id="ConsoleAppender选项"><a href="#ConsoleAppender选项" class="headerlink" title="ConsoleAppender选项"></a>ConsoleAppender 选项</h5><blockquote>
+<p>Threshold=DEBUG: 指定日志消息的输出最低层次。<br>ImmediateFlush=true: 默认值是 true, 意谓着所有的消息都会被立即输出。<br>Target=System.err: 默认情况下是 System.out, 指定输出控制台</p>
+</blockquote>
+<h5 id="FileAppender-选项"><a href="#FileAppender-选项" class="headerlink" title="FileAppender 选项"></a>FileAppender 选项</h5><blockquote>
+<p>Threshold=DEBUG: 指定日志消息的输出最低层次。<br>ImmediateFlush=true: 默认值是 true, 意谓着所有的消息都会被立即输出。<br>File=mylog.txt: 指定消息输出到 mylog.txt 文件。<br>Append=false: 默认值是 true, 即将消息增加到指定文件中，false 指将消息覆盖指定的文件内容。</p>
+</blockquote>
+<h5 id="RollingFileAppender-选项"><a href="#RollingFileAppender-选项" class="headerlink" title="RollingFileAppender 选项"></a>RollingFileAppender 选项</h5><blockquote>
+<p>Threshold=DEBUG: 指定日志消息的输出最低层次。<br>ImmediateFlush=true: 默认值是 true, 意谓着所有的消息都会被立即输出。<br>File=mylog.txt: 指定消息输出到 mylog.txt 文件。<br>Append=false: 默认值是 true, 即将消息增加到指定文件中，false 指将消息覆盖指定的文件内容。<br>MaxFileSize=100KB: 后缀可以是 KB, MB 或者是 GB. 在日志文件到达该大小时，将会自动滚动，即将原来的内容移到 mylog.log.1 文件。<br>MaxBackupIndex=2: 指定可以产生的滚动文件的最大数。</p>
+</blockquote>
+<h5 id="日志信息格式中几个符号所代表的含义"><a href="#日志信息格式中几个符号所代表的含义" class="headerlink" title="日志信息格式中几个符号所代表的含义"></a>日志信息格式中几个符号所代表的含义</h5><blockquote>
+<p>-X 号: X 信息输出时左对齐；<br>% p: 输出日志信息优先级，即 DEBUG，INFO，WARN，ERROR，FATAL,<br>% d: 输出日志时间点的日期或时间，默认格式为 ISO8601，也可以在其后指定格式，比如：% d {yyy MMM dd HH:mm:ss,SSS}，输出类似：2002 年 10 月 18 日 22：10：28，921<br>% r: 输出自应用启动到输出该 log 信息耗费的毫秒数<br>% c: 输出日志信息所属的类目，通常就是所在类的全名<br>% t: 输出产生该日志事件的线程名<br>% l: 输出日志事件的发生位置，相当于 % C.% M (% F:% L) 的组合，包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main (TestLog4.java:10)<br>% x: 输出和当前线程相关联的 NDC (嵌套诊断环境), 尤其用到像 java servlets 这样的多客户多线程的应用中。<br>%%: 输出一个”%” 字符<br>% F: 输出日志消息产生时所在的文件名称<br>% L: 输出代码中的行号<br>% m: 输出代码中指定的消息，产生的日志具体信息<br>% n: 输出一个回车换行符，Windows 平台为”\r\n”，Unix 平台为”\n” 输出日志信息换行</p>
+</blockquote>
+<p>一个示例配置文件</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">log4j.debug</span><span class="token punctuation">=</span><span class="token value attr-value">true   </span>
+<span class="token key attr-name">log4j.rootLogger</span><span class="token punctuation">=</span><span class="token value attr-value">DEBUG,D,E</span>
+<span class="token key attr-name">log4j.appender.E</span> <span class="token punctuation">=</span> <span class="token value attr-value">org.apache.log4j.DailyRollingFileAppender</span>
+<span class="token key attr-name">log4j.appender.E.File</span> <span class="token punctuation">=</span> <span class="token value attr-value">logs/logs.log</span>
+<span class="token key attr-name">log4j.appender.E.Append</span> <span class="token punctuation">=</span> <span class="token value attr-value">true</span>
+<span class="token key attr-name">log4j.appender.E.Threshold</span> <span class="token punctuation">=</span> <span class="token value attr-value">DEBUG</span>
+<span class="token key attr-name">log4j.appender.E.layout</span> <span class="token punctuation">=</span> <span class="token value attr-value">org.apache.log4j.PatternLayout</span>
+<span class="token key attr-name">log4j.appender.E.layout.ConversionPattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">%-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n</span>
+<span class="token key attr-name">log4j.appender.D</span> <span class="token punctuation">=</span> <span class="token value attr-value">org.apache.log4j.DailyRollingFileAppender</span>
+<span class="token key attr-name">log4j.appender.D.File</span> <span class="token punctuation">=</span> <span class="token value attr-value">logs/error.log</span>
+<span class="token key attr-name">log4j.appender.D.Append</span> <span class="token punctuation">=</span> <span class="token value attr-value">true</span>
+<span class="token key attr-name">log4j.appender.D.Threshold</span> <span class="token punctuation">=</span> <span class="token value attr-value">ERROR</span>
+<span class="token key attr-name">log4j.appender.D.layout</span> <span class="token punctuation">=</span> <span class="token value attr-value">org.apache.log4j.PatternLayout</span>
+<span class="token key attr-name">log4j.appender.D.layout.ConversionPattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">%-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>过滤器，执行一个过滤器会有返回个枚举值，即 DENY，NEUTRAL，ACCEPT 其中之一。返回 DENY，日志将立即被抛弃不再经过其他过滤器；返回 NEUTRAL，有序列表里的下个过滤器过接着处理日志；返回 ACCEPT，日志会被立即处理，不再经过剩余过滤器。<br>过滤器被添加到<appender> 中，为<appender> 添加一个或多个过滤器后，可以用任意条件对日志进行过滤。<appender> 有多个过滤器时，按照配置顺序执行。</appender></appender></appender></p>
+<h4 id="常用的过滤器："><a href="#常用的过滤器：" class="headerlink" title="常用的过滤器："></a>常用的过滤器：</h4><ol>
+<li>LevelFilter： 级别过滤器，根据日志级别进行过滤。如果日志级别等于配置级别，过滤器会根据 onMath 和 onMismatch 接收或拒绝日志。有以下子节点： </li>
+</ol>
+<p><level>: 设置过滤级别<br><onmatch>: 用于配置符合过滤条件的操作<br><onmismatch>: 用于配置不符合过滤条件的操作</onmismatch></onmatch></level></p>
+<ol start="2">
+<li>ThresholdFilter： 临界值过滤器，过滤掉低于指定临界值的日志。当日志级别等于或高于临界值时，过滤器返回 NEUTRAL；当日志级别低于临界值时，日志会被拒绝。 </li>
+</ol>
+<p>例如：过滤掉所有低于 INFO 级别的日志。</p>
+<ol start="3">
+<li>EvaluatorFilter： 求值过滤器，评估、鉴别日志是否符合指定条件。有一下子节点： </li>
+</ol>
+<p><evaluator>:<br>鉴别器，常用的鉴别器是 JaninoEventEvaluato，也是默认的鉴别器，它以任意的 Java 布尔值表达式作为求值条件，求值条件在配置文件解释过成功被动态编译，布尔值表达式返回 true 就表示符合过滤条件。evaluator 有个子标签<expression>，用于配置求值条件。 </expression></evaluator></p>
+<p>求值表达式作用于当前日志，logback 向求值表达式暴露日志的各种字段：<br>Name    Type    Description<br>event    LoggingEvent    与记录请求相关联的原始记录事件，下面所有变量都来自 event</p>
+<p>例如，event.getMessage () 返回下面”message” 相同的字符串</p>
+<p>message    String    日志的原始消息</p>
+<p>例如，设有 logger mylogger，”name” 的值是”AUB”，对于 mylogger.info (“Hello {}”,name); “Hello {}” 就是原始消息。<br>formatedMessage    String    日志被各式话的消息，</p>
+<p>例如，设有 logger mylogger，”name” 的值是”AUB”，对于 mylogger.info (“Hello {}”,name); “Hello Aub” 就是格式化后的消息。<br>logger    String    logger 名。</p>
+<p>loggerContext    LoggerContextVO    日志所属的 logger 上下文。</p>
+<p>level    int    级别对应的整数值，所以 level &gt; INFO 是正确的表达式。</p>
+<p>timeStamp    long    创建日志的时间戳。</p>
+<p>marker    Marker    与日志请求相关联的 Marker 对象，注意 “Marker” 有可能为 null，所以你要确保它不能是 null。</p>
+<p>mdc    Map    包含创建日志期间的 MDC 所有值得 map。访问方法是：mdc.get (“myKey”) 。</p>
+<p>mdc.get () 返回的是 Object 不是 String，要想调用 String 的方法就要强转</p>
+<p>例如，((String) mdc.get (“k”)).contains (“val”) .MDC 可能为 null，调用时注意。</p>
+<p>throwable    java.lang.Throwable    如果没有异常与日志关联”throwable” 变量为 null. 不幸的是， “throwable” 不能被序列化。在远程系统上永远为 null，对于与位置无关的表达式请使用下面的变量 throwableProxy</p>
+<p>throwableProxy    IThrowableProxy    与日志事件关联的异常代理。如果没有异常与日志事件关联，则变量”throwableProxy” 为 null. 当异常被关联到日志事件时，”throwableProxy” 在远程系统上不会为 null</p>
+<p><onmatch>: 用于配置符合过滤条件的操作 </onmatch></p>
+<p><onmismatch>: 用于配置不符合过滤条件的操作 </onmismatch></p>
+<p>例如：过滤掉所有日志消息中不包含 “billing” 字符串的日志。</p>
+<h4 id="参考来源："><a href="#参考来源：" class="headerlink" title="参考来源："></a>参考来源：</h4><ol>
+<li><a target="_blank" rel="noopener" href="http://www.importnew.com/7450.html#comment-204549">http://www.importnew.com/7450.html#comment-204549</a> </li>
+<li><a target="_blank" rel="noopener" href="http://www.tuicool.com/articles/6VRnui">http://www.tuicool.com/articles/6VRnui</a> </li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/linwei_1029/article/details/8844939">http://blog.csdn.net/linwei_1029/article/details/8844939</a> </li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/xuanjiewu/article/details/7587586">http://blog.csdn.net/xuanjiewu/article/details/7587586</a> </li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/haidage/article/details/6794540">http://blog.csdn.net/haidage/article/details/6794540</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/01/24/30235.html" title="日志组件 slf4j 介绍及配置详解">https://onxs.github.io/2018/01/24/30235.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/SLF4J/" rel="tag"><i class="fa fa-tag"></i> SLF4J</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/24/52946.html" rel="prev" title="Web 站点如何防范 XSS、CSRF、SQL 注入攻击">
+                  <i class="fa fa-chevron-left"></i> Web 站点如何防范 XSS、CSRF、SQL 注入攻击
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/01/24/13911.html" rel="next" title="Gson 和 Jackson 的使用">
+                  Gson 和 Jackson 的使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="20fac04adab6de997fecb965fe99c281"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC-TECH All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">807k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">48:53</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"https://matrix.to/#/#onxs:gitter.im"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/01/24/30235.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

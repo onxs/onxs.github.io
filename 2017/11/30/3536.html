@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Muse | Mist":320,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2017/11/30/3536.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2017/11/30/3536.html","path":"2017/11/30/3536.html","title":"Lucene 全文搜索解析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Lucene 全文搜索解析 | MC</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">mirror</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2018/01/16/36591.html" rel="bookmark">
+        <time class="popular-posts-time">2018-01-16</time>
+        <br>
+      Java 工具类总结
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2017/12/13/35236.html" rel="bookmark">
+        <time class="popular-posts-time">2017-12-13</time>
+        <br>
+      定时任务框架
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2017/11/30/3536.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Lucene 全文搜索解析 | MC">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Lucene 全文搜索解析<a href="https://github.com/onxs/blog/tree/dev/source/_posts/POST00036.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-11-30 13:34:36" itemprop="dateCreated datePublished" datetime="2017-11-30T13:34:36+08:00">2017-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Lucene/" itemprop="url" rel="index"><span itemprop="name">Lucene</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Lucene 全文搜索解析" href="/2017/11/30/3536.html#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::5bebb8ff77eebffd83532bbfa960eb82" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0052.jpg" alt="image"></p>
+<p>一、创建查询对象的方式<br>对要搜索的信息创建 Query 查询对象，Lucene 会根据 Query 查询对象生成最终的查询语法。类似关系数据库 Sql 语法一样，Lucene 也有自己的查询语法，比如：“name:lucene” 表示查询 Field 的 name 为 “lucene” 的文档信息。</p>
+<span id="more"></span>
+<p>可通过两种方法创建查询对象：</p>
+<p>使用 Lucene 提供 Query 子类<br>Query 是一个抽象类，lucene 提供了很多查询对象，比如 TermQuery 项精确查询，NumericRangeQuery 数字范围查询等。</p>
+<p>如下代码：</p>
+<p>Query query = new TermQuery(new Term(“name”, “lucene”));<br>使用 QueryParse 解析查询表达式<br>QueryParser 会将用户输入的查询表达式解析成 Query 对象实例。<br>如下代码：</p>
+<p>QueryParser queryParser = new QueryParser(“name”, new IKAnalyzer());<br>Query query = queryParser.parse(“name:lucene”);<br>二、通过 Query 子类搜索<br>2.1 TermQuery<br>TermQuery 项查询，TermQuery 不使用分析器，搜索关键词作为整体来匹配 Field 域中的词进行查询，比如订单号、分类 ID 号等。</p>
+<p>private void doSearch(Query query) {</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">IndexReader</span> reader <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment">// a) 指定索引库目录</span>
+    <span class="token class-name">Directory</span> indexdirectory <span class="token operator">=</span> <span class="token class-name">FSDirectory</span><span class="token punctuation">.</span><span class="token keyword">open</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>
+            <span class="token string">"E:\\11-index\\0720"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// b) 创建IndexReader对象</span>
+    reader <span class="token operator">=</span> <span class="token class-name">DirectoryReader</span><span class="token punctuation">.</span><span class="token keyword">open</span><span class="token punctuation">(</span>indexdirectory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// c) 创建IndexSearcher对象</span>
+    <span class="token class-name">IndexSearcher</span> searcher <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IndexSearcher</span><span class="token punctuation">(</span>reader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// d) 通过IndexSearcher对象执行查询索引库，返回TopDocs对象</span>
+    <span class="token comment">// 第一个参数：查询对象</span>
+    <span class="token comment">// 第二个参数：最大的n条记录</span>
+    <span class="token class-name">TopDocs</span> topDocs <span class="token operator">=</span> searcher<span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// e) 提取TopDocs对象中的文档ID，如何找出对应的文档</span>
+    <span class="token class-name">ScoreDoc</span><span class="token punctuation">[</span><span class="token punctuation">]</span> scoreDocs <span class="token operator">=</span> topDocs<span class="token punctuation">.</span>scoreDocs<span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"总共查询出的结果总数为："</span> <span class="token operator">+</span> topDocs<span class="token punctuation">.</span>totalHits<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Document</span> doc<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">ScoreDoc</span> scoreDoc <span class="token operator">:</span> scoreDocs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 文档对象ID</span>
+        <span class="token keyword">int</span> docId <span class="token operator">=</span> scoreDoc<span class="token punctuation">.</span>doc<span class="token punctuation">;</span>
+        doc <span class="token operator">=</span> searcher<span class="token punctuation">.</span><span class="token function">doc</span><span class="token punctuation">(</span>docId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// f) 输出文档内容</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>doc<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"filename"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>doc<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>doc<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"size"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>reader <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            reader<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>}</p>
+<p>@Test<br>public void testTermQuery() throws Exception {</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 1、 创建查询（Query对象）</span>
+<span class="token class-name">Query</span> query <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TermQuery</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Term</span><span class="token punctuation">(</span><span class="token string">"filename"</span><span class="token punctuation">,</span> <span class="token string">"apache"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 2、 执行搜索</span>
+<span class="token function">doSearch</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>}<br>2.2 NumericRangeQuery<br>NumericRangeQuery，指定数字范围查询.</p>
+<p>@Test<br>public void testNumbericRangeQuery() throws Exception {</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 创建查询</span>
+<span class="token comment">// 第一个参数：域名</span>
+<span class="token comment">// 第二个参数：最小值</span>
+<span class="token comment">// 第三个参数：最大值</span>
+<span class="token comment">// 第四个参数：是否包含最小值</span>
+<span class="token comment">// 第五个参数：是否包含最大值</span>
+<span class="token class-name">Query</span> query <span class="token operator">=</span> <span class="token class-name">NumericRangeQuery</span><span class="token punctuation">.</span><span class="token function">newLongRange</span><span class="token punctuation">(</span><span class="token string">"size"</span><span class="token punctuation">,</span> <span class="token number">1l</span><span class="token punctuation">,</span> <span class="token number">100l</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 2、 执行搜索</span>
+<span class="token function">doSearch</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>}<br>2.3 BooleanQuery<br>BooleanQuery，布尔查询，实现组合条件查询。</p>
+<p>@Test<br>public void booleanQuery() throws Exception {</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">BooleanQuery</span> query <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BooleanQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Query</span> query1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TermQuery</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Term</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"3"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Query</span> query2 <span class="token operator">=</span> <span class="token class-name">NumericRangeQuery</span><span class="token punctuation">.</span><span class="token function">newFloatRange</span><span class="token punctuation">(</span><span class="token string">"price"</span><span class="token punctuation">,</span> <span class="token number">10f</span><span class="token punctuation">,</span> <span class="token number">200f</span><span class="token punctuation">,</span>
+        <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//MUST：查询条件必须满足，相当于AND</span>
+<span class="token comment">//SHOULD:查询条件可选，相当于OR</span>
+<span class="token comment">//MUST_NOT：查询条件不能满足，相当于NOT非</span>
+query<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>query1<span class="token punctuation">,</span> <span class="token class-name">Occur</span><span class="token punctuation">.</span><span class="token constant">MUST</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+query<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>query2<span class="token punctuation">,</span> <span class="token class-name">Occur</span><span class="token punctuation">.</span><span class="token constant">SHOULD</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">search</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>}<br>组合关系代表的意思如下:</p>
+<p>1、MUST 和 MUST 表示 “与” 的关系，即 “交集”。<br>2、MUST 和 MUST_NOT 前者包含后者不包含。<br>3、MUST_NOT 和 MUST_NOT 没意义<br>4、SHOULD 与 MUST 表示 MUST，SHOULD 失去意义；<br>5、SHOUlD 与 MUST_NOT 相当于 MUST 与 MUST_NOT。<br>6、SHOULD 与 SHOULD 表示 “或” 的概念。<br>三、通过 QueryParser 搜索<br>通过 QueryParser 也可以创建 Query，QueryParser 提供一个 Parse 方法，此方法可以直接根据查询语法来查询。Query 对象执行的查询语法可通过 System.out.println (query); 查询。</p>
+<p>3.1 QueryParser<br>代码实现：</p>
+<p>@Test<br>public void testQueryParser() throws Exception {</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 创建QueryParser</span>
+<span class="token comment">// 第一个参数：默认域名</span>
+<span class="token comment">// 第二个参数：分词器</span>
+<span class="token class-name">QueryParser</span> queryParser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryParser</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">IKAnalyzer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 指定查询语法 ，如果不指定域，就搜索默认的域</span>
+<span class="token class-name">Query</span> query <span class="token operator">=</span> queryParser<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"lucene"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 2、 执行搜索</span>
+<span class="token function">doSearch</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>}<br>查询语法：</p>
+<p>1、基础的查询语法，关键词查询：</p>
+<p>域名 +“：”+ 搜索的关键字<br>例如：content:java<br>2、范围查询</p>
+<p>域名 +“:”+[最小值 TO 最大值]<br>例如：size:[1 TO 1000]<br>注意：QueryParser 不支持对数字范围的搜索，它支持字符串范围。<br>数字范围搜索建议使用 NumericRangeQuery。<br>3、组合条件查询</p>
+<p>组合条件查询.PNG<br>1）+ 条件 1 + 条件 2：两个条件之间是并且的关系 and<br>例如：+filename:apache +content:apache</p>
+<p>2）+ 条件 1 条件 2：必须满足第一个条件，忽略第二个条件<br>例如：+filename:apache content:apache</p>
+<p>3）条件 1 条件 2：两个条件满足其一即可。<br>例如：filename:apache content:apache</p>
+<p>4）- 条件 1 条件 2：必须不满足条件 1，要满足条件 2<br>例如：-filename:apache content:apache</p>
+<p>第二种写法：<br>条件 1 AND 条件 2<br>条件 1 OR 条件 2<br>条件 1 NOT 条件 2<br>3.2 MultiFieldQueryParser<br>通过 MultiFieldQueryParser 对多个域查询。</p>
+<p>@Test<br>public void testMultiFieldQueryParser() throws Exception {</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 可以指定默认搜索的域是多个</span>
+<span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> fields <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"description"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// 创建一个MulitFiledQueryParser对象</span>
+<span class="token class-name">QueryParser</span> parser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MultiFieldQueryParser</span><span class="token punctuation">(</span>fields<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">IKAnalyzer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 指定查询语法 ，如果不指定域，就搜索默认的域</span>
+<span class="token class-name">Query</span> query <span class="token operator">=</span> parser<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"lucene"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//等同于name:lucene OR description:lucene</span>
+<span class="token comment">// Query query = parser.parse("name:lucene OR description:lucene");</span>
+<span class="token comment">// 2、 执行搜索</span>
+<span class="token function">doSearch</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>}<br>四、TopDocs<br>Lucene 搜索结果可通过 TopDocs 遍历，TopDocs 类提供了少量的属性，如下：</p>
+<p>topdocs 属性.PNG<br>注意：</p>
+<p>Search 方法需要指定匹配记录数量 n：indexSearcher.search (query, n)<br>TopDocs.totalHits：是匹配索引库中所有记录的数量<br>TopDocs.scoreDocs：匹配相关度高的前边记录数组，scoreDocs 的长度小于等于 search 方法指定的参数 n</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2017/11/30/3536.html" title="Lucene 全文搜索解析">https://onxs.github.io/2017/11/30/3536.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Lucene/" rel="tag"><i class="fa fa-tag"></i> Lucene</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/11/30/10596.html" rel="prev" title="Lucene 实现文档进行全文检索功能">
+                  <i class="fa fa-chevron-left"></i> Lucene 实现文档进行全文检索功能
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/11/30/40393.html" rel="next" title="Lucene 的 Field 域和索引维护">
+                  Lucene 的 Field 域和索引维护 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="5bebb8ff77eebffd83532bbfa960eb82"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC-TECH All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">807k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">48:53</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"https://matrix.to/#/#onxs:gitter.im"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2017/11/30/3536.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

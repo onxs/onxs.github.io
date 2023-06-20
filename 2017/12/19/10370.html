@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Muse | Mist":320,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2017/12/19/10370.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2017/12/19/10370.html","path":"2017/12/19/10370.html","title":"Spring Boot 开发新一代项目"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Spring Boot 开发新一代项目 | MC</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot%E7%89%B9%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot 特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Spring-Boot"><span class="nav-number">2.</span> <span class="nav-text">安装 Spring Boot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">构建项目步骤</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">mirror</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2017/12/20/48216.html" rel="bookmark">
+        <time class="popular-posts-time">2017-12-20</time>
+        <br>
+      Spring Boot 微服框架学习 (一)
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2017/09/15/47293.html" rel="bookmark">
+        <time class="popular-posts-time">2017-09-15</time>
+        <br>
+      Request Mapping 基础用法
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2017/12/19/10370.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Spring Boot 开发新一代项目 | MC">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spring Boot 开发新一代项目<a href="https://github.com/onxs/blog/tree/dev/source/_posts/POST00024.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-12-19 22:34:36" itemprop="dateCreated datePublished" datetime="2017-12-19T22:34:36+08:00">2017-12-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Spring Boot 开发新一代项目" href="/2017/12/19/10370.html#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::cabd2c36e8322e5c5538cd8026612dab" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://s2.loli.net/2023/04/16/6fdyi3qMraLZt9k.png"></p>
+<p>Spring Boot 是由 Pivotal 团队提供的全新框架，其设计目的是用来简化新 Spring 应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot 致力于在蓬勃发展的快速应用开发领域 (rapid application development) 成为领导者。</p>
+<span id="more"></span>
+<h3 id="Spring-Boot特点"><a href="#Spring-Boot特点" class="headerlink" title="Spring Boot特点"></a>Spring Boot 特点</h3><ol>
+<li>创建独立的 Spring 应用程序</li>
+<li>嵌入的 Tomcat，无需部署 WAR 文件</li>
+<li>简化 Maven 配置</li>
+<li>自动配置 Spring</li>
+<li> 提供生产就绪型功能，如指标，健康检查和外部配置</li>
+<li>绝对没有代码生成和对 XML 没有要求配置</li>
+</ol>
+<h3 id="安装Spring-Boot"><a href="#安装Spring-Boot" class="headerlink" title="安装Spring Boot"></a>安装 Spring Boot</h3><p>从最根本上来讲，Spring Boot 就是一些库的集合，它能够被任意项目的构建系统所使用。简便起见，该框架也提供了命令行界面，它可以用来运行和测试 Boot 应用。框架的发布版本，包括集成的 CLI（命令行界面），可以在 Spring 仓库中手动下载和安装。一种更为简便的方式是使用 Groovy 环境管理器（Groovy enVironment Manager，GVM），它会处理 Boot 版本的安装和管理。Boot 及其 CLI 可以通过 GVM 的命令行 gvm install springboot 进行安装。在 OS X 上安装 Boot 可以使用 Homebrew 包管理器。为了完成安装，首先要使用 brew tap pivotal/tap 切换到 Pivotal 仓库中，然后执行 brew install springboot 命令。<br>要进行打包和分发的工程会依赖于像 Maven 或 Gradle 这样的构建系统。为了简化依赖图，Boot 的功能是模块化的，通过导入 Boot 所谓的 “starter” 模块，可以将许多的依赖添加到工程之中。为了更容易地管理依赖版本和使用默认配置，框架提供了一个 parent POM，工程可以继承它。</p>
+<h3 id="构建项目步骤"><a href="#构建项目步骤" class="headerlink" title="构建项目步骤"></a>构建项目步骤</h3><ol>
+<li>首先要下载 maven</li>
+</ol>
+<p>用 maven 管理项目很方便，下载完 maven 配置好环境，maven 我就不细说了。</p>
+<ol start="2">
+<li>创建一个 maven 项目</li>
+</ol>
+<p>pom.xml 文件里面写这些:</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">&gt;</span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>springboot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>testSpringBoot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>0.0.1-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>testSpringBoot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>packaging</span><span class="token punctuation">&gt;</span></span>jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>packaging</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token comment">&lt;!-- 继承父包 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-parent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.1.3.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>relativePath</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>relativePath</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token comment">&lt;!-- spring-boot的web启动的jar包 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token comment">&lt;!--jpa的jar包 ，操作数据库的，类似hibernate--&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-data-jpa<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+        
+        <span class="token comment">&lt;!--mysql驱动--&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+        
+        <span class="token comment">&lt;!--thymeleaf模板jar，是很不错的html数据传递取值，类似jsp的jstl--&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-thymeleaf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token comment">&lt;!--maven的插件--&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
+        
+    <span class="token comment">&lt;!-- 配置java版本 不配置的话默认父类配置的是1.6--&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pluginManagement</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-compiler-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">&gt;</span></span>1.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>source</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span><span class="token punctuation">&gt;</span></span>1.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pluginManagement</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>创建的文件目录如图:</li>
+</ol>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/springboot/springboot001.png" alt="image"></p>
+<ol start="4">
+<li> 在 com.boot (即最外层目录文件) 下写一个如下 main 方法:</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>boot</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span></span><span class="token class-name">SpringApplication</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span></span><span class="token class-name">EnableAutoConfiguration</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">ComponentScan</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@EnableAutoConfiguration</span>
+<span class="token annotation punctuation">@ComponentScan</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Application</span> <span class="token punctuation">{</span>
+      <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Application</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="5">
+<li>在 com.boot.web 下创建一个类如下:</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>web</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Controller</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RequestMapping</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">ResponseBody</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Controller</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainController</span> <span class="token punctuation">{</span>
+<span class="token comment">//    @RequestMapping("")</span>
+<span class="token comment">//    public String index(){</span>
+<span class="token comment">//        return "examples/index";</span>
+<span class="token comment">//    }</span>
+      <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+      <span class="token annotation punctuation">@ResponseBody</span>
+      <span class="token class-name">String</span> <span class="token function">home</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>@RequestMapping     @ResponseBody</p>
+<p>这两个注解都是 springMVC 的，不懂得可以看 springMVC</p>
+<ol start="6">
+<li>在 resources 下增加一个 application.properties 文件</li>
+</ol>
+<p>文件内容如下配置:</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">spring.datasource.platform</span><span class="token punctuation">=</span><span class="token value attr-value">mysql</span>
+<span class="token key attr-name">spring.datasource.url</span><span class="token punctuation">=</span><span class="token value attr-value">jdbc:mysql://localhost/springboot?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true&amp;autoReconnect=true&amp;failOverReadOnly=false</span>
+<span class="token key attr-name">spring.datasource.username</span><span class="token punctuation">=</span><span class="token value attr-value">root</span>
+<span class="token key attr-name">spring.datasource.password</span><span class="token punctuation">=</span><span class="token value attr-value">root</span>
+<span class="token key attr-name">spring.datasource.driverClassName</span><span class="token punctuation">=</span><span class="token value attr-value">com.mysql.jdbc.Driver</span>
+<span class="token comment"># Advanced configuration...</span>
+<span class="token key attr-name">spring.datasource.max-active</span><span class="token punctuation">=</span><span class="token value attr-value">50</span>
+<span class="token key attr-name">spring.datasource.max-idle</span><span class="token punctuation">=</span><span class="token value attr-value">6</span>
+<span class="token key attr-name">spring.datasource.min-idle</span><span class="token punctuation">=</span><span class="token value attr-value">2</span>
+<span class="token key attr-name">spring.datasource.initial-size</span><span class="token punctuation">=</span><span class="token value attr-value">6</span>
+
+<span class="token comment">#create table</span>
+<span class="token key attr-name">spring.jpa.hibernate.ddl-auto</span><span class="token punctuation">=</span><span class="token value attr-value">validate</span>
+
+
+
+<span class="token key attr-name">server.port</span><span class="token punctuation">=</span><span class="token value attr-value">8080</span>
+<span class="token key attr-name">server.session-timeout</span><span class="token punctuation">=</span><span class="token value attr-value">30</span>
+<span class="token key attr-name">server.tomcat.uri-encoding</span><span class="token punctuation">=</span><span class="token value attr-value">UTF-8</span>
+
+
+<span class="token key attr-name">spring.thymeleaf.prefix</span><span class="token punctuation">=</span><span class="token value attr-value">classpath:templates/</span>
+<span class="token key attr-name">spring.thymeleaf.suffix</span><span class="token punctuation">=</span><span class="token value attr-value">.html</span>
+<span class="token key attr-name">spring.thymeleaf.mode</span><span class="token punctuation">=</span><span class="token value attr-value">HTML5</span>
+<span class="token key attr-name">spring.thymeleaf.encoding</span><span class="token punctuation">=</span><span class="token value attr-value">UTF-8</span>
+<span class="token key attr-name">spring.thymeleaf.content-type</span><span class="token punctuation">=</span><span class="token value attr-value">text/html </span>
+<span class="token key attr-name">spring.thymeleaf.cache</span><span class="token punctuation">=</span><span class="token value attr-value">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>该文件的配置可以参考 springboot 的官网</p>
+<p>该文件的全部参数配置；如下 (摘自官网)</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token comment"># ===================================================================</span>
+<span class="token comment"># COMMON SPRING BOOT PROPERTIES</span>
+<span class="token comment">#</span>
+<span class="token comment"># This sample file is provided as a guideline. Do NOT copy it in its</span>
+<span class="token comment"># entirety to your own application.               ^^^</span>
+<span class="token comment"># ===================================================================</span>
+
+<span class="token comment"># ----------------------------------------</span>
+<span class="token comment"># CORE PROPERTIES</span>
+<span class="token comment"># ----------------------------------------</span>
+
+<span class="token comment"># SPRING CONFIG (ConfigFileApplicationListener)</span>
+<span class="token key attr-name">spring.config.name</span><span class="token punctuation">=</span> <span class="token value attr-value"># config file name (default to 'application')</span>
+<span class="token key attr-name">spring.config.location</span><span class="token punctuation">=</span> <span class="token value attr-value"># location of config file</span>
+
+<span class="token comment"># PROFILES</span>
+<span class="token key attr-name">spring.profiles.active</span><span class="token punctuation">=</span> <span class="token value attr-value"># comma list of active profiles</span>
+
+<span class="token comment"># APPLICATION SETTINGS (SpringApplication)</span>
+<span class="token key attr-name">spring.main.sources</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.main.web-environment</span><span class="token punctuation">=</span> <span class="token value attr-value"># detect by default</span>
+<span class="token key attr-name">spring.main.show-banner</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.main....</span><span class="token punctuation">=</span> <span class="token value attr-value"># see class for all properties</span>
+
+<span class="token comment"># LOGGING</span>
+<span class="token key attr-name">logging.path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/logs</span>
+<span class="token key attr-name">logging.file</span><span class="token punctuation">=</span><span class="token value attr-value">myapp.log</span>
+<span class="token key attr-name">logging.config</span><span class="token punctuation">=</span> <span class="token value attr-value"># location of config file (default classpath:logback.xml for logback)</span>
+<span class="token key attr-name">logging.level.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># levels for loggers, e.g. "logging.level.org.springframework=DEBUG" (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)</span>
+
+<span class="token comment"># IDENTITY (ContextIdApplicationContextInitializer)</span>
+<span class="token key attr-name">spring.application.name</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.application.index</span><span class="token punctuation">=</span>
+
+<span class="token comment"># EMBEDDED SERVER CONFIGURATION (ServerProperties)</span>
+<span class="token key attr-name">server.port</span><span class="token punctuation">=</span><span class="token value attr-value">8080</span>
+<span class="token key attr-name">server.address</span><span class="token punctuation">=</span> <span class="token value attr-value"># bind to a specific NIC</span>
+<span class="token key attr-name">server.session-timeout</span><span class="token punctuation">=</span> <span class="token value attr-value"># session timeout in seconds</span>
+<span class="token key attr-name">server.context-path</span><span class="token punctuation">=</span> <span class="token value attr-value"># the context path, defaults to '/'</span>
+<span class="token key attr-name">server.servlet-path</span><span class="token punctuation">=</span> <span class="token value attr-value"># the servlet path, defaults to '/'</span>
+<span class="token key attr-name">server.ssl.client-auth</span><span class="token punctuation">=</span> <span class="token value attr-value"># want or need</span>
+<span class="token key attr-name">server.ssl.key-alias</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.ssl.key-password</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.ssl.key-store</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.ssl.key-store-password</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.ssl.key-store-provider</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.ssl.key-store-type</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.ssl.protocol</span><span class="token punctuation">=</span><span class="token value attr-value">TLS</span>
+<span class="token key attr-name">server.ssl.trust-store</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.ssl.trust-store-password</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.ssl.trust-store-provider</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.ssl.trust-store-type</span><span class="token punctuation">=</span>
+<span class="token key attr-name">server.tomcat.access-log-pattern</span><span class="token punctuation">=</span> <span class="token value attr-value"># log pattern of the access log</span>
+<span class="token key attr-name">server.tomcat.access-log-enabled</span><span class="token punctuation">=</span><span class="token value attr-value">false # is access logging enabled</span>
+<span class="token key attr-name">server.tomcat.internal-proxies</span><span class="token punctuation">=</span><span class="token value attr-value">10\.\d{1,3}\.\d{1,3}\.\d{1,3}|\
+        192\.168\.\d{1,3}\.\d{1,3}|\
+        169\.254\.\d{1,3}\.\d{1,3}|\
+        127\.\d{1,3}\.\d{1,3}\.\d{1,3} # regular expression matching trusted IP addresses</span>
+<span class="token key attr-name">server.tomcat.protocol-header</span><span class="token punctuation">=</span><span class="token value attr-value">x-forwarded-proto # front end proxy forward header</span>
+<span class="token key attr-name">server.tomcat.port-header</span><span class="token punctuation">=</span> <span class="token value attr-value"># front end proxy port header</span>
+<span class="token key attr-name">server.tomcat.remote-ip-header</span><span class="token punctuation">=</span><span class="token value attr-value">x-forwarded-for</span>
+<span class="token key attr-name">server.tomcat.basedir</span><span class="token punctuation">=</span><span class="token value attr-value">/tmp # base dir (usually not needed, defaults to tmp)</span>
+<span class="token key attr-name">server.tomcat.background-processor-delay</span><span class="token punctuation">=</span><span class="token value attr-value">30; # in seconds</span>
+<span class="token key attr-name">server.tomcat.max-threads</span> <span class="token punctuation">=</span> <span class="token value attr-value">0 # number of threads in protocol handler</span>
+<span class="token key attr-name">server.tomcat.uri-encoding</span> <span class="token punctuation">=</span> <span class="token value attr-value">UTF-8 # character encoding to use for URL decoding</span>
+
+<span class="token comment"># SPRING MVC (HttpMapperProperties)</span>
+<span class="token key attr-name">http.mappers.json-pretty-print</span><span class="token punctuation">=</span><span class="token value attr-value">false # pretty print JSON</span>
+<span class="token key attr-name">http.mappers.json-sort-keys</span><span class="token punctuation">=</span><span class="token value attr-value">false # sort keys</span>
+<span class="token key attr-name">spring.mvc.locale</span><span class="token punctuation">=</span> <span class="token value attr-value"># set fixed locale, e.g. en_UK</span>
+<span class="token key attr-name">spring.mvc.date-format</span><span class="token punctuation">=</span> <span class="token value attr-value"># set fixed date format, e.g. dd/MM/yyyy</span>
+<span class="token key attr-name">spring.mvc.message-codes-resolver-format</span><span class="token punctuation">=</span> <span class="token value attr-value"># PREFIX_ERROR_CODE / POSTFIX_ERROR_CODE</span>
+<span class="token key attr-name">spring.view.prefix</span><span class="token punctuation">=</span> <span class="token value attr-value"># MVC view prefix</span>
+<span class="token key attr-name">spring.view.suffix</span><span class="token punctuation">=</span> <span class="token value attr-value"># ... and suffix</span>
+<span class="token key attr-name">spring.resources.cache-period</span><span class="token punctuation">=</span> <span class="token value attr-value"># cache timeouts in headers sent to browser</span>
+<span class="token key attr-name">spring.resources.add-mappings</span><span class="token punctuation">=</span><span class="token value attr-value">true # if default mappings should be added</span>
+
+<span class="token comment"># JACKSON (JacksonProperties)</span>
+<span class="token key attr-name">spring.jackson.date-format</span><span class="token punctuation">=</span> <span class="token value attr-value"># Date format string (e.g. yyyy-MM-dd HH:mm:ss), or a fully-qualified date format class name (e.g. com.fasterxml.jackson.databind.util.ISO8601DateFormat)</span>
+<span class="token key attr-name">spring.jackson.property-naming-strategy</span><span class="token punctuation">=</span> <span class="token value attr-value"># One of the constants on Jackson's PropertyNamingStrategy (e.g. CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES) or the fully-qualified class name of a PropertyNamingStrategy subclass</span>
+<span class="token key attr-name">spring.jackson.deserialization.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># see Jackson's DeserializationFeature</span>
+<span class="token key attr-name">spring.jackson.generator.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># see Jackson's JsonGenerator.Feature</span>
+<span class="token key attr-name">spring.jackson.mapper.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># see Jackson's MapperFeature</span>
+<span class="token key attr-name">spring.jackson.parser.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># see Jackson's JsonParser.Feature</span>
+<span class="token key attr-name">spring.jackson.serialization.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># see Jackson's SerializationFeature</span>
+
+<span class="token comment"># THYMELEAF (ThymeleafAutoConfiguration)</span>
+<span class="token key attr-name">spring.thymeleaf.prefix</span><span class="token punctuation">=</span><span class="token value attr-value">classpath:/templates/</span>
+<span class="token key attr-name">spring.thymeleaf.suffix</span><span class="token punctuation">=</span><span class="token value attr-value">.html</span>
+<span class="token key attr-name">spring.thymeleaf.mode</span><span class="token punctuation">=</span><span class="token value attr-value">HTML5</span>
+<span class="token key attr-name">spring.thymeleaf.encoding</span><span class="token punctuation">=</span><span class="token value attr-value">UTF-8</span>
+<span class="token key attr-name">spring.thymeleaf.content-type</span><span class="token punctuation">=</span><span class="token value attr-value">text/html # ;charset=&lt;encoding&gt; is added</span>
+<span class="token key attr-name">spring.thymeleaf.cache</span><span class="token punctuation">=</span><span class="token value attr-value">true # set to false for hot refresh</span>
+
+<span class="token comment"># FREEMARKER (FreeMarkerAutoConfiguration)</span>
+<span class="token key attr-name">spring.freemarker.allowRequestOverride</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.freemarker.cache</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.freemarker.checkTemplateLocation</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.freemarker.charSet</span><span class="token punctuation">=</span><span class="token value attr-value">UTF-8</span>
+<span class="token key attr-name">spring.freemarker.contentType</span><span class="token punctuation">=</span><span class="token value attr-value">text/html</span>
+<span class="token key attr-name">spring.freemarker.exposeRequestAttributes</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.freemarker.exposeSessionAttributes</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.freemarker.exposeSpringMacroHelpers</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.freemarker.prefix</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.freemarker.requestContextAttribute</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.freemarker.settings.*</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.freemarker.suffix</span><span class="token punctuation">=</span><span class="token value attr-value">.ftl</span>
+<span class="token key attr-name">spring.freemarker.templateLoaderPath</span><span class="token punctuation">=</span><span class="token value attr-value">classpath:/templates/ # comma-separated list</span>
+<span class="token key attr-name">spring.freemarker.viewNames</span><span class="token punctuation">=</span> <span class="token value attr-value"># whitelist of view names that can be resolved</span>
+
+<span class="token comment"># GROOVY TEMPLATES (GroovyTemplateAutoConfiguration)</span>
+<span class="token key attr-name">spring.groovy.template.cache</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.groovy.template.charSet</span><span class="token punctuation">=</span><span class="token value attr-value">UTF-8</span>
+<span class="token key attr-name">spring.groovy.template.configuration.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># See Groovy's TemplateConfiguration</span>
+<span class="token key attr-name">spring.groovy.template.contentType</span><span class="token punctuation">=</span><span class="token value attr-value">text/html</span>
+<span class="token key attr-name">spring.groovy.template.prefix</span><span class="token punctuation">=</span><span class="token value attr-value">classpath:/templates/</span>
+<span class="token key attr-name">spring.groovy.template.suffix</span><span class="token punctuation">=</span><span class="token value attr-value">.tpl</span>
+<span class="token key attr-name">spring.groovy.template.viewNames</span><span class="token punctuation">=</span> <span class="token value attr-value"># whitelist of view names that can be resolved</span>
+
+<span class="token comment"># VELOCITY TEMPLATES (VelocityAutoConfiguration)</span>
+<span class="token key attr-name">spring.velocity.allowRequestOverride</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.velocity.cache</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.velocity.checkTemplateLocation</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.velocity.charSet</span><span class="token punctuation">=</span><span class="token value attr-value">UTF-8</span>
+<span class="token key attr-name">spring.velocity.contentType</span><span class="token punctuation">=</span><span class="token value attr-value">text/html</span>
+<span class="token key attr-name">spring.velocity.dateToolAttribute</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.velocity.exposeRequestAttributes</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.velocity.exposeSessionAttributes</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.velocity.exposeSpringMacroHelpers</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.velocity.numberToolAttribute</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.velocity.prefix</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.velocity.properties.*</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.velocity.requestContextAttribute</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.velocity.resourceLoaderPath</span><span class="token punctuation">=</span><span class="token value attr-value">classpath:/templates/</span>
+<span class="token key attr-name">spring.velocity.suffix</span><span class="token punctuation">=</span><span class="token value attr-value">.vm</span>
+<span class="token key attr-name">spring.velocity.viewNames</span><span class="token punctuation">=</span> <span class="token value attr-value"># whitelist of view names that can be resolved</span>
+
+<span class="token comment"># INTERNATIONALIZATION (MessageSourceAutoConfiguration)</span>
+<span class="token key attr-name">spring.messages.basename</span><span class="token punctuation">=</span><span class="token value attr-value">messages</span>
+<span class="token key attr-name">spring.messages.cacheSeconds</span><span class="token punctuation">=</span><span class="token value attr-value">-1</span>
+<span class="token key attr-name">spring.messages.encoding</span><span class="token punctuation">=</span><span class="token value attr-value">UTF-8</span>
+
+
+<span class="token comment"># SECURITY (SecurityProperties)</span>
+<span class="token key attr-name">security.user.name</span><span class="token punctuation">=</span><span class="token value attr-value">user # login username</span>
+<span class="token key attr-name">security.user.password</span><span class="token punctuation">=</span> <span class="token value attr-value"># login password</span>
+<span class="token key attr-name">security.user.role</span><span class="token punctuation">=</span><span class="token value attr-value">USER # role assigned to the user</span>
+<span class="token key attr-name">security.require-ssl</span><span class="token punctuation">=</span><span class="token value attr-value">false # advanced settings ...</span>
+<span class="token key attr-name">security.enable-csrf</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">security.basic.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">security.basic.realm</span><span class="token punctuation">=</span><span class="token value attr-value">Spring</span>
+<span class="token key attr-name">security.basic.path</span><span class="token punctuation">=</span> <span class="token value attr-value"># /**</span>
+<span class="token key attr-name">security.filter-order</span><span class="token punctuation">=</span><span class="token value attr-value">0</span>
+<span class="token key attr-name">security.headers.xss</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">security.headers.cache</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">security.headers.frame</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">security.headers.contentType</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">security.headers.hsts</span><span class="token punctuation">=</span><span class="token value attr-value">all # none / domain / all</span>
+<span class="token key attr-name">security.sessions</span><span class="token punctuation">=</span><span class="token value attr-value">stateless # always / never / if_required / stateless</span>
+<span class="token key attr-name">security.ignored</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+
+<span class="token comment"># DATASOURCE (DataSourceAutoConfiguration &amp; DataSourceProperties)</span>
+<span class="token key attr-name">spring.datasource.name</span><span class="token punctuation">=</span> <span class="token value attr-value"># name of the data source</span>
+<span class="token key attr-name">spring.datasource.initialize</span><span class="token punctuation">=</span><span class="token value attr-value">true # populate using data.sql</span>
+<span class="token key attr-name">spring.datasource.schema</span><span class="token punctuation">=</span> <span class="token value attr-value"># a schema (DDL) script resource reference</span>
+<span class="token key attr-name">spring.datasource.data</span><span class="token punctuation">=</span> <span class="token value attr-value"># a data (DML) script resource reference</span>
+<span class="token key attr-name">spring.datasource.sqlScriptEncoding</span><span class="token punctuation">=</span> <span class="token value attr-value"># a charset for reading SQL scripts</span>
+<span class="token key attr-name">spring.datasource.platform</span><span class="token punctuation">=</span> <span class="token value attr-value"># the platform to use in the schema resource (schema-${platform}.sql)</span>
+<span class="token key attr-name">spring.datasource.continueOnError</span><span class="token punctuation">=</span><span class="token value attr-value">false # continue even if can't be initialized</span>
+<span class="token key attr-name">spring.datasource.separator</span><span class="token punctuation">=</span><span class="token value attr-value">; # statement separator in SQL initialization scripts</span>
+<span class="token key attr-name">spring.datasource.driver-class-name</span><span class="token punctuation">=</span> <span class="token value attr-value"># JDBC Settings...</span>
+<span class="token key attr-name">spring.datasource.url</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.datasource.username</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.datasource.password</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.datasource.jndi-name</span> <span class="token value attr-value"># For JNDI lookup (class, url, username &amp; password are ignored when set)</span>
+<span class="token key attr-name">spring.datasource.max-active</span><span class="token punctuation">=</span><span class="token value attr-value">100 # Advanced configuration...</span>
+<span class="token key attr-name">spring.datasource.max-idle</span><span class="token punctuation">=</span><span class="token value attr-value">8</span>
+<span class="token key attr-name">spring.datasource.min-idle</span><span class="token punctuation">=</span><span class="token value attr-value">8</span>
+<span class="token key attr-name">spring.datasource.initial-size</span><span class="token punctuation">=</span><span class="token value attr-value">10</span>
+<span class="token key attr-name">spring.datasource.validation-query</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.datasource.test-on-borrow</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.datasource.test-on-return</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">spring.datasource.test-while-idle</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.datasource.time-between-eviction-runs-millis</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.datasource.min-evictable-idle-time-millis</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.datasource.max-wait</span><span class="token punctuation">=</span>
+
+<span class="token comment"># MONGODB (MongoProperties)</span>
+<span class="token key attr-name">spring.data.mongodb.host</span><span class="token punctuation">=</span> <span class="token value attr-value"># the db host</span>
+<span class="token key attr-name">spring.data.mongodb.port</span><span class="token punctuation">=</span><span class="token value attr-value">27017 # the connection port (defaults to 27107)</span>
+<span class="token key attr-name">spring.data.mongodb.uri</span><span class="token punctuation">=</span><span class="token value attr-value">mongodb://localhost/test # connection URL</span>
+<span class="token key attr-name">spring.data.mongo.repositories.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true # if spring data repository support is enabled</span>
+
+<span class="token comment"># JPA (JpaBaseConfiguration, HibernateJpaAutoConfiguration)</span>
+<span class="token key attr-name">spring.jpa.properties.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># properties to set on the JPA connection</span>
+<span class="token key attr-name">spring.jpa.openInView</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.jpa.show-sql</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.jpa.database-platform</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.jpa.database</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.jpa.generate-ddl</span><span class="token punctuation">=</span><span class="token value attr-value">false # ignored by Hibernate, might be useful for other vendors</span>
+<span class="token key attr-name">spring.jpa.hibernate.naming-strategy</span><span class="token punctuation">=</span> <span class="token value attr-value"># naming classname</span>
+<span class="token key attr-name">spring.jpa.hibernate.ddl-auto</span><span class="token punctuation">=</span> <span class="token value attr-value"># defaults to create-drop for embedded dbs</span>
+<span class="token key attr-name">spring.data.jpa.repositories.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true # if spring data repository support is enabled</span>
+
+<span class="token comment"># JTA (JtaAutoConfiguration)</span>
+<span class="token key attr-name">spring.jta.log-dir</span><span class="token punctuation">=</span> <span class="token value attr-value"># transaction log dir</span>
+<span class="token key attr-name">spring.jta.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># technology specific configuration</span>
+
+<span class="token comment"># SOLR (SolrProperties})</span>
+<span class="token key attr-name">spring.data.solr.host</span><span class="token punctuation">=</span><span class="token value attr-value">http://127.0.0.1:8983/solr</span>
+<span class="token key attr-name">spring.data.solr.zkHost</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.data.solr.repositories.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true # if spring data repository support is enabled</span>
+
+<span class="token comment"># ELASTICSEARCH (ElasticsearchProperties})</span>
+<span class="token key attr-name">spring.data.elasticsearch.cluster-name</span><span class="token punctuation">=</span> <span class="token value attr-value"># The cluster name (defaults to elasticsearch)</span>
+<span class="token key attr-name">spring.data.elasticsearch.cluster-nodes</span><span class="token punctuation">=</span> <span class="token value attr-value"># The address(es) of the server node (comma-separated; if not specified starts a client node)</span>
+<span class="token key attr-name">spring.data.elasticsearch.repositories.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true # if spring data repository support is enabled</span>
+
+<span class="token comment"># DATA RESET (RepositoryRestConfiguration})</span>
+<span class="token key attr-name">spring.data.rest.baseUri</span><span class="token punctuation">=</span><span class="token value attr-value">foo # base URI against which the exporter should calculate its links</span>
+
+<span class="token comment"># FLYWAY (FlywayProperties)</span>
+<span class="token key attr-name">flyway.locations</span><span class="token punctuation">=</span><span class="token value attr-value">classpath:db/migrations # locations of migrations scripts</span>
+<span class="token key attr-name">flyway.schemas</span><span class="token punctuation">=</span> <span class="token value attr-value"># schemas to update</span>
+<span class="token key attr-name">flyway.initVersion</span><span class="token punctuation">=</span> <span class="token value attr-value">1 # version to start migration</span>
+<span class="token key attr-name">flyway.sql-migration-prefix</span><span class="token punctuation">=</span><span class="token value attr-value">V</span>
+<span class="token key attr-name">flyway.sql-migration-suffix</span><span class="token punctuation">=</span><span class="token value attr-value">.sql</span>
+<span class="token key attr-name">flyway.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">flyway.url</span><span class="token punctuation">=</span> <span class="token value attr-value"># JDBC url if you want Flyway to create its own DataSource</span>
+<span class="token key attr-name">flyway.user</span><span class="token punctuation">=</span> <span class="token value attr-value"># JDBC username if you want Flyway to create its own DataSource</span>
+<span class="token key attr-name">flyway.password</span><span class="token punctuation">=</span> <span class="token value attr-value"># JDBC password if you want Flyway to create its own DataSource</span>
+
+<span class="token comment"># LIQUIBASE (LiquibaseProperties)</span>
+<span class="token key attr-name">liquibase.change-log</span><span class="token punctuation">=</span><span class="token value attr-value">classpath:/db/changelog/db.changelog-master.yaml</span>
+<span class="token key attr-name">liquibase.contexts</span><span class="token punctuation">=</span> <span class="token value attr-value"># runtime contexts to use</span>
+<span class="token key attr-name">liquibase.default-schema</span><span class="token punctuation">=</span> <span class="token value attr-value"># default database schema to use</span>
+<span class="token key attr-name">liquibase.drop-first</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">liquibase.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">liquibase.url</span><span class="token punctuation">=</span> <span class="token value attr-value"># specific JDBC url (if not set the default datasource is used)</span>
+<span class="token key attr-name">liquibase.user</span><span class="token punctuation">=</span> <span class="token value attr-value"># user name for liquibase.url</span>
+<span class="token key attr-name">liquibase.password</span><span class="token punctuation">=</span> <span class="token value attr-value"># password for liquibase.url</span>
+
+<span class="token comment"># JMX</span>
+<span class="token key attr-name">spring.jmx.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true # Expose MBeans from Spring</span>
+
+<span class="token comment"># RABBIT (RabbitProperties)</span>
+<span class="token key attr-name">spring.rabbitmq.host</span><span class="token punctuation">=</span> <span class="token value attr-value"># connection host</span>
+<span class="token key attr-name">spring.rabbitmq.port</span><span class="token punctuation">=</span> <span class="token value attr-value"># connection port</span>
+<span class="token key attr-name">spring.rabbitmq.addresses</span><span class="token punctuation">=</span> <span class="token value attr-value"># connection addresses (e.g. myhost:9999,otherhost:1111)</span>
+<span class="token key attr-name">spring.rabbitmq.username</span><span class="token punctuation">=</span> <span class="token value attr-value"># login user</span>
+<span class="token key attr-name">spring.rabbitmq.password</span><span class="token punctuation">=</span> <span class="token value attr-value"># login password</span>
+<span class="token key attr-name">spring.rabbitmq.virtualHost</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.rabbitmq.dynamic</span><span class="token punctuation">=</span>
+
+<span class="token comment"># REDIS (RedisProperties)</span>
+<span class="token key attr-name">spring.redis.host</span><span class="token punctuation">=</span><span class="token value attr-value">localhost # server host</span>
+<span class="token key attr-name">spring.redis.password</span><span class="token punctuation">=</span> <span class="token value attr-value"># server password</span>
+<span class="token key attr-name">spring.redis.port</span><span class="token punctuation">=</span><span class="token value attr-value">6379 # connection port</span>
+<span class="token key attr-name">spring.redis.pool.max-idle</span><span class="token punctuation">=</span><span class="token value attr-value">8 # pool settings ...</span>
+<span class="token key attr-name">spring.redis.pool.min-idle</span><span class="token punctuation">=</span><span class="token value attr-value">0</span>
+<span class="token key attr-name">spring.redis.pool.max-active</span><span class="token punctuation">=</span><span class="token value attr-value">8</span>
+<span class="token key attr-name">spring.redis.pool.max-wait</span><span class="token punctuation">=</span><span class="token value attr-value">-1</span>
+<span class="token key attr-name">spring.redis.sentinel.master</span><span class="token punctuation">=</span> <span class="token value attr-value"># name of Redis server</span>
+<span class="token key attr-name">spring.redis.sentinel.nodes</span><span class="token punctuation">=</span> <span class="token value attr-value"># comma-separated list of host:port pairs</span>
+
+<span class="token comment"># ACTIVEMQ (ActiveMQProperties)</span>
+<span class="token key attr-name">spring.activemq.broker-url</span><span class="token punctuation">=</span><span class="token value attr-value">tcp://localhost:61616 # connection URL</span>
+<span class="token key attr-name">spring.activemq.user</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.activemq.password</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.activemq.in-memory</span><span class="token punctuation">=</span><span class="token value attr-value">true # broker kind to create if no broker-url is specified</span>
+<span class="token key attr-name">spring.activemq.pooled</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+
+<span class="token comment"># HornetQ (HornetQProperties)</span>
+<span class="token key attr-name">spring.hornetq.mode</span><span class="token punctuation">=</span> <span class="token value attr-value"># connection mode (native, embedded)</span>
+<span class="token key attr-name">spring.hornetq.host</span><span class="token punctuation">=</span><span class="token value attr-value">localhost # hornetQ host (native mode)</span>
+<span class="token key attr-name">spring.hornetq.port</span><span class="token punctuation">=</span><span class="token value attr-value">5445 # hornetQ port (native mode)</span>
+<span class="token key attr-name">spring.hornetq.embedded.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true # if the embedded server is enabled (needs hornetq-jms-server.jar)</span>
+<span class="token key attr-name">spring.hornetq.embedded.serverId</span><span class="token punctuation">=</span> <span class="token value attr-value"># auto-generated id of the embedded server (integer)</span>
+<span class="token key attr-name">spring.hornetq.embedded.persistent</span><span class="token punctuation">=</span><span class="token value attr-value">false # message persistence</span>
+<span class="token key attr-name">spring.hornetq.embedded.data-directory</span><span class="token punctuation">=</span> <span class="token value attr-value"># location of data content (when persistence is enabled)</span>
+<span class="token key attr-name">spring.hornetq.embedded.queues</span><span class="token punctuation">=</span> <span class="token value attr-value"># comma-separated queues to create on startup</span>
+<span class="token key attr-name">spring.hornetq.embedded.topics</span><span class="token punctuation">=</span> <span class="token value attr-value"># comma-separated topics to create on startup</span>
+<span class="token key attr-name">spring.hornetq.embedded.cluster-password</span><span class="token punctuation">=</span> <span class="token value attr-value"># customer password (randomly generated by default)</span>
+
+<span class="token comment"># JMS (JmsProperties)</span>
+<span class="token key attr-name">spring.datasource.jndi-name</span><span class="token punctuation">=</span> <span class="token value attr-value"># JNDI location of a JMS ConnectionFactory</span>
+<span class="token key attr-name">spring.jms.pub-sub-domain</span><span class="token punctuation">=</span> <span class="token value attr-value"># false for queue (default), true for topic</span>
+
+<span class="token comment"># SPRING BATCH (BatchDatabaseInitializer)</span>
+<span class="token key attr-name">spring.batch.job.names</span><span class="token punctuation">=</span><span class="token value attr-value">job1,job2</span>
+<span class="token key attr-name">spring.batch.job.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.batch.initializer.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">spring.batch.schema</span><span class="token punctuation">=</span> <span class="token value attr-value"># batch schema to load</span>
+
+<span class="token comment"># AOP</span>
+<span class="token key attr-name">spring.aop.auto</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.aop.proxy-target-class</span><span class="token punctuation">=</span>
+
+<span class="token comment"># FILE ENCODING (FileEncodingApplicationListener)</span>
+<span class="token key attr-name">spring.mandatory-file-encoding</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+
+<span class="token comment"># SPRING SOCIAL (SocialWebAutoConfiguration)</span>
+<span class="token key attr-name">spring.social.auto-connection-views</span><span class="token punctuation">=</span><span class="token value attr-value">true # Set to true for default connection views or false if you provide your own</span>
+
+<span class="token comment"># SPRING SOCIAL FACEBOOK (FacebookAutoConfiguration)</span>
+<span class="token key attr-name">spring.social.facebook.app-id</span><span class="token punctuation">=</span> <span class="token value attr-value"># your application's Facebook App ID</span>
+<span class="token key attr-name">spring.social.facebook.app-secret</span><span class="token punctuation">=</span> <span class="token value attr-value"># your application's Facebook App Secret</span>
+
+<span class="token comment"># SPRING SOCIAL LINKEDIN (LinkedInAutoConfiguration)</span>
+<span class="token key attr-name">spring.social.linkedin.app-id</span><span class="token punctuation">=</span> <span class="token value attr-value"># your application's LinkedIn App ID</span>
+<span class="token key attr-name">spring.social.linkedin.app-secret</span><span class="token punctuation">=</span> <span class="token value attr-value"># your application's LinkedIn App Secret</span>
+
+<span class="token comment"># SPRING SOCIAL TWITTER (TwitterAutoConfiguration)</span>
+<span class="token key attr-name">spring.social.twitter.app-id</span><span class="token punctuation">=</span> <span class="token value attr-value"># your application's Twitter App ID</span>
+<span class="token key attr-name">spring.social.twitter.app-secret</span><span class="token punctuation">=</span> <span class="token value attr-value"># your application's Twitter App Secret</span>
+
+<span class="token comment"># SPRING MOBILE SITE PREFERENCE (SitePreferenceAutoConfiguration)</span>
+<span class="token key attr-name">spring.mobile.sitepreference.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true # enabled by default</span>
+
+<span class="token comment"># SPRING MOBILE DEVICE VIEWS (DeviceDelegatingViewResolverAutoConfiguration)</span>
+<span class="token key attr-name">spring.mobile.devicedelegatingviewresolver.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true # disabled by default</span>
+<span class="token key attr-name">spring.mobile.devicedelegatingviewresolver.normalPrefix</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.mobile.devicedelegatingviewresolver.normalSuffix</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.mobile.devicedelegatingviewresolver.mobilePrefix</span><span class="token punctuation">=</span><span class="token value attr-value">mobile/</span>
+<span class="token key attr-name">spring.mobile.devicedelegatingviewresolver.mobileSuffix</span><span class="token punctuation">=</span>
+<span class="token key attr-name">spring.mobile.devicedelegatingviewresolver.tabletPrefix</span><span class="token punctuation">=</span><span class="token value attr-value">tablet/</span>
+<span class="token key attr-name">spring.mobile.devicedelegatingviewresolver.tabletSuffix</span><span class="token punctuation">=</span>
+
+<span class="token comment"># ----------------------------------------</span>
+<span class="token comment"># ACTUATOR PROPERTIES</span>
+<span class="token comment"># ----------------------------------------</span>
+
+<span class="token comment"># MANAGEMENT HTTP SERVER (ManagementServerProperties)</span>
+<span class="token key attr-name">management.port</span><span class="token punctuation">=</span> <span class="token value attr-value"># defaults to 'server.port'</span>
+<span class="token key attr-name">management.address</span><span class="token punctuation">=</span> <span class="token value attr-value"># bind to a specific NIC</span>
+<span class="token key attr-name">management.contextPath</span><span class="token punctuation">=</span> <span class="token value attr-value"># default to '/'</span>
+<span class="token key attr-name">management.add-application-context-header</span><span class="token punctuation">=</span> <span class="token value attr-value"># default to true</span>
+
+<span class="token comment"># ENDPOINTS (AbstractEndpoint subclasses)</span>
+<span class="token key attr-name">endpoints.autoconfig.id</span><span class="token punctuation">=</span><span class="token value attr-value">autoconfig</span>
+<span class="token key attr-name">endpoints.autoconfig.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.autoconfig.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.beans.id</span><span class="token punctuation">=</span><span class="token value attr-value">beans</span>
+<span class="token key attr-name">endpoints.beans.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.beans.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.configprops.id</span><span class="token punctuation">=</span><span class="token value attr-value">configprops</span>
+<span class="token key attr-name">endpoints.configprops.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.configprops.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.configprops.keys-to-sanitize</span><span class="token punctuation">=</span><span class="token value attr-value">password,secret,key # suffix or regex</span>
+<span class="token key attr-name">endpoints.dump.id</span><span class="token punctuation">=</span><span class="token value attr-value">dump</span>
+<span class="token key attr-name">endpoints.dump.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.dump.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.env.id</span><span class="token punctuation">=</span><span class="token value attr-value">env</span>
+<span class="token key attr-name">endpoints.env.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.env.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.env.keys-to-sanitize</span><span class="token punctuation">=</span><span class="token value attr-value">password,secret,key # suffix or regex</span>
+<span class="token key attr-name">endpoints.health.id</span><span class="token punctuation">=</span><span class="token value attr-value">health</span>
+<span class="token key attr-name">endpoints.health.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">endpoints.health.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.health.time-to-live</span><span class="token punctuation">=</span><span class="token value attr-value">1000</span>
+<span class="token key attr-name">endpoints.info.id</span><span class="token punctuation">=</span><span class="token value attr-value">info</span>
+<span class="token key attr-name">endpoints.info.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">endpoints.info.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.metrics.id</span><span class="token punctuation">=</span><span class="token value attr-value">metrics</span>
+<span class="token key attr-name">endpoints.metrics.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.metrics.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.shutdown.id</span><span class="token punctuation">=</span><span class="token value attr-value">shutdown</span>
+<span class="token key attr-name">endpoints.shutdown.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.shutdown.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">endpoints.trace.id</span><span class="token punctuation">=</span><span class="token value attr-value">trace</span>
+<span class="token key attr-name">endpoints.trace.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.trace.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+
+<span class="token comment"># HEALTH INDICATORS</span>
+<span class="token key attr-name">health.diskspace.path</span><span class="token punctuation">=</span><span class="token value attr-value">.</span>
+<span class="token key attr-name">health.diskspace.threshold</span><span class="token punctuation">=</span><span class="token value attr-value">10485760</span>
+
+<span class="token comment"># MVC ONLY ENDPOINTS</span>
+<span class="token key attr-name">endpoints.jolokia.path</span><span class="token punctuation">=</span><span class="token value attr-value">jolokia</span>
+<span class="token key attr-name">endpoints.jolokia.sensitive</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.jolokia.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true # when using Jolokia</span>
+
+<span class="token comment"># JMX ENDPOINT (EndpointMBeanExportProperties)</span>
+<span class="token key attr-name">endpoints.jmx.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">endpoints.jmx.domain</span><span class="token punctuation">=</span> <span class="token value attr-value"># the JMX domain, defaults to 'org.springboot'</span>
+<span class="token key attr-name">endpoints.jmx.unique-names</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">endpoints.jmx.staticNames</span><span class="token punctuation">=</span>
+
+<span class="token comment"># JOLOKIA (JolokiaProperties)</span>
+<span class="token key attr-name">jolokia.config.*</span><span class="token punctuation">=</span> <span class="token value attr-value"># See Jolokia manual</span>
+
+<span class="token comment"># REMOTE SHELL</span>
+<span class="token key attr-name">shell.auth</span><span class="token punctuation">=</span><span class="token value attr-value">simple # jaas, key, simple, spring</span>
+<span class="token key attr-name">shell.command-refresh-interval</span><span class="token punctuation">=</span><span class="token value attr-value">-1</span>
+<span class="token key attr-name">shell.command-path-patterns</span><span class="token punctuation">=</span> <span class="token value attr-value"># classpath*:/commands/**, classpath*:/crash/commands/**</span>
+<span class="token key attr-name">shell.config-path-patterns</span><span class="token punctuation">=</span> <span class="token value attr-value"># classpath*:/crash/*</span>
+<span class="token key attr-name">shell.disabled-plugins</span><span class="token punctuation">=</span><span class="token value attr-value">false # don't expose plugins</span>
+<span class="token key attr-name">shell.ssh.enabled</span><span class="token punctuation">=</span> <span class="token value attr-value"># ssh settings ...</span>
+<span class="token key attr-name">shell.ssh.keyPath</span><span class="token punctuation">=</span>
+<span class="token key attr-name">shell.ssh.port</span><span class="token punctuation">=</span>
+<span class="token key attr-name">shell.telnet.enabled</span><span class="token punctuation">=</span> <span class="token value attr-value"># telnet settings ...</span>
+<span class="token key attr-name">shell.telnet.port</span><span class="token punctuation">=</span>
+<span class="token key attr-name">shell.auth.jaas.domain</span><span class="token punctuation">=</span> <span class="token value attr-value"># authentication settings ...</span>
+<span class="token key attr-name">shell.auth.key.path</span><span class="token punctuation">=</span>
+<span class="token key attr-name">shell.auth.simple.user.name</span><span class="token punctuation">=</span>
+<span class="token key attr-name">shell.auth.simple.user.password</span><span class="token punctuation">=</span>
+<span class="token key attr-name">shell.auth.spring.roles</span><span class="token punctuation">=</span>
+
+<span class="token comment"># GIT INFO</span>
+<span class="token key attr-name">spring.git.properties</span><span class="token punctuation">=</span> <span class="token value attr-value"># resource ref to generated git info properties file</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="7">
+<li>找到 com.boot 下的 Application</li>
+</ol>
+<p>以 java Application 方式启动，然后打开浏览器输入 localhost:8080 就会出现 Hello World!</p>
+<p>这样一个简单的 web 开发就搭建好了。</p>
+<ol start="8">
+<li>启动</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2017/12/19/10370.html" title="Spring Boot 开发新一代项目">https://onxs.github.io/2017/12/19/10370.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/12/19/41659.html" rel="prev" title="Spring 学习笔记">
+                  <i class="fa fa-chevron-left"></i> Spring 学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/12/19/64619.html" rel="next" title="Wireshark 抓包工具使用以及常用抓包规则">
+                  Wireshark 抓包工具使用以及常用抓包规则 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="cabd2c36e8322e5c5538cd8026612dab"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC-TECH All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">807k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">48:53</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"https://matrix.to/#/#onxs:gitter.im"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2017/12/19/10370.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Muse | Mist":320,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/01/29/55294.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/01/29/55294.html","path":"2018/01/29/55294.html","title":"JavaScript 中的 Bind，Call 和 Apply"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript 中的 Bind，Call 和 Apply | MC</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E8%A7%A3%E9%87%8A"><span class="nav-number">1.</span> <span class="nav-text">上下文解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%8C%E4%B8%8D%E7%9F%A5"><span class="nav-number">2.</span> <span class="nav-text">1. 第一阶段，不知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%8Cthis"><span class="nav-number">3.</span> <span class="nav-text">2. 第二阶段，this</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%8C%E4%B8%80%E5%88%87%E9%83%BD%E6%98%AF%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="nav-number">4.</span> <span class="nav-text">3. 第三阶段，一切都是上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text">4. 结语</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">mirror</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2017/09/04/25712.html" rel="bookmark">
+        <time class="popular-posts-time">2017-09-04</time>
+        <br>
+      JEECMS 自定义标签
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/01/29/55294.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="JavaScript 中的 Bind，Call 和 Apply | MC">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript 中的 Bind，Call 和 Apply<a href="https://github.com/onxs/blog/tree/dev/source/_posts/POST00043.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-29 15:44:36" itemprop="dateCreated datePublished" datetime="2018-01-29T15:44:36+08:00">2018-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="JavaScript 中的 Bind，Call 和 Apply" href="/2018/01/29/55294.html#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::e9b62ac988b7c77ed0c25e9cf99fa0bc" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://s2.loli.net/2023/04/16/a9hylHKAYOnoDQz.jpg"></p>
+<p>js 中的 <em>上下文 Context</em>，可以说是一个，你即使不知道，没听过，也不影响你继续写 js 代码的一个概念。但是，它又确确实实是无所不在的一个东西，是的，无所不在。</p>
+<span id="more"></span>
+
+<h3 id="上下文解释"><a href="#上下文解释" class="headerlink" title="上下文解释"></a>上下文解释</h3><p>所谓上下文，它是用来存储系统的一些初始化信息，例如在 jboss 中通过配置文件指定了数据源，那么在 jboss 启动的时候就把这个文件的相关信息上下文中，于是在我们使用这个数据源的时候，就需要先获得系统的上下文，然后再通过一定的方式将数据源取出来。至于在系统启动时，是如何将这些初始化信息加载到上下文中，而上下文在程序中具体又是以什么形式体现的，应该随着系统的不同而不同。</p>
+<p>　　上下文即 ServletContext, 是一个全局的储存信息的空间，服务器启动，其就存在，服务器关闭，其才释放。所有用户共用一个 ServletContext。所以，为了节省空间，提高效率，ServletContext 中，要放必须的、重要的、所有用户需要共享的线程又是安全的一些信息。如，做一个购物类的网站，要从数据库中提取物品信息，如果用 session 保存这些物品信息，每个用户都访问一便数据库，效率就太低了；所以要用来 Servlet 上下文来保存，在服务器开始时，就访问数据库，将物品信息存入 Servlet 上下文中，这样，每个用户只用从上下文中读入物品信息就行了。</p>
+<p>　　获取 ServletContext 的方法：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HttpSession</span> session <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+　 session<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>从我自己的经验来看，对上下文的认识，算是分成了三个阶段，每一个阶段，都让我从外在的表现中，理解了一些更本质上的东西。</p>
+<h3 id="1-第一阶段，不知"><a href="#1-第一阶段，不知" class="headerlink" title="1. 第一阶段，不知"></a>1. 第一阶段，不知</h3><p>我最开始接触 js 的时候，看到了它的 <code>new</code> ，看到了它的 <code>this</code> ，很自然地会把 js 和其它的一些 OOP 语言等同起来看待，并且，好像，也是这么回事。比如：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">Class</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> ins <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ins<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ins<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面的代码，可以按预期的那样，最后得到 <code>2</code> 的输出。</p>
+<p>但是，如果仅仅是 <em>类，实例</em> 这种层面的认识，我无法解释下面的问题：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> ins <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> func <span class="token operator">=</span> ins<span class="token punctuation">.</span>add<span class="token punctuation">;</span>
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ins<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>甚至解释不清楚下面的代码：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">add</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+obj<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里可没有 <em>类</em> ，也没有 <em>实例</em> 。</p>
+<p>我上面的最开始对 js 的认识当中，局限就在于，把 <code>this</code> 理解成了 <em>实例</em> 。也许在其它语言中（比如 Python 常用的实例方法第一个参数 <code>self</code>），是这样。但是在 js 中， <code>this</code> 跟 <em>实例</em> 完全没有关系。</p>
+<h3 id="2-第二阶段，this"><a href="#2-第二阶段，this" class="headerlink" title="2. 第二阶段，this"></a>2. 第二阶段，this</h3><p>当我明白问题出在 <code>this</code> 上，或者说，当我终于理解了 <code>this</code> 这个东西之后，上面的代码，再也不会困扰我了。</p>
+<p>我知道了， js 中有一个东西叫 <em>上下文</em> ，可惜的是，这时，我对上下文的概念，仅仅停留在 <code>this</code> 上。</p>
+<p>这时我的理解是： <code>this</code> 表示的是，函数调用时的 <em>上下文</em> 。</p>
+<p>说得详细一点，就是 <code>this</code> 不是表示的 <em>实例</em> ，而是函数调用时的 <em>上下文</em> 。 <em>上下文</em> 这个东西，默认是 <code>window</code> ，即 <em>全局</em> 。但是，你可以明确地为函数指定一个 <em>上下文</em> 。回到 <code>this</code> 上，就是在定义时你根本不知道 <code>this</code> 是什么，因为在调用时，它可以是任何东西（因为 <em>上下文</em> 是可以人为指定的）。</p>
+<p>回到刚开始的代码：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">Class</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> ins <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Class</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ins<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ins<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这段代码的结构之所以是 <code>2</code> ，不是因为 <em>实例</em> ，而是因为 <em>上下文</em> 。</p>
+<p>首先说一下 <code>new</code> 。 <code>new</code> 在 js 中，不考虑原型链它的作用，相当于是先创建了一个空的对象，然后把这个空的对象，作为 <em>构造函数</em> 的 <em>上下文</em> ，再去执行 <em>构造函数</em> ，最后再返回这个当初的空对象。即：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">what_new</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">func<span class="token punctuation">,</span> a</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> context <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token function">func</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> context<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">Class</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> ins <span class="token operator">=</span> <span class="token function">what_new</span><span class="token punctuation">(</span>Class<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ins<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ins<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>当然， <code>new</code> 除了上面的 <code>func.apply</code> 的作用之外， <strong>它还会处理原型链</strong> ，这里就不介绍了。上面的代码仅是为了说明 <code>new</code> 对于所谓的构造函数做了什么事。</p>
+<p>有了上下文，就不难解释 <code>ins</code> 这个东西了。所谓的构造函数，只是在指定了 <code>this</code> 到底是哪一个对象之后，作了相应的赋值操作而已，最后得到这个对象的返回，经过了一些赋值操作，对象中就有了新的东西了。</p>
+<p>同样，对于一个在定义时包含了 <code>this</code> 的函数，比如前面的例子：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">add</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果来一句：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> func <span class="token operator">=</span> obj<span class="token punctuation">.</span>add<span class="token punctuation">;</span>
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+<span class="token function">func</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">//1</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>这些都很容易明白了。 js 中的函数，都是一些很单纯的函数，所有的函数跟它在哪里定义完全没有关系（考虑闭包的情况除外）。所以上面的代码，虽然 <code>add</code> 函数是写在 <code>obj</code> 中的，但是，它跟你在 <code>window</code> 中写一个函数是 <strong>完全一样</strong> 的：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">++</span><span class="token punctuation">}</span>
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">add</span><span class="token operator">:</span> add
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>既然 <code>add</code> 函数中有 <code>this</code> ，那么这个函数执行时的行为，就要小心一点了。所以上面明确地指定了一个上下文给它 <code>func.apply({a: 0})</code> 。</p>
+<p>还是回到开始的代码：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">add</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对于上面的代码，我知道了：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">obj<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>和：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> func <span class="token operator">=</span> obj<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>会得到不一样的结果。并且知道，这个不一样的结果是上下文引起的，还知道，后者 <code>func()</code> 执行时，上下文是全局的 <code>window</code> 了。</p>
+<p>我虽然知道是这样的一个情况，但是，为什么？执行同一个函数结果怎么就不一样了呢？</p>
+<p>我在很长时间里，都没有去细细考虑过这个问题。不过，因为知道了 “上下文是一个在定义时无意义，其具体值完全由执行时决定” 这点之后，我都尽量避免去使用 <code>this</code> ，实在要用，在调用时，我都会通过 <code>apply</code> 或 <code>call</code> 明确指定上下文，这样，至少不会踩坑里。</p>
+<h3 id="3-第三阶段，一切都是上下文"><a href="#3-第三阶段，一切都是上下文" class="headerlink" title="3. 第三阶段，一切都是上下文"></a>3. 第三阶段，一切都是上下文</h3><p>某天，我在网上看到了这样一段代码（原始出处不知道）：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> bind <span class="token operator">=</span> <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>bind<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个新定义的 <code>bind</code> 函数具体做什么事先不管它，我好奇的是 <code>call.bind()</code> 这个调用。因为 <code>call</code> 这个函数，之前一直以为它是 <code>Function</code> 对象的一个方法（它本身也是一个函数），但是，如果按 “对象的方法” 这个角度去想的话，那对它绑定一个上下文（ <code>bind()</code> 的调用 ）不就完全没有意义了么？（因为对象的方法应该是跟上下文无关的）</p>
+<p>不久之前，我在一条 tweet 上看到了这样一段 js 代码：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> bind <span class="token operator">=</span> <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>bind<span class="token punctuation">)</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>第一眼看上去，我能猜出它究竟是用来做什么的。它把 x.y (z) 转化成了 y (x,z)。我欣喜万分的给我的同事看这段代码。他们问我这是什么意思。而我当我正要开口向他们解释时却发现不知道怎么说才好。我徘徊了一会然后郁闷的走开了。</p>
+<p>编写良好的代码会向人们传达它的作用。在读完 Functional Javascript 和 JavaScript Allongé （两本都是相当好的书）这两本书之后，再加上我在 Javascript 函数式编程方面有些经验，弄懂上面这段代码的意思毫无压力。但是应该怎么向没有函数式编程经验的人解释呢（正如大多数人关心的那样）？</p>
+<p>我决定亲自来完成这个任务，通过简单地例子和注释。我的结果如下所示：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">  <span class="token comment">//设立一个简单地对象作为“上下文”</span>
+<span class="token keyword">var</span> context <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">"bar"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//一个在this上下文中指向foo变量的函数</span>
+<span class="token keyword">function</span> <span class="token function">returnFoo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>foo<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 变量在作用域中不存在，因此显示undefined</span>
+<span class="token function">returnFoo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; undefined</span>
+
+<span class="token comment">// 如果我们把它绑定在context上下文中</span>
+<span class="token keyword">var</span> bound <span class="token operator">=</span> <span class="token function">returnFoo</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 现在的作用域中有这个变量了</span>
+<span class="token function">bound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; "bar"</span>
+
+<span class="token comment">//</span>
+<span class="token comment">// 这就是Function.prototype.bind的作用.    </span>
+<span class="token comment">//由于returnFoo也是函数，因此它继承了function的原型</span>
+<span class="token comment">//</span>
+<span class="token comment">// 如果你觉得享受，接着往下读，下面更精彩</span>
+<span class="token comment">//</span>
+
+<span class="token comment">// 有许多方法将函数绑定在一个上下文中</span>
+<span class="token comment">// Call和Apply让你能在上下文中调用函数</span>
+<span class="token function">returnFoo</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; bar</span>
+<span class="token function">returnFoo</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; bar</span>
+
+<span class="token comment">// 将函数添加到对象中</span>
+context<span class="token punctuation">.</span>returnFoo <span class="token operator">=</span> returnFoo<span class="token punctuation">;</span>
+context<span class="token punctuation">.</span><span class="token function">returnFoo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; bar</span>
+
+<span class="token comment">//</span>
+<span class="token comment">// 现在我们来玩一点诡异的东西</span>
+<span class="token comment">//</span>
+
+<span class="token comment">// Array.prototype 中有一个叫做slice的方法</span>
+<span class="token comment">// 对一个数组调用slice，可以返回一个从start index到end index的数组</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; [1]</span>
+
+<span class="token comment">// 因此我们把Array.slice赋值给一个本地变量slice</span>
+<span class="token keyword">var</span> slice <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>slice<span class="token punctuation">;</span>
+
+<span class="token comment">//现在的slice是"自由的"，由于Array.prototype中的slice一般指定了上下文</span>
+<span class="token comment">//或者默认为this,此时slice将不起作用</span>
+<span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; TypeError: can't convert undefined to object</span>
+<span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; TypeError: ...</span>
+
+<span class="token comment">// 但是如果我们使用call或者apply，slice又将在一个上下文中执行</span>
+<span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; [1]</span>
+
+<span class="token comment">// Apply和Call差不多，知识参数要放在一个数组中</span>
+<span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; [1]</span>
+
+<span class="token comment">// 使用call没错了，那么能不呢使用bind呢？</span>
+<span class="token comment">// 没错，我们来把"call"绑定在slice上</span>
+slice <span class="token operator">=</span> <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>slice<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 现在slice可以把第一个参数作为上下文了</span>
+<span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; [1]</span>
+
+<span class="token comment">//</span>
+<span class="token comment">// 很酷，对吧。现在再来完成一件事</span>
+<span class="token comment">//</span>
+
+<span class="token comment">// 现在我们对bind本身做一件刚才对silce做的事</span>
+<span class="token keyword">var</span> bind <span class="token operator">=</span> <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>bind<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 在这里总结一下，好好想想</span>
+<span class="token comment">// 发生了什么事? 我们改变了call，</span>
+<span class="token comment">// 返回一个接收一个函数和一个上下文作为ic桉树的函数</span>
+<span class="token comment">//并且返回了一个完全绑定的函数</span>
+
+<span class="token comment">// 回到最初的例子</span>
+<span class="token keyword">var</span> context <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">"bar"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">returnFoo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>foo<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 现在来使用神奇的"bind"函数</span>
+<span class="token keyword">var</span> amazing <span class="token operator">=</span> <span class="token function">bind</span><span class="token punctuation">(</span>returnFoo<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">amazing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; bar</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中以 <code>slice</code> 函数举的例子让我恍然大悟：</p>
+<ul>
+<li>上下文控制不仅仅是 <code>apply</code> / <code>call</code>，所有的点 <code>.</code> ，都是在指定上下文。</li>
+<li>js 中的函数比我想像的还要纯，根本没有 “对象中的方法” 这个东西，即使是 “原生对象” 中。（它仅仅起一个名字空间的作用）</li>
+</ul>
+<p>所有的函数调用，都有两层意义，比如 <code>c.f()</code>：</p>
+<ul>
+<li><code>f</code> 这个函数，它在 <code>c</code> 中。（名字空间的问题）</li>
+<li>把 <code>c</code> 作为 <code>f</code> 的上下文，去调用 <code>f</code> 。（前提是 <code>f</code> 没有绑定过上下文）</li>
+</ul>
+<p>如果 <code>c</code> 没有，则默认是 <code>window</code> 。</p>
+<p>所有的，js 中所有的函数调用，都是如此。即使是 <code>f.call(context, x)</code> ，我之前只看到了第一层意义（ <code>f</code> 中有一个 <code>call</code> 方法可以使用），则忽略了第二层意义 —— 把 <code>f</code> 作为 <code>call</code> 的上下文。</p>
+<p>简单来说，我们可以相像 <code>call</code> 这个函数，它的代码大概是这样的（可变参数的问题先不管）：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">call</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">context<span class="token punctuation">,</span> a</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> new_func <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    retur <span class="token function">new_func</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>它的作用，就是把 <em>指定的上下文（context）</em> 作为 <em>自己的上下文（this）</em> 的 <em>上下文</em> ，然后再调用 <em>自己的上下文（绑定上下文之后的 this）</em> 。</p>
+<p>上面一句话有些纠结哈，主要搞明白多种上下文的关系， <code>f.call(context, x)</code> 当中， <em>自己的上下文</em>上面是 <code>f</code> 。 <em>指定的上下文</em> 上面是 <code>context</code> 。</p>
+<p>再看 <code>f.call(context, x)</code> 这个代码，结合 “函数是单纯” 这点，我想到，即使是原生对象的那些方法， <strong>也不过是把一些单纯的函数放到了 prototype 中而已</strong> ，比如把 <code>call</code> 函数放到了 <code>Function.prototype</code> 当中。</p>
+<p>至此，再看 <code>c.f()</code> ， <code>a.b.c()</code> 这些，不要去想是调用 <code>c</code> 对象中的 <code>f</code> 方法（这么说没错，但是名字空间的问题是显而易见的嘛），而是想成，调用时把 <code>c</code> 作为 <code>f</code> 的上下文。</p>
+<p>好了，回到开始的那行例子：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> new_bind <span class="token operator">=</span> <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>bind<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个就非常好理解了（为了描述方便，我改成 <code>new_bind</code> 了），把 <code>bind</code> 作为上下文绑定到 <code>call</code> 中。</p>
+<p>这里注意一下，绑定了上下文的 <code>call</code> 函数，还是 <code>call</code> 函数，但是 “此 <code>call</code> 已经非彼 <code>call</code>” 了。</p>
+<p>所以：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">new_bind <span class="token operator">!=</span> <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>call
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>虽然调用形式上， <code>new_bind</code> 和 <code>call</code> 完全一样，但是他们的上下文行为不一样：</p>
+<ul>
+<li><code>call</code> 是未绑定状态，所以 <code>f.call()</code> 会在执行时把 <code>f</code> 作为上下文绑定到 <code>call</code> 函数中。</li>
+<li><code>new_bind</code> 是已绑定状态，所以 <code>f.new_bind()</code> 对 <code>new_bind()</code> 的执行完全没影响。</li>
+</ul>
+<p>我们可以以这样的流程来帮助我们理解：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token parameter">new_bind</span> <span class="token operator">=&gt;</span> <span class="token parameter">call</span> <span class="token operator">=&gt;</span> bind<span class="token punctuation">.</span><span class="token parameter">call</span> <span class="token operator">=&gt;</span> <span class="token function">bind</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token parameter">f<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">f</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>一步一步解释：</p>
+<ul>
+<li><p><code>new_bind =&gt; call</code></p>
+<p><code>new_bind</code> 在形式上就是 <code>call</code> 。</p>
+</li>
+<li><p><code>call =&gt; bind.call</code></p>
+<p>只是这个 <code>call</code> ，是指定了 <code>bind</code> 作为它的上下文的。既然是 <code>bind</code> 作为它的上下文，那我们可以写成是 <code>bind.call</code> 的样式。</p>
+</li>
+<li><p><code>bind.call(f, context) =&gt; f.bind(context)</code></p>
+<p><code>new_bind</code> 的调用 <code>new_bind(f, context)</code> 就相当于是 <code>bind.call(f, context)</code> 。考虑 <code>call</code> 函数之前的行为： <code>f.call(context, a)</code> 是把 <code>context</code> 作为 <code>f</code> 的上下文，也就是 <code>context.f(a)</code> ，那么 <code>bind.call(f, context)</code> 对应的就是 <code>f.bind(context)</code> 。</p>
+</li>
+<li><p><code>f.bind(context)</code></p>
+<p>不用多说了吧，把 <code>context</code> 绑定到 <code>f</code> 上，返回一个绑定了上下文的新函数。</p>
+</li>
+</ul>
+<p>完全是最基本的代数推导嘛，形式上，上下文前置总是没有问题的。</p>
+<h3 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h3><p>我一直认同，要理解 js 的东西，从函数式语言入手，非常合适。硬要往面向对象的那套东西上套，太纠结了（我不管概念上到底什么样才叫面向对象，原生没有类定义，没有继承，没有实例化，就别扯这些就完了。对了，我认为原型追溯那不叫继承哈）。</p>
+<p>当然，我不知道弄明白了最后那个 “代数推导” 到底有什么好处，也许没有，因为就算不明白这些也不影响我写了很多可以正常工作的 js 代码嘛。只是，我以后再写，思路上的可能会有一些不同了。比如代码组织的形式上，可以尝试把很多的小函数做到不同的 “名字空间” 中，然后再在业务层面，通过 <em>Mixin</em> 来拼出不同的业务对象。这些函数中可能到处充斥着 <code>this</code> ，我能控制好它们了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/01/29/55294.html" title="JavaScript 中的 Bind，Call 和 Apply">https://onxs.github.io/2018/01/29/55294.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/26/39022.html" rel="prev" title="AngularJs 技术">
+                  <i class="fa fa-chevron-left"></i> AngularJs 技术
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/01/30/3405.html" rel="next" title="hybrid app 技术开发 APP 应用">
+                  hybrid app 技术开发 APP 应用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="e9b62ac988b7c77ed0c25e9cf99fa0bc"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC-TECH All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">807k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">48:53</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"https://matrix.to/#/#onxs:gitter.im"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/01/29/55294.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

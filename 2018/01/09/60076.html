@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Muse | Mist":320,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/01/09/60076.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/01/09/60076.html","path":"2018/01/09/60076.html","title":"Travis CI 持续集成 Github"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Travis CI 持续集成 Github | MC</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">mirror</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2017/11/24/32102.html" rel="bookmark">
+        <time class="popular-posts-time">2017-11-24</time>
+        <br>
+      使用 Travis CI 自动更新 GitHub Pages
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2016/09/08/64470.html" rel="bookmark">
+        <time class="popular-posts-time">2016-09-08</time>
+        <br>
+      Hexo-NexT 搭建个人博客（五）
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/01/09/60076.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Travis CI 持续集成 Github | MC">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Travis CI 持续集成 Github<a href="https://github.com/onxs/blog/tree/dev/source/_posts/POST00017.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-09 21:34:36" itemprop="dateCreated datePublished" datetime="2018-01-09T21:34:36+08:00">2018-01-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CI/" itemprop="url" rel="index"><span itemprop="name">CI</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Travis CI 持续集成 Github" href="/2018/01/09/60076.html#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::dab11ccf604a43155dc119c5a4256ec2" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0083.jpg" alt="image"></p>
+<ol>
+<li>Travis CI 介绍<br>CI 即持续集成系统。对个人而言，就是让你的代码在提交到远程 (这里是 GitHub)，立即自动编译，自动化测试、自动部署等。</li>
+</ol>
+<span id="more"></span>
+
+<p>不需要在担心更换电脑时，还要从新部署环境的问题，只要你能向远程推送文章，其他的事情就都可以交给 Travis CI 处理就 ok 了。</p>
+<ol start="2">
+<li>Travis CI 使用<br>默认前提是已经通过 Github 进行授权登录 Travis 网站，并关联了 GitHub 上的仓库和相关配置。</li>
+</ol>
+<p>增加以下文件：<br>gulpfile.js </p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> gulp <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        less <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-less'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        rename <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-rename'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        minifycss <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-minify-css'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        autoprefixer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-autoprefixer'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        uglify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-uglify'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        jshint <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-jshint'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        stylish <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'jshint-stylish'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        notify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-notify'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        plumber <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-plumber'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        htmlclean <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-htmlclean'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        htmlmin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-htmlmin'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        rev <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-rev-append'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        sequence <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'gulp-sequence'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        paths <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">root</span><span class="token operator">:</span> <span class="token string">'./'</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">source</span><span class="token operator">:</span> <span class="token string">'./themes/snippet/source/'</span> <span class="token comment">//主题下原文件</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token comment">/*====================================================
+         开发主题
+    ====================================================*/</span>
+
+    <span class="token comment">// CSS预处理</span>
+    gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'less-task'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> gulp<span class="token punctuation">.</span><span class="token function">src</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>source <span class="token operator">+</span> <span class="token string">'css/less/_style.less'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">plumber</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">errorHandler</span><span class="token operator">:</span> notify<span class="token punctuation">.</span><span class="token function">onError</span><span class="token punctuation">(</span><span class="token string">'Error: &lt;%= error.message %&gt;'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">less</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">rename</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">basename</span><span class="token operator">:</span> <span class="token string">"style"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>gulp<span class="token punctuation">.</span><span class="token function">dest</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>source <span class="token operator">+</span> <span class="token string">'css'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'less compile complete'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 校验JS语法和风格</span>
+    gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'js-task'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> gulp<span class="token punctuation">.</span><span class="token function">src</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>source <span class="token operator">+</span> <span class="token string">'js/*.js'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">jshint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>jshint<span class="token punctuation">.</span><span class="token function">reporter</span><span class="token punctuation">(</span>stylish<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>gulp<span class="token punctuation">.</span><span class="token function">dest</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>source <span class="token operator">+</span> <span class="token string">'js/'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'js compile complete'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 监听任务-主题开发模式</span>
+    gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'dev'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        gulp<span class="token punctuation">.</span><span class="token function">watch</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>source <span class="token operator">+</span> <span class="token string">'css/less/*.less'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'less-task'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        gulp<span class="token punctuation">.</span><span class="token function">watch</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>source <span class="token operator">+</span> <span class="token string">'js/*.js'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'js-task'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment">/*====================================================
+        部署前代码处理
+    ====================================================*/</span>
+
+    <span class="token comment">// 压缩处理 css</span>
+    gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'minify-css'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> gulp<span class="token punctuation">.</span><span class="token function">src</span><span class="token punctuation">(</span><span class="token string">'./public/**/*.css'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">autoprefixer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">browsers</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'last 10 versions'</span><span class="token punctuation">,</span> <span class="token string">'Firefox &gt;= 20'</span><span class="token punctuation">,</span> <span class="token string">'Opera &gt;= 36'</span><span class="token punctuation">,</span> <span class="token string">'ie &gt;= 9'</span><span class="token punctuation">,</span> <span class="token string">'Android &gt;= 4.0'</span><span class="token punctuation">,</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">cascade</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//是否美化格式</span>
+            <span class="token literal-property property">remove</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token comment">//是否删除不必要的前缀</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">minifycss</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>gulp<span class="token punctuation">.</span><span class="token function">dest</span><span class="token punctuation">(</span><span class="token string">'./public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'css minify complete'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 压缩处理 js</span>
+    gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'minify-js'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> gulp<span class="token punctuation">.</span><span class="token function">src</span><span class="token punctuation">(</span><span class="token string">'./public/js/*.js'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">uglify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>gulp<span class="token punctuation">.</span><span class="token function">dest</span><span class="token punctuation">(</span><span class="token string">'./public/js'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'js minify complete'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 压缩处理 html</span>
+    gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'minify-html'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> gulp<span class="token punctuation">.</span><span class="token function">src</span><span class="token punctuation">(</span><span class="token string">'./public/**/*.html'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">htmlclean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">htmlmin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+             <span class="token literal-property property">removeComments</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//清除HTML注释</span>
+             <span class="token literal-property property">collapseWhitespace</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//压缩HTML</span>
+             <span class="token literal-property property">minifyJS</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//压缩页面JS</span>
+             <span class="token literal-property property">minifyCSS</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//压缩页面CSS</span>
+             <span class="token literal-property property">minifyURLs</span><span class="token operator">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>gulp<span class="token punctuation">.</span><span class="token function">dest</span><span class="token punctuation">(</span><span class="token string">'./public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 添加版本号</span>
+    gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'rev'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> gulp<span class="token punctuation">.</span><span class="token function">src</span><span class="token punctuation">(</span><span class="token string">'./public/**/*.html'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">rev</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>gulp<span class="token punctuation">.</span><span class="token function">dest</span><span class="token punctuation">(</span><span class="token string">'./public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 同步执行task</span>
+    gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'deploy'</span><span class="token punctuation">,</span><span class="token function">sequence</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'minify-css'</span><span class="token punctuation">,</span><span class="token string">'minify-js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'rev'</span><span class="token punctuation">,</span><span class="token string">'minify-html'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 部署前代码处理</span>
+    gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'deploy'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"[complete] please execute： hexo d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>travis.yml </p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">language</span><span class="token punctuation">:</span> node_js
+<span class="token key atrule">node_js</span><span class="token punctuation">:</span> stable
+
+<span class="token key atrule">sudo</span><span class="token punctuation">:</span> <span class="token boolean important">false</span> 
+
+<span class="token comment">#cache</span>
+<span class="token key atrule">cache</span><span class="token punctuation">:</span>
+  <span class="token key atrule">directories</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">"node_modules"</span>
+
+<span class="token key atrule">notifications</span><span class="token punctuation">:</span>
+  <span class="token key atrule">email</span><span class="token punctuation">:</span>
+    <span class="token key atrule">recipients</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> snippet@91h5.cc
+    <span class="token key atrule">on_success</span><span class="token punctuation">:</span> never
+    <span class="token key atrule">on_failure</span><span class="token punctuation">:</span> always
+
+<span class="token comment"># S: Build Lifecycle</span>
+<span class="token key atrule">install</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> npm install
+<span class="token comment">#  - gem install travis</span>
+<span class="token comment">#  - travis login --pro --github-token ${GH_TOKEN}</span>
+
+<span class="token key atrule">before_script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> export TZ='Asia/Shanghai'
+  <span class="token punctuation">-</span> npm install <span class="token punctuation">-</span>g gulp 
+  <span class="token punctuation">-</span> chmod +x _travis.sh
+
+<span class="token key atrule">script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> hexo clean <span class="token important">&amp;&amp;</span> hexo g
+  <span class="token punctuation">-</span> gulp 
+
+<span class="token key atrule">after_success</span><span class="token punctuation">:</span>
+ <span class="token comment"># - LAST_BUILD_NUMBER=68</span>
+ <span class="token comment"># - for i in $(seq 1 $LAST_BUILD_NUMBER ); do  travis logs $i --delete --force ; done</span>
+
+<span class="token key atrule">after_script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> ./_travis.sh
+
+<span class="token comment"># E: Build LifeCycle</span>
+
+<span class="token key atrule">branches</span><span class="token punctuation">:</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> dev
+<span class="token key atrule">env</span><span class="token punctuation">:</span>
+ <span class="token key atrule">global</span><span class="token punctuation">:</span>
+   <span class="token punctuation">-</span> <span class="token key atrule">GH_REF</span><span class="token punctuation">:</span> github.com/shenliyang/shenliyang.github.io.git
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>travis.sh </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#--------------------------------------------</span>
+<span class="token comment">#!/bin/bash</span>
+<span class="token comment"># author：shenliyang</span>
+<span class="token comment"># website：https://github.com/shenliyang</span>
+<span class="token comment"># slogan：梦想还是要有的，万一实现了呢。</span>
+<span class="token comment">#--------------------------------------------</span>
+
+<span class="token comment">#定义时间</span>
+<span class="token assign-left variable">time</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +%Y-%m-%d<span class="token punctuation">\</span> %H:%M:%S<span class="token variable">`</span></span>
+
+<span class="token comment">#执行成功</span>
+<span class="token keyword">function</span> <span class="token function-name function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token builtin class-name">echo</span> <span class="token string">"success"</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#执行失败</span>
+<span class="token keyword">function</span> <span class="token function-name function">failure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token builtin class-name">echo</span> <span class="token string">"failure"</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#默认执行</span>
+<span class="token keyword">function</span> <span class="token function-name function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token function">git</span> clone https://<span class="token variable">${GH_REF}</span> .deploy_git
+  <span class="token builtin class-name">cd</span> .deploy_git
+
+  <span class="token function">git</span> checkout master
+  <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/
+
+  <span class="token function">mv</span> .deploy_git/.git/ ./public/
+  <span class="token builtin class-name">cd</span> ./public
+
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;&gt;</span> README.md </span>
+部署状态 | 集成结果 | 参考值
+---|---|---
+完成时间 | <span class="token variable">$time</span> | yyyy-mm-dd hh:mm:ss
+部署环境 | <span class="token variable">$TRAVIS_OS_NAME</span> + <span class="token variable">$TRAVIS_NODE_VERSION</span> | window \| linux + stable
+部署类型 | <span class="token variable">$TRAVIS_EVENT_TYPE</span> | push \| pull_request \| api \| cron
+启用Sudo | <span class="token variable">$TRAVIS_SUDO</span> | false \| true
+仓库地址 | <span class="token variable">$TRAVIS_REPO_SLUG</span> | owner_name/repo_name
+提交分支 | <span class="token variable">$TRAVIS_COMMIT</span> | hash 16位
+提交信息 | <span class="token variable">$TRAVIS_COMMIT_MESSAGE</span> |
+Job ID   | <span class="token variable">$TRAVIS_JOB_ID</span> | 
+Job NUM  | <span class="token variable">$TRAVIS_JOB_NUMBER</span> | 
+EOF</span>
+
+  <span class="token function">git</span> init
+  <span class="token function">git</span> config user.name <span class="token string">"shenliyang"</span>
+  <span class="token function">git</span> config user.email <span class="token string">""</span>
+  <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+  <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"Build by Travis CI"</span>
+  <span class="token function">git</span> push <span class="token parameter variable">--force</span> <span class="token parameter variable">--quiet</span> <span class="token string">"https://<span class="token variable">${GH_TOKEN}</span>@<span class="token variable">${GH_REF}</span>"</span> master:master
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">case</span> <span class="token variable">$1</span> <span class="token keyword">in</span> 
+    <span class="token string">"success"</span><span class="token punctuation">)</span>
+	     success
+       <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token string">"failure"</span><span class="token punctuation">)</span>
+	     failure
+	     <span class="token punctuation">;</span><span class="token punctuation">;</span>
+	         *<span class="token punctuation">)</span> 
+       default	
+<span class="token keyword">esac</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>配置 travis.yml 文件</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">language</span><span class="token punctuation">:</span> node_js <span class="token comment">#使用Node语言环境</span>
+<span class="token key atrule">node_js</span><span class="token punctuation">:</span> stable <span class="token comment">#安装稳定版Node</span>
+
+<span class="token key atrule">sudo</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>  
+
+<span class="token comment">#cache 启用缓存，加快构建速度</span>
+<span class="token key atrule">cache</span><span class="token punctuation">:</span> 
+  <span class="token key atrule">directories</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">"node_modules"</span>
+
+<span class="token key atrule">notifications</span><span class="token punctuation">:</span> <span class="token comment">#启用通知</span>
+  <span class="token key atrule">email</span><span class="token punctuation">:</span>
+    <span class="token key atrule">recipients</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> snippet@91h5.cc <span class="token comment">#接收构建消息的邮件 不需要可设置为false</span>
+    <span class="token key atrule">on_success</span><span class="token punctuation">:</span> never <span class="token comment">#部署成功时，可设置alway never change</span>
+    <span class="token key atrule">on_failure</span><span class="token punctuation">:</span> always <span class="token comment">#部署失败时，同上</span>
+
+<span class="token comment"># S: Build Lifecycle</span>
+<span class="token key atrule">install</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> npm install  <span class="token comment">#安装依赖</span>
+
+<span class="token key atrule">before_script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> export TZ='Asia/Shanghai' <span class="token comment">#设置时区</span>
+  <span class="token punctuation">-</span> npm install <span class="token punctuation">-</span>g gulp  <span class="token comment">#安装Gulp</span>
+  <span class="token punctuation">-</span> chmod +x _travis.sh  <span class="token comment">#授权脚本执行权限</span>
+
+<span class="token key atrule">script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> hexo clean <span class="token important">&amp;&amp;</span> hexo g <span class="token comment">#清除缓存并生成静态文件</span>
+  <span class="token punctuation">-</span> gulp <span class="token comment">#执行gulp任务</span>
+
+<span class="token key atrule">after_success</span><span class="token punctuation">:</span> <span class="token comment">#实行成功时(以后扩展功能使用)</span>
+
+<span class="token key atrule">after_script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> ./_travis.sh <span class="token comment">#执行部署脚本</span>
+<span class="token comment"># E: Build LifeCycle</span>
+
+<span class="token key atrule">branches</span><span class="token punctuation">:</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> dev <span class="token comment">#需要监听部署的分支</span>
+<span class="token key atrule">env</span><span class="token punctuation">:</span>
+ <span class="token key atrule">global</span><span class="token punctuation">:</span>
+   <span class="token punctuation">-</span> <span class="token key atrule">GH_REF</span><span class="token punctuation">:</span> github.com/shenliyang/shenliyang.github.io.git <span class="token comment">#更改为自己git地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>提交代码到 Github，实现自动部署<br>当 .travis.yml 配置文件修改完成后，将其提交到远程仓库的 hexo 分支下，此时如果之前的配置一切 ok，我们应该能在 Travis CI 的博客项目主页页面中看到自动构建已经在开始执行了。上面会显示出构建过程中的日志信息及状态等。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/01/09/60076.html" title="Travis CI 持续集成 Github">https://onxs.github.io/2018/01/09/60076.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CI/" rel="tag"><i class="fa fa-tag"></i> CI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/08/34811.html" rel="prev" title="基于 Redis 的 CAS 集群">
+                  <i class="fa fa-chevron-left"></i> 基于 Redis 的 CAS 集群
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/01/09/54220.html" rel="next" title="CAS 单点登录（二）">
+                  CAS 单点登录（二） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="dab11ccf604a43155dc119c5a4256ec2"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC-TECH All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">807k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">48:53</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"https://matrix.to/#/#onxs:gitter.im"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/01/09/60076.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

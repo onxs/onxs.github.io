@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"Muse | Mist":320,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/2018/03/24/25709.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/2018/03/24/25709.html","path":"2018/03/24/25709.html","title":"Java 文件上传及下载"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java 文件上传及下载 | MC</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-number">1.</span> <span class="nav-text">文件上传</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E8%AF%B7%E6%B1%82%E7%95%8C%E9%9D%A2%E5%8F%8A%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">上传请求界面及代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">上传处理代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E7%BB%93%E6%9E%9C%E7%95%8C%E9%9D%A2%E5%8F%8A%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">上传结果界面及代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">文件下载</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button animated">
+    <button class="js-gitter-toggle-chat-button"><i class="fa fa-comment"></i>
+      聊天
+    </button>
+  </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/onxs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ceek@vip.qq.com" title="E-Mail → mailto:ceek@vip.qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/" title="Instagram → https:&#x2F;&#x2F;instagram.com" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.netlify.app/" title="https:&#x2F;&#x2F;onxs.netlify.app&#x2F;" rel="noopener" target="_blank">mirror</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2017/12/01/15202.html" rel="bookmark">
+        <time class="popular-posts-time">2017-12-01</time>
+        <br>
+      SWFUpload 文件上传详解
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/2018/03/24/25709.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java 文件上传及下载 | MC">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 文件上传及下载<a href="https://github.com/onxs/blog/tree/dev/source/_posts/POST000126.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-24 20:30:36" itemprop="dateCreated datePublished" datetime="2018-03-24T20:30:36+08:00">2018-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/fileupload/" itemprop="url" rel="index"><span itemprop="name">fileupload</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Java 文件上传及下载" href="/2018/03/24/25709.html#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::40f98723cd5011a9aca26ac17dbd0858" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://s2.loli.net/2023/04/15/19qFHe5uZTwirX8.jpg"></p>
+<p>Java 文件上传及下载</p>
+<span id="more"></span>
+<h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><p>　　文件上传操作通常会附加一些限制，如：文件类型、上传文件总大小、每个文件的最大大小等。除此以外，作为一个通用组件还需要考虑更多的问题，如：支持自定义文件保存目录、支持相对路径和绝对路径、支持自定义保存的文件的文件名称、支持上传进度反馈和上传失败清理等。另外，本座也不想重新造车轮，本组件是基于 Commons File Upload 实现，省却了本座大量的工作 ^_^ 下面先从一个具体的使用例子讲起：</p>
+<h4 id="上传请求界面及代码"><a href="#上传请求界面及代码" class="headerlink" title="上传请求界面及代码"></a>上传请求界面及代码</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkupload.action<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">enctype</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>multipart/form-data<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    First Name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>firstName<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>丑<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    Last Name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lastName<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>怪兽<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    Birthday: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>birthday<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1978-11-03<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    Gender: 男 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span><span class="token attr-name">"</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>gender<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span>女 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span><span class="token attr-name">"</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>gender<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">checked</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checked<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    Working age: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>workingAge<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>-请选择-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>三年<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5<span class="token punctuation">"</span></span> <span class="token attr-name">selected</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>selected<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>五年<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>十年<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>二十年<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    Interest: 游泳 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>interest<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">checked</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checked<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span>打球 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>interest<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span> <span class="token attr-name">checked</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checked<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span>下棋 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>interest<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span>打麻将 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>interest<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span>看书 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>interest<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5<span class="token punctuation">"</span></span> <span class="token attr-name">checked</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checked<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    Photo 1.1: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token attr-name">"</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>photo-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    Photo 1.2: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token attr-name">"</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>photo-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    Photo 2.1: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token attr-name">"</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>photo-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>确 定<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>reset<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>重 置<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>从上面的 HTML 代码可以看出，表单有 6 个普通域和 3 个文件域，其中前两个文件域的 name 属性相同。</p>
+<h4 id="上传处理代码"><a href="#上传处理代码" class="headerlink" title="上传处理代码"></a>上传处理代码</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>bruce<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">BeanHelper</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>bruce<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Logger</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>bruce<span class="token punctuation">.</span>util<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">FileUploader</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>bruce<span class="token punctuation">.</span>util<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">FileUploader</span><span class="token punctuation">.</span><span class="token class-name">FileInfo</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token import static"><span class="token namespace">com<span class="token punctuation">.</span>bruce<span class="token punctuation">.</span>util<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">FileUploader</span><span class="token punctuation">.</span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+<span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unused"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CheckUpload</span> <span class="token keyword">extends</span> <span class="token class-name">ActionSupport</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// 上传路径</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">UPLOAD_PATH</span>        <span class="token operator">=</span> <span class="token string">"upload"</span><span class="token punctuation">;</span>
+    <span class="token comment">// 可接受的文件类型</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token constant">ACCEPT_TYPES</span>    <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"txt"</span><span class="token punctuation">,</span> <span class="token string">"pdf"</span><span class="token punctuation">,</span> <span class="token string">"doc"</span><span class="token punctuation">,</span> <span class="token string">".Jpg"</span><span class="token punctuation">,</span> <span class="token string">"*.zip"</span><span class="token punctuation">,</span> <span class="token string">"*.RAR"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">// 总上传文件大小限制</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">MAX_SIZE</span>            <span class="token operator">=</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    <span class="token comment">// 单个传文件大小限制</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">MAX_FILE_SIZE</span>        <span class="token operator">=</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// 创建 FileUploader 对象</span>
+        <span class="token class-name">FileUploader</span> fu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileUploader</span><span class="token punctuation">(</span><span class="token constant">UPLOAD_PATH</span><span class="token punctuation">,</span> <span class="token constant">ACCEPT_TYPES</span><span class="token punctuation">,</span> <span class="token constant">MAX_SIZE</span><span class="token punctuation">,</span> <span class="token constant">MAX_FILE_SIZE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 根据实际情况设置对象属性（可选）</span>
+        <span class="token comment">/*
+        fu.setFileNameGenerator(new FileNameGenerator()
+        {
+            
+            @Override
+            public String generate(FileItem item, String suffix)
+            {
+                return String.format("%d_%d", item.hashCode(), item.get().hashCode());
+            }
+        });
+        
+        fu.setServletProgressListener(new ProgressListener()
+        {
+            
+            @Override
+            public void update(long pBytesRead, long pContentLength, int pItems)
+            {
+                System.out.printf("%d: length -&gt; %d, read -&gt; %d.n", pItems, pContentLength, pBytesRead);
+            }
+        });
+        */</span>
+        
+        <span class="token comment">// 执行上传并获取操作结果</span>
+        <span class="token class-name">Result</span> result <span class="token operator">=</span> fu<span class="token punctuation">.</span><span class="token function">upload</span><span class="token punctuation">(</span><span class="token function">getRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">getResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 检查操作结果</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>result <span class="token operator">!=</span> <span class="token class-name">FileUploader<span class="token punctuation">.</span>Result</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">// 设置 request attribute</span>
+            <span class="token function">setRequestAttribute</span><span class="token punctuation">(</span><span class="token string">"error"</span><span class="token punctuation">,</span> fu<span class="token punctuation">.</span><span class="token function">getCause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 记录日志</span>
+            <span class="token class-name">Logger</span><span class="token punctuation">.</span><span class="token function">exception</span><span class="token punctuation">(</span>fu<span class="token punctuation">.</span><span class="token function">getCause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"upload file fail"</span><span class="token punctuation">,</span> <span class="token class-name">Level</span><span class="token punctuation">.</span><span class="token constant">ERROR</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            <span class="token keyword">return</span> <span class="token constant">ERROR</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment">// 通过非文件表单域创建 Form Bean</span>
+        <span class="token class-name">Persion</span> persion <span class="token operator">=</span> <span class="token class-name">BeanHelper</span><span class="token punctuation">.</span><span class="token function">createBean</span><span class="token punctuation">(</span><span class="token class-name">Persion</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> fu<span class="token punctuation">.</span><span class="token function">getParamFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 图片保存路径的列表</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> photos    <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">/* 轮询文件表单域，填充 photos */</span>
+        <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> keys <span class="token operator">=</span> fu<span class="token punctuation">.</span><span class="token function">getFileFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">String</span> key <span class="token operator">:</span> keys<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name">FileInfo</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ffs <span class="token operator">=</span> fu<span class="token punctuation">.</span><span class="token function">getFileFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">FileInfo</span> ff <span class="token operator">:</span> ffs<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                photos<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"(%s) %s%s%s"</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> fu<span class="token punctuation">.</span><span class="token function">getSavePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">File</span><span class="token punctuation">.</span>separator<span class="token punctuation">,</span> ff<span class="token punctuation">.</span><span class="token function">getSaveFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment">// 设置 Form Bean 的 photos 属性</span>
+        persion<span class="token punctuation">.</span><span class="token function">setPhotos</span><span class="token punctuation">(</span>photos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 设置 request attribute</span>
+        <span class="token function">setRequestAttribute</span><span class="token punctuation">(</span><span class="token string">"persion"</span><span class="token punctuation">,</span> persion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">return</span> <span class="token constant">SUCCESS</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+ 
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Persion</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> firstName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> lastName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> birthday<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> gender<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> workingAge<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> interest<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> photos<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">FileInfo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> uploadFileName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">File</span> saveFile<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>　　分析下上面的 Java 代码，本例先根据保存目录、文件大小限制和文件类型限制创建一个 FileUploader 对象，然后调用该对象的 upload () 方法执行上传并返回操作结果，如果上传成功则 通过 getParamFields () 方法获取所有非文件表单域内容，并交由 BeanHelper 进行解析创建 Form Bean，再调用 getFileFields () 方法获取所有文件表单域的 FileInfo（FileInfo 包含上传文件的原始名称和被保存文件的 File 对象），最后完成 Form Bean 所有字段的填充并把 Form Bean 设置为 request 属性。</p>
+<h4 id="上传结果界面及代码"><a href="#上传结果界面及代码" class="headerlink" title="上传结果界面及代码"></a>上传结果界面及代码</h4><p><img src="http://filesimg.111cn.net/2012/02/24/20120224013312738.jpg" alt="img"></p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>caption</span><span class="token punctuation">&gt;</span></span>Persion Attributs<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>caption</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">c:</span>out</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${persion.firstName} ${persion.lastName}<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Brithday<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">c:</span>out</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${persion.birthday}<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Gender<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">c:</span>out</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${persion.gender}<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Working Age<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">c:</span>out</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${persion.workingAge}<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Interest<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">c:</span>forEach</span> <span class="token attr-name">var</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>its<span class="token punctuation">"</span></span> <span class="token attr-name">items</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${persion.interest}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">c:</span>out</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${its}<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span> <span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span>
+                          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">c:</span>forEach</span><span class="token punctuation">&gt;</span></span><span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Photos<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">c:</span>forEach</span> <span class="token attr-name">var</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>p<span class="token punctuation">"</span></span> <span class="token attr-name">items</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${persion.photos}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                                 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">c:</span>out</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${p}<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+                          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">c:</span>forEach</span><span class="token punctuation">&gt;</span></span><span class="token entity named-entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p> 　　从上面的处理结果可以看出，文件上传组件 FileUploader 正确地处理了表单的所有文件域和非文件域名，并且，整个文件上传操作过程非常简单，无需用户过多参与。下面我们来详细看看组件的主要实现代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FileUploader</span>
+<span class="token punctuation">{</span>
+    <span class="token operator">/</span> 不限制文件上传总大小的 <span class="token class-name">Size</span> <span class="token class-name">Max</span> 常量 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">NO_LIMIT_SIZE_MAX</span>        <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 不限制文件上传单个文件大小的 <span class="token class-name">File</span> <span class="token class-name">Size</span> <span class="token class-name">Max</span> 常量 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">NO_LIMIT_FILE_SIZE_MAX</span>    <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 默认的写文件阀值 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">DEFAULT_SIZE_THRESHOLD</span>    <span class="token operator">=</span> <span class="token class-name">DiskFileItemFactory</span><span class="token punctuation">.</span><span class="token constant">DEFAULT_SIZE_THRESHOLD</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 默认的文件名生成器 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">FileNameGenerator</span> <span class="token constant">DEFAULT_FILE_NAME_GENERATOR</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CommonFileNameGenerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token operator">/</span> 设置上传文件的保存路径（不包含文件名）
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span> 文件路径，可能是绝对路径或相对路径<span class="token generics"><span class="token punctuation">&lt;</span>br<span class="token punctuation">&gt;</span></span>
+     <span class="token operator">*</span>     <span class="token number">1</span><span class="token punctuation">)</span> 绝对路径：以根目录符开始（如：<span class="token char">'/'</span>、<span class="token char">'D:'</span>），是服务器文件系统的路径<span class="token generics"><span class="token punctuation">&lt;</span>br<span class="token punctuation">&gt;</span></span>
+     <span class="token operator">*</span>     <span class="token number">2</span><span class="token punctuation">)</span> 相对路径：不以根目录符开始，是相对于 <span class="token constant">WEB</span> 应用程序 <span class="token class-name">Context</span> 的路径，（如：mydir 是指
+     <span class="token operator">*</span>         '$<span class="token punctuation">{</span><span class="token constant">WEB</span><span class="token operator">-</span><span class="token constant">APP</span><span class="token operator">-</span><span class="token constant">DIR</span><span class="token punctuation">}</span><span class="token operator">/</span>mydir'）<span class="token generics"><span class="token punctuation">&lt;</span>br<span class="token punctuation">&gt;</span></span>
+     <span class="token operator">*</span>     <span class="token number">3</span><span class="token punctuation">)</span> 规则：上传文件前会检查该路径是否存在，如果不存在则会尝试生成该路径，如果生成失败则
+     <span class="token operator">*</span>         上传失败并返回 <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">Result</span>#<span class="token constant">INVALID_SAVE_PATH</span><span class="token punctuation">}</span>
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> savePath<span class="token punctuation">;</span>
+    <span class="token operator">/</span> 文件上传的总文件大小限制 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> sizeMax                        <span class="token operator">=</span> <span class="token constant">NO_LIMIT_SIZE_MAX</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 文件上传的单个文件大小限制 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> fileSizeMax                    <span class="token operator">=</span> <span class="token constant">NO_LIMIT_FILE_SIZE_MAX</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 可接受的上传文件类型集合，默认：不限制 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> acceptTypes                <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LStrSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 非文件表单域的映射 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">Map</span><span class="token operator">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> paramFields    <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 文件表单域的映射 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">Map</span><span class="token operator">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">FileInfo</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> fileFields    <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">FileInfo</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 文件名生成器 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">FileNameGenerator</span> fileNameGenerator    <span class="token operator">=</span> <span class="token constant">DEFAULT_FILE_NAME_GENERATOR</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// commons file upload 相关属性</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> factorySizeThreshold            <span class="token operator">=</span> <span class="token constant">DEFAULT_SIZE_THRESHOLD</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> factoryRepository<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">FileCleaningTracker</span> factoryCleaningTracker<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> servletHeaderencoding<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">ProgressListener</span> servletProgressListener<span class="token punctuation">;</span>
+    
+    <span class="token operator">/</span> 文件上传失败的原因（文件上传失败时使用） <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">Throwable</span> cause<span class="token punctuation">;</span>
+    
+    <span class="token operator">/</span> 执行上传
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span> <span class="token annotation punctuation">@param</span> request    <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">HttpServletRequest</span><span class="token punctuation">}</span> 对象
+     <span class="token operator">*</span> <span class="token annotation punctuation">@param</span> response    <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">HttpServletResponse</span><span class="token punctuation">}</span> 对象
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span> <span class="token annotation punctuation">@return</span>            <span class="token operator">:</span> 成功：返回 <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">Result</span>#<span class="token constant">SUCCESS</span><span class="token punctuation">}</span> ，失败：返回其他结果，
+     <span class="token operator">*</span>                       失败原因通过 <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">FileUploader</span>#<span class="token function">getCause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span> 获取
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">upload</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 获取上传目录绝对路径</span>
+        <span class="token class-name">String</span> absolutePath     <span class="token operator">=</span> <span class="token function">getAbsoluteSavePath</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>absolutePath <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            cause <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileNotFoundException</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"path '%s' not found or is not directory"</span><span class="token punctuation">,</span> savePath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">INVALID_SAVE_PATH</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token class-name">ServletFileUpload</span> sfu    <span class="token operator">=</span> <span class="token function">getFileUploadComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">FileItemInfo</span><span class="token punctuation">&gt;</span></span> fiis    <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">FileItemInfo</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">FileItem</span><span class="token punctuation">&gt;</span></span> items    <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">Result</span> result            <span class="token operator">=</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 获取文件名生成器</span>
+        <span class="token class-name">String</span> encoding                    <span class="token operator">=</span> servletHeaderencoding <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> servletHeaderencoding <span class="token operator">:</span> request<span class="token punctuation">.</span><span class="token function">getCharacterEncoding</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">FileNameGenerator</span> fnGenerator    <span class="token operator">=</span> fileNameGenerator <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> fileNameGenerator <span class="token operator">:</span> <span class="token constant">DEFAULT_FILE_NAME_GENERATOR</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">try</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">// 执行上传操作</span>
+            items <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">FileItem</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">)</span>sfu<span class="token punctuation">.</span><span class="token function">parseRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">FileUploadException</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            cause <span class="token operator">=</span> e<span class="token punctuation">;</span>
+            
+            <span class="token keyword">if</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">FileSizeLimitExceededException</span><span class="token punctuation">)</span>        result <span class="token operator">=</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">FILE_SIZE_EXCEEDED</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">SizeLimitExceededException</span><span class="token punctuation">)</span>    result <span class="token operator">=</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">SIZE_EXCEEDED</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">InvalidContentTypeException</span><span class="token punctuation">)</span>    result <span class="token operator">=</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">INVALID_CONTENT_TYPE</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">IOFileUploadException</span><span class="token punctuation">)</span>            result <span class="token operator">=</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">FILE_UPLOAD_IO_EXCEPTION</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>                                                result <span class="token operator">=</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">OTHER_PARSE_REQUEST_EXCEPTION</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">if</span><span class="token punctuation">(</span>result <span class="token operator">==</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">// 解析所有表单域</span>
+            result <span class="token operator">=</span> <span class="token function">parseFileItems</span><span class="token punctuation">(</span>items<span class="token punctuation">,</span> fnGenerator<span class="token punctuation">,</span> absolutePath<span class="token punctuation">,</span> encoding<span class="token punctuation">,</span> fiis<span class="token punctuation">)</span><span class="token punctuation">;</span>    
+            <span class="token keyword">if</span><span class="token punctuation">(</span>result <span class="token operator">==</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span>
+                <span class="token comment">// 保存文件</span>
+                result <span class="token operator">=</span> <span class="token function">writeFiles</span><span class="token punctuation">(</span>fiis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 解析所有表单域</span>
+    <span class="token keyword">private</span> <span class="token class-name">Result</span> <span class="token function">parseFileItems</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">FileItem</span><span class="token punctuation">&gt;</span></span> items<span class="token punctuation">,</span> <span class="token class-name">FileNameGenerator</span> fnGenerator<span class="token punctuation">,</span> <span class="token class-name">String</span> absolutePath<span class="token punctuation">,</span> <span class="token class-name">String</span> encoding<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">FileItemInfo</span><span class="token punctuation">&gt;</span></span> fiis<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">FileItem</span> item <span class="token operator">:</span> items<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">isFormField</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token comment">// 解析非文件表单域</span>
+                <span class="token function">parseFormField</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> encoding<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+                
+                <span class="token comment">// 解析文件表单域</span>
+                <span class="token class-name">Result</span> result <span class="token operator">=</span> <span class="token function">parseFileField</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> absolutePath<span class="token punctuation">,</span> fnGenerator<span class="token punctuation">,</span> fiis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>result <span class="token operator">!=</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    
+                    cause <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InvalidParameterException</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"file '%s' not accepted"</span><span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 解析文件表单域</span>
+    <span class="token keyword">private</span> <span class="token class-name">Result</span> <span class="token function">parseFileField</span><span class="token punctuation">(</span><span class="token class-name">FileItem</span> item<span class="token punctuation">,</span> <span class="token class-name">String</span> absolutePath<span class="token punctuation">,</span> <span class="token class-name">FileNameGenerator</span> fnGenerator<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">FileItemInfo</span><span class="token punctuation">&gt;</span></span> fiis<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">String</span> suffix            <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> uploadFileName    <span class="token operator">=</span> item<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> isAcceptType    <span class="token operator">=</span> acceptTypes<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>isAcceptType<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            suffix <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> stuffPos <span class="token operator">=</span> uploadFileName<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>stuffPos <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                suffix <span class="token operator">=</span> uploadFileName<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>stuffPos<span class="token punctuation">,</span> uploadFileName<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                isAcceptType <span class="token operator">=</span> acceptTypes<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>suffix<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>isAcceptType<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">INVALID_FILE_TYPE</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 通过文件名生成器获取文件名</span>
+        <span class="token class-name">String</span> saveFileName <span class="token operator">=</span> fnGenerator<span class="token punctuation">.</span><span class="token function">generate</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> suffix<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>saveFileName<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span>suffix<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            saveFileName <span class="token operator">+=</span> suffix<span class="token punctuation">;</span>
+        
+        <span class="token class-name">String</span> fullFileName    <span class="token operator">=</span> absolutePath <span class="token operator">+</span> <span class="token class-name">File</span><span class="token punctuation">.</span>separator <span class="token operator">+</span> saveFileName<span class="token punctuation">;</span>
+        <span class="token class-name">File</span> saveFile        <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>fullFileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">FileInfo</span> info        <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInfo</span><span class="token punctuation">(</span>uploadFileName<span class="token punctuation">,</span> saveFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 添加表单域文件信息</span>
+        fiis<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileItemInfo</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> saveFile<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addFileField</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">getFieldName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">parseFormField</span><span class="token punctuation">(</span><span class="token class-name">FileItem</span> item<span class="token punctuation">,</span> <span class="token class-name">String</span> encoding<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">String</span> name <span class="token operator">=</span> item<span class="token punctuation">.</span><span class="token function">getFieldName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> value <span class="token operator">=</span> item<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 字符串编码转换</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">GeneralHelper</span><span class="token punctuation">.</span><span class="token function">isStrEmpty</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> encoding <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">try</span>
+            <span class="token punctuation">{</span>
+                value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token string">"ISO-8859-1"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> encoding<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">UnsupportedEncodingException</span> e<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+    
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment">// 添加表单域名/值映射</span>
+        <span class="token function">addParamField</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token operator">/</span> 文件名生成器接口
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span> 每次保存一个上传文件前都需要调用该接口的 <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">FileNameGenerator</span>#generate<span class="token punctuation">}</span> 方法生成要保存的文件名
+     <span class="token operator">*</span>  
+     <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">interface</span> <span class="token class-name">FileNameGenerator</span>
+    <span class="token punctuation">{</span>
+        <span class="token operator">/</span> 文件名生成方法
+         <span class="token operator">*</span> 
+         <span class="token operator">*</span> <span class="token annotation punctuation">@param</span> item        <span class="token operator">:</span> 上传文件对应的 <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">FileItem</span><span class="token punctuation">}</span> 对象
+         <span class="token operator">*</span> <span class="token annotation punctuation">@param</span> suffix    <span class="token operator">:</span> 上传文件的后缀名
+         <span class="token operator">*</span> 
+         <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token class-name">String</span> <span class="token function">generate</span><span class="token punctuation">(</span><span class="token class-name">FileItem</span> item<span class="token punctuation">,</span> <span class="token class-name">String</span> suffix<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token operator">/</span> 默认通用文件名生成器
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span> 实现 <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">FileNameGenerator</span><span class="token punctuation">}</span> 接口，根据序列值和时间生成唯一文件名
+     <span class="token operator">*</span>  
+     <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">CommonFileNameGenerator</span> <span class="token keyword">implements</span> <span class="token class-name">FileNameGenerator</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">MAX_SERIAL</span>            <span class="token operator">=</span> <span class="token number">999999</span><span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">AtomicInteger</span> atomic <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AtomicInteger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">getNextInteger</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> value <span class="token operator">=</span> atomic<span class="token punctuation">.</span><span class="token function">incrementAndGet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>value <span class="token operator">&gt;=</span> <span class="token constant">MAX_SERIAL</span><span class="token punctuation">)</span>
+                atomic<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token operator">/</span> 根据序列值和时间生成 '<span class="token constant">XXXXXX_YYYYYYYYYYYYY</span>' 格式的唯一文件名 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">generate</span><span class="token punctuation">(</span><span class="token class-name">FileItem</span> item<span class="token punctuation">,</span> <span class="token class-name">String</span> suffix<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> serial        <span class="token operator">=</span> <span class="token function">getNextInteger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">long</span> millsec    <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"%06d_%013d"</span><span class="token punctuation">,</span> serial<span class="token punctuation">,</span> millsec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token operator">/</span> 上传文件信息结构体 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">FileInfo</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token class-name">String</span> uploadFileName<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token class-name">File</span> saveFile<span class="token punctuation">;</span>
+        
+        <span class="token comment">// getters and setters ...</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">FileItemInfo</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">FileItem</span> item<span class="token punctuation">;</span>
+        <span class="token class-name">File</span> file<span class="token punctuation">;</span>
+        
+        <span class="token comment">// getters and setters ...</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token operator">/</span> 文件上传结果枚举值 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> <span class="token class-name">Result</span>
+    <span class="token punctuation">{</span>
+        <span class="token operator">/</span> 成功 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">SUCCESS</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：文件总大小超过限制 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">SIZE_EXCEEDED</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：单个文件大小超过限制 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">FILE_SIZE_EXCEEDED</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：请求表单类型不正确 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">INVALID_CONTENT_TYPE</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：文件上传 <span class="token constant">IO</span> 错误 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">FILE_UPLOAD_IO_EXCEPTION</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：解析上传请求其他异常 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">OTHER_PARSE_REQUEST_EXCEPTION</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：文件类型不正确 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">INVALID_FILE_TYPE</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：文件写入失败 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">WRITE_FILE_FAIL</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：文件的保存路径不正确 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">INVALID_SAVE_PATH</span><span class="token punctuation">;</span>    
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>应用可以实现自己的 FileNameGenerator 类替代默认的文件名生成器。</p>
+</li>
+<li><p>上传操作通过 FileUploader.Result 返回结果，并没有采用抛出异常的方式，因为本座认为在这里采用异常方式报告结果其实并不方便使用；另一方面，程序可以通过 getCause () 获取详细的错误信息。</p>
+</li>
+</ul>
+<h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><p>　　相对于文件上传，文件下载则简单很多，主要实现流程是根据文件名找到实际文件，并利用 Java 的相关类对 I/O 流进行读写。下面先看看一个使用示例：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token import static"><span class="token namespace">com<span class="token punctuation">.</span>bruce<span class="token punctuation">.</span>util<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">FileDownloader</span><span class="token punctuation">.</span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestDownload</span> <span class="token keyword">extends</span> <span class="token class-name">ActionSupport</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// 绝对路径</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">ABSOLUTE_PATH</span>    <span class="token operator">=</span> <span class="token string">"/Server/apache-tomcat-6.0.32/webapps/portal/download/下载测试 - 文本文件.txt"</span><span class="token punctuation">;</span>
+    <span class="token comment">// 相对路径</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">RELATE_PATH</span>        <span class="token operator">=</span> <span class="token string">"download/下载测试 - 项目框架.jpg"</span><span class="token punctuation">;</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> type            <span class="token operator">=</span> <span class="token function">getIntParam</span><span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> filePath        <span class="token operator">=</span> <span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token constant">ABSOLUTE_PATH</span> <span class="token operator">:</span> <span class="token constant">RELATE_PATH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 创建 FileDownloader 对象</span>
+        <span class="token class-name">FileDownloader</span> fdl    <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileDownloader</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 执行下载</span>
+        <span class="token class-name">Result</span> result <span class="token operator">=</span> fdl<span class="token punctuation">.</span><span class="token function">downLoad</span><span class="token punctuation">(</span><span class="token function">getRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">getResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 检查下载结果</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>result <span class="token operator">!=</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">// 记录日志</span>
+            <span class="token class-name">Logger</span><span class="token punctuation">.</span><span class="token function">exception</span><span class="token punctuation">(</span>fdl<span class="token punctuation">.</span><span class="token function">getCause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"download file '%s' fail"</span><span class="token punctuation">,</span> fdl<span class="token punctuation">.</span><span class="token function">getFilePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Level</span><span class="token punctuation">.</span><span class="token constant">ERROR</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">return</span> <span class="token constant">NONE</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>从这个示例可以看出，文件下载组件的使用方法更简单，因为它不需要对下载结果进行很多处理。可以看出该组件也支持相对路径和绝对路径。下面我们来详细看看组件的主要实现代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">/</span> 文件下载器 <span class="token operator">*</span><span class="token operator">/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FileDownloader</span>
+<span class="token punctuation">{</span>
+    <span class="token operator">/</span> 默认字节交换缓冲区大小 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">DEFAULT_BUFFER_SIZE</span>        <span class="token operator">=</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 下载文件的默认 <span class="token class-name">Mime</span> <span class="token class-name">Type</span> <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">DEFAULT_CONTENT_TYPE</span>    <span class="token operator">=</span> <span class="token string">"application/force-download"</span><span class="token punctuation">;</span>
+    
+    <span class="token operator">/</span> 设置下载文件的路径（包含文件名） 
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span> filePath    <span class="token operator">:</span> 文件路径，可能是绝对路径或相对路径<span class="token generics"><span class="token punctuation">&lt;</span>br<span class="token punctuation">&gt;</span></span>
+     <span class="token operator">*</span>                 <span class="token number">1</span><span class="token punctuation">)</span> 绝对路径：以根目录符开始（如：<span class="token char">'/'</span>、<span class="token char">'D:'</span>），是服务器文件系统的路径<span class="token generics"><span class="token punctuation">&lt;</span>br<span class="token punctuation">&gt;</span></span>
+     <span class="token operator">*</span>                 <span class="token number">2</span><span class="token punctuation">)</span> 相对路径：不以根目录符开始，是相对于 <span class="token constant">WEB</span> 应用程序 <span class="token class-name">Context</span> 的路径，（如：mydir<span class="token operator">/</span>myfile 是指 '$<span class="token punctuation">{</span><span class="token constant">WEB</span><span class="token operator">-</span><span class="token constant">APP</span><span class="token operator">-</span><span class="token constant">DIR</span><span class="token punctuation">}</span><span class="token operator">/</span>mydir<span class="token operator">/</span>myfile'）
+     <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> filePath<span class="token punctuation">;</span>
+    <span class="token operator">/</span> 显示在浏览器的下载对话框中的文件名称，默认与  filePath 参数中的文件名一致 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> saveFileName<span class="token punctuation">;</span>
+    <span class="token operator">/</span> 下载文件的 <span class="token class-name">Mime</span> <span class="token class-name">Type</span>，默认：<span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">FileDownloader</span>#<span class="token constant">DEFAULT_CONTENT_TYPE</span><span class="token punctuation">}</span> <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> contentType        <span class="token operator">=</span> <span class="token constant">DEFAULT_CONTENT_TYPE</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 字节缓冲区大小，默认：<span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">FileDownloader</span>#<span class="token constant">DEFAULT_CONTENT_TYPE</span><span class="token punctuation">}</span> <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> bufferSize            <span class="token operator">=</span> <span class="token constant">DEFAULT_BUFFER_SIZE</span><span class="token punctuation">;</span>
+    <span class="token operator">/</span> 获取文件下载失败的原因（文件下载失败时使用） <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">private</span> <span class="token class-name">Throwable</span> cause<span class="token punctuation">;</span>
+    
+    <span class="token operator">/</span> 执行下载
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span> <span class="token annotation punctuation">@param</span> request    <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">HttpServletRequest</span><span class="token punctuation">}</span> 对象
+     <span class="token operator">*</span> <span class="token annotation punctuation">@param</span> response    <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">HttpServletResponse</span><span class="token punctuation">}</span> 对象
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span> <span class="token annotation punctuation">@return</span>            <span class="token operator">:</span> 成功：返回 <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">Result</span>#<span class="token constant">SUCCESS</span><span class="token punctuation">}</span> ，失败：返回其他结果，
+     <span class="token operator">*</span>                       失败原因通过 <span class="token punctuation">{</span><span class="token annotation punctuation">@link</span> <span class="token class-name">FileDownloader</span>#<span class="token function">getCause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span> 获取
+     <span class="token operator">*</span> 
+     <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">downLoad</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">try</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">// 获取要下载的文件的 File 对象</span>
+            <span class="token class-name">File</span> file <span class="token operator">=</span> <span class="token function">getFile</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 执行下载操作</span>
+            <span class="token function">downLoadFile</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">,</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            cause <span class="token operator">=</span> e<span class="token punctuation">;</span>
+            
+            <span class="token keyword">if</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">FileNotFoundException</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">FILE_NOT_FOUND</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">IOException</span><span class="token punctuation">)</span>            <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">READ_WRITE_FAIL</span><span class="token punctuation">;</span>
+                                                    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">UNKNOWN_EXCEPTION</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 执行下载操作</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">downLoadFile</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">File</span> file<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">String</span> fileName            <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>saveFileName<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"ISO-8859-1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 解析 HTTP 请求头，获取文件的读取范围</span>
+        <span class="token class-name">Range</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> range    <span class="token operator">=</span> <span class="token function">parseDownloadRange</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>    
+        <span class="token keyword">int</span> length                <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>file<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> begin                <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> end                    <span class="token operator">=</span> length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 设置 HTTP 响应头</span>
+        response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span>contentType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        response<span class="token punctuation">.</span><span class="token function">setContentLength</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Content-Disposition"</span><span class="token punctuation">,</span> <span class="token string">"attachment;filename="</span> <span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 确定文件的读取范围（用于断点续传）</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>range <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>range<span class="token punctuation">.</span><span class="token function">getBegin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                begin <span class="token operator">=</span> range<span class="token punctuation">.</span><span class="token function">getBegin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>range<span class="token punctuation">.</span><span class="token function">getEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                    end <span class="token operator">=</span> range<span class="token punctuation">.</span><span class="token function">getEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>range<span class="token punctuation">.</span><span class="token function">getEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                    begin <span class="token operator">=</span> end <span class="token operator">+</span> range<span class="token punctuation">.</span><span class="token function">getEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            
+            <span class="token class-name">String</span> contentRange <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"bytes %d-%d/%d"</span><span class="token punctuation">,</span> begin<span class="token punctuation">,</span> end<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Accept-Ranges"</span><span class="token punctuation">,</span> <span class="token string">"bytes"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Content-Range"</span><span class="token punctuation">,</span> contentRange<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            response<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token class-name">HttpServletResponse</span><span class="token punctuation">.</span><span class="token constant">SC_PARTIAL_CONTENT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment">// 实际执行下载操作</span>
+        <span class="token function">doDownloadFile</span><span class="token punctuation">(</span>response<span class="token punctuation">,</span> file<span class="token punctuation">,</span> begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 实际执行下载操作</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">doDownloadFile</span><span class="token punctuation">(</span><span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">File</span> file<span class="token punctuation">,</span> <span class="token keyword">int</span> begin<span class="token punctuation">,</span> <span class="token keyword">int</span> end<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">InputStream</span> is    <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token class-name">OutputStream</span> os    <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">try</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b    <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span>bufferSize<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            is            <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            os            <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedOutputStream</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            <span class="token comment">// 跳过已下载的文件内容</span>
+            is<span class="token punctuation">.</span><span class="token function">skip</span><span class="token punctuation">(</span>begin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// I/O 读写</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> left <span class="token operator">=</span> end <span class="token operator">-</span> begin <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> left <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>i <span class="token operator">=</span> is<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>length<span class="token punctuation">,</span> left<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> left <span class="token operator">-=</span> i<span class="token punctuation">)</span>
+                os<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            os<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">finally</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>is <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">try</span><span class="token punctuation">{</span>is<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>os <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">try</span><span class="token punctuation">{</span>os<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token operator">/</span> 文件下载结果枚举值 <span class="token operator">*</span><span class="token operator">/</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> <span class="token class-name">Result</span>
+    <span class="token punctuation">{</span>
+        <span class="token operator">/</span> 成功 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">SUCCESS</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：文件不存在 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">FILE_NOT_FOUND</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：读写操作失败 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">READ_WRITE_FAIL</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span> 失败：未知异常 <span class="token operator">*</span><span class="token operator">/</span>
+        <span class="token constant">UNKNOWN_EXCEPTION</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/2018/03/24/25709.html" title="Java 文件上传及下载">https://onxs.github.io/2018/03/24/25709.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN,en,zh-TW,ru" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/fileupload/" rel="tag"><i class="fa fa-tag"></i> fileupload</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/03/23/58642.html" rel="prev" title="Java NIO Path and Files">
+                  <i class="fa fa-chevron-left"></i> Java NIO Path and Files
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/03/26/44283.html" rel="next" title="maven 项目操作技巧">
+                  maven 项目操作技巧 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="40f98723cd5011a9aca26ac17dbd0858"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 1989 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MC-TECH All Rights Reserved</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">807k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">48:53</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://unpkg.com/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery@3.7.0/dist/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://unpkg.com/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"https://matrix.to/#/#onxs:gitter.im"}</script>
+<script src="/js/third-party/chat/gitter.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":600,"priority":true,"url":"https://onxs.github.io/2018/03/24/25709.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywCDrRzY","appkey":"prod_f293a06a69048bfc14fa94e7aa3cffae","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
