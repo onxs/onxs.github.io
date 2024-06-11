@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#056864">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Helvetica:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/config.min.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/post/2018021044.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/post/2018021044.html","path":"post/2018021044.html","title":"Java成神之路-HTML和CSS（二）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java成神之路-HTML和CSS（二） | MC BLOG</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="MC BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+      <img class="custom-logo-image" src="https://s2.loli.net/2024/05/04/oabunWyc5VspNeU.png" alt="MC BLOG">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">59</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">175</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML"><span class="nav-number">1.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="nav-number">1.0.1.</span> <span class="nav-text">HTML整体结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML%E8%A1%A8%E5%8D%95%E5%85%83%E7%B4%A0"><span class="nav-number">1.2.1.</span> <span class="nav-text">HTML表单元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#input%E5%85%83%E7%B4%A0"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">input元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select%E5%85%83%E7%B4%A0%EF%BC%88%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%EF%BC%89"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">select元素（下拉列表）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#option%E5%85%83%E7%B4%A0%E5%AE%9A%E4%B9%89%E5%BE%85%E9%80%89%E6%8B%A9%E7%9A%84%E9%80%89%E9%A1%B9%E3%80%82"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">option元素定义待选择的选项。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#textarea%E5%85%83%E7%B4%A0"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">textarea元素</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">175</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHM=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNlZWtAdmlwLnFxLmNvbQ==" title="E-Mail → mailto:ceek@vip.qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS8=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;"><i class="fab fa-twitter fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tLw==" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;"><i class="fab fa-facebook fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9pbnN0YWdyYW0uY29t" title="Instagram → https:&#x2F;&#x2F;instagram.com"><i class="fab fa-instagram fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9vbnhzLm5ldGxpZnkuYXBw" title="https:&#x2F;&#x2F;onxs.netlify.app">镜像站</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.github.io/" title="https:&#x2F;&#x2F;onxs.github.io">主网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018021044.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC BLOG">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java成神之路-HTML和CSS（二） | MC BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java成神之路-HTML和CSS（二）<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHMvYmxvZy90cmVlL2Rldi9zb3VyY2UvX3Bvc3RzL0phdmHmiJDnpZ7kuYvot68tSFRNTOWSjENTU++8iOS6jO+8iS5tZA==" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-23 10:44:36" itemprop="dateCreated datePublished" datetime="2018-02-23T10:44:36+08:00">2018-02-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img data-src="https://s2.loli.net/2023/04/16/XDgYZ2RMLxIl7Vd.jpg"></p>
+<p>Java成神之路-HTML和CSS</p>
+<span id="more"></span>
+<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h3 id="HTML整体结构"><a href="#HTML整体结构" class="headerlink" title="HTML整体结构"></a>HTML整体结构</h3><p>HTML基础设施</p>
+<ul>
+<li><p>文件应以“<!DOCTYPE ......>”首行顶格开始，推荐使用“<!DOCTYPE html>”。</p>
+</li>
+<li><p>必须申明文档的编码charset，且与文件本身编码保持一致，推荐使用UTF-8编码<meta charset="utf-8"/>。</p>
+</li>
+<li><p>根据页面内容和需求填写适当的keywords和description。</p>
+</li>
+<li><p>页面title是极为重要的不可缺少的一项。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>NEC：更好的CSS方案<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;keywords&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;css/style.css&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;shortcut icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;img/favicon.ico&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;apple-touch-icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;img/touchicon.png&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>结构顺序和视觉顺序基本保持一致结构顺序和视觉顺序基本保持一致</p>
+<ul>
+<li>按照从上至下、从左到右的视觉顺序书写HTML结构。</li>
+<li>有时候为了便于搜索引擎抓取，我们也会将重要内容在HTML结构顺序上提前。</li>
+<li>用div代替table布局，可以使HTML更具灵活性，也方便利用CSS控制。</li>
+<li>table不建议用于布局，但表现具有明显表格形式的数据，table还是首选。</li>
+</ul>
+<p>结构、表现、行为三者分离，避免内联</p>
+<ul>
+<li>使用link将css文件引入，并置于head中。</li>
+<li>使用script将js文件引入，并置于body底部。</li>
+</ul>
+<p>保持良好的简洁的树形结构</p>
+<ul>
+<li>每一个块级元素都另起一行，每一行都使用Tab缩进对齐（head和body的子元素不需要缩进）。删除冗余的行尾的空格。</li>
+<li>使用4个空格代替1个Tab（大多数编辑器中可设置）。</li>
+<li>对于内容较为简单的表格，建议将tr写成单行。</li>
+<li>你也可以在大的模块之间用空行隔开，使模块更清晰。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 侧栏内容区 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;m-side&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;side&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sidein&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 热门标签 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sideblk&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;m-hd3&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;tit&quot;</span>&gt;</span>热门标签<span class="tag">&lt;/<span class="name">h3</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                ...</span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">            <span class="comment">&lt;!-- 最热TOP5 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sideblk&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;m-hd3&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;tit&quot;</span>&gt;</span>最热TOP5<span class="tag">&lt;/<span class="name">h3</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span> <span class="attr">class</span>=<span class="string">&quot;s-fc02 f-fr&quot;</span>&gt;</span>更多»<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                ...</span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /侧栏内容区 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>另外，请做到以下几点</p>
+<ul>
+<li><p>结构上如果可以并列书写，就不要嵌套。</p>
+<p>如果可以写成<div></div><div></div>那么就不要写成<div><div></div></div></p>
+</li>
+<li><p>如果结构已经可以满足视觉和语义的要求，那么就不要有额外的冗余的结构。</p>
+<p>比如<div><h2></h2></div>已经能满足要求，那么就不要再写成<div><div><h2></h2></div></div></p>
+</li>
+<li><p>一个标签上引用的className不要过多，越少越好。</p>
+<p>比如不要出现这种情况：<div class="class1 class2 class3 class4"></div></p>
+</li>
+<li><p>对于一个语义化的内部标签，应尽量避免使用className。</p>
+<p>比如在这样一个列表中，li标签中的itm应去除：<ul class="m-help"><li class="itm"></li><li class="itm"></li></ul></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTML表单元素"><a href="#HTML表单元素" class="headerlink" title="HTML表单元素"></a>HTML表单元素</h3><h4 id="input元素"><a href="#input元素" class="headerlink" title="input元素"></a>input元素</h4><p>最重要的表单元素是 <em><input></em> 元素。</p>
+<p><input> 元素根据不同的 <em>type</em> 属性，可以变化为多种形态。</p>
+<p>注释：下一章讲解所有 HTML 输入类型。</p>
+<h4 id="select元素（下拉列表）"><a href="#select元素（下拉列表）" class="headerlink" title="select元素（下拉列表）"></a>select元素（下拉列表）</h4><p><em><select></em> 元素定义<em>下拉列表</em>：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;cars&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;volvo&quot;</span>&gt;</span>Volvo<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;saab&quot;</span>&gt;</span>Saab<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;fiat&quot;</span>&gt;</span>Fiat<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;audi&quot;</span>&gt;</span>Audi<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="option元素定义待选择的选项。"><a href="#option元素定义待选择的选项。" class="headerlink" title="option元素定义待选择的选项。"></a>option元素定义待选择的选项。</h4><p>列表通常会把首个选项显示为被选选项。</p>
+<p>您能够通过添加 selected 属性来定义预定义选项。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;fiat&quot;</span> <span class="attr">selected</span>&gt;</span>Fiat<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="textarea元素"><a href="#textarea元素" class="headerlink" title="textarea元素"></a>textarea元素</h4><p><em><textarea></em> 元素定义多行输入字段（<em>文本域</em>）：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">&quot;message&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;10&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;30&quot;</span>&gt;</span></span><br><span class="line">The cat was playing in the garden.</span><br><span class="line"><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>以上 HTML 代码在浏览器中显示为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">The <span class="built_in">cat</span> was playing <span class="keyword">in</span> the garden.</span><br></pre></td></tr></table></figure>
+
+<h4 id="button元素"><a href="#button元素" class="headerlink" title="button元素"></a>button元素</h4><p><em><button></em> 元素定义可点击的<em>按钮</em>：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;alert(&#x27;Hello World!&#x27;)&quot;</span>&gt;</span>Click Me!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>以上 HTML 代码在浏览器中显示为：</p>
+<p>HTML5 增加了如下表单元素：</p>
+<ul>
+<li>datalist</li>
+<li>keygen</li>
+<li>output</li>
+</ul>
+<p>注释：默认地，浏览器不会显示未知元素。新元素不会破坏您的页面。</p>
+<h4 id="HTML5-datalist元素"><a href="#HTML5-datalist元素" class="headerlink" title="HTML5 datalist元素"></a>HTML5 datalist元素</h4><p><em><datalist></em> 元素为 <input> 元素规定预定义选项列表。</p>
+<p>用户会在他们输入数据时看到预定义选项的下拉列表。</p>
+<p><input> 元素的 <em>list</em> 属性必须引用 <datalist> 元素的 <em>id</em> 属性。</p>
+<p>实例</p>
+<p>通过 <datalist> 设置预定义值的 <input> 元素：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;action_page.php&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">list</span>=<span class="string">&quot;browsers&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">datalist</span> <span class="attr">id</span>=<span class="string">&quot;browsers&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Internet Explorer&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Firefox&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Chrome&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Opera&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Safari&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">datalist</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h2><p>顾名思议，标签选择器是直接将HTML标签作为选择器，可以是p、h1、dl、strong等HTML标签。如：</p>
+<p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/Java/javaxuexi006.png"></p>
+<h3 id="二、id选择器："><a href="#二、id选择器：" class="headerlink" title="二、id选择器："></a>二、id选择器：</h3><p>每一个标签他都有一个共同属性id,所以我们通常给页面元素定义id。如图所示.</p>
+<p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/Java/javaxuexi007.png"></p>
+<p>其中”p1”,”p2”,”p3”是你自己定义的id名称。注意在前面加”#”号。<br>id选择器也同样支持后代选择器(针对嵌套标签) 如图所示:</p>
+<p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/Java/javaxuexi008.png"></p>
+<h3 id="三、类（class）选择器："><a href="#三、类（class）选择器：" class="headerlink" title="三、类（class）选择器："></a>三、类（class）选择器：</h3><p>每一个标签同样都有一个类属性,所以在CSS里用一个点开头表示类别选择器定义，例如：</p>
+<p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/Java/javaxuexi009.png"></p>
+<p>在页面中，用class&#x3D;”类别名”的方法调用,这个方法比较简单灵活，可以随时根据页面需要新建和删除。但需要避免多class综合症。</p>
+<h3 id="四、群组选择器："><a href="#四、群组选择器：" class="headerlink" title="四、群组选择器："></a>四、群组选择器：</h3><p>当几个元素样式属性一样时，可以共同调用一个声明，元素之间用逗号分隔。如：</p>
+<p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/Java/javaxuexi010.png"></p>
+<p>下面来看(标签,id,类)群组选择器如图:</p>
+<p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/Java/javaxuexi011.png"></p>
+<p>使用组群选择器，将会大大的减化CSS代码，将具有多个相同属性的元素，合并群组进行选择，定义同样的CSS属性，这大大的提高了编码效率与CSS文件体积。</p>
+<h3 id="五、后代选择器："><a href="#五、后代选择器：" class="headerlink" title="五、后代选择器："></a>五、后代选择器：</h3><p>后代选择器也称作为派生选择器,通过依据元素在其位置的上下文关系来定义样式，你可以使标记更加简洁。<br>在 CSS 中，通过这种方式来应用规则的选择器被称为上下文选择器 (contextual selectors)，这是由于它们依赖于上下文关系来应用或者避免某项规则。在 CSS2 中，它们称为派生选择器，但是无论你如何称呼它们，它们的作用都是相同的。<br>派生选择器允许你根据文档的上下文关系来确定某个标签的样式。通过合理地使用派生选择器，我们可以使 HTML 代码变得更加整洁。<br>比方说，你希望列表中的 strong 元素变为斜体字，而不是通常的粗体字，可以这样定义一个派生选择器：<br>请注意标记为 <strong>的蓝色代码的上下文关系：</strong></p>
+<p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/Java/javaxuexi012.png"><br>在上面的例子中，只有 li 元素中的 strong 元素的样式为斜体字，无需为 strong 元素定义特别的 class 或 id，代码更加简洁。</p>
+<p>结合使用上面的五种CSS选择器，基本满足了CSS布局的需要，主要在于灵活的使用，特别是后代选择器的使用能大大的简化HTML文档，使HTML做到结构化明确，最小的代码实现同样的效果。<br>选择器讲完了,我们来看看选择器的优先级.</p>
+<h3 id="六-比较器的优先级"><a href="#六-比较器的优先级" class="headerlink" title="六 比较器的优先级"></a>六 比较器的优先级</h3><p>比较同一级别的个数，数量多的优先级高，如果相同即比较下一级别的个数 ，至于各级别的优先级，大家应该已经很清楚了，就是：</p>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">important &gt; 内联 &gt; ID &gt; 类 &gt; 标签 |<span class="string"> 伪类 </span>|<span class="string"> 属性选择 &gt; 伪对象 &gt; 继承 &gt; 通配符 通配符 &gt; 继承1</span></span><br></pre></td></tr></table></figure>
+
+<p>这也就解释了为什么11个标签的定义会比不上1个类的定义，1个类加11个标签会比不上2个类的权重高。</p>
+<p>选择器的优先级计算细则就显得很重要了。<br>之前有人说选择器的优先级是tagname&#x3D;1,classname&#x3D;10,id&#x3D;100, 因此选择器 #demo &gt; ul &gt; .active的优先级就是 100+10+1 &#x3D; 111,实际上真是这么计算的嘛，难道10个class就和一个id的优先级是一样的？</p>
+<p>下面看看官方对选择器的定义：<br>一个选择器的优先级由四个数字a,b,c,d确定。当比较两个选择器时，先比较a，a值大的优先级高，如果a相等则比较b，b值大的优先级高，以此类推。因此，无论b的值多大，也不会对a值的比较造成影响。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">a由style确定，如果一个属性由元素上的style属性定义则a为<span class="number">1</span>，否则a为<span class="number">0</span></span><br><span class="line">b是id的数量</span><br><span class="line">c是<span class="keyword">class</span>和伪类以及属性的数量</span><br><span class="line"><span class="symbol">d</span>是<span class="symbol">tagname</span>以及伪元素的数量<span class="symbol">1234</span></span><br></pre></td></tr></table></figure>
+
+<p>按照这个规则，我们来看看下面这个选择器的优先级：</p>
+<p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/Java/javaxuexi013.png"></p>
+<p>下面我们来看一下优先级的例子,如图所示:</p>
+<p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/Java/javaxuexi014.png"></p>
+<p>上例中的元素是绿色的，因为内联元素的优先级最高<br>同时也可以得出结论，低优先级选择器的叠加是不会影响高优先级的选择器的.</p>
+<h2 id="CSS引入方式"><a href="#CSS引入方式" class="headerlink" title="CSS引入方式"></a>CSS引入方式</h2><h3 id="内嵌式"><a href="#内嵌式" class="headerlink" title="内嵌式"></a>内嵌式</h3><p>通过<code>&lt;style&gt; &lt;/style&gt;</code>来书写CSS代码。</p>
+<p>只能应用于当前网页，不能被其它网页共享。</p>
+<p>注意：<style>标记可以放在网页的任何地方，但一般放在<head>。</p>
+<h3 id="外联式"><a href="#外联式" class="headerlink" title="外联式"></a>外联式</h3><p>通过<link>标记来引入外部的CSS文件(.css)。</p>
+<p>可以被其它网页共享。public.css index.css news.css about.css</p>
+<p>格式：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;link <span class="attribute">href</span>=“CSS的URL” <span class="attribute">rel</span>=“stylesheet” <span class="attribute">type</span>=“text/css” /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意：<link>标记只能放在<head>中</p>
+<h3 id="行内样式"><a href="#行内样式" class="headerlink" title="行内样式"></a>行内样式</h3><p>通过style的属性来书写CSS代码。</p>
+<p>每一个HTML元素，都有 style、class、id、name、title 属性。</p>
+<p>举例：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="section">&lt;p style=“font-size<span class="number">:24</span>px;”&gt;</span><span class="section">&lt;/p&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS的字体&#x2F;文本属性</p>
+<p>Font-size：文字大小</p>
+<p>Font-weight：加粗</p>
+<p>Font-style：斜体</p>
+<p>Color：颜色</p>
+<p>Line-height：行高</p>
+<p>Text-indent：首行缩进</p>
+<p>Text-align：水平对齐</p>
+<p>Letter-spacing：字符间距</p>
+<p>CSS列表</p>
+<p>List-style-type：列表类型，取值：none、circle、 square</p>
+<p>List-style-position：符号位置，取值：inside、outside</p>
+<p>List-style-image：图片路径，举例：list-style-image:url(images&#x2F;li01.gif);</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/post/2018021044.html" title="Java成神之路-HTML和CSS（二）">https://onxs.github.io/post/2018021044.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2018022244.html" rel="prev" title="Java成神之路——框架图（一）">
+                  <i class="fa fa-angle-left"></i> Java成神之路——框架图（一）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/2018021144.html" rel="next" title="Java成神之路-JavaScript（三）">
+                  Java成神之路-JavaScript（三） <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 1989 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MC</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">930k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">56:22</span>
+  </span>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/sidebar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/bookmark.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/search/local-search.min.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js","integrity":"sha256-JJZNsid68vnh3/zyj0lY9BN5ynxVX/12XgOa1TlaYN0="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/pdf.min.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/mermaid.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/fancybox.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/pace.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/math/mathjax.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":false,"timeout":6000,"priority":true,"url":"https://onxs.github.io/post/2018021044.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/quicklink.min.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"onxs/onxs.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/comments/utterances.min.js"></script>
+
+
+</body>
+</html>

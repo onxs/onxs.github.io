@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#056864">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Helvetica:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/config.min.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/post/2018022244.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/post/2018022244.html","path":"post/2018022244.html","title":"设计模式（Design Pattern）导学"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>设计模式（Design Pattern）导学 | MC BLOG</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="MC BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+      <img class="custom-logo-image" src="https://s2.loli.net/2024/05/04/oabunWyc5VspNeU.png" alt="MC BLOG">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">59</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">175</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">175</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHM=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNlZWtAdmlwLnFxLmNvbQ==" title="E-Mail → mailto:ceek@vip.qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS8=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;"><i class="fab fa-twitter fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tLw==" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;"><i class="fab fa-facebook fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9pbnN0YWdyYW0uY29t" title="Instagram → https:&#x2F;&#x2F;instagram.com"><i class="fab fa-instagram fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9vbnhzLm5ldGxpZnkuYXBw" title="https:&#x2F;&#x2F;onxs.netlify.app">镜像站</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.github.io/" title="https:&#x2F;&#x2F;onxs.github.io">主网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018022244.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC BLOG">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="设计模式（Design Pattern）导学 | MC BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          设计模式（Design Pattern）导学<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHMvYmxvZy90cmVlL2Rldi9zb3VyY2UvX3Bvc3RzL1BPU1QwMDAxMzAubWQ=" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-07 22:44:36" itemprop="dateCreated datePublished" datetime="2018-02-07T22:44:36+08:00">2018-02-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img data-src="https://s2.loli.net/2023/04/16/XDgYZ2RMLxIl7Vd.jpg"></p>
+<p>设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。</p>
+<span id="more"></span>
+<ul>
+<li><p><strong>基础知识</strong></p>
+<p><strong>设计模式概述</strong></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MTc2Njg=">从招式与内功谈起——设计模式概述（一）<i class="fa fa-external-link-alt"></i></span>：设计模式从何而来？</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4NjM=">从招式与内功谈起——设计模式概述（二）<i class="fa fa-external-link-alt"></i></span>：设计模式是什么？</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4NjY=">从招式与内功谈起——设计模式概述（三）<i class="fa fa-external-link-alt"></i></span>：设计模式有什么用？附：个人观点</p>
+<p><strong>面向对象设计原则</strong></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1MzY1MzI=">面向对象设计原则概述<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1MzY1NDI=">面向对象设计原则之单一职责原则<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1Mzc1ODQ=">面向对象设计原则之开闭原则<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1NDA0NDU=">面向对象设计原则之里氏代换原则<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1NjI3ODM=">面向对象设计原则之依赖倒转原则<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1NjI4NDI=">面向对象设计原则之接口隔离原则<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1NjM0NDE=">面向对象设计原则之合成复用原则<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1NjM0NDU=">面向对象设计原则之迪米特法则<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>六个创建型模式</strong></p>
+<p>简单工厂模式-Simple Factory Pattern【学习难度：★★☆☆☆，使用频率：★★★☆☆】</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMDAzMzc=">工厂三兄弟之简单工厂模式（一）<i class="fa fa-external-link-alt"></i></span>：图表库的设计</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMDA1NDk=">工厂三兄弟之简单工厂模式（二）<i class="fa fa-external-link-alt"></i></span>：简单工厂模式概述</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMDA2NTc=">工厂三兄弟之简单工厂模式（三）<i class="fa fa-external-link-alt"></i></span>：图表库的简单工厂模式解决方案</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMDA3MzE=">工厂三兄弟之简单工厂模式（四）<i class="fa fa-external-link-alt"></i></span>：图表库解决方案的改进，简单工厂模式的简化，简单工厂模式总结</p>
+<p>工厂方法模式-Factory Method Pattern【学习难度：★★☆☆☆，使用频率：★★★★★】</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMDY0NTc=">工厂三兄弟之工厂方法模式（一）<i class="fa fa-external-link-alt"></i></span>：日志记录器的设计</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMDY3NDU=">工厂三兄弟之工厂方法模式（二）<i class="fa fa-external-link-alt"></i></span>：工厂方法模式概述</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMDcxMzc=">工厂三兄弟之工厂方法模式（三）<i class="fa fa-external-link-alt"></i></span>：日志记录器的工厂方法模式解决方案，反射与配置文件</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMDc1NjE=">工厂三兄弟之工厂方法模式（四）<i class="fa fa-external-link-alt"></i></span>：重载的工厂方法，工厂方法的隐藏，工厂方法模式总结</p>
+<p>抽象工厂模式-Abstract  Factory Pattern【学习难度：★★★★☆，使用频率：★★★★★】</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMTkxODE=">工厂三兄弟之抽象工厂模式（一）<i class="fa fa-external-link-alt"></i></span>：界面皮肤库的初始设计</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMTkzMjM=">工厂三兄弟之抽象工厂模式（二）<i class="fa fa-external-link-alt"></i></span>：产品等级结构与产品族</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMTk0MjM=">工厂三兄弟之抽象工厂模式（三）<i class="fa fa-external-link-alt"></i></span>：抽象工厂模式概述</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMTk0ODE=">工厂三兄弟之抽象工厂模式（四）<i class="fa fa-external-link-alt"></i></span>：界面皮肤库的抽象工厂模式解决方案</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzkzMTk1NzE=">工厂三兄弟之抽象工厂模式（五）<i class="fa fa-external-link-alt"></i></span>：“开闭原则”的倾斜性，抽象工厂模式总结</p>
+<p>单例模式-Singleton Pattern【学习难度：★☆☆☆☆，使用频率：★★★★☆】</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4ODM=">确保对象的唯一性——单例模式 （一）<i class="fa fa-external-link-alt"></i></span>：单例模式的动机，单例模式概述</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4ODU=">确保对象的唯一性——单例模式 （二）<i class="fa fa-external-link-alt"></i></span>：负载均衡器的设计与实现</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4ODY=">确保对象的唯一性——单例模式 （三）<i class="fa fa-external-link-alt"></i></span>：饿汉式单例与懒汉式单例的讨论</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4ODg=">确保对象的唯一性——单例模式 （四）<i class="fa fa-external-link-alt"></i></span>：一种更好的单例实现方法（静态内部类）</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4ODk=">确保对象的唯一性——单例模式 （五）<i class="fa fa-external-link-alt"></i></span>：单例模式总结</p>
+<p>原型模式-Prototype Pattern【学习难度：★★★☆☆，使用频率：★★★☆☆】</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjQ1NTk=">对象的克隆——原型模式（一）<i class="fa fa-external-link-alt"></i></span>：大同小异的工作周报，原型模式概述</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjQ1OTQ=">对象的克隆——原型模式（二）<i class="fa fa-external-link-alt"></i></span>：工作周报的原型模式解决方案</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjQ2MjA=">对象的克隆——原型模式（三）<i class="fa fa-external-link-alt"></i></span>：带附件的周报【浅克隆，深克隆】</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjQ2MjM=">对象的克隆——原型模式（四）<i class="fa fa-external-link-alt"></i></span>：原型管理器的引入和实现，原型模式总结</p>
+<p>建造者模式-Builder Pattern【学习难度：★★★★☆，使用频率：★★☆☆☆】</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjYwMTU=">复杂对象的组装与创建——建造者模式（一）<i class="fa fa-external-link-alt"></i></span>：游戏角色设计，建造者模式概述</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjYzMjM=">复杂对象的组装与创建——建造者模式（二）<i class="fa fa-external-link-alt"></i></span>：游戏角色设计的建造者模式解决方案</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjY4NTU=">复杂对象的组装与创建——建造者模式（三）<i class="fa fa-external-link-alt"></i></span>：关于Director的进一步讨论，建造者模式总结</p>
+<p><strong>七个结构型模式</strong></p>
+<p>适配器模式-Adapter Pattern【学习难度：★★☆☆☆，使用频率：★★★★☆】</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg2MjQzMjU=">不兼容结构的协调——适配器模式（一）<i class="fa fa-external-link-alt"></i></span>：没有源码的算法库，适配器模式概述</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg2MjQ0MTI=">不兼容结构的协调——适配器模式（二）<i class="fa fa-external-link-alt"></i></span>：没有源码的算法库的适配器模式解决方案</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg2MjQ0Mjg=">不兼容结构的协调——适配器模式（三）<i class="fa fa-external-link-alt"></i></span>：类适配器，双向适配器</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg2MjQ2MzM=">不兼容结构的协调——适配器模式（四）<i class="fa fa-external-link-alt"></i></span>：缺省适配器，适配器模式总结</p>
+<p><strong>桥接模式-Bridge Pattern【学习难度：</strong>★★★☆☆<strong>，使用频率：<strong><strong>★★★☆☆</strong></strong>】</strong></p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0NjQxODM=">处理多维度变化——桥接模式（一）<i class="fa fa-external-link-alt"></i></span>：跨平台图像浏览系统</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0NjQxOTU=">处理多维度变化——桥接模式（二）<i class="fa fa-external-link-alt"></i></span>：桥接模式概述</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0NjQyMDQ=">处理多维度变化——桥接模式（三）<i class="fa fa-external-link-alt"></i></span>：跨平台图像浏览系统的桥接模式解决方案</p>
+<p><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0NjQyMDg=">处理多维度变化——桥接模式（四）<i class="fa fa-external-link-alt"></i></span>：适配器模式与桥接模式的联用，桥接模式总结</p>
+</li>
+</ul>
+<hr>
+<p>  组合模式-Composite Pattern【学习难度：★★★☆☆，使用频率：★★★★☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc5NTY4OTg=">树形结构的处理——组合模式（一）<i class="fa fa-external-link-alt"></i></span>：设计杀毒软件的框架结构</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc5NTY5MDg=">树形结构的处理——组合模式（二）<i class="fa fa-external-link-alt"></i></span>：组合模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc5NTY5MzE=">树形结构的处理——组合模式（三）<i class="fa fa-external-link-alt"></i></span>：杀毒软件的框架结构的组合模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc5NTY5Mzc=">树形结构的处理——组合模式（四）<i class="fa fa-external-link-alt"></i></span>：透明组合模式与安全组合模式</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc5NTY5NjI=">树形结构的处理——组合模式（五）<i class="fa fa-external-link-alt"></i></span>：公司组织结构，组合模式总结</p>
+<hr>
+<p>  装饰模式-Decorator Pattern【学习难度：★★★☆☆，使用频率：★★★☆☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjQ2ODU=">扩展系统功能——装饰模式（一）<i class="fa fa-external-link-alt"></i></span>：图形界面构件库的设计</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjU4NDk=">扩展系统功能——装饰模式（二）<i class="fa fa-external-link-alt"></i></span>：装饰模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjU4NjE=">扩展系统功能——装饰模式（三）<i class="fa fa-external-link-alt"></i></span>：图形界面构件库的装饰模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjU4NzM=">扩展系统功能——装饰模式（四）<i class="fa fa-external-link-alt"></i></span>：透明装饰模式与半透明装饰模式，装饰模式注意事项，装饰模式总结</p>
+<hr>
+<p>  外观模式-Facade Pattern【学习难度：★☆☆☆☆，使用频率：★★★★★】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyNTgxMjE=">深入浅出外观模式（一）<i class="fa fa-external-link-alt"></i></span>：外观模式概述，外观模式结构与实现</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyNTk3MDU=">深入浅出外观模式（二）<i class="fa fa-external-link-alt"></i></span>：外观模式应用实例（文件加密模块）</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyNTk3ODk=">深入浅出外观模式（三）<i class="fa fa-external-link-alt"></i></span>：抽象外观类，外观模式效果与适用场景</p>
+<hr>
+<p>  享元模式-Flyweight Pattern【学习难度：★★★★☆，使用频率：★☆☆☆☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc2Njc3ODE=">实现对象的复用——享元模式（一）<i class="fa fa-external-link-alt"></i></span>：围棋棋子的设计，享元模式概述（上）</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc2Njc4MTA=">实现对象的复用——享元模式（二）<i class="fa fa-external-link-alt"></i></span>：享元模式概述（下）</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc2Njc4Mzk=">实现对象的复用——享元模式（三）<i class="fa fa-external-link-alt"></i></span>：围棋棋子的享元模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc2Njc4NjA=">实现对象的复用——享元模式（四）<i class="fa fa-external-link-alt"></i></span>：带外部状态的围棋棋子解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc2Njc5MDE=">实现对象的复用——享元模式（五）<i class="fa fa-external-link-alt"></i></span>：单纯享元模式和复合享元模式，关于享元模式的几点补充，享元模式总结</p>
+<hr>
+<p>  代理模式-Proxy Pattern【学习难度：★★★☆☆，使用频率：★★★★☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyMjc5NTM=">代理模式（一）<i class="fa fa-external-link-alt"></i></span>：代理模式概述，代理模式结构与实现</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyMjgwNDI=">代理模式（二）<i class="fa fa-external-link-alt"></i></span>：代理模式应用实例（收费商务信息查询系统）</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyMjgxMzI=">代理模式（三）<i class="fa fa-external-link-alt"></i></span>：远程代理，虚拟代理，缓冲代理</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyMjgxNTY=">代理模式（四）<i class="fa fa-external-link-alt"></i></span>：代理模式效果与适用场景</p>
+<p>  <strong>十一个行为型模式</strong></p>
+<p>  职责链模式-Chain of Responsibility Pattern【学习难度：★★★☆☆，使用频率：★★☆☆☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4OTE=">请求的链式处理——职责链模式（一）<i class="fa fa-external-link-alt"></i></span>：采购单的分级审批</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4OTM=">请求的链式处理——职责链模式（二）<i class="fa fa-external-link-alt"></i></span>：职责链模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA4OTg=">请求的链式处理——职责链模式（三）<i class="fa fa-external-link-alt"></i></span>：采购单分级审批的职责链模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MjA5MDI=">请求的链式处理——职责链模式（四）<i class="fa fa-external-link-alt"></i></span>：纯与不纯的职责链模式，职责链模式总结</p>
+<hr>
+<p>  命令模式-Command Pattern【学习难度：★★★<strong>☆☆<strong><strong>，使用频率：</strong></strong>★★★★☆****】</strong></p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg3OTY3MzY=">请求发送者与接收者解耦——命令模式（一）<i class="fa fa-external-link-alt"></i></span>：自定义功能键，命令模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg4MDYwNDk=">请求发送者与接收者解耦——命令模式（二）<i class="fa fa-external-link-alt"></i></span>：自定义功能键的命令模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg4MDYyMzk=">请求发送者与接收者解耦——命令模式（三）<i class="fa fa-external-link-alt"></i></span>：命令队列的实现</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg4MDY1MDk=">请求发送者与接收者解耦——命令模式（四）<i class="fa fa-external-link-alt"></i></span>：撤销操作的简单实现</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg4MDY2NDM=">请求发送者与接收者解耦——命令模式（五）<i class="fa fa-external-link-alt"></i></span>：请求日志</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg4MDY2Nzc=">请求发送者与接收者解耦——命令模式（六）<i class="fa fa-external-link-alt"></i></span>：宏命令，命令模式总结</p>
+<p>  解释器模式-Interpreter Pattern【学习难度：★★★★★，使用频率：★☆☆☆☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MTM1Njc=">自定义语言的实现——解释器模式（一）<i class="fa fa-external-link-alt"></i></span>：机器人控制程序</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MTM1Nzg=">自定义语言的实现——解释器模式（二）<i class="fa fa-external-link-alt"></i></span>：文法规则和抽象语法树</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MTM1ODk=">自定义语言的实现——解释器模式（三）<i class="fa fa-external-link-alt"></i></span>：解释器模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MTM1OTM=">自定义语言的实现——解释器模式（四）<i class="fa fa-external-link-alt"></i></span>：机器人控制程序的解释器模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MTM2MDI=">自定义语言的实现——解释器模式（五）<i class="fa fa-external-link-alt"></i></span>：再谈Context的作用</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MTM2MTU=">自定义语言的实现——解释器模式（六）<i class="fa fa-external-link-alt"></i></span>：解释器模式总结</p>
+<hr>
+<p>  迭代器模式-Iterator Pattern【学习难度：★★★☆☆，使用频率：★★★★★】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzk5OTIwMDU=">遍历聚合对象中的元素——迭代器模式（一）<i class="fa fa-external-link-alt"></i></span>：销售管理系统中数据的遍历</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzk5OTIyNDM=">遍历聚合对象中的元素——迭代器模式（二）<i class="fa fa-external-link-alt"></i></span>：迭代器模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzk5OTI2Nzk=">遍历聚合对象中的元素——迭代器模式（三）<i class="fa fa-external-link-alt"></i></span>：销售管理系统中数据的遍历的迭代器模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzk5OTI3MzE=">遍历聚合对象中的元素——迭代器模式（四）<i class="fa fa-external-link-alt"></i></span>：使用内部类实现迭代器</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzk5OTI3OTk=">遍历聚合对象中的元素——迭代器模式（五）<i class="fa fa-external-link-alt"></i></span>：JDK内置迭代器的使用</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzk5OTI5MzE=">遍历聚合对象中的元素——迭代器模式（六）<i class="fa fa-external-link-alt"></i></span>：迭代器模式总结</p>
+<p>  中介者模式-Mediator Pattern【学习难度：★★★☆☆，使用频率：★★☆☆☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg0ODI5NTI=">协调多个对象之间的交互——中介者模式（一）<i class="fa fa-external-link-alt"></i></span>：客户信息管理窗口的初始设计</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg0ODMwMDU=">协调多个对象之间的交互——中介者模式（二）<i class="fa fa-external-link-alt"></i></span>：中介者模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg0ODMwMzE=">协调多个对象之间的交互——中介者模式（三）<i class="fa fa-external-link-alt"></i></span>：客户信息管理窗口的中介者模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg0ODMwODE=">协调多个对象之间的交互——中介者模式（四）<i class="fa fa-external-link-alt"></i></span>：中介者与同事类的扩展</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg0ODMxNTE=">协调多个对象之间的交互——中介者模式（五）<i class="fa fa-external-link-alt"></i></span>：中介者模式总结</p>
+<p>  备忘录模式-Memento Pattern【学习难度：★★☆☆☆，使用频率：★★☆☆☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1MjY3NDA=">撤销功能的实现——备忘录模式（一）<i class="fa fa-external-link-alt"></i></span>：可悔棋的中国象棋</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1MjY3NDc=">撤销功能的实现——备忘录模式（二）<i class="fa fa-external-link-alt"></i></span>：备忘录模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1MjY3NTU=">撤销功能的实现——备忘录模式（三）<i class="fa fa-external-link-alt"></i></span>：中国象棋的备忘录模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1MjY3NTY=">撤销功能的实现——备忘录模式（四）<i class="fa fa-external-link-alt"></i></span>：实现多次撤销</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc1MjY3NTk=">撤销功能的实现——备忘录模式（五）<i class="fa fa-external-link-alt"></i></span>：再谈备忘录的封装，备忘录模式总结</p>
+<hr>
+<p>  观察者模式-Observer Pattern【学习难度：★★★☆☆，使用频率：★★★★★】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MjAyMzI=">对象间的联动——观察者模式（一）<i class="fa fa-external-link-alt"></i></span>：多人联机对战游戏的设计</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MjAzODI=">对象间的联动——观察者模式（二）<i class="fa fa-external-link-alt"></i></span>：观察者模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MjA0OTA=">对象间的联动——观察者模式（三）<i class="fa fa-external-link-alt"></i></span>：多人联机对战游戏的观察者模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MjA1MDc=">对象间的联动——观察者模式（四）<i class="fa fa-external-link-alt"></i></span>：JDK对观察者模式的支持</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MjA1MjI=">对象间的联动——观察者模式（五）<i class="fa fa-external-link-alt"></i></span>：观察者模式与Java事件处理</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MjA1Mzc=">对象间的联动——观察者模式（六）<i class="fa fa-external-link-alt"></i></span>：观察者模式与MVC，观察者模式总结</p>
+<p>  状态模式-State Pattern【学习难度：★★★☆☆，使用频率：★★★☆☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg1MjI5ODI=">处理对象的多种状态及其相互转换——状态模式（一）<i class="fa fa-external-link-alt"></i></span>：银行系统中的账户类设计</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg1MjMwNjI=">处理对象的多种状态及其相互转换——状态模式（二）<i class="fa fa-external-link-alt"></i></span>：状态模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg1MjMwODM=">处理对象的多种状态及其相互转换——状态模式（三）<i class="fa fa-external-link-alt"></i></span>：账户类的状态模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg1MjMxMDU=">处理对象的多种状态及其相互转换——状态模式（四）<i class="fa fa-external-link-alt"></i></span>：共享状态的实现</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg1MjMxMzA=">处理对象的多种状态及其相互转换——状态模式（五）<i class="fa fa-external-link-alt"></i></span>：使用环境类实现状态转换</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg1MjMxNjI=">处理对象的多种状态及其相互转换——状态模式（六）<i class="fa fa-external-link-alt"></i></span>：状态模式总结</p>
+<p>  策略模式-Strategy Pattern【学习难度：★☆☆☆☆，使用频率：★★★★☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc4MTg5ODM=">算法的封装与切换——策略模式（一）<i class="fa fa-external-link-alt"></i></span>：电影票打折方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc4MTkxMzY=">算法的封装与切换——策略模式（二）<i class="fa fa-external-link-alt"></i></span>：策略模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc4MTkyMTY=">算法的封装与切换——策略模式（三）<i class="fa fa-external-link-alt"></i></span>：电影票打折方案的策略模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc4MTkyNjY=">算法的封装与切换——策略模式（四）<i class="fa fa-external-link-alt"></i></span>：策略模式的两个典型应用，策略模式总结</p>
+<p>  模板方法模式-Template Method Pattern【学习难度：★★☆☆☆，使用频率：★★★☆☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyOTk3OTQ=">模板方法模式深度解析（一）<i class="fa fa-external-link-alt"></i></span>：模板方法模式概述，模板方法模式结构与实现</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyOTk4NjM=">模板方法模式深度解析（二）<i class="fa fa-external-link-alt"></i></span>：模板方法模式应用实例（银行利息计算模块）</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyOTk5Mjc=">模板方法模式深度解析（三）<i class="fa fa-external-link-alt"></i></span>：钩子方法的使用，模板方法模式效果与适用场景</p>
+<p>  访问者模式-Visitor Pattern【学习难度：★★★★☆，使用频率：★☆☆☆☆】</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MzM1MjM=">操作复杂对象结构——访问者模式（一）<i class="fa fa-external-link-alt"></i></span>：OA系统中员工数据汇总</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MzM1Njc=">操作复杂对象结构——访问者模式（二）<i class="fa fa-external-link-alt"></i></span>：访问者模式概述</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MzM1NzY=">操作复杂对象结构——访问者模式（三）<i class="fa fa-external-link-alt"></i></span>：OA系统中员工数据汇总的访问者模式解决方案</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc0MzM1OTE=">操作复杂对象结构——访问者模式（四）<i class="fa fa-external-link-alt"></i></span>：访问者模式与组合模式联用，访问者模式总结</p>
+<hr>
+<p>  <strong>设计模式趣味学习（复习）</strong></p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MDczODA=">设计模式与足球（一）<i class="fa fa-external-link-alt"></i></span>：创建型模式</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MDc0OTc=">设计模式与足球（二）<i class="fa fa-external-link-alt"></i></span>：结构型模式</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MDc2MDU=">设计模式与足球（三）<i class="fa fa-external-link-alt"></i></span>：行为型模式（上）</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzc3MDgyMDg=">设计模式与足球（四）<i class="fa fa-external-link-alt"></i></span>：行为型模式（下）</p>
+<hr>
+<p>  设计模式综合应用实例</p>
+<p>  多人联机射击游戏</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyNjI5ODc=">多人联机射击游戏中的设计模式应用（一）<i class="fa fa-external-link-alt"></i></span>：抽象工厂模式，建造者模式，工厂方法模式，迭代器模式，命令模式</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzgyNjMwMjU=">多人联机射击游戏中的设计模式应用（二）<i class="fa fa-external-link-alt"></i></span>：观察者模式，单例模式，状态模式，适配器模式</p>
+<p>  数据库同步系统</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg2NzExOTY=">设计模式综合实例分析之数据库同步系统（一）<i class="fa fa-external-link-alt"></i></span>：数据库同步系统概述，建造者模式，简单工厂模式</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg2NzE1Nzg=">设计模式综合实例分析之数据库同步系统（二）<i class="fa fa-external-link-alt"></i></span>：享元模式，单例模式，观察者模式，模板方法模式</p>
+<p>  <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbG92ZWxpb24vYXJ0aWNsZS9kZXRhaWxzLzg2NzE2NTM=">设计模式综合实例分析之数据库同步系统（三）<i class="fa fa-external-link-alt"></i></span>：策略模式，组合模式，命令模式，职责链模式</p>
+<p>  **【作者：刘伟  **<a target="_blank" rel="noopener" href="http://blog.csdn.net/lovelion"><strong>http://blog.csdn.net/lovelion</strong></a><strong>】</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/post/2018022244.html" title="设计模式（Design Pattern）导学">https://onxs.github.io/post/2018022244.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2018021844.html" rel="prev" title="产品设计-产品架构和业务逻辑">
+                  <i class="fa fa-angle-left"></i> 产品设计-产品架构和业务逻辑
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/2018022244.html" rel="next" title="设计模式（Design Pattern）之一">
+                  设计模式（Design Pattern）之一 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 1989 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MC</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">930k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">56:22</span>
+  </span>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/sidebar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/bookmark.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/search/local-search.min.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js","integrity":"sha256-JJZNsid68vnh3/zyj0lY9BN5ynxVX/12XgOa1TlaYN0="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/pdf.min.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/mermaid.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/fancybox.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/pace.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/math/mathjax.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":false,"timeout":6000,"priority":true,"url":"https://onxs.github.io/post/2018022244.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/quicklink.min.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"onxs/onxs.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/comments/utterances.min.js"></script>
+
+
+</body>
+</html>

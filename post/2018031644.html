@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#056864">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Helvetica:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/config.min.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/post/2018031644.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/post/2018031644.html","path":"post/2018031644.html","title":"库内新增对象的流程及其他技巧"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>库内新增对象的流程及其他技巧 | MC BLOG</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="MC BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+      <img class="custom-logo-image" src="https://s2.loli.net/2024/05/04/oabunWyc5VspNeU.png" alt="MC BLOG">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">59</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">175</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9AEntity"><span class="nav-number">1.</span> <span class="nav-text">第一步：Entity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9ADao"><span class="nav-number">2.</span> <span class="nav-text">第二步：Dao</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9AService"><span class="nav-number">3.</span> <span class="nav-text">第三步：Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9AAction"><span class="nav-number">4.</span> <span class="nav-text">第四步：Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9ADirective"><span class="nav-number">5.</span> <span class="nav-text">第五步：Directive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F%E7%82%B9%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">特别注意点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E%EF%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">国际化文件说明：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%90%8E%E5%8F%B0%E8%AE%BF%E9%97%AE%E5%9C%B0%E5%9D%80"><span class="nav-number">8.</span> <span class="nav-text">修改后台访问地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="nav-number">9.</span> <span class="nav-text">通过数据库修改密码</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">175</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHM=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNlZWtAdmlwLnFxLmNvbQ==" title="E-Mail → mailto:ceek@vip.qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS8=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;"><i class="fab fa-twitter fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tLw==" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;"><i class="fab fa-facebook fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9pbnN0YWdyYW0uY29t" title="Instagram → https:&#x2F;&#x2F;instagram.com"><i class="fab fa-instagram fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9vbnhzLm5ldGxpZnkuYXBw" title="https:&#x2F;&#x2F;onxs.netlify.app">镜像站</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.github.io/" title="https:&#x2F;&#x2F;onxs.github.io">主网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/post/2017091534.html" rel="bookmark">
+        <time class="popular-posts-time">2017-09-04</time>
+        <br>
+      JEECMS自定义标签
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/post/2017122134.html" rel="bookmark">
+        <time class="popular-posts-time">2017-12-06</time>
+        <br>
+      Eclipse部署Web项目到tomcat根路径下
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018031644.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC BLOG">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="库内新增对象的流程及其他技巧 | MC BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          库内新增对象的流程及其他技巧<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHMvYmxvZy90cmVlL2Rldi9zb3VyY2UvX3Bvc3RzL+W6k+WGheaWsOWinuWvueixoeeahOa1geeoi+WPiuWFtuS7luaKgOW3py5tZA==" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-10 16:44:36" itemprop="dateCreated datePublished" datetime="2018-03-10T16:44:36+08:00">2018-03-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cms/" itemprop="url" rel="index"><span itemprop="name">cms</span></a>
+        </span>
+    </span>
+
+  
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>941</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img data-src="https://s2.loli.net/2023/04/15/auXHkLIB3jz4lwU.jpg"></p>
+<p>cms开发 ———— 库内新增对象Products的流程说明及其他技巧</p>
+<span id="more"></span>
+<h3 id="第一步：Entity"><a href="#第一步：Entity" class="headerlink" title="第一步：Entity"></a>第一步：Entity</h3><ol>
+<li><code>com.jeecms.cms.entity.assist.base</code>下建立模型基础类<code>BaseCmsProducts.java</code></li>
+<li><code>com.jeecms.cms.entity.assist</code>  下建立对象类继承继承模型CmsProducts.java</li>
+<li><code>com.jeecms.cms.entity.assist.hbm</code> 配置hibernate对象映射CmsProducts.hbm.xml</li>
+<li><code>src .ehcache-hibernate.xml</code> 缓存对象配置：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">&quot;com.jeecms.cms.entity.assist.CmsProducts&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">maxElementsInMemory</span>=<span class="string">&quot;100&quot;</span> <span class="attr">eternal</span>=<span class="string">&quot;false&quot;</span> <span class="attr">timeToIdleSeconds</span>=<span class="string">&quot;600&quot;</span> <span class="attr">timeToLiveSeconds</span>=<span class="string">&quot;7200&quot;</span> <span class="attr">overflowToDisk</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="第二步：Dao"><a href="#第二步：Dao" class="headerlink" title="第二步：Dao"></a>第二步：Dao</h3><ol>
+<li><code>com.jeecms.cms.dao.assist</code>数据库交互持久层DAO接口和实现<code>ProductsDao.java</code> <code>ProductsDaoImpl.java</code> </li>
+<li>配置<code>WebRoot/WEB-INF/config/jeecms-context.xml</code>文件:</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cmsproductsDao&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">class</span>=<span class="string">&quot;com.jeecms.cms.dao.assist.impl.CmsProductsDaoImpl&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="第三步：Service"><a href="#第三步：Service" class="headerlink" title="第三步：Service"></a>第三步：Service</h3><ol>
+<li><code>com.jeecms.cms.manager.assist</code>业务层接口和实现，<code>ProductsMng.java , ProductsMngImpl.java</code></li>
+<li>配置<code>WebRoot/WEB-INF/config/jeecms-context.xml</code>文件:</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cmsProductsMng&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">class</span>=<span class="string">&quot;com.jeecms.cms.manager.assist.impl.CmsProductsMngImpl&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="第四步：Action"><a href="#第四步：Action" class="headerlink" title="第四步：Action"></a>第四步：Action</h3><ol>
+<li><code>com.jeecms.cms.action.front</code> 写Action与前台对接，<code>ProductsAct.java</code></li>
+<li>XML配置：<code>jeecms-servlet-front-action.xml</code></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;productsAct&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">class</span>=<span class="string">&quot;com.jeecms.cms.action.front.ProductsAct&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><code>com.jeecms.cms.action.admin.assist</code> （加、删、改）写Action与后台对接<code>CmsProductsAct.java</code> </li>
+<li>XML配置：<code>jeecms-servlet-admin-action.xml</code></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cmsProductsAct&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">class</span>=<span class="string">&quot;com.jeecms.cms.action.admin.assist.CmsProductsAct&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="第五步：Directive"><a href="#第五步：Directive" class="headerlink" title="第五步：Directive"></a>第五步：Directive</h3><ol>
+<li><code>com.jeecms.cms.action.directive</code> (设置并返回标签对象<code>[@cms_products_page]</code>)</li>
+<li>配置<code>WebRoot/WEB-INF/config/jeecms-context.xml</code>文件:</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cms_products_page&quot;</span> </span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"><span class="attr">class</span>=<span class="string">&quot;com.jeecms.cms.action.directive.CmsProductsDirective&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;staticPageSvc&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.jeecms.cms.staticpage.StaticPageSvcImpl&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;tplMessageSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;tplMessageSource&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;freeMarkerConfigurer&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;freemarkerVariables&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>此处添加标签的配置信息：</li>
+</ol>
+   <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;cms_products_page&quot;</span> <span class="attr">value-ref</span>=<span class="string">&quot;cms_products_page&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>配置<code>WebRoot/WEB-INF/config/ Jeecms-servlet-front.xml</code>文件:</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;freemarkerConfig&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;freemarkerVariables&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>此处添加标签的配置信息：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;cms_products_page&quot;</span> <span class="attr">value-ref</span>=<span class="string">&quot;cms_products_page&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="特别注意点："><a href="#特别注意点：" class="headerlink" title="特别注意点："></a>特别注意点：</h3><ol>
+<li>对象模板位置控制：<code>com.jeecms.cms.action.front.ProductsAct.java</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 方案路径site.getSolutionPath()=”/WEB-INF/t/cms/www/default”</span></span><br><span class="line"><span class="comment">// TPLDIR_SPECIAL=&quot;special&quot; 模板位置</span></span><br><span class="line"><span class="comment">// PRODUCTS_INDEX= &quot;tpl.productsIndex&quot;; 模板名称</span></span><br><span class="line"><span class="keyword">return</span> FrontUtils.getTplPath(request, site.getSolutionPath(),TPLDIR_SPECIAL, PRODUCTS_INDEX);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>PRODUCTS_INDEX</code>对象需要在国际化处进行设置：<code>WebRoot/WEB-INF/languages/jeecms_tpl/messages_zh_CN.properties</code> ：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">tpl.productsIndex=products_index</span><br></pre></td></tr></table></figure>
+
+<h3 id="国际化文件说明："><a href="#国际化文件说明：" class="headerlink" title="国际化文件说明："></a>国际化文件说明：</h3><ol>
+<li><p><code>WEB-INF/languages/fck</code>  友情提示</p>
+</li>
+<li><p><code>WEB-INF/languages/jeecms_admin</code>  (后台)功能页面，如：首页》内容统计 <code>statistic.function.content=内容统计</code></p>
+</li>
+<li><p><code>WEB-INF/languages/jeecms_front</code>  (前台)友情提示，如：验证码错误。</p>
+</li>
+<li><p><code>WEB-INF/languages/jeecms_tpl</code>    (前台)功能页面，如：投票内容页， <code>tpl.tagDetail=voteIndex</code></p>
+</li>
+<li><p><code>WEB-INF/languages/jeecore_admin</code> 功能按钮、提示信息，如：<code>global.submit=提交，global.confirm.logout=您确定退出吗？</code></p>
+</li>
+</ol>
+<h3 id="修改后台访问地址"><a href="#修改后台访问地址" class="headerlink" title="修改后台访问地址"></a>修改后台访问地址</h3><p>将<code>jeeadmin/jeecms/index.do</code> 改为<code>admin/index.do</code>为例</p>
+<ol>
+<li>修改<code>WebContent\WEB-INF\web.xml</code></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>JeeCmsAdmin<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/jeeadmin/jeecms/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span>  </span><br></pre></td></tr></table></figure>
+
+<p>改为 </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>JeeCmsAdmin<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/admin/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改<code>WebContent\WEB-INF\config\jeecms-servlet-admin.xml</code></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;appBase&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/jeeadmin/jeecms&quot;</span>/&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>改为 </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;appBase&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/admin&quot;</span>/&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改<code>WebContent\WEB-INF\config\shiro-context.xml</code></li>
+</ol>
+<p>把 </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">*.jspx = anon </span><br><span class="line">*.jhtml = anon </span><br><span class="line">/member/forgot_password.jspx = anon </span><br><span class="line">/member/password_reset.jspx = anon </span><br><span class="line">/login.jspx = authc </span><br><span class="line">/logout.jspx = logout </span><br><span class="line">/member/** = user </span><br><span class="line">/jeeadmin/jeecms/login.do = authc </span><br><span class="line">/jeeadmin/jeecms/logout.do = logout </span><br><span class="line">/jeeadmin/jeecms/** =user </span><br></pre></td></tr></table></figure>
+
+<p>改为              </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">*.jspx = anon </span><br><span class="line">  *.jhtml = anon </span><br><span class="line">  /member/forgot_password.jspx = anon </span><br><span class="line">  /member/password_reset.jspx = anon </span><br><span class="line">  /login.jspx = authc </span><br><span class="line">  /logout.jspx = logout </span><br><span class="line">  /member/** = user </span><br><span class="line">  /admin/login.do = authc </span><br><span class="line">  /admin/logout.do = logout </span><br><span class="line">  /admin/** =user </span><br></pre></td></tr></table></figure>
+
+<p>把 </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;adminLogin&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/jeeadmin/jeecms/login.do&quot;</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;adminPrefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/jeeadmin/jeecms/&quot;</span>/&gt;</span>  </span><br></pre></td></tr></table></figure>
+
+<p>改为 </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;adminLogin&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/admin/login.do&quot;</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;adminPrefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/admin/&quot;</span>/&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>把 </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;adminIndex&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/jeeadmin/jeecms/index.do&quot;</span>/&gt;</span> </span><br></pre></td></tr></table></figure>
+
+
+<p>改为 </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;adminIndex&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/admin/index.do&quot;</span>/&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改<code>\src\com\jeecms\cms\web\AdminContextInterceptor.java</code></li>
+</ol>
+<p>把</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">getURI</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> IllegalStateException &#123; </span><br><span class="line">        <span class="type">UrlPathHelper</span> <span class="variable">helper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UrlPathHelper</span>(); </span><br><span class="line">        <span class="type">String</span> <span class="variable">uri</span> <span class="operator">=</span> helper.getOriginatingRequestUri(request); </span><br><span class="line">        <span class="type">String</span> <span class="variable">ctxPath</span> <span class="operator">=</span> helper.getOriginatingContextPath(request); </span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>, i = <span class="number">0</span>, count = <span class="number">2</span> </span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isBlank(ctxPath)) &#123; </span><br><span class="line">            count++; </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">while</span> (i &lt; count &amp;&amp; start != -<span class="number">1</span>) &#123; </span><br><span class="line">            start = uri.indexOf(<span class="string">&#x27;/&#x27;</span>, start + <span class="number">1</span>); </span><br><span class="line">            i++; </span><br><span class="line">        &#125; </span><br><span class="line">    <span class="keyword">if</span> (start &lt;= <span class="number">0</span>) &#123; </span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalStateException</span>(<span class="string">&quot;admin access path not like &#x27;/jeeadmin/jeecms/...&#x27; pattern: &quot;</span> + uri); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> uri.substring(start); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>改为 </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">getURI</span><span class="params">(HttpServletRequest request)</span> <span class="keyword">throws</span> IllegalStateException &#123; </span><br><span class="line">        <span class="type">UrlPathHelper</span> <span class="variable">helper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UrlPathHelper</span>(); </span><br><span class="line">        <span class="type">String</span> <span class="variable">uri</span> <span class="operator">=</span> helper.getOriginatingRequestUri(request); </span><br><span class="line">        <span class="type">String</span> <span class="variable">ctxPath</span> <span class="operator">=</span> helper.getOriginatingContextPath(request); </span><br><span class="line">        <span class="comment">// int start = 0, i = 0, count = 2;修改 </span></span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>, i = <span class="number">0</span>, count = <span class="number">1</span>; </span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isBlank(ctxPath)) &#123; </span><br><span class="line">            count++; </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">while</span> (i &lt; count &amp;&amp; start != -<span class="number">1</span>) &#123; </span><br><span class="line">            start = uri.indexOf(<span class="string">&#x27;/&#x27;</span>, start + <span class="number">1</span>); </span><br><span class="line">            i++; </span><br><span class="line">        &#125;   </span><br><span class="line">    <span class="keyword">if</span> (start &lt;= <span class="number">0</span>) &#123; </span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalStateException</span>(<span class="string">&quot;admin access path not like &#x27;/admin/...&#x27; pattern: &quot;</span> + uri); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> uri.substring(start); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="通过数据库修改密码"><a href="#通过数据库修改密码" class="headerlink" title="通过数据库修改密码"></a>通过数据库修改密码</h3><ol>
+<li>通过数据库修改admin密码</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> core_user;</span><br><span class="line"><span class="operator">|</span>       <span class="number">1</span> <span class="operator">|</span> admin      <span class="operator">|</span> jobar     <span class="operator">|</span> <span class="number">0230504</span>dd5de96d2f6784d45d1bc7633 <span class="operator">|</span></span><br></pre></td></tr></table></figure>
+
+<p>密码已经是被加密过的了。</p>
+<ol start="2">
+<li>密码加密类：<code>com.ponyjava.common.util.Md5PwdEncoder</code></li>
+</ol>
+<p> 例如我想将密码设为“zhaozh”,就先用这个类加密，然后更新数据库就ok了。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">Md5PwdEncoder</span> <span class="variable">encoder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Md5PwdEncoder</span>();</span><br><span class="line">		System.out.println(encoder.encodePassword(<span class="string">&quot;zhaozh&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出为：<code>f06238ff925a61f9c62de7d64c64bad3</code></p>
+<p>mysql&gt;</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">update</span> core_user <span class="keyword">set</span> password<span class="operator">=</span><span class="string">&#x27;f06238ff925a61f9c62de7d64c64bad3&#x27;</span> <span class="keyword">where</span> user_id<span class="operator">=</span><span class="string">&#x27;1&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>再次登录就ok了。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/post/2018031644.html" title="库内新增对象的流程及其他技巧">https://onxs.github.io/post/2018031644.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/cms/" rel="tag"><i class="fa fa-tag"></i> cms</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2018021644.html" rel="prev" title="API开发规范">
+                  <i class="fa fa-angle-left"></i> API开发规范
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/2018031644.html" rel="next" title="Logback日志组件的使用">
+                  Logback日志组件的使用 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 1989 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MC</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">930k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">56:22</span>
+  </span>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/sidebar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/bookmark.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/search/local-search.min.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js","integrity":"sha256-JJZNsid68vnh3/zyj0lY9BN5ynxVX/12XgOa1TlaYN0="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/pdf.min.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/mermaid.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/fancybox.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/pace.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/math/mathjax.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":false,"timeout":6000,"priority":true,"url":"https://onxs.github.io/post/2018031644.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/quicklink.min.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"onxs/onxs.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/comments/utterances.min.js"></script>
+
+
+</body>
+</html>

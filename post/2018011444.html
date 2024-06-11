@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#056864">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Helvetica:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/config.min.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/post/2018011444.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/post/2018011444.html","path":"post/2018011444.html","title":"日志组件Slf4j介绍及配置详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>日志组件Slf4j介绍及配置详解 | MC BLOG</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="MC BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+      <img class="custom-logo-image" src="https://s2.loli.net/2024/05/04/oabunWyc5VspNeU.png" alt="MC BLOG">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">59</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">175</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SLF4J%E5%AF%B9%E6%AF%94Log4J%EF%BC%8Clogback%E5%92%8Cjava-util-Logging%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">2.</span> <span class="nav-text">SLF4J对比Log4J，logback和java.util.Logging的优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">使用配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maven%E4%BE%9D%E8%B5%96"><span class="nav-number">3.1.</span> <span class="nav-text">maven依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">日志系统配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#properties%E6%96%87%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">properties文件方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xml%E6%96%87%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">xml文件方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E"><span class="nav-number">3.3.</span> <span class="nav-text">日志系统配置说明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%BA%A7%E5%88%AB%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-number">3.3.1.</span> <span class="nav-text">输出级别的种类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF%E8%BE%93%E5%87%BA%E7%9B%AE%E7%9A%84%E5%9C%B0"><span class="nav-number">3.3.2.</span> <span class="nav-text">配置日志信息输出目的地</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.3.3.</span> <span class="nav-text">配置日志信息的格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ConsoleAppender%E9%80%89%E9%A1%B9"><span class="nav-number">3.3.4.</span> <span class="nav-text">ConsoleAppender选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FileAppender-%E9%80%89%E9%A1%B9"><span class="nav-number">3.3.5.</span> <span class="nav-text">FileAppender 选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RollingFileAppender-%E9%80%89%E9%A1%B9"><span class="nav-number">3.3.6.</span> <span class="nav-text">RollingFileAppender 选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF%E6%A0%BC%E5%BC%8F%E4%B8%AD%E5%87%A0%E4%B8%AA%E7%AC%A6%E5%8F%B7%E6%89%80%E4%BB%A3%E8%A1%A8%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">3.3.7.</span> <span class="nav-text">日志信息格式中几个符号所代表的含义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">常用的过滤器：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%9D%A5%E6%BA%90%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">参考来源：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">175</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHM=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNlZWtAdmlwLnFxLmNvbQ==" title="E-Mail → mailto:ceek@vip.qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS8=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;"><i class="fab fa-twitter fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tLw==" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;"><i class="fab fa-facebook fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9pbnN0YWdyYW0uY29t" title="Instagram → https:&#x2F;&#x2F;instagram.com"><i class="fab fa-instagram fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9vbnhzLm5ldGxpZnkuYXBw" title="https:&#x2F;&#x2F;onxs.netlify.app">镜像站</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.github.io/" title="https:&#x2F;&#x2F;onxs.github.io">主网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/post/2017111334.html" rel="bookmark">
+        <time class="popular-posts-time">2017-11-30</time>
+        <br>
+      Lucene全文搜索解析
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018011444.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC BLOG">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="日志组件Slf4j介绍及配置详解 | MC BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          日志组件Slf4j介绍及配置详解<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHMvYmxvZy90cmVlL2Rldi9zb3VyY2UvX3Bvc3RzL+aXpeW/l+e7hOS7tnNsZjRq5LuL57uN5Y+K6YWN572u6K+m6KejLm1k" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-24 14:44:36" itemprop="dateCreated datePublished" datetime="2018-01-24T14:44:36+08:00">2018-01-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SLF4J/" itemprop="url" rel="index"><span itemprop="name">SLF4J</span></a>
+        </span>
+    </span>
+
+  
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img data-src="https://s2.loli.net/2024/05/06/PHwmKZlXgyVI6WF.jpg"></p>
+<p>每一个Java程序员都知道日志对于任何一个Java应用程序尤其是服务端程序是至关重要的，而很多程序员也已经熟悉各种不同的日志库，如java.util.logging、Apache log4j、logback。但如果你还不知道SLF4J（Simple logging facade for Java）的话，那么是时候在你的项目中学习使用SLF4J了。</p>
+<span id="more"></span>
+
+<h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>SLF4J不同于其他日志类库，与其它日志类库有很大的不同。SLF4J(Simple logging Facade for Java)不是一个真正的日志实现，而是一个抽象层（ abstraction layer），它允许你在后台使用任意一个日志类库。如果是在编写供内外部都可以使用的API或者通用类库，那么你真不会希望使用你类库的客户端必须使用你选择的日志类库。</p>
+<p>如果一个项目已经使用了log4j，而你加载了一个类库，比方说 Apache Active MQ——它依赖于于另外一个日志类库logback，那么你就需要把它也加载进去。但如果Apache Active MQ使用了SLF4J，你可以继续使用你的日志类库而无需忍受加载和维护一个新的日志框架的痛苦。</p>
+<p>总的来说，SLF4J使你的代码独立于任意一个特定的日志API，这是对于API开发者的很好的思想。虽然抽象日志类库的思想已经不是新鲜的事物，而且Apache commons logging也已经在使用这种思想了，但SLF4J正迅速成为Java世界的日志标准。让我们再看几个使用SLF4J而不是log4j、logback或者java.util.logging的理由。</p>
+<h3 id="SLF4J对比Log4J，logback和java-util-Logging的优势"><a href="#SLF4J对比Log4J，logback和java-util-Logging的优势" class="headerlink" title="SLF4J对比Log4J，logback和java.util.Logging的优势"></a>SLF4J对比Log4J，logback和java.util.Logging的优势</h3><p>正如我之前说的，在你的代码中使用SLF4J写日志语句的主要出发点是使得你的程序独立于任何特定的日志类库，依赖于特定类库可能需要使用不同于你已有的配置，并且导致更多维护的麻烦。除此之外，还有一个SLF4J API的特性是使得我坚持使用SLF4J而抛弃我长期间钟爱的Log4j的理由，是被称为占位符(place holder)，在代码中表示为“{}”的特性。占位符是一个非常类似于在String的format()方法中的%s，因为它会在运行时被某个提供的实际字符串所替换。这不仅降低了你代码中字符串连接次数，而且还节省了新建的String对象。通过使用SLF4J，你可以在运行时延迟字符串的建立，这意味着只有需要的String对象才被建立。而如果你已经使用log4j，那么你已经对于在if条件中使用debug语句这种变通方案十分熟悉了，但SLF4J的占位符就比这个好用得多。</p>
+<p>这是你在Log4j中使用的方案，但这并不有趣，而且降低了代码可读性，因为它增加了不必要的繁琐重复代码(boiler-plate code)：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;Processing trade with id: &quot;</span> + id + <span class="string">&quot; symbol: &quot;</span> + symbol);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另一方面，如果你使用SLF4J的话，你可以得到更简洁格式的结果，就像以下展示的一样：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">logger.debug(<span class="string">&quot;Processing trade with id: &#123;&#125; and symbol : &#123;&#125; &quot;</span>, id, symbol);</span><br></pre></td></tr></table></figure>
+
+<p>在SLF4J，我们不需要字符串连接而且不会导致暂时不需要的字符串消耗。取而代之，我们在一个以占位符和参数传递实际值构成的模板格式下写日志信息。你可能会在想万一我有很多个参数怎么办？嗯，那么你可以选择使用变量参数版本的日志方法或者以Object数组传递。这是一个相当方便和高效方法的打日志方法。记住，在生产最终日志信息字符串之前，这个方法会检查一个特定的日志级别是不是打开了，这不仅降低了内存消耗而且预先降低了CPU去处理字符串连接命令的时间。这里是使用SLF4J日志方法的代码，来自于slf4j-log4j12-1.6.1.jar中的Log4j的适配器类Log4jLoggerAdapter。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">debug</span><span class="params">(String format, Object arg1, Object arg2)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">        <span class="type">FormattingTuple</span> <span class="variable">ft</span> <span class="operator">=</span> MessageFormatter.format(format, arg1, arg2);</span><br><span class="line">        logger.log(FQCN, Level.DEBUG, ft.getMessage(), ft.getThrowable());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，我们应该知道打日志是对应用程序性能有着很大影响，在生产环节上我们建议只进行必要的日志记录。</p>
+<h3 id="使用配置"><a href="#使用配置" class="headerlink" title="使用配置"></a>使用配置</h3><h4 id="maven依赖"><a href="#maven依赖" class="headerlink" title="maven依赖"></a>maven依赖</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.21<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.21<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="日志系统配置"><a href="#日志系统配置" class="headerlink" title="日志系统配置"></a>日志系统配置</h4><p>假设现有如下程序：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LoggerFactory.getLogger(Main.class);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">status</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (status == <span class="number">0</span>) &#123;</span><br><span class="line">            logger.info(<span class="string">&quot;status:&#123;&#125;&quot;</span>, status);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            logger.info(<span class="string">&quot;status:&#123;&#125;&quot;</span>, status);</span><br><span class="line">        &#125;</span><br><span class="line">        logger.info(<span class="string">&quot;end!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用以下两种方式对日志系统的输出格式、记录级别、输出方式等进行配置。</p>
+<h5 id="properties文件方式"><a href="#properties文件方式" class="headerlink" title="properties文件方式"></a>properties文件方式</h5><p>log4j.properties:</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">log4j.rootLogger</span>=<span class="string">info, ServerDailyRollingFile, stdout</span></span><br><span class="line"><span class="attr">log4j.appender.ServerDailyRollingFile</span>=<span class="string">org.apache.log4j.DailyRollingFileAppender</span></span><br><span class="line"><span class="attr">log4j.appender.ServerDailyRollingFile.DatePattern</span>=<span class="string">&#x27;.&#x27;yyyy-MM-dd</span></span><br><span class="line"><span class="attr">log4j.appender.ServerDailyRollingFile.File</span>=<span class="string">logs/notify-subscription.log</span></span><br><span class="line"><span class="attr">log4j.appender.ServerDailyRollingFile.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.ServerDailyRollingFile.layout.ConversionPattern</span>=<span class="string">%d - %m%n</span></span><br><span class="line"><span class="attr">log4j.appender.ServerDailyRollingFile.Append</span>=<span class="string">true</span></span><br><span class="line"><span class="attr">log4j.appender.stdout</span>=<span class="string">org.apache.log4j.ConsoleAppender</span></span><br><span class="line"><span class="attr">log4j.appender.stdout.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.stdout.layout.ConversionPattern</span>=<span class="string">%d&#123;yyyy-MM-dd HH\:mm\:ss&#125; %p [%c] %m%n</span></span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">2016-05-12 16:08:21 INFO [club.chuxing.learn.Main] status:0 </span><br><span class="line">2016-05-12 16:08:21 INFO [club.chuxing.learn.Main] end!</span><br></pre></td></tr></table></figure>
+
+<h5 id="xml文件方式"><a href="#xml文件方式" class="headerlink" title="xml文件方式"></a>xml文件方式</h5><p>首先pom中添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>logback.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">debug</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 应用名称 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;APP_NAME&quot;</span> <span class="attr">value</span>=<span class="string">&quot;logtest&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--日志文件的保存路径,首先查找系统属性-Dlog.dir,如果存在就使用其；否则，在当前目录下创建名为logs目录做日志存放的目录 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;LOG_HOME&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;log.dir:-logs&#125;/$&#123;APP_NAME&#125;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 日志输出格式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;ENCODER_PATTERN&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">value</span>=<span class="string">&quot;%d&#123;yyyy-MM-dd  HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;80&#125; - %msg%n&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">contextName</span>&gt;</span>$&#123;APP_NAME&#125;<span class="tag">&lt;/<span class="name">contextName</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 控制台日志：输出全部日志到控制台 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;STDOUT&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.ConsoleAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.encoder.PatternLayoutEncoder&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Pattern</span>&gt;</span>$&#123;ENCODER_PATTERN&#125;<span class="tag">&lt;/<span class="name">Pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 文件日志：输出全部日志到文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;FILE&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fileNamePattern</span>&gt;</span>$&#123;LOG_HOME&#125;/output.%d&#123;yyyy-MM-dd&#125;.log<span class="tag">&lt;/<span class="name">fileNamePattern</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">maxHistory</span>&gt;</span>7<span class="tag">&lt;/<span class="name">maxHistory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.encoder.PatternLayoutEncoder&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>$&#123;ENCODER_PATTERN&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 错误日志：用于将错误日志输出到独立文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;ERROR_FILE&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fileNamePattern</span>&gt;</span>$&#123;LOG_HOME&#125;/error.%d&#123;yyyy-MM-dd&#125;.log<span class="tag">&lt;/<span class="name">fileNamePattern</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">maxHistory</span>&gt;</span>7<span class="tag">&lt;/<span class="name">maxHistory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.encoder.PatternLayoutEncoder&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>$&#123;ENCODER_PATTERN&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.filter.ThresholdFilter&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">level</span>&gt;</span>WARN<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 独立输出的同步日志 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;SYNC_FILE&quot;</span>  <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fileNamePattern</span>&gt;</span>$&#123;LOG_HOME&#125;/sync.%d&#123;yyyy-MM-dd&#125;.log<span class="tag">&lt;/<span class="name">fileNamePattern</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">maxHistory</span>&gt;</span>7<span class="tag">&lt;/<span class="name">maxHistory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.encoder.PatternLayoutEncoder&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>$&#123;ENCODER_PATTERN&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">&quot;log.sync&quot;</span> <span class="attr">level</span>=<span class="string">&quot;DEBUG&quot;</span> <span class="attr">addtivity</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;SYNC_FILE&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">logger</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">level</span> <span class="attr">value</span>=<span class="string">&quot;DEBUG&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;STDOUT&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;FILE&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;ERROR_FILE&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出结果为：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">2016</span>-<span class="number">05</span>-<span class="number">12</span> <span class="number">17</span>:<span class="number">08</span>:<span class="number">32</span>.<span class="number">105</span><span class="meta"> [main] INFO club.chuxing.learn.Main - status:0 </span></span><br><span class="line"><span class="meta">2016-05-12 17:08:32.114 [main] INFO club.chuxing.learn.Main - end!</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="日志系统配置说明"><a href="#日志系统配置说明" class="headerlink" title="日志系统配置说明"></a>日志系统配置说明</h4><h5 id="输出级别的种类"><a href="#输出级别的种类" class="headerlink" title="输出级别的种类"></a>输出级别的种类</h5><ol>
+<li>ERROR 为严重错误 主要是程序的错误</li>
+<li>WARN 为一般警告，比如session丢失</li>
+<li>INFO 为一般要显示的信息，比如登录登出</li>
+<li>DEBUG 为程序的调试信息</li>
+</ol>
+<h5 id="配置日志信息输出目的地"><a href="#配置日志信息输出目的地" class="headerlink" title="配置日志信息输出目的地"></a>配置日志信息输出目的地</h5><blockquote>
+<p>log4j.appender.appenderName&#x3D;??</p>
+<p>org.apache.log4j.ConsoleAppender（控制台）<br>org.apache.log4j.FileAppender（文件）<br>org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件）<br>org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件）<br>org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）</p>
+</blockquote>
+<h5 id="配置日志信息的格式"><a href="#配置日志信息的格式" class="headerlink" title="配置日志信息的格式"></a>配置日志信息的格式</h5><blockquote>
+<p>log4j.appender.appenderName.layout &#x3D; ??</p>
+<p>org.apache.log4j.HTMLLayout（以HTML表格形式布局）<br>org.apache.log4j.PatternLayout（可以灵活地指定布局模式）<br>org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串）<br>org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息）</p>
+</blockquote>
+<h5 id="ConsoleAppender选项"><a href="#ConsoleAppender选项" class="headerlink" title="ConsoleAppender选项"></a>ConsoleAppender选项</h5><blockquote>
+<p>Threshold&#x3D;DEBUG:指定日志消息的输出最低层次。<br>ImmediateFlush&#x3D;true:默认值是true,意谓着所有的消息都会被立即输出。<br>Target&#x3D;System.err:默认情况下是System.out,指定输出控制台</p>
+</blockquote>
+<h5 id="FileAppender-选项"><a href="#FileAppender-选项" class="headerlink" title="FileAppender 选项"></a>FileAppender 选项</h5><blockquote>
+<p>Threshold&#x3D;DEBUG:指定日志消息的输出最低层次。<br>ImmediateFlush&#x3D;true:默认值是true,意谓着所有的消息都会被立即输出。<br>File&#x3D;mylog.txt:指定消息输出到mylog.txt文件。<br>Append&#x3D;false:默认值是true,即将消息增加到指定文件中，false指将消息覆盖指定的文件内容。</p>
+</blockquote>
+<h5 id="RollingFileAppender-选项"><a href="#RollingFileAppender-选项" class="headerlink" title="RollingFileAppender 选项"></a>RollingFileAppender 选项</h5><blockquote>
+<p>Threshold&#x3D;DEBUG:指定日志消息的输出最低层次。<br>ImmediateFlush&#x3D;true:默认值是true,意谓着所有的消息都会被立即输出。<br>File&#x3D;mylog.txt:指定消息输出到mylog.txt文件。<br>Append&#x3D;false:默认值是true,即将消息增加到指定文件中，false指将消息覆盖指定的文件内容。<br>MaxFileSize&#x3D;100KB: 后缀可以是KB, MB 或者是 GB. 在日志文件到达该大小时，将会自动滚动，即将原来的内容移到mylog.log.1文件。<br>MaxBackupIndex&#x3D;2:指定可以产生的滚动文件的最大数。</p>
+</blockquote>
+<h5 id="日志信息格式中几个符号所代表的含义"><a href="#日志信息格式中几个符号所代表的含义" class="headerlink" title="日志信息格式中几个符号所代表的含义"></a>日志信息格式中几个符号所代表的含义</h5><blockquote>
+<p>-X号: X信息输出时左对齐；<br>%p: 输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL,<br>%d: 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss,SSS}，输出类似：2002年10月18日 22：10：28，921<br>%r: 输出自应用启动到输出该log信息耗费的毫秒数<br>%c: 输出日志信息所属的类目，通常就是所在类的全名<br>%t: 输出产生该日志事件的线程名<br>%l: 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main (TestLog4.java:10)<br>%x: 输出和当前线程相关联的NDC(嵌套诊断环境),尤其用到像java servlets这样的多客户多线程的应用中。<br>%%: 输出一个”%”字符<br>%F: 输出日志消息产生时所在的文件名称<br>%L: 输出代码中的行号<br>%m: 输出代码中指定的消息,产生的日志具体信息<br>%n: 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行</p>
+</blockquote>
+<p>一个示例配置文件</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">log4j.debug</span>=<span class="string">true   </span></span><br><span class="line"><span class="attr">log4j.rootLogger</span>=<span class="string">DEBUG,D,E</span></span><br><span class="line"><span class="attr">log4j.appender.E</span> = <span class="string">org.apache.log4j.DailyRollingFileAppender</span></span><br><span class="line"><span class="attr">log4j.appender.E.File</span> = <span class="string">logs/logs.log</span></span><br><span class="line"><span class="attr">log4j.appender.E.Append</span> = <span class="string">true</span></span><br><span class="line"><span class="attr">log4j.appender.E.Threshold</span> = <span class="string">DEBUG</span></span><br><span class="line"><span class="attr">log4j.appender.E.layout</span> = <span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.E.layout.ConversionPattern</span> = <span class="string">%-d&#123;yyyy-MM-dd HH:mm:ss&#125;  [ %t:%r ] - [ %p ]  %m%n</span></span><br><span class="line"><span class="attr">log4j.appender.D</span> = <span class="string">org.apache.log4j.DailyRollingFileAppender</span></span><br><span class="line"><span class="attr">log4j.appender.D.File</span> = <span class="string">logs/error.log</span></span><br><span class="line"><span class="attr">log4j.appender.D.Append</span> = <span class="string">true</span></span><br><span class="line"><span class="attr">log4j.appender.D.Threshold</span> = <span class="string">ERROR</span></span><br><span class="line"><span class="attr">log4j.appender.D.layout</span> = <span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.D.layout.ConversionPattern</span> = <span class="string">%-d&#123;yyyy-MM-dd HH:mm:ss&#125;  [ %t:%r ] - [ %p ]  %m%n</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>过滤器，执行一个过滤器会有返回个枚举值，即DENY，NEUTRAL，ACCEPT其中之一。返回DENY，日志将立即被抛弃不再经过其他过滤器；返回NEUTRAL，有序列表里的下个过滤器过接着处理日志；返回ACCEPT，日志会被立即处理，不再经过剩余过滤器。<br>过滤器被添加到<Appender> 中，为<Appender> 添加一个或多个过滤器后，可以用任意条件对日志进行过滤。<Appender> 有多个过滤器时，按照配置顺序执行。</p>
+<h4 id="常用的过滤器："><a href="#常用的过滤器：" class="headerlink" title="常用的过滤器："></a>常用的过滤器：</h4><ol>
+<li>LevelFilter： 级别过滤器，根据日志级别进行过滤。如果日志级别等于配置级别，过滤器会根据onMath 和 onMismatch接收或拒绝日志。有以下子节点：</li>
+</ol>
+<p><level>:设置过滤级别<br><onMatch>:用于配置符合过滤条件的操作<br><onMismatch>:用于配置不符合过滤条件的操作</p>
+<ol start="2">
+<li>ThresholdFilter： 临界值过滤器，过滤掉低于指定临界值的日志。当日志级别等于或高于临界值时，过滤器返回NEUTRAL；当日志级别低于临界值时，日志会被拒绝。</li>
+</ol>
+<p>例如：过滤掉所有低于INFO级别的日志。</p>
+<ol start="3">
+<li>EvaluatorFilter： 求值过滤器，评估、鉴别日志是否符合指定条件。有一下子节点：</li>
+</ol>
+<p><evaluator>:<br>鉴别器，常用的鉴别器是JaninoEventEvaluato，也是默认的鉴别器，它以任意的Java布尔值表达式作为求值条件，求值条件在配置文件解释过成功被动态编译，布尔值表达式返回true就表示符合过滤条件。evaluator有个子标签<expression>，用于配置求值条件。 </p>
+<p>求值表达式作用于当前日志，logback向求值表达式暴露日志的各种字段：<br>Name	Type	Description<br>event	LoggingEvent	与记录请求相关联的原始记录事件，下面所有变量都来自event</p>
+<p>例如，event.getMessage()返回下面”message”相同的字符串</p>
+<p>message	String	日志的原始消息</p>
+<p>例如，设有logger mylogger，”name”的值是”AUB”，对于 mylogger.info(“Hello {}”,name); “Hello {}”就是原始消息。<br>formatedMessage	String	日志被各式话的消息，</p>
+<p>例如，设有logger mylogger，”name”的值是”AUB”，对于 mylogger.info(“Hello {}”,name); “Hello Aub”就是格式化后的消息。<br>logger	String	logger 名。</p>
+<p>loggerContext	LoggerContextVO	日志所属的logger上下文。</p>
+<p>level	int	级别对应的整数值，所以 level &gt; INFO 是正确的表达式。</p>
+<p>timeStamp	long	创建日志的时间戳。</p>
+<p>marker	Marker	与日志请求相关联的Marker对象，注意“Marker”有可能为null，所以你要确保它不能是null。</p>
+<p>mdc	Map	包含创建日志期间的MDC所有值得map。访问方法是：mdc.get(“myKey”) 。</p>
+<p>mdc.get()返回的是Object不是String，要想调用String的方法就要强转</p>
+<p>例如，((String) mdc.get(“k”)).contains(“val”) .MDC可能为null，调用时注意。</p>
+<p>throwable	java.lang.Throwable	如果没有异常与日志关联”throwable” 变量为 null. 不幸的是， “throwable” 不能被序列化。在远程系统上永远为null，对于与位置无关的表达式请使用下面的变量throwableProxy</p>
+<p>throwableProxy	IThrowableProxy	与日志事件关联的异常代理。如果没有异常与日志事件关联，则变量”throwableProxy” 为 null. 当异常被关联到日志事件时，”throwableProxy” 在远程系统上不会为null</p>
+<p><onMatch>:用于配置符合过滤条件的操作 </p>
+<p><onMismatch>:用于配置不符合过滤条件的操作 </p>
+<p>例如：过滤掉所有日志消息中不包含“billing”字符串的日志。</p>
+<h4 id="参考来源："><a href="#参考来源：" class="headerlink" title="参考来源："></a>参考来源：</h4><ol>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5pbXBvcnRuZXcuY29tLzc0NTAuaHRtbCNjb21tZW50LTIwNDU0OQ==">http://www.importnew.com/7450.html#comment-204549<i class="fa fa-external-link-alt"></i></span> </li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy50dWljb29sLmNvbS9hcnRpY2xlcy82VlJudWk=">http://www.tuicool.com/articles/6VRnui<i class="fa fa-external-link-alt"></i></span> </li>
+<li><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGlud2VpXzEwMjkvYXJ0aWNsZS9kZXRhaWxzLzg4NDQ5Mzk=">http://blog.csdn.net/linwei_1029/article/details/8844939<i class="fa fa-external-link-alt"></i></span> </li>
+<li><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHVhbmppZXd1L2FydGljbGUvZGV0YWlscy83NTg3NTg2">http://blog.csdn.net/xuanjiewu/article/details/7587586<i class="fa fa-external-link-alt"></i></span> </li>
+<li><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGFpZGFnZS9hcnRpY2xlL2RldGFpbHMvNjc5NDU0MA==">http://blog.csdn.net/haidage/article/details/6794540<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/post/2018011444.html" title="日志组件Slf4j介绍及配置详解">https://onxs.github.io/post/2018011444.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/SLF4J/" rel="tag"><i class="fa fa-tag"></i> SLF4J</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2018011344.html" rel="prev" title="Web站点如何防范XSS、CSRF、SQL注入攻击">
+                  <i class="fa fa-angle-left"></i> Web站点如何防范XSS、CSRF、SQL注入攻击
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/2018011544.html" rel="next" title="Gson和Jackson的使用">
+                  Gson和Jackson的使用 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 1989 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MC</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">930k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">56:22</span>
+  </span>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/sidebar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/bookmark.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/search/local-search.min.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js","integrity":"sha256-JJZNsid68vnh3/zyj0lY9BN5ynxVX/12XgOa1TlaYN0="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/pdf.min.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/mermaid.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/fancybox.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/pace.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/math/mathjax.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":false,"timeout":6000,"priority":true,"url":"https://onxs.github.io/post/2018011444.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/quicklink.min.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"onxs/onxs.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/comments/utterances.min.js"></script>
+
+
+</body>
+</html>
