@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#056864">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Helvetica:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/config.min.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/post/2017091936.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/post/2017091936.html","path":"post/2017091936.html","title":"FreeMarker自定义TemplateDirectiveModel(一)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>FreeMarker自定义TemplateDirectiveModel(一) | MC BLOG</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="MC BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+      <img class="custom-logo-image" src="https://s2.loli.net/2024/05/04/oabunWyc5VspNeU.png" alt="MC BLOG">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">59</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">175</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E3%80%81Freemarker%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">一、Freemarker的介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Freemarker%E7%9A%84%E5%87%86%E5%A4%87%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">二、Freemarker的准备条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E3%80%81Freemarker%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">三、Freemarker生成静态页面的原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Freemarker%E6%8F%90%E4%BE%9B%E7%9A%84%E6%A0%87%E7%AD%BE"><span class="nav-number">4.</span> <span class="nav-text">四、Freemarker提供的标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%94%E3%80%81Freemarker%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E7%AD%BE"><span class="nav-number">5.</span> <span class="nav-text">五、Freemarker自定义标签</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">175</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHM=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNlZWtAdmlwLnFxLmNvbQ==" title="E-Mail → mailto:ceek@vip.qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS8=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;"><i class="fab fa-twitter fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tLw==" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;"><i class="fab fa-facebook fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9pbnN0YWdyYW0uY29t" title="Instagram → https:&#x2F;&#x2F;instagram.com"><i class="fab fa-instagram fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9vbnhzLm5ldGxpZnkuYXBw" title="https:&#x2F;&#x2F;onxs.netlify.app">镜像站</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.github.io/" title="https:&#x2F;&#x2F;onxs.github.io">主网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/post/2017092206.html" rel="bookmark">
+        <time class="popular-posts-time">2017-09-07</time>
+        <br>
+      FreeMarker自定义TemplateDirectiveModel(二)
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/post/2018011244.html" rel="bookmark">
+        <time class="popular-posts-time">2018-01-24</time>
+        <br>
+      URL请求到Action的映射规则
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2017091936.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC BLOG">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="FreeMarker自定义TemplateDirectiveModel(一) | MC BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          FreeMarker自定义TemplateDirectiveModel(一)<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHMvYmxvZy90cmVlL2Rldi9zb3VyY2UvX3Bvc3RzL0ZyZWVNYXJrZXLoh6rlrprkuYlUZW1wbGF0ZURpcmVjdGl2ZU1vZGVsKOS4gCkubWQ=" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-09-07 19:36:37" itemprop="dateCreated datePublished" datetime="2017-09-07T19:36:37+08:00">2017-09-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0031.jpg" alt="image"></p>
+<p>FreeMarker是一个用Java语言编写的模板引擎，它基于模板来生成文本输出。FreeMarker与Web容器无关，即在Web运行时，它并不知道Servlet或HTTP。它不仅可以用作表现层的实现技术，而且还可以用于生成XML，JSP或Java 等。</p>
+<span id="more"></span>
+<h5 id="一、Freemarker的介绍"><a href="#一、Freemarker的介绍" class="headerlink" title="一、Freemarker的介绍"></a>一、Freemarker的介绍</h5><p>​    Freemarker 是一款模板引擎，是一种基于模版生成静态文件的通用 工具，它是为java程序员提供的一个开发包，或者说是一个类库，它不是面向最终用户的，而是为程序员提供了一款可以嵌入他们开发产品的应用程序。</p>
+<p>​    Freemarker 是使用纯java编写的，为了提高页面的访问速度，需要把页面静态化， 那么Freemarker就是被用来生成html页面。</p>
+<p>​    到目前为止，Freemarker使用越来越广泛，不光光只是它强大的生成技术，而且它能够与spring进行很好的集成。</p>
+<p>​    现在开始一层层揭开它的神秘面纱。。</p>
+<h5 id="二、Freemarker的准备条件"><a href="#二、Freemarker的准备条件" class="headerlink" title="二、Freemarker的准备条件"></a>二、Freemarker的准备条件</h5><p>​    freemarker.2.3.16.jar  </p>
+<h5 id="三、Freemarker生成静态页面的原理"><a href="#三、Freemarker生成静态页面的原理" class="headerlink" title="三、Freemarker生成静态页面的原理"></a>三、Freemarker生成静态页面的原理</h5><p>​    Freemarker 生成静态页面，首先需要使用自己定义的模板页面，这个模板页面可以是最最普通的html，也可以是嵌套freemarker中的 取值表达式， 标签或者自定义标签等等，然后后台读取这个模板页面，解析其中的标签完成相对应的操作， 然后采用键值对的方式传递参数替换模板中的的取值表达式，做完之后 根据配置的路径生成一个新的html页面， 以达到静态化访问的目的。</p>
+<h5 id="四、Freemarker提供的标签"><a href="#四、Freemarker提供的标签" class="headerlink" title="四、Freemarker提供的标签"></a>四、Freemarker提供的标签</h5><p>Freemarker提供了很多有用 常用的标签，Freemarker标签都是&lt;#标签名称&gt;这样子命名的，${value} 表示输出变量名的内容 ，具体如下：</p>
+<ul>
+<li>list：该标签主要是进行迭代服务器端传递过来的List集合，比如：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&lt;#list nameList as names&gt;  </span><br><span class="line">  $&#123;names&#125; </span><br><span class="line">&lt;/#list&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	name是list循环的时候取的一个循环变量，freemarker在解析list标签的时候，等价于：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String names : nameList) &#123;</span><br><span class="line">		System.out.println(names);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>if：    该标签主要是做if判断用的，比如：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&lt;#if (names==&quot;陈靖仇&quot;)&gt;</span><br><span class="line"> 他的武器是: 十五~~</span><br><span class="line">&lt;/#if&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	这个是条件判断标签，要注意的是条件等式必须用括号括起来， 等价于：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(names.equals(<span class="string">&quot;陈靖仇&quot;</span>))&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;他的武器是: 十五~~&quot;</span>);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>include：该标签用于导入文件用的。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&lt;#include &quot;include.html&quot;/&gt;  </span><br></pre></td></tr></table></figure>
+
+<p>​	这个导入标签非常好用，特别是页面的重用。</p>
+<p>另外在静态文件中可以使用${} 获取值，取值方式和el表达式一样，非常方便。</p>
+<p>​	下面举个例子（static.html）：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="string">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=UTF-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Insert title here<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">描述：$&#123;description&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">集合大小:$&#123;nameList?size&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">迭代list集合：</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">&lt;#list nameList as names&gt;</span><br><span class="line">这是第$&#123;names_index+1&#125;个人，叫做：<span class="tag">&lt;<span class="name">label</span> <span class="attr">style</span>=<span class="string">&quot;color:red&quot;</span>&gt;</span>$&#123;names&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">if判断：</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">&lt;#if (names==&quot;陈靖仇&quot;)&gt;</span><br><span class="line"> 他的武器是: 十五~~</span><br><span class="line">&lt;#elseif (names==&quot;宇文拓&quot;)&gt;       &lt;#--注意这里没有返回而是在最后面--&gt; </span><br><span class="line"> 他的武器是: 轩辕剑~·</span><br><span class="line">&lt;#else&gt;</span><br><span class="line">她的绝招是：蛊毒~~</span><br><span class="line">&lt;/#if&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">&lt;/#list&gt;</span><br><span class="line">迭代map集合：</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">&lt;#list weaponMap?keys as key&gt;</span><br><span class="line">key---&gt;$&#123;key&#125;<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">value-----&gt;$&#123;weaponMap[key]!(&quot;null&quot;)&#125;</span><br><span class="line">&lt;#-- </span><br><span class="line">fremarker 不支持null, 可以用！ 来代替为空的值。</span><br><span class="line">其实也可以给一个默认值  </span><br><span class="line">value-----$&#123;weaponMap[key]?default(&quot;null&quot;)&#125;</span><br><span class="line">还可以 在输出前判断是否为null</span><br><span class="line">&lt;#if weaponMap[key]??&gt;&lt;/#if&gt;都可以</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">&lt;/#list&gt;</span><br><span class="line">include导入文件：</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">&lt;#include &quot;include.html&quot;/&gt;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>​	实际代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.chenghui.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> freemarker.template.Configuration;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.DefaultObjectWrapper;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.Template;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CreateHtml</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//创建一个合适的Configration对象</span></span><br><span class="line">			<span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>();</span><br><span class="line">			configuration.setDirectoryForTemplateLoading(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:\\project\\webProject\\WebContent\\WEB-INF\\template&quot;</span>));</span><br><span class="line">			configuration.setObjectWrapper(<span class="keyword">new</span> <span class="title class_">DefaultObjectWrapper</span>());</span><br><span class="line">			configuration.setDefaultEncoding(<span class="string">&quot;UTF-8&quot;</span>);   <span class="comment">//这个一定要设置，不然在生成的页面中 会乱码</span></span><br><span class="line">			<span class="comment">//获取或创建一个模版。</span></span><br><span class="line">			<span class="type">Template</span> <span class="variable">template</span> <span class="operator">=</span> configuration.getTemplate(<span class="string">&quot;static.html&quot;</span>);</span><br><span class="line">			Map&lt;String, Object&gt; paramMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, Object&gt;();</span><br><span class="line">			paramMap.put(<span class="string">&quot;description&quot;</span>, <span class="string">&quot;我正在学习使用Freemarker生成静态文件！&quot;</span>);</span><br><span class="line">			</span><br><span class="line">			List&lt;String&gt; nameList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">			nameList.add(<span class="string">&quot;陈靖仇&quot;</span>);</span><br><span class="line">			nameList.add(<span class="string">&quot;玉儿&quot;</span>);</span><br><span class="line">			nameList.add(<span class="string">&quot;宇文拓&quot;</span>);</span><br><span class="line">			paramMap.put(<span class="string">&quot;nameList&quot;</span>, nameList);</span><br><span class="line">			</span><br><span class="line">			Map&lt;String, Object&gt; weaponMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, Object&gt;();</span><br><span class="line">			weaponMap.put(<span class="string">&quot;first&quot;</span>, <span class="string">&quot;轩辕剑&quot;</span>);</span><br><span class="line">			weaponMap.put(<span class="string">&quot;second&quot;</span>, <span class="string">&quot;崆峒印&quot;</span>);</span><br><span class="line">			weaponMap.put(<span class="string">&quot;third&quot;</span>, <span class="string">&quot;女娲石&quot;</span>);</span><br><span class="line">			weaponMap.put(<span class="string">&quot;fourth&quot;</span>, <span class="string">&quot;神农鼎&quot;</span>);</span><br><span class="line">			weaponMap.put(<span class="string">&quot;fifth&quot;</span>, <span class="string">&quot;伏羲琴&quot;</span>);</span><br><span class="line">			weaponMap.put(<span class="string">&quot;sixth&quot;</span>, <span class="string">&quot;昆仑镜&quot;</span>);</span><br><span class="line">			weaponMap.put(<span class="string">&quot;seventh&quot;</span>, <span class="literal">null</span>);</span><br><span class="line">			paramMap.put(<span class="string">&quot;weaponMap&quot;</span>, weaponMap);</span><br><span class="line">			</span><br><span class="line">			<span class="type">Writer</span> <span class="variable">writer</span>  <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;success.html&quot;</span>),<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">			template.process(paramMap, writer);</span><br><span class="line">			</span><br><span class="line">			System.out.println(<span class="string">&quot;恭喜，生成成功~~&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (TemplateException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	这样子基本上可以算的上可以简单的去做一点简单的生成了，但是要在实际中去运用，还是差的很远的，因为freemarker给的标签完全满足不了我们的需要，这时候就需要自定义标签来完成我们的需求了。。</p>
+<h5 id="五、Freemarker自定义标签"><a href="#五、Freemarker自定义标签" class="headerlink" title="五、Freemarker自定义标签"></a>五、Freemarker自定义标签</h5><p>Freemarker自定义标签就是自己写标签，然后自己解析，完全由自己来控制标签的输入输出，极大的为程序员提供了很大的发挥空间。</p>
+<p>基于步骤：</p>
+<p>​       以前写标签需要在&lt;后加# ，但是freemarker要识别自定义标签需要在后面加上@，然后后面可以定义一些参数，当程序执行template.process(paramMap, out);,就会去解析整个页面的所有的freemarker标签。</p>
+<p>​     自定义标签 需要自定义一个类，然后实现TemplateDirectiveModel，重写execute方法，完成获取参数，根据参数do something等等。</p>
+<p>​    将自定义标签与解析类绑定在一起需要在paramMap中放入该解析类的实例，存放的key与自定义标签一致即可。</p>
+<p>​    注意：在自定义标签中，如果标签内什么也没有，开始标签和结束标签绝对不能再同一行，不然会报错 freemarker.log.JDK14LoggerFactory$JDK14Logger error</p>
+<ul>
+<li>例:static.html模板</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="string">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=UTF-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Insert title here<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">&lt;#--自定义变量--&gt;</span><br><span class="line">&lt;#assign num=&#x27;hehe&#x27;/&gt;</span><br><span class="line">$&#123;num&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">自定义标签</span><br><span class="line">  &lt;@content name=&quot;chenghui&quot; age=&quot;120&quot;&gt;</span><br><span class="line">  	$&#123;output&#125;</span><br><span class="line">  	$&#123;append&#125;</span><br><span class="line">  &lt;/@content&gt;</span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>static.html模板解析类：</li>
+</ul>
+<p>​	参数解释：</p>
+<p>TemplateDirectiveModel接口是freemarker自定标签或者自定义指令的核心处理接口。通过实现该接口，用户可以自定义标签（指令）进行任意操作， 任意文本写入模板的输出。<br>该接口中只定义了如下方法，当模板页面遇到用户自定义的标签指令时，该方法会被执行。<br>public void execute(Environment env, Map params, TemplateModel[] loopVars,  TemplateDirectiveBody body) throws TemplateException, IOException;</p>
+<blockquote>
+<p> @param  env：系统环境变量，通常用它来输出相关内容，如Writer out &#x3D; env.getOut();</p>
+</blockquote>
+<blockquote>
+<p>@param  params：自定义标签传过来的对象，其key&#x3D;自定义标签的参数名，value值是TemplateModel类型，而TemplateModel是一个接口类型，通常我们都使用TemplateScalarModel接口来替代它获取一个String 值，如TemplateScalarModel.getAsString();当然还有其它常用的替代接口，如TemplateNumberModel获取number，TemplateHashModel等</p>
+</blockquote>
+<blockquote>
+<p>@param  loopVars  循环替代变量</p>
+</blockquote>
+<blockquote>
+<p>@param  body 用于处理自定义标签中的内容，如&lt;@myDirective&gt;将要被处理的内容&lt;&#x2F;@myDirective&gt;；当标签是&lt;@myDirective &#x2F;&gt;格式时，body&#x3D;null</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.chenghui.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> freemarker.template.ObjectWrapper.DEFAULT_WRAPPER;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> freemarker.core.Environment;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateDirectiveBody;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateDirectiveModel;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateException;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateModel;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateModelException;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateNumberModel;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateScalarModel;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义标签解析类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Administrator</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ContentDirective</span> <span class="keyword">implements</span> <span class="title class_">TemplateDirectiveModel</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">PARAM_NAME</span> <span class="operator">=</span> <span class="string">&quot;name&quot;</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">PARAM_AGE</span> <span class="operator">=</span> <span class="string">&quot;age&quot;</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(Environment env, Map params,TemplateModel[] loopVars,</span></span><br><span class="line"><span class="params">			TemplateDirectiveBody body)</span> <span class="keyword">throws</span> TemplateException, IOException &#123;</span><br><span class="line">		<span class="keyword">if</span>(body==<span class="literal">null</span>)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TemplateModelException</span>(<span class="string">&quot;null body&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> getString(PARAM_NAME, params);</span><br><span class="line">			<span class="type">Integer</span> <span class="variable">age</span> <span class="operator">=</span> getInt(PARAM_AGE, params);</span><br><span class="line">			<span class="comment">//接收到参数之后可以根据做具体的操作，然后将数据再在页面中显示出来。</span></span><br><span class="line">			<span class="keyword">if</span>(name!=<span class="literal">null</span>)&#123;</span><br><span class="line">				env.setVariable(<span class="string">&quot;output&quot;</span>, DEFAULT_WRAPPER.wrap(<span class="string">&quot;从ContentDirective解析类中获得的参数是：&quot;</span>+name+<span class="string">&quot;, &quot;</span>));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(age!=<span class="literal">null</span>)&#123;</span><br><span class="line">				env.setVariable(<span class="string">&quot;append&quot;</span>, DEFAULT_WRAPPER.wrap(<span class="string">&quot;年龄：&quot;</span>+age));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="type">Writer</span> <span class="variable">out</span> <span class="operator">=</span> env.getOut();</span><br><span class="line">			out.write(<span class="string">&quot;从这里输出可以再页面看到具体的内容，就像document.writer写入操作一样。&lt;br/&gt;&quot;</span>);</span><br><span class="line">			body.render(out);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">/*</span></span><br><span class="line"><span class="comment">		  	如果细心的话，会发现页面上是显示out.write（）输出的语句，然后再输出output的内容，</span></span><br><span class="line"><span class="comment">			可见 在body在解析的时候会先把参数放入env中，在页面遇到对应的而来表单时的才会去取值</span></span><br><span class="line"><span class="comment">			但是，如果该表单时不存在，就会报错，  我觉得这里freemarker没有做好，解析的时候更加会把错误暴露在页面上。</span></span><br><span class="line"><span class="comment">			可以这样子弥补$&#123;output!&quot;null&quot;&#125;,始终感觉没有el表达式那样好。</span></span><br><span class="line"><span class="comment">			*/</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取String类型的参数的值</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> paramName</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> paramMap</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> TemplateModelException</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getString</span><span class="params">(String paramName, Map&lt;String, TemplateModel&gt; paramMap)</span> <span class="keyword">throws</span> TemplateModelException&#123;</span><br><span class="line">		<span class="type">TemplateModel</span> <span class="variable">model</span> <span class="operator">=</span> paramMap.get(paramName);</span><br><span class="line">		<span class="keyword">if</span>(model == <span class="literal">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(model <span class="keyword">instanceof</span> TemplateScalarModel)&#123;</span><br><span class="line">			<span class="keyword">return</span> ((TemplateScalarModel)model).getAsString();</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span> (model <span class="keyword">instanceof</span> TemplateNumberModel) &#123;</span><br><span class="line">			<span class="keyword">return</span> ((TemplateNumberModel)model).getAsNumber().toString();</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TemplateModelException</span>(paramName);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 获得int类型的参数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> paramName</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> paramMap</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> TemplateModelException </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">getInt</span><span class="params">(String paramName, Map&lt;String, TemplateModel&gt; paramMap)</span> <span class="keyword">throws</span> TemplateModelException&#123;</span><br><span class="line">		<span class="type">TemplateModel</span> <span class="variable">model</span> <span class="operator">=</span> paramMap.get(paramName);</span><br><span class="line">		<span class="keyword">if</span>(model==<span class="literal">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(model <span class="keyword">instanceof</span> TemplateScalarModel)&#123;</span><br><span class="line">			<span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> ((TemplateScalarModel)model).getAsString();</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> Integer.valueOf(str);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TemplateModelException</span>(paramName);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(model <span class="keyword">instanceof</span> TemplateNumberModel)&#123;</span><br><span class="line">			<span class="keyword">return</span> ((TemplateNumberModel)model).getAsNumber().intValue();</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TemplateModelException</span>(paramName);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	然后再前面的实际代码中加上：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">paramMap.put(<span class="string">&quot;content&quot;</span>, <span class="keyword">new</span> <span class="title class_">ContentDirective</span>());  </span><br></pre></td></tr></table></figure>
+
+<p>这样子基本上可以使用，freemarker完成自定义标签了，解决一写简单的业务逻辑， 但是在实际的项目中不可能这样子去做，因为还没有和spring进行集成使用，每次都需要在解析的时候把解析类的实例放进去。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/post/2017091936.html" title="FreeMarker自定义TemplateDirectiveModel(一)">https://onxs.github.io/post/2017091936.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/freemarker/" rel="tag"><i class="fa fa-tag"></i> freemarker</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2017091902.html" rel="prev" title="Java知识梳理（二）——算法与编程">
+                  <i class="fa fa-angle-left"></i> Java知识梳理（二）——算法与编程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/2017092206.html" rel="next" title="FreeMarker自定义TemplateDirectiveModel(二)">
+                  FreeMarker自定义TemplateDirectiveModel(二) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 1989 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MC</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">930k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">56:22</span>
+  </span>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/sidebar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/bookmark.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/search/local-search.min.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js","integrity":"sha256-JJZNsid68vnh3/zyj0lY9BN5ynxVX/12XgOa1TlaYN0="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/pdf.min.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/mermaid.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/fancybox.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/pace.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/math/mathjax.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":false,"timeout":6000,"priority":true,"url":"https://onxs.github.io/post/2017091936.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/quicklink.min.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"onxs/onxs.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/comments/utterances.min.js"></script>
+
+
+</body>
+</html>

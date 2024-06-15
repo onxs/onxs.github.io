@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#056864">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Helvetica:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/config.min.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/post/2017091534.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/post/2017091534.html","path":"post/2017091534.html","title":"JEECMS自定义标签"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JEECMS自定义标签 | MC BLOG</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="MC BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+      <img class="custom-logo-image" src="https://s2.loli.net/2024/05/04/oabunWyc5VspNeU.png" alt="MC BLOG">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">59</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">175</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E7%AD%BE-mycontent-list-%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">自定义标签[mycontent_list]实现步骤:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAjc-mycontent%E7%9A%84%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">创建jc_mycontent的表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">创建实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AF%E9%85%8D%E7%BD%AEhibernate%E4%B8%ADjc-mycontent%E8%A1%A8%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">接下来是配置hibernate中jc_mycontent表的配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%B1%82%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.4.</span> <span class="nav-text">持久层接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%B1%82%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-number">1.5.</span> <span class="nav-text">持久层实现类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.6.</span> <span class="nav-text">业务层接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-number">1.7.</span> <span class="nav-text">业务层实现类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E7%B1%BB%E7%9A%84%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.8.</span> <span class="nav-text">标签类的抽象类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E5%B7%A5%E5%85%B7%E7%B1%BBDirectiveUtils%E4%B8%8B%E5%AE%9A%E4%B9%89%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0-MYOUT-LIST"><span class="nav-number">1.9.</span> <span class="nav-text">标签工具类DirectiveUtils下定义输出参数:MYOUT_LIST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E7%AD%BE%E4%B8%AD%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E7%B1%BB%E7%BB%A7%E6%89%BF%E4%B8%8A%E8%BE%B9%E7%9A%84%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.10.</span> <span class="nav-text">自定义标签中最重要的类继承上边的抽象类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8jeecms-context-xml%E4%B8%AD%E5%A3%B0%E6%98%8E%E6%A0%87%E7%AD%BE"><span class="nav-number">1.11.</span> <span class="nav-text">在jeecms-context.xml中声明标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8jeecms-context-xml%E4%B8%AD%E6%B3%A8%E5%85%A5DAO"><span class="nav-number">1.12.</span> <span class="nav-text">在jeecms-context.xml中注入DAO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8jeecms-context-xml%E4%B8%AD%E6%B3%A8%E5%85%A5Manager"><span class="nav-number">1.13.</span> <span class="nav-text">在jeecms-context.xml中注入Manager</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6jeecms-servlet-front-xml%E4%B8%AD%E6%9C%89%E4%B8%80%E6%AE%B5%E5%AF%B9%E6%A0%87%E7%AD%BE%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">1.14.</span> <span class="nav-text">配置文件jeecms-servlet-front.xml中有一段对标签的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jeecms-properties%E4%B8%AD%E9%85%8D%E7%BD%AE%E6%A0%87%E7%AD%BE%E5%90%8D"><span class="nav-number">1.15.</span> <span class="nav-text">jeecms.properties中配置标签名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.16.</span> <span class="nav-text">新建模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81"><span class="nav-number">1.17.</span> <span class="nav-text">调用代码</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">175</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHM=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNlZWtAdmlwLnFxLmNvbQ==" title="E-Mail → mailto:ceek@vip.qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS8=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;"><i class="fab fa-twitter fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tLw==" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;"><i class="fab fa-facebook fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9pbnN0YWdyYW0uY29t" title="Instagram → https:&#x2F;&#x2F;instagram.com"><i class="fab fa-instagram fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9vbnhzLm5ldGxpZnkuYXBw" title="https:&#x2F;&#x2F;onxs.netlify.app">镜像站</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.github.io/" title="https:&#x2F;&#x2F;onxs.github.io">主网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/post/2018031644.html" rel="bookmark">
+        <time class="popular-posts-time">2018-03-15</time>
+        <br>
+      Java对象复制Clone技术
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/post/2017122134.html" rel="bookmark">
+        <time class="popular-posts-time">2017-12-06</time>
+        <br>
+      Eclipse部署Web项目到tomcat根路径下
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2017091534.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC BLOG">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="JEECMS自定义标签 | MC BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JEECMS自定义标签<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHMvYmxvZy90cmVlL2Rldi9zb3VyY2UvX3Bvc3RzL0pFRUNNU+iHquWumuS5ieagh+etvi5tZA==" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-09-04 15:34:36" itemprop="dateCreated datePublished" datetime="2017-09-04T15:34:36+08:00">2017-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/backend/" itemprop="url" rel="index"><span itemprop="name">backend</span></a>
+        </span>
+    </span>
+
+  
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0030.jpg" alt="image"></p>
+<p>CMS是”Content Management System”的缩写，意为”内容管理系统”。 内容管理系统是企业信息化建设和电子政务的新宠，也是一个相对较新的市场。对于内容管理，业界还没有一个统一的定义，不同的机构有不同的理解。</p>
+<span id="more"></span>
+<h3 id="自定义标签-mycontent-list-实现步骤"><a href="#自定义标签-mycontent-list-实现步骤" class="headerlink" title="自定义标签[mycontent_list]实现步骤:"></a><strong>自定义标签</strong>[<strong>mycontent_list</strong>]实现步骤:</h3><h4 id="创建jc-mycontent的表"><a href="#创建jc-mycontent的表" class="headerlink" title="创建jc_mycontent的表"></a><strong>创建jc_mycontent的表</strong></h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- Create table</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> JC_MYCONTENT</span><br><span class="line">(</span><br><span class="line">  id      NUMBER <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  title   VARCHAR2(<span class="number">250</span>),</span><br><span class="line">  content VARCHAR2(<span class="number">250</span>)</span><br><span class="line">)</span><br><span class="line">tablespace CMS</span><br><span class="line">  pctfree <span class="number">10</span></span><br><span class="line">  initrans <span class="number">1</span></span><br><span class="line">  maxtrans <span class="number">255</span></span><br><span class="line">  storage</span><br><span class="line">  (</span><br><span class="line">    <span class="keyword">initial</span> <span class="number">64</span>K</span><br><span class="line">    minextents <span class="number">1</span></span><br><span class="line">    maxextents unlimited</span><br><span class="line">  );</span><br><span class="line"><span class="comment">-- Create/Recreate primary, unique and foreign key constraints </span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> JC_MYCONTENT</span><br><span class="line">  <span class="keyword">add</span> <span class="keyword">constraint</span> PK_ID <span class="keyword">primary</span> key (ID)</span><br><span class="line">  <span class="keyword">using</span> index </span><br><span class="line">  tablespace CMS</span><br><span class="line">  pctfree <span class="number">10</span></span><br><span class="line">  initrans <span class="number">2</span></span><br><span class="line">  maxtrans <span class="number">255</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="创建实体类"><a href="#创建实体类" class="headerlink" title="创建实体类"></a><strong>创建实体类</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jeecms.cms.entity.main;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyContent</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> Integer id;</span><br><span class="line">	<span class="keyword">private</span> String title;</span><br><span class="line">	<span class="keyword">private</span> String content;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> Integer <span class="title function_">getId</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setId</span><span class="params">(Integer id)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getTitle</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> title;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTitle</span><span class="params">(String title)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.title = title;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getContent</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> content;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setContent</span><span class="params">(String content)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.content = content;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">MyContent</span><span class="params">(Integer id, String title, String content)</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>();</span><br><span class="line">		<span class="built_in">this</span>.id = id;</span><br><span class="line">		<span class="built_in">this</span>.title = title;</span><br><span class="line">		<span class="built_in">this</span>.content = content;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">MyContent</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="接下来是配置hibernate中jc-mycontent表的配置文件"><a href="#接下来是配置hibernate中jc-mycontent表的配置文件" class="headerlink" title="接下来是配置hibernate中jc_mycontent表的配置文件"></a><strong>接下来是配置hibernate中jc_mycontent表的配置文件</strong></h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">hibernate-mapping</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//Hibernate/Hibernate Mapping DTD//EN&quot;</span> <span class="string">&quot;http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">&quot;com.jeecms.cms.entity.main&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">&quot;MyContent&quot;</span> <span class="attr">table</span>=<span class="string">&quot;jc_mycontent&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">attribute</span>=<span class="string">&quot;sync-DAO&quot;</span>&gt;</span>false<span class="tag">&lt;/<span class="name">meta</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">cache</span> <span class="attr">usage</span>=<span class="string">&quot;read-write&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">&quot;id&quot;</span> <span class="attr">type</span>=<span class="string">&quot;java.lang.Integer&quot;</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">&quot;identity&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;title&quot;</span> <span class="attr">column</span>=<span class="string">&quot;title&quot;</span> <span class="attr">type</span>=<span class="string">&quot;java.lang.String&quot;</span></span></span><br><span class="line"><span class="tag">			<span class="attr">not-null</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;content&quot;</span> <span class="attr">column</span>=<span class="string">&quot;content&quot;</span> <span class="attr">type</span>=<span class="string">&quot;java.lang.String&quot;</span></span></span><br><span class="line"><span class="tag">			<span class="attr">not-null</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="持久层接口"><a href="#持久层接口" class="headerlink" title="持久层接口"></a><strong>持久层接口</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jeecms.cms.dao.main;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.entity.main.MyContent;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MyContentDao</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> List&lt;MyContent&gt; <span class="title function_">getList</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="持久层实现类"><a href="#持久层实现类" class="headerlink" title="持久层实现类"></a><strong>持久层实现类</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jeecms.cms.dao.main.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.dao.main.MyContentDao;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.entity.main.MyContent;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.common.hibernate4.Finder;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.common.hibernate4.HibernateBaseDao;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="comment">// 持久层</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyContentDaoImpl</span> <span class="keyword">extends</span> <span class="title class_">HibernateBaseDao</span>&lt;MyContent, Integer&gt; <span class="keyword">implements</span> <span class="title class_">MyContentDao</span> &#123;</span><br><span class="line">	<span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">	<span class="keyword">public</span> List&lt;MyContent&gt; <span class="title function_">getList</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> find(byNothing());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Finder <span class="title function_">byNothing</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">Finder</span> <span class="variable">f</span> <span class="operator">=</span> Finder.create();</span><br><span class="line">		f.append(<span class="string">&quot;from MyContent&quot;</span>);<span class="comment">// 可以在此处添加查询条件或者添加各种方法进行动态查询</span></span><br><span class="line">		f.setCacheable(<span class="literal">true</span>);</span><br><span class="line">		<span class="keyword">return</span> f;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">protected</span> Class&lt;MyContent&gt; <span class="title function_">getEntityClass</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> MyContent.class;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="业务层接口"><a href="#业务层接口" class="headerlink" title="业务层接口"></a><strong>业务层接口</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jeecms.cms.manager.main;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MyContentMng</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> List <span class="title function_">getList</span><span class="params">()</span>;</span><br><span class="line">&#125;<span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MyContentMng</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> List <span class="title function_">getList</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="业务层实现类"><a href="#业务层实现类" class="headerlink" title="业务层实现类"></a><strong>业务层实现类</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jeecms.cms.manager.main.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.dao.main.MyContentDao;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.entity.main.MyContent;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.manager.main.MyContentMng;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.service.ContentListener;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="comment">// ()业务层</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyContentMngImpl</span> <span class="keyword">implements</span> <span class="title class_">MyContentMng</span> &#123;</span><br><span class="line">	<span class="meta">@Transactional(readOnly = true)</span></span><br><span class="line">	<span class="comment">// 配置事务为只读</span></span><br><span class="line">	<span class="keyword">public</span> List&lt;MyContent&gt; <span class="title function_">getList</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> myContentDao.getList();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> MyContentDao myContentDao;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="comment">// 自动绑定</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setMyContentDao</span><span class="params">(MyContentDao myContentDao)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.myContentDao = myContentDao;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> List&lt;ContentListener&gt; listenerList;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setListenerList</span><span class="params">(List&lt;ContentListener&gt; listenerList)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.listenerList = listenerList;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="标签类的抽象类"><a href="#标签类的抽象类" class="headerlink" title="标签类的抽象类"></a><strong>标签类的抽象类</strong></h4><p>最主要的就是getData这个方法，以及绑定业务层(其中也可以添加多种查询方法，可参考类AbstractContentDirective )。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jeecms.cms.action.directive.abs;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.manager.main.MyContentMng;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> freemarker.core.Environment;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateDirectiveModel;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">AbstractMyContentDirective</span> <span class="keyword">implements</span> <span class="title class_">TemplateDirectiveModel</span> &#123;</span><br><span class="line">	<span class="keyword">protected</span> Object <span class="title function_">getData</span><span class="params">(Map params, Environment env)</span> <span class="keyword">throws</span> TemplateException &#123;</span><br><span class="line">		<span class="keyword">return</span> myContentMng.getList();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">protected</span> MyContentMng myContentMng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="标签工具类DirectiveUtils下定义输出参数-MYOUT-LIST"><a href="#标签工具类DirectiveUtils下定义输出参数-MYOUT-LIST" class="headerlink" title="标签工具类DirectiveUtils下定义输出参数:MYOUT_LIST"></a><strong>标签工具类DirectiveUtils下定义输出参数:MYOUT_LIST</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">MYOUT_LIST</span> <span class="operator">=</span> <span class="string">&quot;mytag_list&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义标签中最重要的类继承上边的抽象类"><a href="#自定义标签中最重要的类继承上边的抽象类" class="headerlink" title="自定义标签中最重要的类继承上边的抽象类"></a><strong>自定义标签中最重要的类继承上边的抽象类</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jeecms.cms.action.directive;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.action.directive.abs.AbstractMyContentDirective;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.cms.entity.main.MyContent;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> com.jeecms.common.web.freemarker.DirectiveUtils.MYOUT_LIST;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.common.web.freemarker.DefaultObjectWrapperBuilderFactory;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.common.web.freemarker.DirectiveUtils;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.core.entity.CmsSite;</span><br><span class="line"><span class="keyword">import</span> com.jeecms.core.web.util.FrontUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> freemarker.core.Environment;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateDirectiveBody;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateException;</span><br><span class="line"><span class="keyword">import</span> freemarker.template.TemplateModel;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyContentListDirective</span> <span class="keyword">extends</span> <span class="title class_">AbstractMyContentDirective</span> &#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 模板名称</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">TPL_NAME</span> <span class="operator">=</span> <span class="string">&quot;mycontent_list&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(Environment env, <span class="meta">@SuppressWarnings(&quot;rawtypes&quot;)</span> Map params,</span></span><br><span class="line"><span class="params">			TemplateModel[] loopVars, TemplateDirectiveBody body)</span> <span class="keyword">throws</span> TemplateException,</span><br><span class="line">			IOException &#123;</span><br><span class="line">		<span class="comment">// 获取站点</span></span><br><span class="line">		<span class="type">CmsSite</span> <span class="variable">site</span> <span class="operator">=</span> FrontUtils.getSite(env);</span><br><span class="line">		<span class="comment">// 获取内容列表</span></span><br><span class="line">		List&lt;MyContent&gt; list = getList(params, env);</span><br><span class="line">		Map&lt;String, TemplateModel&gt; paramWrap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, TemplateModel&gt;(params);</span><br><span class="line">		<span class="comment">// OUT_LIST值为tag_list，将内容列表放入其中</span></span><br><span class="line">		paramWrap.put(MYOUT_LIST, DefaultObjectWrapperBuilderFactory.getDefaultObjectWrapper()</span><br><span class="line">				.wrap(list));</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 将params的值复制到variable中</span></span><br><span class="line"></span><br><span class="line">		Map&lt;String, TemplateModel&gt; origMap = DirectiveUtils.addParamsToVariable(env, paramWrap);</span><br><span class="line">		<span class="comment">// 没有采用默认的模板，直接采用自己写的简单的模板（mycontent_list.html）</span></span><br><span class="line">		FrontUtils.includeTpl(TPL_NAME, site, params, env);</span><br><span class="line">		<span class="comment">// 将variable中的params值移除</span></span><br><span class="line">		DirectiveUtils.removeParamsFromVariable(env, paramWrap, origMap);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">	<span class="keyword">protected</span> List&lt;MyContent&gt; <span class="title function_">getList</span><span class="params">(Map&lt;String, TemplateModel&gt; params, Environment env)</span></span><br><span class="line">			<span class="keyword">throws</span> TemplateException &#123;</span><br><span class="line">		<span class="keyword">return</span> myContentMng.getList();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="在jeecms-context-xml中声明标签"><a href="#在jeecms-context-xml中声明标签" class="headerlink" title="在jeecms-context.xml中声明标签"></a><strong>在jeecms-context.xml中声明标签</strong></h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;cms_mycontent_list&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.jeecms.cms.action.directive.MyContentListDirective&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="在jeecms-context-xml中注入DAO"><a href="#在jeecms-context-xml中注入DAO" class="headerlink" title="在jeecms-context.xml中注入DAO"></a><strong>在jeecms-context.xml中注入DAO</strong></h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;myContentDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.jeecms.cms.dao.main.impl.MyContentDaoImpl&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="在jeecms-context-xml中注入Manager"><a href="#在jeecms-context-xml中注入Manager" class="headerlink" title="在jeecms-context.xml中注入Manager"></a><strong>在jeecms-context.xml中注入Manager</strong></h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;myContentMng&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.jeecms.cms.manager.main.impl.MyContentMngImpl&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置文件jeecms-servlet-front-xml中有一段对标签的配置"><a href="#配置文件jeecms-servlet-front-xml中有一段对标签的配置" class="headerlink" title="配置文件jeecms-servlet-front.xml中有一段对标签的配置"></a><strong>配置文件jeecms-servlet-front.xml中有一段对标签的配置</strong></h4><h4 id="jeecms-properties中配置标签名"><a href="#jeecms-properties中配置标签名" class="headerlink" title="jeecms.properties中配置标签名"></a><strong>jeecms.properties中配置标签名</strong></h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">directive.cms_mycontent_list=cms_mycontent_list</span><br></pre></td></tr></table></figure>
+
+<h4 id="新建模板"><a href="#新建模板" class="headerlink" title="新建模板"></a><strong>新建模板</strong></h4><p>WEB-INF\t\cms\www\oa\tag下新建模板mycontent_list.html,并加入如下代码(里边也可以自己添加一些样式，可参考WEB-INF\t\cms_sys_defined\style_list下样式文件)</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">[#list mytag_list as a]</span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;a.title&#125;&quot;</span>&gt;</span>&quot;$&#123;a.content&#125;&quot;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">[/#list]</span><br></pre></td></tr></table></figure>
+
+<h4 id="调用代码"><a href="#调用代码" class="headerlink" title="调用代码"></a><strong>调用代码</strong></h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">[@cms_mycontent_list]</span><br><span class="line">	[#list mycontent_list as a]</span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">		  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;a.title&#125;&quot;</span>&gt;</span>&quot;$&#123;a.content&#125;&quot;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	[/#list]</span><br><span class="line">[/@cms_mycontent_list]</span><br></pre></td></tr></table></figure>
+
+<p>通过以上这些代码，实现将自己的表jc_mycontent中的数据查询并显示在页面上</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/post/2017091534.html" title="JEECMS自定义标签">https://onxs.github.io/post/2017091534.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/cms/" rel="tag"><i class="fa fa-tag"></i> cms</a>
+              <a href="/tags/jeecms/" rel="tag"><i class="fa fa-tag"></i> jeecms</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2017090728.html" rel="prev" title="HEXO主题图配置">
+                  <i class="fa fa-angle-left"></i> HEXO主题图配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/2017091622.html" rel="next" title="Markdown的语法及基本命令">
+                  Markdown的语法及基本命令 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 1989 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MC</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">930k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">56:22</span>
+  </span>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/sidebar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/bookmark.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/search/local-search.min.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js","integrity":"sha256-JJZNsid68vnh3/zyj0lY9BN5ynxVX/12XgOa1TlaYN0="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/pdf.min.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/mermaid.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/fancybox.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/pace.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/math/mathjax.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":false,"timeout":6000,"priority":true,"url":"https://onxs.github.io/post/2017091534.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/quicklink.min.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"onxs/onxs.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/comments/utterances.min.js"></script>
+
+
+</body>
+</html>

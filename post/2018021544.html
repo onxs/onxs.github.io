@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#056864">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Helvetica:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/config.min.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/post/2018021544.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/post/2018021544.html","path":"post/2018021544.html","title":"Gradle入门笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Gradle入门笔记 | MC BLOG</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="MC BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+      <img class="custom-logo-image" src="https://s2.loli.net/2024/05/04/oabunWyc5VspNeU.png" alt="MC BLOG">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">59</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">175</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">基础知识准备</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BAGradle%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-number"></span> <span class="nav-text">搭建Gradle运行环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%94%A8%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number"></span> <span class="nav-text">有用的信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85gradle"><span class="nav-number"></span> <span class="nav-text">安装gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%80%E8%B5%B7%E5%AE%89%E8%A3%85"><span class="nav-number"></span> <span class="nav-text">与包管理器一起安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85SDKMAN"><span class="nav-number">1.</span> <span class="nav-text">安装SDKMAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BDSDKMAN"><span class="nav-number">2.</span> <span class="nav-text">卸载SDKMAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85SDKMAN%E5%88%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">安装SDKMAN到自定义位置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85gradle"><span class="nav-number"></span> <span class="nav-text">自动安装gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85gradle"><span class="nav-number"></span> <span class="nav-text">手动安装gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%9A%84Gradle%E5%8F%91%E8%A1%8C%E7%89%88"><span class="nav-number">1.</span> <span class="nav-text">下载最新的Gradle发行版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B%E5%88%86%E5%8F%91"><span class="nav-number">2.</span> <span class="nav-text">解压分发</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Linux%E5%92%8CMacOS%E7%94%A8%E6%88%B7"><span class="nav-number">2.1.</span> <span class="nav-text">Linux和MacOS用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Microsoft-Windows%E7%94%A8%E6%88%B7"><span class="nav-number">2.2.</span> <span class="nav-text">Microsoft Windows用户</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%82%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">配置您的系统环境</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Linux%E5%92%8CMacOS%E7%94%A8%E6%88%B7-1"><span class="nav-number">3.1.</span> <span class="nav-text">Linux和MacOS用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Microsoft-Windows%E7%94%A8%E6%88%B7-1"><span class="nav-number">3.2.</span> <span class="nav-text">Microsoft Windows用户</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E6%82%A8%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">4.</span> <span class="nav-text">验证您的安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8Gradle%E5%8C%85%E8%A3%85%E5%99%A8%E5%8D%87%E7%BA%A7"><span class="nav-number"></span> <span class="nav-text">用Gradle包装器升级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%84%E4%B8%80%E4%B8%AAHelloWorld%E7%9C%8B%E7%9C%8B"><span class="nav-number"></span> <span class="nav-text">弄一个HelloWorld看看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="nav-number"></span> <span class="nav-text">执行流程和基本术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E6%87%82Gradle%E9%85%8D%E7%BD%AE%E8%AF%AD%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">读懂Gradle配置语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E7%AC%AC%E4%B8%80%E8%A1%8Capply-plugin-com-android-application"><span class="nav-number">1.</span> <span class="nav-text">分析第一行apply plugin: &#39;com.android.application&#39;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Groovy%E8%AF%AD%E8%A8%80%E7%9A%84%E9%97%AD%E5%8C%85%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">Groovy语言的闭包语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Getter%E5%92%8CSetter"><span class="nav-number">3.</span> <span class="nav-text">Getter和Setter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Project%EF%BC%8CTask-%EF%BC%8CAction"><span class="nav-number">4.</span> <span class="nav-text">Project，Task ，Action</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Task%E7%9A%84%E5%86%99%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">自定义Task的写法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#task%E7%9A%84%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="nav-number">1.</span> <span class="nav-text">task的依赖关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Task-%E7%9A%84type%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%AE%9A%E4%B9%89%EF%BC%88%E6%B2%A1%E6%9C%89%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">Task 的type可以自定义（没有深入研究）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Plugin%E7%9A%84%E5%86%99%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">自定义Plugin的写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-Wrapper"><span class="nav-number"></span> <span class="nav-text">Gradle Wrapper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90wrapper"><span class="nav-number">1.</span> <span class="nav-text">生成wrapper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E7%9A%84%E7%9C%8B%E4%B8%8Bgradle-wrapper-properties%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">详细的看下gradle-wrapper.properties内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90wrapper%E5%8F%AF%E4%BB%A5%E6%8C%87%E5%AE%9A%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">生成wrapper可以指定参数</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">175</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHM=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNlZWtAdmlwLnFxLmNvbQ==" title="E-Mail → mailto:ceek@vip.qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS8=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;"><i class="fab fa-twitter fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tLw==" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;"><i class="fab fa-facebook fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9pbnN0YWdyYW0uY29t" title="Instagram → https:&#x2F;&#x2F;instagram.com"><i class="fab fa-instagram fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9vbnhzLm5ldGxpZnkuYXBw" title="https:&#x2F;&#x2F;onxs.netlify.app">镜像站</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.github.io/" title="https:&#x2F;&#x2F;onxs.github.io">主网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018021544.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC BLOG">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Gradle入门笔记 | MC BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Gradle入门笔记<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHMvYmxvZy90cmVlL2Rldi9zb3VyY2UvX3Bvc3RzL2dyYWRsZeWFpemXqOeslOiusC5tZA==" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-01 15:44:36" itemprop="dateCreated datePublished" datetime="2018-02-01T15:44:36+08:00">2018-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/gradle/" itemprop="url" rel="index"><span itemprop="name">gradle</span></a>
+        </span>
+    </span>
+
+  
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>18 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img data-src="https://s2.loli.net/2024/05/06/kH7SpWP2G3oy8s1.jpg"></p>
+<p>gradle在语法上是基于Groovy语言的（<span class="exturl" data-url="aHR0cDovL3d3dy5ncm9vdnktbGFuZy5vcmcv">Groovy<i class="fa fa-external-link-alt"></i></span> 是一种基于JVM的敏捷开发语言，可以简单的理解为强类型语言java的弱类型版本），在项目管理上是基于Ant和Maven概念的项目自动化建构工具。</p>
+<span id="more"></span>
+
+<h4 id="基础知识准备"><a href="#基础知识准备" class="headerlink" title="基础知识准备"></a>基础知识准备</h4><ol>
+<li><strong>Java基础，命令行使用基础</strong></li>
+<li><strong>官方文档</strong>：<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdyYWRsZS5vcmcvY3VycmVudC9kc2wv">https://docs.gradle.org/current/dsl/<i class="fa fa-external-link-alt"></i></span></li>
+<li>** Gradle使用指南：** <span class="exturl" data-url="aHR0cHM6Ly9ncmFkbGUub3JnL2RvY3MvY3VycmVudC91c2VyZ3VpZGUvdXNlcmd1aWRl">https://gradle.org/docs/current/userguide/userguide<i class="fa fa-external-link-alt"></i></span></li>
+<li><strong>Android插件文档</strong>：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZS9hbmRyb2lkLWdyYWRsZS1kc2wuZ2l0">https://github.com/google/android-gradle...<i class="fa fa-external-link-alt"></i></span></li>
+<li><strong>AndroidGradle使用文档</strong>：<span class="exturl" data-url="aHR0cDovL3Rvb2xzLmFuZHJvaWQuY29tL3RlY2gtZG9jcy9uZXctYnVpbGQtc3lzdGVtL3VzZXItZ3VpZGU=">http://tools.android.com/tech-docs/new-build-system/user-guide<i class="fa fa-external-link-alt"></i></span></li>
+<li><strong>Groovy基础：</strong> <span class="exturl" data-url="aHR0cDovL2F0dGlzLXdvbmctMTYzLWNvbS5pdGV5ZS5jb20vYmxvZy8xMjM5ODE5">http://attis-wong-163-com.iteye.com/blog/1239819<i class="fa fa-external-link-alt"></i></span></li>
+<li><strong>Groovy闭包的Delegate机制</strong>：<span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS9kYXZlbmtpbi9wL2dyYWRsZS1sZWFybmluZy0zLmh0bWw=">http://www.cnblogs.com/davenkin/p/gradle-learning-3.html<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+<h2 id="搭建Gradle运行环境"><a href="#搭建Gradle运行环境" class="headerlink" title="搭建Gradle运行环境"></a>搭建Gradle运行环境</h2><ol>
+<li>Gradle 运行依赖JVM，也就是java运行的环境。所以要安装jdk和jre，好像目前的Gradle的运行环境要求jdk的版本在1.6以上，应该的，现在jdk都到1.8了。</li>
+<li>然后到Gradle官网现在Gradle的压缩包。<span class="exturl" data-url="aHR0cHM6Ly9ncmFkbGUub3JnL2dyYWRsZS1kb3dubG9hZC8=">地址<i class="fa fa-external-link-alt"></i></span>，这个页面里面又两种方式，一种手动安装，一种通过脚本安装。我一般喜欢自己动手，这样将来清理起来比较方便。</li>
+<li>下载压缩包后，解压，然后配置环境变量，手动安装过jdk的人应该都配置环境变量很熟了吧。每个平台下配置环境变量的方式不一样</li>
+</ol>
+<p>MacOS 下配置。在<code>~/.bash_profile</code>中添加如下代码</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="comment">#gradle  注意gradle-2.14.1是自己解压的路径</span></span><br><span class="line"><span class="built_in">export</span> <span class="attribute">GRADLE_HOME</span>=<span class="variable">$&#123;HOME&#125;</span>/gradle-2.14.1</span><br><span class="line"><span class="attribute">PATH</span>=<span class="variable">$&#123;PATH&#125;</span>:$&#123;GRADLE_HOME&#125;/bin</span><br><span class="line"><span class="built_in">export</span> PATH</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>保存后在终端输入<code>source ~/.bash_profile</code>回车执行让刚刚的配置生效。然后命令行输入<code>gradle -v</code>查看是否安装成功。</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">$ gradle -v</span><br><span class="line"></span><br><span class="line"><span class="code">------------------------------------------------------------</span></span><br><span class="line"><span class="code">Gradle 2.14.1</span></span><br><span class="line"><span class="code">------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">Build time:   2016-07-18 06:38:37 UTC</span><br><span class="line">Revision:     d9e2113d9fb05a5caabba61798bdb8dfdca83719</span><br><span class="line"></span><br><span class="line">Groovy:       2.4.4</span><br><span class="line">Ant:          Apache Ant(TM) version 1.9.6 compiled on June 29 2015</span><br><span class="line">JVM:          1.8.0<span class="emphasis">_111 (Oracle Corporation 25.111-b14)</span></span><br><span class="line"><span class="emphasis">OS:           Mac OS X 10.12.2 x86_</span>64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="有用的信息"><a href="#有用的信息" class="headerlink" title="有用的信息"></a>有用的信息</h2><ul>
+<li>您可以每两个月通过Gradle核心工程师<span class="exturl" data-url="aHR0cHM6Ly9ncmFkbGUub3JnL3RyYWluaW5n">免费注册现场培训<i class="fa fa-external-link-alt"></i></span></li>
+<li>我们的<span class="exturl" data-url="aHR0cHM6Ly9ncmFkbGUub3JnL2d1aWRlcw==">指南<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdyYWRsZS5vcmcvY3VycmVudC91c2VyZ3VpZGUvdXNlcmd1aWRlLmh0bWw=">参考文件<i class="fa fa-external-link-alt"></i></span>制作了很好的阅读材料</li>
+<li>您可以使用<span class="exturl" data-url="aHR0cHM6Ly9ncmFkbGUuY29tL3NjYW5zL2dldC1zdGFydGVk">构建扫描<i class="fa fa-external-link-alt"></i></span>来可视化和调试您的构建</li>
+<li>该<span class="exturl" data-url="aHR0cHM6Ly9uZXdzbGV0dGVyLmdyYWRsZS5jb20v">摇篮通讯<i class="fa fa-external-link-alt"></i></span>是跟上最新与制作月度问题的好方法</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXQuaW8vZ3JhZGxlLWNvbXBsZXRpb24=">命令行完成<i class="fa fa-external-link-alt"></i></span>脚本可用于bash和zsh</li>
+</ul>
+<p>Gradle在所有主要操作系统上运行，只需要安装<span class="exturl" data-url="aHR0cDovL3d3dy5vcmFjbGUuY29tL3RlY2huZXR3b3JrL2phdmEvamF2YXNlL2Rvd25sb2Fkcy9pbmRleC5odG1s">Java JDK或JRE<i class="fa fa-external-link-alt"></i></span>版本7或更高版本。检查，运行<code>java -version</code>：</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">$ java -<span class="built_in">version</span></span><br><span class="line">java <span class="built_in">version</span> <span class="string">&quot;1.8.0_121&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装gradle"><a href="#安装gradle" class="headerlink" title="安装gradle"></a>安装gradle</h2><h3 id="与包管理器一起安装"><a href="#与包管理器一起安装" class="headerlink" title="与包管理器一起安装"></a>与包管理器一起安装</h3><h4 id="安装SDKMAN"><a href="#安装SDKMAN" class="headerlink" title="安装SDKMAN"></a>安装SDKMAN</h4><p>安装SDKMAN！在类UNIX平台上一样简单。SDKMAN！在Mac OSX，Linux，Cygwin，Solaris和FreeBSD上顺利安装。我们也支持Bash和ZSH shell。<br>只需打开一个新的终端并输入：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">curl</span> <span class="literal">-s</span> <span class="string">&quot;https://get.sdkman.io&quot;</span> | bash</span><br></pre></td></tr></table></figure>
+
+<p>按照屏幕上的说明完成安装。<br>接下来，打开一个新的终端<strong>或</strong>输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">source</span> <span class="string">&quot;<span class="variable">$HOME</span>/.sdkman/bin/sdkman-init.sh&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>最后，运行以下代码片段以确保安装成功：</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">$ sdk <span class="built_in">version</span></span><br></pre></td></tr></table></figure>
+
+<p>如果一切顺利的话，应该显示版本。就像是：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sdkman</span> <span class="number">5</span>.<span class="number">0</span>.<span class="number">0</span>+<span class="number">51</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="卸载SDKMAN"><a href="#卸载SDKMAN" class="headerlink" title="卸载SDKMAN"></a>卸载SDKMAN</h4><p>在不太可能发生的情况下，您想要卸载SDKMAN！，我们还没有自动执行此操作的方法。如果你确实想把它从你的系统中删除，那么这样做很容易。下面将指导你完成备份，然后从系统中删除整个安装。</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">tar zcvf ~/sdkman-backup_$(<span class="keyword">date</span> +%F-%kh%M).tar.gz -C ~/ .sdkman</span><br><span class="line">$ rm -rf ~/.sdkman</span><br></pre></td></tr></table></figure>
+
+<p>最后一个步骤涉及编辑和您删除初始化片段</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"><span class="title">.bashrc</span></span><br></pre></td></tr></table></figure>
+
+<p>，</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"><span class="title">.bash_profile</span></span><br></pre></td></tr></table></figure>
+
+<p>和&#x2F;或</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"><span class="title">.profile</span></span><br></pre></td></tr></table></figure>
+
+<p>文件。如果您使用ZSH，请将其从</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"><span class="title">.zshrc</span></span><br></pre></td></tr></table></figure>
+
+<p>文件中删除。要删除的代码片段如下所示：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!</span><br><span class="line"><span class="string">[[ -s &quot;/home/dudette/.sdkman/bin/sdkman-init.sh&quot; ]]</span> &amp;&amp; source <span class="string">&quot;/home/dudette/.sdkman/bin/sdkman-init.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>一旦删除，您已经成功卸载SDKMAN！从你的机器。</p>
+<h4 id="安装SDKMAN到自定义位置"><a href="#安装SDKMAN到自定义位置" class="headerlink" title="安装SDKMAN到自定义位置"></a>安装SDKMAN到自定义位置</h4><p>可以安装SDKMAN！到一个自定义的位置以外</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$HOME</span>/.sdkman</span><br></pre></td></tr></table></figure>
+
+<p>。这可以通过</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">SDKMAN_DIR</span></span><br></pre></td></tr></table></figure>
+
+<p>在安装之前导出您的自定义位置来实现。</p>
+<p>只需打开一个新的终端并输入：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">export</span> <span class="attribute">SDKMAN_DIR</span>=<span class="string">&quot;/usr/local/sdkman&quot;</span> &amp;&amp; curl -s <span class="string">&quot;https://get.sdkman.io&quot;</span> | bash</span><br></pre></td></tr></table></figure>
+
+<p>为了这个工作，至关重要的是你的用户有这个文件夹的完全访问权限。它也是重要的，该文件夹不存在作为SDKMAN！将尝试创建它。</p>
+<h3 id="自动安装gradle"><a href="#自动安装gradle" class="headerlink" title="自动安装gradle"></a>自动安装gradle</h3><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">$ sdk <span class="keyword">install</span> gradle <span class="number">4.5</span></span><br></pre></td></tr></table></figure>
+
+<p><span class="exturl" data-url="aHR0cDovL2JyZXcuc2gv">Homebrew<i class="fa fa-external-link-alt"></i></span>是“macOS缺少的包管理器”。</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">brew </span><span class="keyword">install </span>gradle</span><br></pre></td></tr></table></figure>
+
+<p><span class="exturl" data-url="aHR0cDovL3Njb29wLnNoLw==">Scoop<i class="fa fa-external-link-alt"></i></span>是受Homebrew启发的Windows命令行安装程序。</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">scoop </span><span class="keyword">install </span>gradle</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><span class="exturl" data-url="aHR0cHM6Ly9jaG9jb2xhdGV5Lm9yZy8=">chocolatey<i class="fa fa-external-link-alt"></i></span>是“Windows的包管理器”。</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">$ choco <span class="keyword">install</span> gradle</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cubWFjcG9ydHMub3JnLw==">MacPorts<i class="fa fa-external-link-alt"></i></span>是一个在macOS上管理工具的系统：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">$ sudo port <span class="keyword">install</span> gradle</span><br></pre></td></tr></table></figure>
+
+<h3 id="手动安装gradle"><a href="#手动安装gradle" class="headerlink" title="手动安装gradle"></a>手动安装gradle</h3><h4 id="下载最新的Gradle发行版"><a href="#下载最新的Gradle发行版" class="headerlink" title="下载最新的Gradle发行版"></a><span class="exturl" data-url="aHR0cHM6Ly9ncmFkbGUub3JnL3JlbGVhc2Vz">下载<i class="fa fa-external-link-alt"></i></span>最新的Gradle发行版</h4><p>目前的Gradle版本是在2018年1月24日发布的版本4.5。分发zip文件有两种版本：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zZXJ2aWNlcy5ncmFkbGUub3JnL2Rpc3RyaWJ1dGlvbnMvZ3JhZGxlLTQuNS1iaW4uemlw">仅限二进制<i class="fa fa-external-link-alt"></i></span> （<span class="exturl" data-url="aHR0cHM6Ly9zZXJ2aWNlcy5ncmFkbGUub3JnL2Rpc3RyaWJ1dGlvbnMvZ3JhZGxlLTQuNS1iaW4uemlwLnNoYTI1Ng==">sha256<i class="fa fa-external-link-alt"></i></span>）</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zZXJ2aWNlcy5ncmFkbGUub3JnL2Rpc3RyaWJ1dGlvbnMvZ3JhZGxlLTQuNS1hbGwuemlw">完整的<i class="fa fa-external-link-alt"></i></span>文档和来源（<span class="exturl" data-url="aHR0cHM6Ly9zZXJ2aWNlcy5ncmFkbGUub3JnL2Rpc3RyaWJ1dGlvbnMvZ3JhZGxlLTQuNS1hbGwuemlwLnNoYTI1Ng==">sha256<i class="fa fa-external-link-alt"></i></span>）</li>
+</ul>
+<p>如果有疑问，请选择仅二进制版本，并在线浏览<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdyYWRsZS5vcmcvY3VycmVudA==">文档<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dyYWRsZS9ncmFkbGU=">来源<i class="fa fa-external-link-alt"></i></span>。</p>
+<h4 id="解压分发"><a href="#解压分发" class="headerlink" title="解压分发"></a>解压分发</h4><h5 id="Linux和MacOS用户"><a href="#Linux和MacOS用户" class="headerlink" title="Linux和MacOS用户"></a>Linux和MacOS用户</h5><p>解压缩您选择的目录中的分发zip文件，例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mkdir</span> /opt/gradle</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">unzip -d /opt/gradle gradle-4.5-bin.zip</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> /opt/gradle/gradle-4.5</span></span><br><span class="line">LICENSE  NOTICE  bin  getting-started.html  init.d  lib  media</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="Microsoft-Windows用户"><a href="#Microsoft-Windows用户" class="headerlink" title="Microsoft Windows用户"></a>Microsoft Windows用户</h5><p><code>C:\Gradle</code>用<strong>文件资源管理器</strong>创建一个新目录。</p>
+<p>打开第二个<strong>文件资源管理器</strong>窗口，并转到下载Gradle分配的目录。双击ZIP存档以显示内容。将内容文件夹<code>gradle-4.5</code>拖到新创建的<code>C:\Gradle</code>文件夹中。</p>
+<p>或者，您可以<code>C:\Gradle</code>使用您选择的归档工具将Gradle发行版ZIP解压缩。</p>
+<h4 id="配置您的系统环境"><a href="#配置您的系统环境" class="headerlink" title="配置您的系统环境"></a>配置您的系统环境</h4><h5 id="Linux和MacOS用户-1"><a href="#Linux和MacOS用户-1" class="headerlink" title="Linux和MacOS用户"></a>Linux和MacOS用户</h5><p>配置您的<code>PATH</code>环境变量以包含<code>bin</code>解压缩分发的目录，例如：</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>export <span class="title class_">PATH</span>=<span class="variable">$PATH</span><span class="symbol">:/opt/gradle/gradle-</span><span class="number">4.5</span>/bin</span><br></pre></td></tr></table></figure>
+
+<h5 id="Microsoft-Windows用户-1"><a href="#Microsoft-Windows用户-1" class="headerlink" title="Microsoft Windows用户"></a>Microsoft Windows用户</h5><p>在<strong>文件资源管理器中，</strong>右键单击<code>This PC</code>（或<code>Computer</code>）图标，然后单击<code>Properties</code>- &gt; <code>Advanced System Settings</code>- &gt; <code>Environmental Variables</code>。</p>
+<p>在<code>System Variables</code>选择下<code>Path</code>，然后单击<code>Edit</code>。添加一个条目<code>C:\Gradle\gradle-4.5\bin</code>。点击确定保存。</p>
+<h4 id="验证您的安装"><a href="#验证您的安装" class="headerlink" title="验证您的安装"></a>验证您的安装</h4><p>打开控制台（或Windows命令提示符）并运行<code>gradle -v</code>以运行gradle并显示版本，例如：</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">$ gradle -v</span><br><span class="line"></span><br><span class="line"><span class="code">------------------------------------------------------------</span></span><br><span class="line"><span class="code">Gradle 4.5</span></span><br><span class="line"><span class="code">------------------------------------------------------------</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="用Gradle包装器升级"><a href="#用Gradle包装器升级" class="headerlink" title="用Gradle包装器升级"></a>用Gradle包装器升级</h2><p>如果您现有的基于Gradle的版本使用<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdyYWRsZS5vcmcvNC41L3VzZXJndWlkZS9ncmFkbGVfd3JhcHBlci5odG1s">Gradle Wrapper<i class="fa fa-external-link-alt"></i></span>，那么可以通过运行<code>wrapper</code>指定所需的Gradle版本的任务轻松升级：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">$ ./gradlew <span class="keyword">wrapper</span> <span class="comment">--gradle-version=4.5 --distribution-type=bin</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>请注意，没有必要安装Gradle来使用Gradle包装器。下一次调用<code>gradlew</code>或<code>gradlew.bat</code>将下载并缓存指定版本的Gradle。</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">$ <span class="string">./gradlew</span> tasks</span><br><span class="line">Downloading https:<span class="string">//services.gradle.org/distributions/gradle-4.5-bin.zip</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="弄一个HelloWorld看看"><a href="#弄一个HelloWorld看看" class="headerlink" title="弄一个HelloWorld看看"></a>弄一个HelloWorld看看</h2><p>创建一个<code>test_gralde</code>文件夹。然后在文件夹里面创建一个<code>build.gradle</code>文件。注意文件名不要乱起。在<code>build.gradle</code>中添加如下代码：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">task helloworld&#123;</span><br><span class="line">    doLast&#123;</span><br><span class="line">        println<span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">#后者等同于下面的代码,</span><br><span class="line">task helloworld2 &lt;&lt;&#123;</span><br><span class="line">    println <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后来运行一下：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">liuqiangs-MacBook-Pro:test_gralde liuqiang$ gradle helloworld</span><br><span class="line">:helloworld</span><br><span class="line">Hello World!</span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL</span><br><span class="line"></span><br><span class="line">Total <span class="built_in">time</span>: <span class="number">1.52</span> <span class="built_in">secs</span></span><br><span class="line"></span><br><span class="line">This build could be faster, please consider <span class="keyword">using</span> <span class="keyword">the</span> Gradle Daemon: <span class="keyword">https</span>://docs.gradle.org/<span class="number">2.14</span><span class="number">.1</span>/userguide/gradle_daemon.html</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我们分析一下执行步骤。build.gradle是Gradle默认的构建脚本文件，执行Gradle命令的时候，会默认加载当前目录下的build.gradle脚本文件，当然你也可以通过 -b 参数指定想要加载执行的文件。这只是个最简单的task例子，后面详细介绍task的常见定义。</p>
+<p>这个构建脚本定义一个任务（Task），任务名字叫helloworld，并且给任务helloworld添加了一个动作，官方名字是Action，阅读Gradle源代码你会到处见到它，其实他就是一段Groovy语言实现的闭包，doLast就意味着在Task执行完毕之后要回调doLast的这部分闭包的代码实现。第二个方法中的“&lt;&lt;”表示向helloworld中加入执行代码。至于语法部分，基本是Groovy语法（包括一些语法糖，也就是写简写方式，如果写个JavaScript或者Python会好理解一些，但是还是建议去读一下groovy的基本语法），加上一些DSL（domain specific language）的约定。</p>
+<h2 id="执行流程和基本术语"><a href="#执行流程和基本术语" class="headerlink" title="执行流程和基本术语"></a>执行流程和基本术语</h2><p>和Maven一样，Gradle只是提供了构建项目的一个框架，真正起作用的是Plugin。Gradle在默认情况下为我们提供了许多常用的Plugin，其中包括有构建Java项目的Plugin，还有Android等。与Maven不同的是，Gradle不提供内建的项目生命周期管理，只是java Plugin向Project中添加了许多Task，这些Task依次执行，为我们营造了一种如同Maven般项目构建周期。</p>
+<p>Gradle是一种声明式的构建工具。在执行时，Gradle并不会一开始便顺序执行build.gradle文件中的内容，而是分为两个阶段，第一个阶段是配置阶段，然后才是实际的执行阶段。<br>配置阶段，Gradle将读取所有build.gradle文件的所有内容来配置Project和Task等，比如设置Project和Task的Property，处理Task之间的依赖关系等。</p>
+<p>看一个基本结构的Android多Moudule（也就是gradle中的多Project  <strong>Multi-Projects Build</strong>）的基本项目结构。</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">├── app <span class="comment">#Android App目录</span></span><br><span class="line">│   ├── app.iml</span><br><span class="line">│   ├── <span class="keyword">build </span><span class="comment">#构建输出目录</span></span><br><span class="line">│   ├── <span class="keyword">build.gradle </span><span class="comment">#构建脚本</span></span><br><span class="line">│   ├── libs <span class="comment">#so相关库</span></span><br><span class="line">│   ├── proguard-rules.pro <span class="comment">#proguard混淆配置</span></span><br><span class="line">│   └── src <span class="comment">#源代码，资源等</span></span><br><span class="line">├── module <span class="comment">#Android 另外一个module目录</span></span><br><span class="line">│   ├── module.iml</span><br><span class="line">│   ├── <span class="keyword">build </span><span class="comment">#构建输出目录</span></span><br><span class="line">│   ├── <span class="keyword">build.gradle </span><span class="comment">#构建脚本</span></span><br><span class="line">│   ├── libs <span class="comment">#so相关库</span></span><br><span class="line">│   ├── proguard-rules.pro <span class="comment">#proguard混淆配置</span></span><br><span class="line">│   └── src <span class="comment">#源代码，资源等</span></span><br><span class="line">├── <span class="keyword">build</span></span><br><span class="line"><span class="keyword"></span>│   └── intermediates</span><br><span class="line">├── <span class="keyword">build.gradle </span><span class="comment">#工程构建文件</span></span><br><span class="line">├── gradle</span><br><span class="line">│   └── wrapper</span><br><span class="line">├── gradle.properties <span class="comment">#gradle的配置</span></span><br><span class="line">├── gradlew <span class="comment">#gradle wrapper linux shell脚本</span></span><br><span class="line">├── gradlew.<span class="keyword">bat</span></span><br><span class="line"><span class="keyword"></span>├── LibSqlite.iml</span><br><span class="line">├── local.properties <span class="comment">#配置Androod SDK位置文件</span></span><br><span class="line">└── settings.gradle <span class="comment">#工程配置</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面的是完整的AndroidStudio中的项目结构，我们抽象成Gradle多个Project的样子</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">├── app </span><br><span class="line">│   ├── build.gradle #构建脚本</span><br><span class="line">├── module </span><br><span class="line">│   ├── build.gradle #构建脚本</span><br><span class="line">├── build.gradle #工程构建文件</span><br><span class="line">├── gradle</span><br><span class="line">│   └── <span class="keyword">wrapper</span>    #先不去管它</span><br><span class="line">├── gradle.properties #gradle的配置</span><br><span class="line">├── gradlew #gradle <span class="keyword">wrapper</span> linux shell脚本</span><br><span class="line">├── gradlew.bat</span><br><span class="line">└── settings.gradle #工程配置</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Gradle为每个build.gradle都会创建一个相应的Project领域对象，在编写Gradle脚本时，我们实际上是在操作诸如Project这样的Gradle领域对象。在多Project的项目中，我们会操作多个Project领域对象。Gradle提供了强大的多Project构建支持。</li>
+<li>要创建多Project的Gradle项目，我们首先需要在根（Root）Project中加入名为settings.gradle的配置文件，该文件应该包含各个子Project的名称。Gradle中的Project可以简单的映射为AndroidStudio中的Module。</li>
+<li>在最外层的build.gradle。一般干得活是：配置其他子Project的。比如为子Project添加一些属性。</li>
+<li>在项目根目录下有个一个名为settings.gradle。这个文件很重要，名字必须是settings.gradle。它里边用来告诉Gradle，这个multiprojects包含多少个子Project（可以理解为AndroidStudio中Module）。</li>
+</ul>
+<h2 id="读懂Gradle配置语法"><a href="#读懂Gradle配置语法" class="headerlink" title="读懂Gradle配置语法"></a>读懂Gradle配置语法</h2><p>Gradle向我们提供了一整套DSL，所以在很多时候我们写的代码似乎已经脱离了groovy，但是在底层依然是执行的groovy所以很多语法还是Groovy的语法规则。<br>看一个AndroidStudio中app下的build.gradle的配置</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">apply plugin<span class="punctuation">:</span> &#x27;com.android.application&#x27;</span><br><span class="line"></span><br><span class="line">android <span class="punctuation">&#123;</span></span><br><span class="line">    compileSdkVersion <span class="number">25</span></span><br><span class="line">    buildToolsVersion <span class="string">&quot;25.0.0&quot;</span></span><br><span class="line">    defaultConfig <span class="punctuation">&#123;</span></span><br><span class="line">        applicationId <span class="string">&quot;me.febsky.demo&quot;</span></span><br><span class="line">        minSdkVersion <span class="number">15</span></span><br><span class="line">        targetSdkVersion <span class="number">25</span></span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">&quot;1.0&quot;</span></span><br><span class="line">        testInstrumentationRunner <span class="string">&quot;android.support.test.runner.AndroidJUnitRunner&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">    buildTypes <span class="punctuation">&#123;</span></span><br><span class="line">        release <span class="punctuation">&#123;</span></span><br><span class="line">            minifyEnabled <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">            proguardFiles getDefaultProguardFile(&#x27;proguard-android.txt&#x27;)<span class="punctuation">,</span> &#x27;proguard-rules.pro&#x27;</span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">dependencies <span class="punctuation">&#123;</span></span><br><span class="line">    compile fileTree(dir<span class="punctuation">:</span> &#x27;libs&#x27;<span class="punctuation">,</span> include<span class="punctuation">:</span> <span class="punctuation">[</span>&#x27;*.jar&#x27;<span class="punctuation">]</span>)</span><br><span class="line">    compile &#x27;com.android.support<span class="punctuation">:</span>appcompat-v7<span class="punctuation">:</span><span class="number">25.1</span><span class="number">.0</span>&#x27;</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="分析第一行apply-plugin-com-android-application"><a href="#分析第一行apply-plugin-com-android-application" class="headerlink" title="分析第一行apply plugin: &#39;com.android.application&#39;"></a>分析第一行<code>apply plugin: &#39;com.android.application&#39;</code></h4><p>这句其实是Groovy语法糖，像Ruby和Js都有这种语法糖，apply实际上是个方法，补上括号后的脚本：<code>apply (plugin: &#39;com.android.application&#39;)</code>,看起来还是有点别扭是不？还有个语法糖，如果方法参数是个map类型，那么方括号可以省略，进一步还原<code>apply([ plugin: &#39;com.android.application&#39;])</code>,不理解的可以去看下Groovy的map的写法，和js一样。所以这行的意思是：apply其实是个方法，接收一个Map类型的参数。</p>
+<blockquote>
+<p><strong>总结两点</strong>：1. 方法调用，圆括号可以省略 2. 如果方法参数是个Map，方括号可以省略。</p>
+</blockquote>
+<h4 id="Groovy语言的闭包语法"><a href="#Groovy语言的闭包语法" class="headerlink" title="Groovy语言的闭包语法"></a>Groovy语言的闭包语法</h4><p>看上面的<code>dependencies</code> 这其实是个方法调用。调用了Project的dependencies方法。只不过参数是个闭包，闭包的用法在文章开始给出了链接。我们对其进行还原一下：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">#方法调用省略了（）我们加上</span><br><span class="line"><span class="keyword">dependencies</span> (&#123;</span><br><span class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">&#x27;libs&#x27;</span>, <span class="keyword">include</span>: [<span class="string">&#x27;*.jar&#x27;</span>])</span><br><span class="line">    <span class="keyword">compile</span> <span class="string">&#x27;com.android.support:appcompat-v7:25.1.0&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>提示一点</strong>：如果闭包是方法的最后一个参数，那么闭包可以放在圆括号外面</p>
+</blockquote>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">#所以代码还能写成这样</span><br><span class="line"><span class="keyword">dependencies</span> ()&#123;</span><br><span class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">&#x27;libs&#x27;</span>, <span class="keyword">include</span>: [<span class="string">&#x27;*.jar&#x27;</span>])</span><br><span class="line">    <span class="keyword">compile</span> <span class="string">&#x27;com.android.support:appcompat-v7:25.1.0&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Getter和Setter"><a href="#Getter和Setter" class="headerlink" title="Getter和Setter"></a>Getter和Setter</h4><p>Groovy语言中的两个概念，一个是Groovy中的Bean概念，一个是Groovy闭包的Delegate机制。<br>Java程序员对JavaBeans和Getter&#x2F;Setter方法肯定不陌生，被设计用来获取&#x2F;设置类的属性。但在Groovy中就不用那些没用的方法了。即Groovy动态的为每一个字段都会自动生成getter和setter，并且我们可以通过像访问字段本身一样调用getter和setter。比如Gradle的Project对象有个version属性（Property）下面这两行代码执行结果是一样的:</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">println</span> <span class="keyword">project</span>.version <span class="comment">// Groovy  </span></span><br><span class="line"><span class="keyword">println</span>(<span class="keyword">project</span>.getVersion()) <span class="comment">// Java  </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Project，Task-，Action"><a href="#Project，Task-，Action" class="headerlink" title="Project，Task ，Action"></a>Project，Task ，Action</h4><p>Gradle的Project之间的依赖关系是基于Task的，而不是整个Project的。</p>
+<p><strong>Project:<strong>是Gradle最重要的一个领域对象，我们写的</strong>build.gradle</strong>脚本的全部作用，其实就是<strong>配置</strong>一个Project实例。在build.gradle脚本里，我们可以<strong>隐式</strong>的操纵Project实例，比如，apply插件、声明依赖、定义Task等，如上面<code>build.gradle</code>所示。apply、dependencies、task等实际上是Project的方法，参数是一个代码块。如果需要，也可以显示的操纵Project实例，比如：<code>project.ext.myProp = &#39;myValue&#39;</code></p>
+<p>**Task:**被组织成了一个<span class="exturl" data-url="aHR0cDovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9EaXJlY3RlZF9hY3ljbGljX2dyYXBo">有向无环图（DAG）<i class="fa fa-external-link-alt"></i></span>。Gradle中的Task要么是由不同的Plugin引入的，要么是我们自己在build.gradle文件中直接创建的。Gradle保证Task按照依赖顺序执行，并且每个Task最多只被执行一次。</p>
+<p>Gradle在默认情况下为我们提供了几个常用的Task，比如查看Project的Properties、显示当前Project中定义的所有Task等。可以通过一下命令行查看Project中所有的Task：<code>$ gradle tasks</code> （具体log不再贴出来）。可以看到，Gradle默认为我们提供了<code>dependencies、projects和properties</code>等Task。dependencies用于显示Project的依赖信息，projects用于显示所有Project，包括根Project和子Project，而properties则用于显示一个Project所包含的所有Property。</p>
+<blockquote>
+<p>**Tips: **查看Project中所有的Task：<code>$ gradle tasks</code><br>查看Project中所有的properties：<code>$ gradle properties</code></p>
+</blockquote>
+<p>在上面的<code>build.gradle</code>中加入如下代码：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">task</span> myTask &#123;  </span><br><span class="line">    <span class="keyword">doFirst</span> &#123;  </span><br><span class="line">        <span class="keyword">println</span> <span class="string">&#x27;hello&#x27;</span>  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">doLast</span> &#123;  </span><br><span class="line">        <span class="keyword">println</span> <span class="string">&#x27;world&#x27;</span>  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>这段代码的含义</strong>：给Project添加一个名为“myTask”的任务<br>用一个闭包来配置这个任务,Task提供了doFirst和doLast方法来给自己添加Action。</p>
+</blockquote>
+<p>其实build.gradle脚本的真正作用，就是配置一个Project实例。在执行build脚本之前，Gradle会为我们准备好一个Project实例，执行完脚本之后，Gradle会按照DAG依次执行任务。</p>
+<h2 id="自定义Task的写法"><a href="#自定义Task的写法" class="headerlink" title="自定义Task的写法"></a>自定义Task的写法</h2><p>看下面代码文件路径<code>~/Test/build.gradle</code>：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">#<span class="number">1</span></span><br><span class="line"><span class="keyword">task</span> helloWorld &lt;&lt; &#123;</span><br><span class="line">    <span class="keyword">println</span> <span class="string">&quot;Hello World&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">#<span class="number">2</span> Test文件夹下建一个src目录，建一个dst目录，src目录下建立一个文件，命名为test.txt</span><br><span class="line"><span class="keyword">task</span> copyFile(type: <span class="keyword">Copy</span>)&#123;</span><br><span class="line">    <span class="keyword">from</span> <span class="string">&quot;src&quot;</span></span><br><span class="line">    <span class="keyword">into</span> <span class="string">&quot;dst&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>第一个这里的helloWorld是一个DefaultTask类型的对象，这也是定义一个Task时的默认类型，当然我们也可以显式地声明Task的类型，甚至可以自定义一个Task类型。<br>第二个代码中（type：Copy）就是“显式地声明Task的类型”，执行<code>gradle copyFile</code> test.txt也跑到dst中去了。</p>
+<p>如果task声明在根Project的build.gradle中的allprojects()方法中，那么这个Task会应用于所有的Project。</p>
+<h4 id="task的依赖关系"><a href="#task的依赖关系" class="headerlink" title="task的依赖关系"></a>task的依赖关系</h4><p>Gradle不提供内建的项目生命周期管理，只是java Plugin向Project中添加了许多Task，这些Task依次执行，为我们营造了一种如同Maven般项目构建周期。那么这些task是如何依次执行的这就用到声明的依赖关系<code>taskA.dependsOn taskB</code>看下面代码：</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line"><span class="keyword">task</span> taskA &lt;&lt; &#123;</span><br><span class="line">   println <span class="symbol">&#x27;this</span> <span class="keyword">is</span> taskA from project <span class="number">1</span>&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> taskB &lt;&lt; &#123;</span><br><span class="line">   println <span class="symbol">&#x27;this</span> <span class="keyword">is</span> taskB from project <span class="number">1</span>&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">taskA.dependsOn taskB</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后我们在命令行运行：<br><code>$ gradle taskA</code><br>运行结果会先执行taskB的打印，然后执行taskA的打印</p>
+<blockquote>
+<p>如果是Muliti-Project的模式，依赖关系要带着所属的Project，如<code>taskA.dependsOn &#39;:other-project:taskC&#39;</code> 其中taskC位于和taskA不同的Project中，相对于AndroidStudio来说，就是位于不同的Module下的<code>build.gradle</code>中，而other-project为Module名字。</p>
+</blockquote>
+<h4 id="Task-的type可以自定义（没有深入研究）"><a href="#Task-的type可以自定义（没有深入研究）" class="headerlink" title="Task 的type可以自定义（没有深入研究）"></a>Task 的type可以自定义（没有深入研究）</h4><h2 id="自定义Plugin的写法"><a href="#自定义Plugin的写法" class="headerlink" title="自定义Plugin的写法"></a>自定义Plugin的写法</h2><p>没有深入研究，给出一个网上的例子：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">apply plugin: DateAndTimePlugin</span><br><span class="line"></span><br><span class="line">dateAndTime &#123;</span><br><span class="line">    timeFormat = <span class="string">&#x27;HH:mm:ss.SSS&#x27;</span></span><br><span class="line">    dateFormat = <span class="string">&#x27;MM/dd/yyyy&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> DateAndTimePlugin <span class="keyword">implements</span> Plugin&lt;<span class="keyword">Project</span>&gt; &#123;</span><br><span class="line">    <span class="comment">//该接口定义了一个apply()方法，在该方法中，我们可以操作Project，</span></span><br><span class="line">    <span class="comment">//比如向其中加入Task，定义额外的Property等。</span></span><br><span class="line">    <span class="keyword">void</span> apply(<span class="keyword">Project</span> <span class="keyword">project</span>) &#123;</span><br><span class="line">        <span class="keyword">project</span>.extensions.create(<span class="string">&quot;dateAndTime&quot;</span>, DateAndTimePluginExtension)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">project</span>.<span class="keyword">task</span>(<span class="string">&#x27;showTime&#x27;</span>) &lt;&lt; &#123;</span><br><span class="line">            <span class="keyword">println</span> <span class="string">&quot;Current time is &quot;</span> + <span class="keyword">new</span> Date().format(<span class="keyword">project</span>.dateAndTime.timeFormat)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">project</span>.tasks.create(<span class="string">&#x27;showDate&#x27;</span>) &lt;&lt; &#123;</span><br><span class="line">            <span class="keyword">println</span> <span class="string">&quot;Current date is &quot;</span> + <span class="keyword">new</span> Date().format(<span class="keyword">project</span>.dateAndTime.dateFormat)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//每个Gradle的Project都维护了一个ExtenionContainer，</span></span><br><span class="line"><span class="comment">//我们可以通过project.extentions进行访问</span></span><br><span class="line"><span class="comment">//比如读取额外的Property和定义额外的Property等。</span></span><br><span class="line"><span class="comment">//向Project中定义了一个名为dateAndTime的extension</span></span><br><span class="line"><span class="comment">//并向其中加入了2个Property，分别为timeFormat和dateFormat</span></span><br><span class="line"><span class="keyword">class</span> DateAndTimePluginExtension &#123;</span><br><span class="line">    String timeFormat = <span class="string">&quot;MM/dd/yyyyHH:mm:ss.SSS&quot;</span></span><br><span class="line">    String dateFormat = <span class="string">&quot;yyyy-MM-dd&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>每一个自定义的Plugin都需要实现Plugin接口，除了给Project编写Plugin之外，我们还可以为其他Gradle类编写Plugin。该接口定义了一个apply()方法，在该方法中，我们可以操作Project，比如向其中加入Task，定义额外的Property等。</p>
+<p><span class="exturl" data-url="aHR0cDovL3d3dy5jbmJsb2dzLmNvbS9kYXZlbmtpbi9wL2dyYWRsZS1sZWFybmluZy0xMC5odG1s">原文地址<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="Gradle-Wrapper"><a href="#Gradle-Wrapper" class="headerlink" title="Gradle Wrapper"></a>Gradle Wrapper</h2><p>Wrapper，顾名思义，其实就是对Gradle的一层包装，便于在团队开发过程中统一Gradle构建的版本，然后提交到git上，然后别人可以下载下来，这样大家都可以使用统一的Gradle版本进行构建，避免因为Gradle版本不统一带来的不必要的问题。（所以要明白这个东西可以没有，有了只是为了统一管理，更加方便）</p>
+<h4 id="生成wrapper"><a href="#生成wrapper" class="headerlink" title="生成wrapper"></a>生成wrapper</h4><p>gradle 内置了生成wrapper的task，我们可以命令行下执行：<br><code>$ gradle wrapper</code></p>
+<p>生成后的目录结构如下(用过AndroidStudio的很熟悉了)：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">├── gradle</span><br><span class="line">│   └── <span class="keyword">wrapper</span></span><br><span class="line">│       ├── gradle-<span class="keyword">wrapper</span>.jar</span><br><span class="line">│       └── gradle-<span class="keyword">wrapper</span>.properties</span><br><span class="line">├── gradlew</span><br><span class="line">└── gradlew.bat</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>gradlew和gradlew.bat分别是Linux和Window下的可执行脚本，他们的用法和gradle原生命令是一样的，gradle怎么用，他们也就可以怎么用。在MacOS下运行<code>$ ./gradlew myTask</code></li>
+<li>gradle-wrapper.jar是具体业务逻辑实现的jar包，gradlew最终还是使用java执行的这个jar包来执行相关gradle操作。</li>
+<li>gradle-wrapper.properties是配置文件，用于配置使用哪个版本的gradle等</li>
+</ul>
+<h4 id="详细的看下gradle-wrapper-properties内容"><a href="#详细的看下gradle-wrapper-properties内容" class="headerlink" title="详细的看下gradle-wrapper.properties内容"></a>详细的看下gradle-wrapper.properties内容</h4><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="meta">#Sat Jan 21 14:02:40 CST 2017</span></span><br><span class="line">distributionBase=GRADLE_USER_HOME</span><br><span class="line">distributionPath=<span class="keyword">wrapper</span>/dists</span><br><span class="line">zipStoreBase=GRADLE_USER_HOME</span><br><span class="line">zipStorePath=<span class="keyword">wrapper</span>/dists</span><br><span class="line">distributionUrl=https\://services.gradle.org/distributions/gradle<span class="number">-2.14</span><span class="number">.1</span>-bin.zip</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>从上面内容和文件的名称都可以看出，这就是个java的配置文件,上面看到的是自动生成的，我们也可以手动修改。然后看下各个字段的含义：</p>
+<ul>
+<li><strong>distributionBase</strong>  下载的gradle压缩包解压后存储的主目录</li>
+<li><strong>distributionPath</strong>  相对于distributionBase的解压后的gradle压缩包的路径</li>
+<li><strong>zipStoreBase</strong>  同distributionBase，只不过是存放zip压缩包的</li>
+<li><strong>zipStorePath</strong>  同distributionPath，只不过是存放zip压缩包的</li>
+<li><strong>distributionUrl</strong>   gradle发行版压缩包的下载地址，也就是你现在这个项目将要依赖的gradle的版本。</li>
+</ul>
+<h4 id="生成wrapper可以指定参数"><a href="#生成wrapper可以指定参数" class="headerlink" title="生成wrapper可以指定参数"></a>生成wrapper可以指定参数</h4><ul>
+<li>生成wrapper可以通过指定参数的方式来指定gradle-wrapper.properties内容。</li>
+<li>使用方法如<code>gradle wrapper –gradle-version 2.14</code>这样，这样就意味着我们配置wrapper使用2.14版本的gradle，它会影响<span class="exturl" data-url="aHR0cDovL2dyYWRsZS13cmFwcGVyLnByb3BlcnRpZXMv">gradle-wrapper.properties<i class="fa fa-external-link-alt"></i></span>中的distributionUrl的值，该值的规则是<span class="exturl" data-url="aHR0cDovL3NlcnZpY2VzLmdyYWRsZS5vcmcvZGlzdHJpYnV0aW9ucy9ncmFkbGUtJTI0">http://services.gradle.org/distributions/gradle-$<i class="fa fa-external-link-alt"></i></span>{gradleVersion}-bin.zip</li>
+<li>如果我们在调用gradle wrapper的时候不添加任何参数呢，那么就会使用你当前Gradle的版本作为生成的wrapper的gradle version。例如你当前安装的gradle是2.10版本的，那么生成的wrapper也是2.10版本的。注：当前版本指的是环境变量中配置的那个版本。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/post/2018021544.html" title="Gradle入门笔记">https://onxs.github.io/post/2018021544.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/gradle/" rel="tag"><i class="fa fa-tag"></i> gradle</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2018011544.html" rel="prev" title="Hybrid app技术开发APP应用">
+                  <i class="fa fa-angle-left"></i> Hybrid app技术开发APP应用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/2018021544.html" rel="next" title="晋升研究员，阿里十年他都经历了什么">
+                  晋升研究员，阿里十年他都经历了什么 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 1989 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MC</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">930k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">56:22</span>
+  </span>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/sidebar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/bookmark.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/search/local-search.min.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js","integrity":"sha256-JJZNsid68vnh3/zyj0lY9BN5ynxVX/12XgOa1TlaYN0="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/pdf.min.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/mermaid.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/fancybox.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/pace.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/math/mathjax.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":false,"timeout":6000,"priority":true,"url":"https://onxs.github.io/post/2018021544.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/quicklink.min.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"onxs/onxs.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/comments/utterances.min.js"></script>
+
+
+</body>
+</html>

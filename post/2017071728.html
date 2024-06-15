@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#056864" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+<link rel="preconnect" href="https://fonts.font.im" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#056864">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.font.im/css?family=Helvetica:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"onxs.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.20.0","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"buttons","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/config.min.js"></script>
+
+
+
+<link rel="canonical" href="https://onxs.github.io/post/2017071728.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://onxs.github.io/post/2017071728.html","path":"post/2017071728.html","title":"Hexo Next主题集成gitment评论系统"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hexo Next主题集成gitment评论系统 | MC BLOG</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="MC BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MC BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MC Personal Blog</p>
+      <img class="custom-logo-image" src="https://s2.loli.net/2024/05/04/oabunWyc5VspNeU.png" alt="MC BLOG">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">59</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">175</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80-%E6%B3%A8%E5%86%8COAuth-Application"><span class="nav-number">2.</span> <span class="nav-text">一.注册OAuth Application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C-%E4%BF%AE%E6%94%B9themes-next-config-yml"><span class="nav-number">3.</span> <span class="nav-text">二.修改themes&#x2F;next&#x2F;_config.yml</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8config-yml%E4%B8%AD%E6%B7%BB%E5%8A%A0"><span class="nav-number">3.1.</span> <span class="nav-text">在config.yml中添加:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E4%B8%BB%E9%A2%98%E7%9A%84en-yml%E5%A2%9E%E5%8A%A0"><span class="nav-number">3.2.</span> <span class="nav-text">在主题的en.yml增加:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zh-Hans-yml%E5%A2%9E%E5%8A%A0"><span class="nav-number">3.3.</span> <span class="nav-text">zh-Hans.yml增加:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89-%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98layout-partials-comments-swig"><span class="nav-number">4.</span> <span class="nav-text">三.修改主题layout&#x2F;_partials&#x2F;comments.swig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B-%E5%A2%9E%E5%8A%A0gitment-swig"><span class="nav-number">5.</span> <span class="nav-text">四.增加gitment.swig</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E4%B8%BB%E9%A2%98%E4%B8%8Blayout-third-party-comments-%E7%9B%AE%E5%BD%95%E4%B8%8B%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6gitment-swig%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">在主题下layout&#x2F;_third-party&#x2F;comments&#x2F;目录下中添加文件gitment.swig：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E4%B8%BB%E9%A2%98%E4%B8%8Blayout-third-party-comments-index-swig%E6%96%87%E4%BB%B6%E4%B8%AD%E5%BC%95%E5%85%A5gitment-swig%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="nav-number">5.2.</span> <span class="nav-text">在主题下layout&#x2F;_third-party&#x2F;comments&#x2F;index.swig文件中引入gitment.swig文件：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94-%E6%B7%BB%E5%8A%A0gitment-styl"><span class="nav-number">6.</span> <span class="nav-text">五.添加gitment.styl</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%93%E9%94%99%E7%82%B9"><span class="nav-number">6.0.1.</span> <span class="nav-text">易错点</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MC"
+      src="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+  <p class="site-author-name" itemprop="name">MC</p>
+  <div class="site-description" itemprop="description">MC Personal Blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">175</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHM=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;onxs"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNlZWtAdmlwLnFxLmNvbQ==" title="E-Mail → mailto:ceek@vip.qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS8=" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;"><i class="fab fa-twitter fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tLw==" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;"><i class="fab fa-facebook fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9pbnN0YWdyYW0uY29t" title="Instagram → https:&#x2F;&#x2F;instagram.com"><i class="fab fa-instagram fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://onxs.github.io/" title="Web → https:&#x2F;&#x2F;onxs.github.io&#x2F;" rel="noopener me"><i class="fa fa-globe fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <span class="exturl" data-url="aHR0cHM6Ly9vbnhzLm5ldGxpZnkuYXBw" title="https:&#x2F;&#x2F;onxs.netlify.app">镜像站</span>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://onxs.github.io/" title="https:&#x2F;&#x2F;onxs.github.io">主网站</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/post/2017081728.html" rel="bookmark">
+        <time class="popular-posts-time">2017-08-24</time>
+        <br>
+      约定优于配置（Convention Over Configuration）
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2017071728.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s2.loli.net/2024/05/04/r4KT1NyzbACneI7.gif">
+      <meta itemprop="name" content="MC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MC BLOG">
+      <meta itemprop="description" content="MC Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hexo Next主题集成gitment评论系统 | MC BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo Next主题集成gitment评论系统<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL29ueHMvYmxvZy90cmVlL2Rldi9zb3VyY2UvX3Bvc3RzL1BPU1QwMDA2Mi5tZA==" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-07-24 17:28:28" itemprop="dateCreated datePublished" datetime="2017-07-24T17:28:28+08:00">2017-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+    </span>
+
+  
+
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>759</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0041.jpg" alt="image"></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>本文介绍hexo next主题(5.1.2)集成giment评论系统的过程。所谓gitment就是把评论放到github的issues系统里，评论支持md，比较适合程序员.</p>
+<span id="more"></span>
+<h3 id="一-注册OAuth-Application"><a href="#一-注册OAuth-Application" class="headerlink" title="一.注册OAuth Application"></a>一.注册OAuth Application</h3><p>点击<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NldHRpbmdzL2FwcGxpY2F0aW9ucy9uZXclRTYlQjMlQTglRTUlODYlOEMlRUYlQkMlOEMlRTYlQjMlQTglRTYlODQlOEZBdXRob3JpemF0aW9u">https://github.com/settings/applications/new注册，注意Authorization<i class="fa fa-external-link-alt"></i></span> callback URL填自己的网站url<span class="exturl" data-url="aHR0cDovL3lhbmdxLm1lLy4lRTglQUUlQjAlRTQlQjglOEJDbGllbnQ=">http://yangq.me/.记下Client<i class="fa fa-external-link-alt"></i></span> ID和Client Secret.</p>
+<h3 id="二-修改themes-next-config-yml"><a href="#二-修改themes-next-config-yml" class="headerlink" title="二.修改themes&#x2F;next&#x2F;_config.yml"></a>二.修改themes&#x2F;next&#x2F;_config.yml</h3><h4 id="在config-yml中添加"><a href="#在config-yml中添加" class="headerlink" title="在config.yml中添加:"></a>在config.yml中添加:</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># Gitment</span><br><span class="line"># Introduction: https://imsun.net/posts/gitment-introduction/</span><br><span class="line">gitment:</span><br><span class="line">  enable: true</span><br><span class="line">  githubID: yourid</span><br><span class="line">  repo: yourrepo</span><br><span class="line">  ClientID: yourid</span><br><span class="line">  ClientSecret: yoursecret</span><br><span class="line">  lazy: true</span><br></pre></td></tr></table></figure>
+
+<p>注意:格式要正确，该空格的一定要空格。所有的yourXXX都换成自己的.</p>
+<h4 id="在主题的en-yml增加"><a href="#在主题的en-yml增加" class="headerlink" title="在主题的en.yml增加:"></a>在主题的en.yml增加:</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">gitmentbutton: Show comments from Gitment</span><br></pre></td></tr></table></figure>
+<h4 id="zh-Hans-yml增加"><a href="#zh-Hans-yml增加" class="headerlink" title="zh-Hans.yml增加:"></a>zh-Hans.yml增加:</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">gitmentbutton: 显示 Gitment 评论</span><br></pre></td></tr></table></figure>
+
+<h3 id="三-修改主题layout-partials-comments-swig"><a href="#三-修改主题layout-partials-comments-swig" class="headerlink" title="三.修改主题layout&#x2F;_partials&#x2F;comments.swig"></a>三.修改主题layout&#x2F;_partials&#x2F;comments.swig</h3><p>找到这个文件里的这两行:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&#123;% elseif theme.valine.appidand theme.valine.appkey %&#125;      </span><br><span class="line">&quot;vcomments&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面是最后一个elseif分支，在下面加一个elseif分支:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&#123;% elseif theme.gitment.enable %&#125;</span><br><span class="line">      &#123;% if theme.gitment.lazy %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">onclick</span>=<span class="string">&quot;ShowGitment()&quot;</span> <span class="attr">id</span>=<span class="string">&quot;gitment-display-button&quot;</span>&gt;</span>&#123;&#123;  __(&#x27;gitmentbutton&#x27;) &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;gitment-container&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display:none&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;gitment-container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      &#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加完之后下面的内容是原来的，保持不变:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&#123;% endif %&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四-增加gitment-swig"><a href="#四-增加gitment-swig" class="headerlink" title="四.增加gitment.swig"></a>四.增加gitment.swig</h3><h4 id="在主题下layout-third-party-comments-目录下中添加文件gitment-swig："><a href="#在主题下layout-third-party-comments-目录下中添加文件gitment-swig：" class="headerlink" title="在主题下layout&#x2F;_third-party&#x2F;comments&#x2F;目录下中添加文件gitment.swig："></a>在主题下layout&#x2F;_third-party&#x2F;comments&#x2F;目录下中添加文件gitment.swig：</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&#123;% if theme.gitment.enable %&#125;</span><br><span class="line">   &#123;% set owner = theme.gitment.githubID %&#125;</span><br><span class="line">   &#123;% set repo = theme.gitment.repo %&#125;</span><br><span class="line">   &#123;% set cid = theme.gitment.ClientID %&#125;</span><br><span class="line">   &#123;% set cs = theme.gitment.ClientSecret %&#125;</span><br><span class="line">   <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://imsun.github.io/gitment/style/default.css&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://imsun.github.io/gitment/dist/gitment.browser.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   &#123;% if not theme.gitment.lazy %&#125;</span><br><span class="line">       <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">           var gitment = new Gitment(&#123;</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">               id: window.location.pathname, </span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">               owner: &#x27;</span><span class="template-variable">&#123;&#123;<span class="name">owner</span>&#125;&#125;</span><span class="language-xml">&#x27;,</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">               repo: &#x27;</span><span class="template-variable">&#123;&#123;<span class="name">repo</span>&#125;&#125;</span><span class="language-xml">&#x27;,</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">               oauth: &#123;</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">                   client_id: &#x27;</span><span class="template-variable">&#123;&#123;<span class="name">cid</span>&#125;&#125;</span><span class="language-xml">&#x27;,</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">                   client_secret: &#x27;</span><span class="template-variable">&#123;&#123;<span class="name">cs</span>&#125;&#125;</span><span class="language-xml">&#x27;,</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">               &#125;&#125;);</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">           gitment.render(&#x27;gitment-container&#x27;);</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">       </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   &#123;% else %&#125;</span><br><span class="line">       <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">           <span class="keyword">function</span> <span class="title function_">ShowGitment</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">               <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;gitment-display-button&quot;</span>).<span class="property">style</span>.<span class="property">display</span> = <span class="string">&quot;none&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">               <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;gitment-container&quot;</span>).<span class="property">style</span>.<span class="property">display</span> = <span class="string">&quot;block&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">               <span class="keyword">var</span> gitment = <span class="keyword">new</span> <span class="title class_">Gitment</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">                   <span class="attr">id</span>: <span class="variable language_">document</span>.<span class="property">location</span>.<span class="property">href</span>, </span></span><br><span class="line"><span class="language-javascript">                   <span class="attr">owner</span>: <span class="string">&#x27;&#123;&#123;owner&#125;&#125;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                   <span class="attr">repo</span>: <span class="string">&#x27;&#123;&#123;repo&#125;&#125;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                   <span class="attr">oauth</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                       <span class="attr">client_id</span>: <span class="string">&#x27;&#123;&#123;cid&#125;&#125;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                       <span class="attr">client_secret</span>: <span class="string">&#x27;&#123;&#123;cs&#125;&#125;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                   &#125;&#125;);</span></span><br><span class="line"><span class="language-javascript">               gitment.<span class="title function_">render</span>(<span class="string">&#x27;gitment-container&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">           &#125;</span></span><br><span class="line"><span class="language-javascript">       </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   &#123;% endif %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="在主题下layout-third-party-comments-index-swig文件中引入gitment-swig文件："><a href="#在主题下layout-third-party-comments-index-swig文件中引入gitment-swig文件：" class="headerlink" title="在主题下layout&#x2F;_third-party&#x2F;comments&#x2F;index.swig文件中引入gitment.swig文件："></a>在主题下layout&#x2F;_third-party&#x2F;comments&#x2F;index.swig文件中引入gitment.swig文件：</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&#123;% include&#x27;gitment.swig&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五-添加gitment-styl"><a href="#五-添加gitment-styl" class="headerlink" title="五.添加gitment.styl"></a>五.添加gitment.styl</h3><p>在主题下source&#x2F;css&#x2F;_common&#x2F;components&#x2F;third-party&#x2F;目录下添加gitment.styl文件，设置button的样式：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#gitment-display-button</span>&#123;</span><br><span class="line">     <span class="attribute">display</span>: inline-block;</span><br><span class="line">     <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">15px</span>;</span><br><span class="line">     <span class="attribute">color</span>: <span class="number">#0a9caf</span>;</span><br><span class="line">     <span class="attribute">cursor</span>: pointer;</span><br><span class="line">     <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">     <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#0a9caf</span>;</span><br><span class="line">     <span class="attribute">border-radius</span>: <span class="number">4px</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="selector-id">#gitment-display-button</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">     <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">     <span class="attribute">background</span>: <span class="number">#0a9caf</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在主题下source&#x2F;css&#x2F;_common&#x2F;components&#x2F;third-party&#x2F;third-party.styl文件中引入相应的CSS样式即可:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span>&quot;gitment&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>这样就ok了！</p>
+<h5 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h5><p>修改themes&#x2F;next&#x2F;_config.yml这个文件时，格式要正确。另外，repo是你要想创建issues的仓库，完全可以跟博文所放的仓库不一个。id就写自己的github用户名就可以，这个用户名跟repo必须匹配。<br>gitment可能不支持链接地址里有中文，所以安装gitment前一定要参考前文把链接持久化搞成全是英文的。<br>同一篇文章需要初始化comment两次的问题，是因为<span class="exturl" data-url="aHR0cDovL3h4eC5jb20vcG9zdC9hYjliYjg1YS5odG1sJUU1JTkyJThDJUU3JTgyJUI5JUU1JTg3JUJCJUU5JTk4JTg1JUU4JUFGJUJCJUU1JTg1JUE4JUU2JTk2JTg3JUU4JUJGJTlCJUU1JThFJUJCJUU3JTlBJTg0JUU5JTkzJUJFJUU2JThFJUE1aHR0cDovL3h4eC5jb20vcG9zdC9hYjliYjg1YS5odG1sI21vcmUlRTUlQUYlQjlpc3N1ZXMlRTYlOUQlQTUlRTglQUYlQjQlRTYlOTglQUYlRTQlQjglOEQlRTUlOTAlOEMlRTclOUElODQlRUYlQkMlOEMlRTYlODklODAlRTQlQkIlQTUlRTUlODglOUIlRTUlQkIlQkElRTQlQjglQTQlRTYlQUMlQTElRTMlODAlODIlRTglQTclQTMlRTUlODYlQjMlRTYlOTYlQjklRTYlQjMlOTUlRTUlQjAlQjElRTYlOTglQUZnaXRtZW50LnN3aWclRTklODclOENpZCVFNSVCQyU4NCVFNiU4OCU5MHdpbmRvdy5sb2NhdGlvbi5wYXRobmFtZSVFOCU4MCU4QyVFNCVCOCU4RCVFNiU5OCVBRmRvY3VtZW50LmxvY2F0aW9uLmhyZWYlRTMlODAlODI=">http://xxx.com/post/ab9bb85a.html和点击阅读全文进去的链接http://xxx.com/post/ab9bb85a.html#more对issues来说是不同的，所以创建两次。解决方法就是gitment.swig里id弄成window.location.pathname而不是document.location.href。<i class="fa fa-external-link-alt"></i></span><br>初始化评论后，可以到github里自己放issues的仓库查看issues是否创建成功，有时候浏览器可能会有缓存依然提示你初始化评论。一般过个两分钟就显示正常了。<br>参考文档</p>
+<ol>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS9wLzEwMTM0YzQ3NDk5MQ==">主要参考文档<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWVzb25nLmdpdGh1Yi5pby9TdGF0aWNCbG9nLzIwMTcvTmV4VCtHaXRtZW50Lw==">一种相对简略的配置方式<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ltc3VuL2dpdG1lbnQvaXNzdWVz">作者issue<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>MC
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://onxs.github.io/post/2017071728.html" title="Hexo Next主题集成gitment评论系统">https://onxs.github.io/post/2017071728.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/username">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/channel_name">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/images/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/hexo-next/" rel="tag"><i class="fa fa-tag"></i> hexo next</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/2016111154.html" rel="prev" title="jQuery使用技巧">
+                  <i class="fa fa-angle-left"></i> jQuery使用技巧
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/2017081728.html" rel="next" title="Hexo 常用命令">
+                  Hexo 常用命令 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 1989 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MC</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">930k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">56:22</span>
+  </span>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/sidebar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/bookmark.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/search/local-search.min.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.3.0/pdfobject.min.js","integrity":"sha256-JJZNsid68vnh3/zyj0lY9BN5ynxVX/12XgOa1TlaYN0="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/pdf.min.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/tags/mermaid.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/fancybox.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/pace.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/math/mathjax.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":false,"timeout":6000,"priority":true,"url":"https://onxs.github.io/post/2017071728.html"}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/quicklink.min.js"></script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"onxs/onxs.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.20.0/third-party/comments/utterances.min.js"></script>
+
+
+</body>
+</html>
