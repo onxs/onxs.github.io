@@ -1850,7 +1850,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #add0f6;
+    background: #cccbff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3585,7 +3585,7 @@ code.language-html span {
 }
 .post-body img {
   width: 75%;
-  height: 22em;
+  max-height: 22em;
   border-width: 5px;
   border-radius: 5px;
 /*box-shadow: 5px 5px 20px #4c4c4c; */
