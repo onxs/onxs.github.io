@@ -151,18 +151,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">175</span>
+          <span class="site-state-item-count">203</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">62</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-count">75</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -203,7 +203,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2017121254.html">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018012134.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://s2.loli.net/2024/06/19/8YuAXws5T4OcePt.jpg">
@@ -221,7 +221,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2017121254.html" class="post-title-link" itemprop="url">三目运算详解</a>
+          <a href="/post/2018012134.html" class="post-title-link" itemprop="url">CAS单点登录（二）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -232,7 +232,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2017-12-05 12:54:36" itemprop="dateCreated datePublished" datetime="2017-12-05T12:54:36+08:00">2017-12-05</time>
+      <time title="Created: 2018-01-09 21:34:36" itemprop="dateCreated datePublished" datetime="2018-01-09T21:34:36+08:00">2018-01-09</time>
     </span>
 
   
@@ -242,14 +242,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>1.4k</span>
+      <span>11k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>5 mins.</span>
+      <span>38 mins.</span>
     </span>
 </div>
 
@@ -260,14 +260,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img data-src="https://s2.loli.net/2023/04/16/XDgYZ2RMLxIl7Vd.jpg"></p>
-<p>三目运算符，又称条件运算符，指的是计算机语言的重要组成部分。它是唯一有3个操作数的运算符，所以有时又称为三元运算符。一般来说，三目运算符的结合性是右结合的。</p>
-<p>对于条件表达式b ? x : y，先计算条件b，然后进行判断。如果b的值为true，计算x的值，运算结果为x的值；否则，计算y的值，运算结果为y的值。一个条件表达式绝不会既计算x，又计算y。条件运算符是右结合的，也就是说，从右向左分组计算。例如，a ? b : c ? d : e将按a ? b : (c ? d : e)执行。[1]<a href=""> </a></p>
-<p>&lt;表达式1&gt; ? &lt;表达式2&gt; : &lt;表达式3&gt;; “?”运算符的含义是：先求表达式1的值，如果为真，则执行表达式2，并返回表达式2的结果；如果表达式1的值为假，则执行表达式3，并返回表达式3的结果。</p>
-<p>可以理解为<strong>条件 ? 结果1 : 结果2</strong> 里面的？号是格式要求。也可以理解为是不是条件成立，条件成立为结果1否则为结果2。</p>
-<p>注意：在C语言中，结果1 和 结果2的类型必须一致。</p>
-<p>a ? b : c简单理解方式为:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(a) &#123;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> c; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p><img data-src="https://s2.loli.net/2024/06/16/VRfXwjrZQMI53T8.png"></p>
+<p>Cas的全称是Centeral Authentication Service，是对单点登录SSO（Single Sign On）的一种实现。其由Cas Server和Cas Client两部分组成，Cas Server是核心，而Cas Client通常就对应于我们的应用。一个Cas Server可以对应于多个Cas Client。它允许我们在一个Client进行登录以后无需再让用户输入用户名和密码进行认证即可访问其它Client应用。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -296,7 +290,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2017122334.html">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018012134.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://s2.loli.net/2024/06/19/8YuAXws5T4OcePt.jpg">
@@ -314,7 +308,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2017122334.html" class="post-title-link" itemprop="url">Spring Batch 4.0.0批处理框架</a>
+          <a href="/post/2018012134.html" class="post-title-link" itemprop="url">Travis CI持续集成Github</a>
         </h2>
 
         <div class="post-meta-container">
@@ -325,7 +319,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2017-12-04 23:34:36" itemprop="dateCreated datePublished" datetime="2017-12-04T23:34:36+08:00">2017-12-04</time>
+      <time title="Created: 2018-01-09 21:34:36" itemprop="dateCreated datePublished" datetime="2018-01-09T21:34:36+08:00">2018-01-09</time>
     </span>
 
   
@@ -335,14 +329,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>3.5k</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>13 mins.</span>
+      <span>4 mins.</span>
     </span>
 </div>
 
@@ -353,8 +347,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img data-src="https://s2.loli.net/2023/04/16/NTCMOsQVKqJL8ur.jpg"></p>
-<p>Spring Batch 4.0.0  已发布，Spring Batch 是一个轻量级的，完全面向 Spring 的批处理框架，可以应用于企业级大量的数据处理系统。Spring Batch 以 POJO 和  Spring 框架为基础，使开发者更容易的访问和利用企业级服务。Spring Batch 可以提供大量的，可重复的数据处理功能，包括日志记录&#x2F;跟踪，事务管理，作业处理统计工作重新启动、跳过，和资源管理等重要功能。</p>
+          <p><img data-src="https://s2.loli.net/2024/06/19/5CIyLw2bAYGcNBl.jpg"></p>
+<ol>
+<li>Travis CI 介绍<br>CI即持续集成系统。对个人而言，就是让你的代码在提交到远程(这里是GitHub)，立即自动编译，自动化测试、自动部署等。</li>
+</ol>
           <!--noindex-->
           <!--/noindex-->
         
@@ -383,7 +379,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2017121234.html">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018012134.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://s2.loli.net/2024/06/19/8YuAXws5T4OcePt.jpg">
@@ -401,7 +397,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2017121234.html" class="post-title-link" itemprop="url">穷忙族的人生</a>
+          <a href="/post/2018012134.html" class="post-title-link" itemprop="url">基于Redis的CAS集群</a>
         </h2>
 
         <div class="post-meta-container">
@@ -412,7 +408,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2017-12-04 12:34:36" itemprop="dateCreated datePublished" datetime="2017-12-04T12:34:36+08:00">2017-12-04</time>
+      <time title="Created: 2018-01-08 21:34:36" itemprop="dateCreated datePublished" datetime="2018-01-08T21:34:36+08:00">2018-01-08</time>
     </span>
 
   
@@ -422,14 +418,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>2.8k</span>
+      <span>981</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>10 mins.</span>
+      <span>4 mins.</span>
     </span>
 </div>
 
@@ -440,8 +436,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img data-src="https://s2.loli.net/2023/04/14/yG8VlEoHI5z71A9.png"></p>
-<p>  穷忙族来自英文单词“working poor”，原指那些薪水不多，整日奔波劳动，却始终无法摆脱贫穷的人。但是随着逐渐壮大的“穷忙一族”队伍，主要界定为每周工时低于平均工时的三分之二、收入低于全体平均60%者。这个定义又逐渐发展成一种为了填补空虚生活，而不得不连续消费，之后继续投入忙碌的工作中，而在消费过后最终又重返空虚的“穷忙”。<br>
+          <p><img data-src="https://s2.loli.net/2023/04/20/NQbmhDsUyt7l5aH.jpg"></p>
+<p>单点登录（SSO）是复杂应用系统的基本需求，Yale CAS是目前常用的开源解决方案。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -470,7 +466,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2017121234.html">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018012134.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://s2.loli.net/2024/06/19/8YuAXws5T4OcePt.jpg">
@@ -488,7 +484,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2017121234.html" class="post-title-link" itemprop="url">YAML脚本学习笔记</a>
+          <a href="/post/2018012134.html" class="post-title-link" itemprop="url">CAS单点登录(一)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -499,7 +495,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2017-12-03 12:34:36" itemprop="dateCreated datePublished" datetime="2017-12-03T12:34:36+08:00">2017-12-03</time>
+      <time title="Created: 2018-01-04 21:34:36" itemprop="dateCreated datePublished" datetime="2018-01-04T21:34:36+08:00">2018-01-04</time>
     </span>
 
   
@@ -509,14 +505,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>3k</span>
+      <span>6.7k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>11 mins.</span>
+      <span>24 mins.</span>
     </span>
 </div>
 
@@ -527,8 +523,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img data-src="https://s2.loli.net/2023/04/16/pWn3RYiD86aGONA.png"></p>
-<p>YAML是“另一种标记语言”的外语缩写；但为了强调这种语言以数据做为中心，而不是以置标语言为重点，而用返璞词重新命名。它是一种直观的能够被电脑识别的数据序列化格式，是一个可读性高并且容易被人类阅读，容易和脚本语言交互，用来表达资料序列的编程语言。<br>它是类似于标准通用标记语言的子集XML的数据描述语言，语法比XML简单很多。</p>
+          <p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0066.jpg" alt="image"></p>
+<p>单点登录（Single Sign On），简称为SSO，是目前比较流行的企业业务整合的解决方案之一。SSO的定义是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。<br>CAS（Central Authentication Service），中央认证服务。CAS(Central Authentication Service)是一款不错的针对 Web应用的单点登录框架。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -557,7 +553,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2017121134.html">
+    <link itemprop="mainEntityOfPage" href="https://onxs.github.io/post/2018012134.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://s2.loli.net/2024/06/19/8YuAXws5T4OcePt.jpg">
@@ -575,7 +571,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/post/2017121134.html" class="post-title-link" itemprop="url">SWFUpload文件上传详解</a>
+          <a href="/post/2018012134.html" class="post-title-link" itemprop="url">Git查看、删除、重命名远程分支和tag</a>
         </h2>
 
         <div class="post-meta-container">
@@ -586,7 +582,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2017-12-01 11:34:36" itemprop="dateCreated datePublished" datetime="2017-12-01T11:34:36+08:00">2017-12-01</time>
+      <time title="Created: 2018-01-04 21:34:36" itemprop="dateCreated datePublished" datetime="2018-01-04T21:34:36+08:00">2018-01-04</time>
     </span>
 
   
@@ -596,14 +592,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>6.1k</span>
+      <span>856</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>22 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -614,8 +610,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0034.jpg" alt="image"></p>
-<p>SWFUpload是一个客户端文件上传工具，最初由Vinterwebb.se开发，它通过整合Flash与JavaScript技术为WEB开发者提供了一个具有丰富功能继而超越传统<br>input type&#x3D;”file”标签的文件上传模式。 </p>
+          <p><img data-src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0069.jpg" alt="image"></p>
+<p>Git查看、删除、重命名远程分支和tag</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -637,7 +633,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/26/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/28/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/26/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/28/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -659,13 +655,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">930k</span>
+    <span title="Word count total">1.6m</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">56:22</span>
+    <span title="Reading time total">94:41</span>
   </span>
 </div>
 
